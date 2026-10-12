@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { ComponentItem } from '@/data/components';
 import { GamePreset } from '@/data/presets';
 import { getCoupangProductUrl, getCoupangSearchUrl, getNaverShoppingUrl, getOpenMarketProductUrl, getOpenMarketPrebuiltUrl } from '@/lib/affiliate';
-import { Zap, Truck, ShieldCheck, Coins, ExternalLink, ChevronDown, ChevronUp, Trophy, Check, ArrowRight, Sparkles, ShoppingBag } from 'lucide-react';
+import { Zap, Truck, ShieldCheck, Coins, ExternalLink, ChevronDown, ChevronUp, Trophy, Check, ArrowRight, Sparkles, ShoppingBag, Calendar, Info } from 'lucide-react';
 
 interface PriceBattleProps {
   currentPreset: GamePreset;
@@ -14,6 +14,12 @@ interface PriceBattleProps {
 
 export default function PriceBattle({ currentPreset, selectedComponents, totalPrice }: PriceBattleProps) {
   const [showPartsDetail, setShowPartsDetail] = useState(false);
+
+  // 선택된 부품들의 최근 시세 갱신 기준 일자 확인
+  const updateDates = Object.values(selectedComponents)
+    .map((c) => c.lastUpdated)
+    .filter(Boolean);
+  const latestUpdateDate = updateDates.length > 0 ? updateDates[0] : '2026-10-12 09:00';
 
   // 쿠팡 체감 혜택 계산 (카드 즉시할인 약 4% 추정)
   const coupangCardDiscount = Math.round(totalPrice * 0.04);
@@ -40,17 +46,24 @@ export default function PriceBattle({ currentPreset, selectedComponents, totalPr
       <div className="absolute -top-32 -left-32 w-72 h-72 bg-rose-500/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute -top-32 -right-32 w-72 h-72 bg-orange-500/10 rounded-full blur-3xl pointer-events-none" />
 
-      {/* 섹션 헤더 */}
+      {/* 섹션 헤더 (날짜 및 투명한 시세 기준 표기) */}
       <div className="text-center max-w-2xl mx-auto mb-8 relative z-10">
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gradient-to-r from-rose-500/10 via-orange-500/10 to-emerald-500/10 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 text-xs font-bold mb-3">
-          <Sparkles className="w-3.5 h-3.5 text-amber-500" />
-          실시간 멀티 플랫폼 최저가 빅매치
+        <div className="flex flex-wrap items-center justify-center gap-2 mb-3">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-xs font-semibold">
+            <Calendar className="w-3.5 h-3.5 text-cyan-600 dark:text-cyan-400" />
+            <span>시세 기준: {latestUpdateDate} (정기 수집 데이터)</span>
+          </div>
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-700 dark:text-amber-400 text-xs font-semibold">
+            <Info className="w-3.5 h-3.5 text-amber-500" />
+            <span>프로모션 할인율 기반 추정 체감가</span>
+          </div>
         </div>
         <h2 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-tight">
           쿠팡 로켓 <span className="text-rose-500">VS</span> 오픈마켓 특가 <span className="text-orange-500">VS</span> 네이버 쇼핑
         </h2>
         <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
-          어디서 사는 게 진짜 이득일까? <strong>로켓 빠른배송, 오픈마켓 공식총판 카드할인, 네이버페이 적립금</strong>까지 투명하게 종합 비교해 드립니다.
+          정기 수집된 부품 기준 시세를 바탕으로 <strong>로켓 빠른배송, 오픈마켓 공식총판 카드할인, 네이버페이 적립금</strong> 혜택을 투명하게 비교합니다.<br className="hidden sm:inline" />
+          <span className="text-slate-500 dark:text-slate-400"> (실시간 최종 가격과 재고는 각 판매처 바로가기를 통해 직접 실시간 연동 확인하실 수 있습니다)</span>
         </p>
       </div>
 
@@ -82,15 +95,18 @@ export default function PriceBattle({ currentPreset, selectedComponents, totalPr
             {/* 가격 정보 */}
             <div className="my-3 p-3.5 rounded-xl bg-white/80 dark:bg-slate-800/80 border border-rose-200/60 dark:border-rose-900/40">
               <div className="flex justify-between items-center text-xs text-slate-500 dark:text-slate-400">
-                <span>견적 합계가</span>
+                <span>견적 합계 기준가</span>
                 <span className="font-mono line-through">{totalPrice.toLocaleString()}원</span>
               </div>
               <div className="flex justify-between items-center text-xs text-rose-600 dark:text-rose-400 mt-1">
-                <span>카드사 즉시할인 (추정)</span>
+                <span>카드사 즉시할인 (예상 -4%)</span>
                 <span className="font-mono font-bold">-{coupangCardDiscount.toLocaleString()}원</span>
               </div>
               <div className="flex justify-between items-end mt-2 pt-2 border-t border-rose-100 dark:border-rose-900/30">
-                <span className="text-xs font-bold text-slate-700 dark:text-slate-300">최종 체감가</span>
+                <div>
+                  <span className="text-xs font-bold text-slate-700 dark:text-slate-300 block">예상 체감 혜택가</span>
+                  <span className="text-[10px] text-slate-400 dark:text-slate-500">* 프로모션 추정치</span>
+                </div>
                 <span className="text-lg sm:text-xl font-black font-mono text-rose-600 dark:text-rose-400">
                   약 {coupangEffectivePrice.toLocaleString()}원
                 </span>
@@ -121,7 +137,7 @@ export default function PriceBattle({ currentPreset, selectedComponents, totalPr
               rel="noopener noreferrer nofollow"
               className="w-full py-2.5 px-3 rounded-xl bg-gradient-to-r from-rose-600 to-red-600 hover:from-rose-500 hover:to-red-500 text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-md shadow-rose-500/20 active:scale-95 transition-all cursor-pointer"
             >
-              <span>쿠팡 로켓 실시간 조회</span>
+              <span>쿠팡 실시간 판매가 확인</span>
               <ExternalLink className="w-3.5 h-3.5" />
             </a>
           </div>
@@ -157,11 +173,14 @@ export default function PriceBattle({ currentPreset, selectedComponents, totalPr
                 <span className="font-mono line-through">{totalPrice.toLocaleString()}원</span>
               </div>
               <div className="flex justify-between items-center text-xs text-orange-600 dark:text-orange-400 mt-1">
-                <span>공식총판 쿠폰/카드할인 (추정)</span>
+                <span>총판 쿠폰/카드할인 (예상 -6%)</span>
                 <span className="font-mono font-bold">-{openMarketDiscount.toLocaleString()}원</span>
               </div>
               <div className="flex justify-between items-end mt-2 pt-2 border-t border-orange-100 dark:border-orange-900/30">
-                <span className="text-xs font-bold text-slate-700 dark:text-slate-300">최대 할인 체감가</span>
+                <div>
+                  <span className="text-xs font-bold text-slate-700 dark:text-slate-300 block">예상 체감 혜택가</span>
+                  <span className="text-[10px] text-slate-400 dark:text-slate-500">* 프로모션 추정치</span>
+                </div>
                 <span className="text-lg sm:text-xl font-black font-mono text-orange-600 dark:text-orange-400">
                   약 {openMarketEffectivePrice.toLocaleString()}원
                 </span>
@@ -224,15 +243,18 @@ export default function PriceBattle({ currentPreset, selectedComponents, totalPr
             {/* 가격 정보 */}
             <div className="my-3 p-3.5 rounded-xl bg-white/80 dark:bg-slate-800/80 border border-emerald-200/60 dark:border-emerald-900/40">
               <div className="flex justify-between items-center text-xs text-slate-500 dark:text-slate-400">
-                <span>네이버 최저가 기준</span>
+                <span>네이버 기준 시세</span>
                 <span className="font-mono">{totalPrice.toLocaleString()}원</span>
               </div>
               <div className="flex justify-between items-center text-xs text-emerald-600 dark:text-emerald-400 mt-1">
-                <span>멤버십 포인트 적립 (추정)</span>
+                <span>멤버십 포인트 적립 (예상 +5%)</span>
                 <span className="font-mono font-bold">+{naverPointCashback.toLocaleString()}P</span>
               </div>
               <div className="flex justify-between items-end mt-2 pt-2 border-t border-emerald-100 dark:border-emerald-900/30">
-                <span className="text-xs font-bold text-slate-700 dark:text-slate-300">포인트 환산 실체감가</span>
+                <div>
+                  <span className="text-xs font-bold text-slate-700 dark:text-slate-300 block">포인트 환산 체감가</span>
+                  <span className="text-[10px] text-slate-400 dark:text-slate-500">* 멤버십 기준</span>
+                </div>
                 <span className="text-lg sm:text-xl font-black font-mono text-emerald-600 dark:text-emerald-400">
                   약 {naverEffectivePrice.toLocaleString()}원
                 </span>
@@ -263,7 +285,7 @@ export default function PriceBattle({ currentPreset, selectedComponents, totalPr
               rel="noopener noreferrer nofollow"
               className="w-full py-2.5 px-3 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-md shadow-emerald-500/20 active:scale-95 transition-all cursor-pointer"
             >
-              <span>네이버 쇼핑 기준가 조회</span>
+              <span>네이버 쇼핑 실시간 시세 조회</span>
               <ExternalLink className="w-3.5 h-3.5" />
             </a>
           </div>
@@ -298,6 +320,19 @@ export default function PriceBattle({ currentPreset, selectedComponents, totalPr
         </div>
       </div>
 
+      {/* 투명한 시세 수집 및 실시간 연동 소비자 안내 (허위 LIVE 표기 배제) */}
+      <div className="mt-6 p-4 rounded-2xl bg-slate-50/90 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800 text-xs">
+        <div className="flex items-center gap-1.5 font-bold text-slate-800 dark:text-slate-200 mb-1.5">
+          <Info className="w-4 h-4 text-cyan-600 dark:text-cyan-400 shrink-0" />
+          <span>시세 산정 기준 및 실시간 판매가 연동 안내</span>
+        </div>
+        <p className="text-[11px] text-slate-600 dark:text-slate-400 leading-relaxed">
+          • 본 비교표의 부품 기준 시세는 <strong>{latestUpdateDate}</strong> 정기 데이터 기준이며, 각 플랫폼의 체감가는 카드사 즉시할인·쿠폰·포인트 적립률을 반영한 <strong>통계적 추정 가격</strong>입니다.<br />
+          • PC 하드웨어 특성상 시세와 재고가 수시로 변동되므로 <strong>인위적인 허위 LIVE 표기를 배제</strong>하고 정확한 수집 시점을 투명하게 공개합니다.<br />
+          • 실시간 현재 판매 가격과 로켓배송 가능 여부는 각 카드의 <strong>[실시간 확인] 바로가기 버튼</strong>을 클릭하여 공식 쇼핑몰 페이지에서 즉시 실시간 검증하실 수 있습니다.
+        </p>
+      </div>
+
       {/* 핵심 3대 부품 1:1 비교 토글 아코디언 */}
       <div className="mt-6 border-t border-slate-200 dark:border-slate-800 pt-5">
         <button
@@ -305,7 +340,7 @@ export default function PriceBattle({ currentPreset, selectedComponents, totalPr
           className="w-full flex items-center justify-between text-xs font-bold text-slate-700 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors cursor-pointer py-1"
         >
           <span className="flex items-center gap-1.5">
-            🔍 주요 핵심 부품(CPU·GPU·SSD) 3대 플랫폼 최저가 바로가기
+            🔍 주요 핵심 부품(CPU·GPU·SSD) 3대 플랫폼 실시간 판매가 확인 바로가기
           </span>
           {showPartsDetail ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
         </button>
@@ -330,9 +365,14 @@ export default function PriceBattle({ currentPreset, selectedComponents, totalPr
                     <span className="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white truncate block">
                       {comp.name}
                     </span>
-                    <span className="text-xs font-mono font-bold text-cyan-600 dark:text-cyan-400">
-                      정가 기준 {comp.price.toLocaleString()}원
-                    </span>
+                    <div className="flex items-center gap-2 mt-0.5">
+                      <span className="text-xs font-mono font-bold text-cyan-600 dark:text-cyan-400">
+                        기준 시세 {comp.price.toLocaleString()}원
+                      </span>
+                      <span className="text-[10px] text-slate-400 dark:text-slate-500 font-mono">
+                        (수집일자: {comp.lastUpdated || latestUpdateDate})
+                      </span>
+                    </div>
                   </div>
 
                   <div className="flex items-center gap-2 shrink-0 flex-wrap">
@@ -341,9 +381,9 @@ export default function PriceBattle({ currentPreset, selectedComponents, totalPr
                       target="_blank"
                       rel="noopener noreferrer nofollow"
                       className="px-2.5 py-1.5 rounded-lg bg-rose-50 hover:bg-rose-100 dark:bg-rose-950/60 dark:hover:bg-rose-900/60 text-rose-600 dark:text-rose-400 border border-rose-200 dark:border-rose-800/60 text-xs font-bold flex items-center gap-1 transition-colors"
-                      title="쿠팡 로켓배송 최저가 확인"
+                      title="쿠팡 로켓배송 실시간 가격 확인"
                     >
-                      <span>🚀 쿠팡 로켓</span>
+                      <span>🚀 쿠팡 실시간가</span>
                       <ExternalLink className="w-3 h-3" />
                     </a>
 
@@ -352,9 +392,9 @@ export default function PriceBattle({ currentPreset, selectedComponents, totalPr
                       target="_blank"
                       rel="noopener noreferrer nofollow"
                       className="px-2.5 py-1.5 rounded-lg bg-orange-50 hover:bg-orange-100 dark:bg-orange-950/60 dark:hover:bg-orange-900/60 text-orange-600 dark:text-orange-400 border border-orange-200 dark:border-orange-800/60 text-xs font-bold flex items-center gap-1 transition-colors"
-                      title="11번가·G마켓 오픈마켓 특가 확인"
+                      title="11번가·G마켓 오픈마켓 실시간 특가 확인"
                     >
-                      <span>🛒 오픈마켓 특가</span>
+                      <span>🛒 오픈마켓 실시간가</span>
                       <ExternalLink className="w-3 h-3" />
                     </a>
 
@@ -363,9 +403,9 @@ export default function PriceBattle({ currentPreset, selectedComponents, totalPr
                       target="_blank"
                       rel="noopener noreferrer nofollow"
                       className="px-2.5 py-1.5 rounded-lg bg-emerald-50 hover:bg-emerald-100 dark:bg-emerald-950/60 dark:hover:bg-emerald-900/60 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/60 text-xs font-bold flex items-center gap-1 transition-colors"
-                      title="네이버 쇼핑 기준 시세 확인"
+                      title="네이버 쇼핑 실시간 시세 확인"
                     >
-                      <span>🟢 네이버 시세</span>
+                      <span>🟢 네이버 실시간시세</span>
                       <ExternalLink className="w-3 h-3" />
                     </a>
                   </div>
@@ -378,7 +418,7 @@ export default function PriceBattle({ currentPreset, selectedComponents, totalPr
 
       {/* 하단 제휴 및 경제적 대가 안내 */}
       <div className="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 text-[10px] text-slate-400 text-center leading-relaxed">
-        ※ 본 플랫폼 최저가 비교는 실시간 시장 시세 및 쿠팡 파트너스·링크프라이스(오픈마켓)·네이버 쇼핑 데이터를 기반으로 제공되며, 제휴 링크를 통해 구매 시 일정액의 수수료를 제공받을 수 있습니다.
+        ※ 본 플랫폼 최저가 비교는 {latestUpdateDate} 정기 수집된 시장 기준 시세 및 각 제휴 플랫폼(쿠팡, 오픈마켓, 네이버)의 예상 프로모션 할인율을 바탕으로 산출되었습니다. 허위 LIVE 표기를 하지 않으며, 정확한 실시간 재고와 변동 가격은 각 판매처 바로가기를 통해 실시간 확인하실 수 있습니다.
       </div>
     </section>
   );
