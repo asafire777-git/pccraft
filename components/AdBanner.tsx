@@ -32,7 +32,7 @@ export default function AdBanner({
         tag: '🚀 쿠팡 로켓배송 특가전',
         badge: '최대 20% 카드할인',
         link: OFFICIAL_HARDWARE_FESTA_LINK,
-        imgSrc: '/banners/banner-infeed-wide.svg',
+        imgSrc: '/banners/banner-infeed-wide.jpg',
         imgAlt: '쿠팡 PC 하드웨어 페스타 기획전'
       },
       prebuilt: {
@@ -41,7 +41,7 @@ export default function AdBanner({
         tag: '⚡ 완본체 브랜드전',
         badge: '로켓와우 특별할인',
         link: OFFICIAL_PREBUILT_LINK,
-        imgSrc: '/banners/banner-prebuilt.svg',
+        imgSrc: '/banners/banner-prebuilt.jpg',
         imgAlt: '게이밍 조립 PC 완본체 기획전'
       },
       monitor: {
@@ -50,7 +50,7 @@ export default function AdBanner({
         tag: '🖥️ 게이밍 디스플레이전',
         badge: '로켓배송 무료설치',
         link: OFFICIAL_MONITOR_LINK,
-        imgSrc: '/banners/banner-monitor.svg',
+        imgSrc: '/banners/banner-monitor.jpg',
         imgAlt: '게이밍 모니터 특별 기획전'
       }
     };

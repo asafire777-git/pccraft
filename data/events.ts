@@ -41,7 +41,7 @@ export const PROMO_EVENTS: PromoEvent[] = [
     themeColor: 'cyan',
     tag: '로켓와우 특별전',
     highlightText: '선착순 쿠폰 & 카드 무이자 할부',
-    imageUrl: '/banners/banner-gaming-pc.svg',
+    imageUrl: '/banners/banner-gaming-pc.jpg',
     imageAlt: '2026 게이밍 조립 PC 빅세일 기획전'
   },
   {
@@ -56,7 +56,7 @@ export const PROMO_EVENTS: PromoEvent[] = [
     themeColor: 'purple',
     tag: '조립PC 부품전',
     highlightText: '내일 아침 문 앞 도착',
-    imageUrl: '/banners/banner-hardware.svg',
+    imageUrl: '/banners/banner-hardware.jpg',
     imageAlt: 'PC 핵심 부품 최저가 기획전'
   },
   {
@@ -71,7 +71,7 @@ export const PROMO_EVENTS: PromoEvent[] = [
     themeColor: 'emerald',
     tag: '완본체 추천',
     highlightText: 'A/S 1년 무상보증',
-    imageUrl: '/banners/banner-prebuilt.svg',
+    imageUrl: '/banners/banner-prebuilt.jpg',
     imageAlt: '가성비 데스크탑 완본체 기획전'
   },
   {
@@ -86,7 +86,7 @@ export const PROMO_EVENTS: PromoEvent[] = [
     themeColor: 'blue',
     tag: '고주사율 특별전',
     highlightText: '무결점 보증 & 로켓배송',
-    imageUrl: '/banners/banner-monitor.svg',
+    imageUrl: '/banners/banner-monitor.jpg',
     imageAlt: '고주사율 게이밍 모니터 기획전'
   },
   {
@@ -101,7 +101,7 @@ export const PROMO_EVENTS: PromoEvent[] = [
     themeColor: 'amber',
     tag: '주변기기 특가',
     highlightText: '프로게이머 실사용 센서',
-    imageUrl: '/banners/banner-gear.svg',
+    imageUrl: '/banners/banner-gear.jpg',
     imageAlt: '게이밍 기어 키보드 마우스 기획전'
   }
 ];

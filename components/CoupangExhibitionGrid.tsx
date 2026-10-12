@@ -32,7 +32,7 @@ export default function CoupangExhibitionGrid() {
       description: 'LG 울트라기어 & 삼성 오디세이 IPS 게이밍 모니터 1ms 무결점 보증 행사',
       badge: '최대 20% 카드할인',
       benefits: ['로켓배송 무료설치', 'IPS 광시야각 패널', '불량화소 100% 안심교환'],
-      imgSrc: '/banners/banner-monitor.svg',
+      imgSrc: '/banners/banner-monitor.jpg',
       imgAlt: 'QHD 게이밍 모니터 특가 기획전',
       link: OFFICIAL_MONITOR_LINK,
       colorScheme: {
@@ -48,7 +48,7 @@ export default function CoupangExhibitionGrid() {
       description: '프로게이머 실사용 초경량 무선 게이밍 마우스 & RGB 기계식 키보드 와우회원 핫딜',
       badge: '와우회원 특가할인',
       benefits: ['내일 아침 문 앞 도착', '초고속 무선 센서', '핫스왑 스위치 지원'],
-      imgSrc: '/banners/banner-gear.svg',
+      imgSrc: '/banners/banner-gear.jpg',
       imgAlt: '게이밍 기어 키보드 마우스 기획전',
       link: OFFICIAL_GEAR_LINK,
       colorScheme: {
@@ -64,7 +64,7 @@ export default function CoupangExhibitionGrid() {
       description: '롤·발로란트·배그 완벽 방어 완본체, 윈도우 정품 탑재 + 1년 무상 A/S 보증',
       badge: '1년 무상출장 A/S',
       benefits: ['완제품 안심출고', '부품 호환성 100% 검증', '원클릭 간편구매'],
-      imgSrc: '/banners/banner-prebuilt.svg',
+      imgSrc: '/banners/banner-prebuilt.jpg',
       imgAlt: '가성비 데스크탑 완제품 조립PC 기획전',
       link: OFFICIAL_PREBUILT_LINK,
       colorScheme: {
