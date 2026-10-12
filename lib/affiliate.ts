@@ -13,6 +13,9 @@ export const COUPANG_SUB_ID = 'pccraft';
 // 대표님의 공식 검증된 쿠팡 파트너스 간편 링크 (24시간 수익 추적 + lptag 공식 승인)
 export const OFFICIAL_PREBUILT_LINK = 'https://link.coupang.com/a/hMDhTKsW5I'; // 게이밍 조립PC 검색결과
 export const OFFICIAL_COMPONENTS_LINK = 'https://link.coupang.com/a/hMDkzpg8om'; // 컴퓨터 부품 검색결과
+export const OFFICIAL_MONITOR_LINK = `https://link.coupang.com/re/AFFSRP?pageKey=${encodeURIComponent('게이밍모니터')}&lptag=${COUPANG_PARTNER_ID}&subid=${COUPANG_SUB_ID}`;
+export const OFFICIAL_GEAR_LINK = `https://link.coupang.com/re/AFFSRP?pageKey=${encodeURIComponent('게이밍키보드마우스')}&lptag=${COUPANG_PARTNER_ID}&subid=${COUPANG_SUB_ID}`;
+export const OFFICIAL_HARDWARE_FESTA_LINK = `https://link.coupang.com/re/AFFSRP?pageKey=${encodeURIComponent('조립컴퓨터부품')}&lptag=${COUPANG_PARTNER_ID}&subid=${COUPANG_SUB_ID}`;
 
 // 특정 부품에 대해 대표님이 직접 생성한 공식 단축링크가 있을 경우 여기에 입력
 export const CUSTOM_AFFILIATE_LINKS: Record<string, string> = {

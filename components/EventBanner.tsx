@@ -128,69 +128,100 @@ export default function EventBanner() {
           </div>
         </div>
 
-        {/* 이벤트 내용 & CTA 버튼 */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
+        {/* 이벤트 내용 & 배너 이미지 & CTA 버튼 */}
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 sm:gap-6 mt-1">
+          {/* 좌측: 타이틀, 혜택 설명, CTA 버튼 */}
           <div className="flex-1 min-w-0">
-            <h3 className="text-sm sm:text-base font-extrabold text-slate-900 dark:text-white tracking-tight flex items-center gap-2">
+            <h3 className="text-base sm:text-lg font-black text-slate-900 dark:text-white tracking-tight flex items-center gap-2">
               <span>{current.title}</span>
             </h3>
-            <p className="text-xs text-slate-600 dark:text-slate-300 mt-1 line-clamp-1 sm:line-clamp-none">
+            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-1.5 leading-relaxed">
               {current.subtitle}
               {current.highlightText && (
-                <span className="hidden md:inline font-semibold text-cyan-600 dark:text-cyan-400 ml-2">
+                <span className="hidden sm:inline font-bold text-cyan-600 dark:text-cyan-400 ml-2">
                   • {current.highlightText}
                 </span>
               )}
             </p>
+
+            <div className="flex items-center gap-2.5 mt-3.5 flex-wrap">
+              {/* 메인 기획전 직행 링크 */}
+              <a
+                href={current.affiliateUrl}
+                target="_blank"
+                rel="noopener noreferrer nofollow"
+                className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm flex items-center gap-2 shadow-md ${style.btnBg} transition-all duration-200 active:scale-95`}
+              >
+                <span>🚀 기획전 특가 보러가기</span>
+                <ExternalLink className="w-4 h-4" />
+              </a>
+
+              {/* 좌우 슬라이드 버튼 */}
+              {activeEvents.length > 1 && (
+                <div className="flex items-center gap-1.5">
+                  <button
+                    onClick={prevSlide}
+                    aria-label="이전 기획전"
+                    className="p-2 rounded-xl bg-slate-200/70 dark:bg-slate-800/80 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 transition-colors cursor-pointer"
+                    title="이전 기획전"
+                  >
+                    <ChevronLeft className="w-4 h-4" />
+                  </button>
+                  <button
+                    onClick={nextSlide}
+                    aria-label="다음 기획전"
+                    className="p-2 rounded-xl bg-slate-200/70 dark:bg-slate-800/80 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 transition-colors cursor-pointer"
+                    title="다음 기획전"
+                  >
+                    <ChevronRight className="w-4 h-4" />
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
 
-          <div className="flex items-center gap-2 shrink-0">
-            {/* 좌우 슬라이드 버튼 */}
-            {activeEvents.length > 1 && (
-              <div className="flex items-center gap-1">
-                <button
-                  onClick={prevSlide}
-                  aria-label="이전 이벤트"
-                  className="p-1.5 rounded-xl bg-slate-200/60 dark:bg-slate-800/80 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 transition-colors"
-                >
-                  <ChevronLeft className="w-4 h-4" />
-                </button>
-                <button
-                  onClick={nextSlide}
-                  aria-label="다음 이벤트"
-                  className="p-1.5 rounded-xl bg-slate-200/60 dark:bg-slate-800/80 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 transition-colors"
-                >
-                  <ChevronRight className="w-4 h-4" />
-                </button>
-              </div>
-            )}
-
-            {/* 메인 기획전 직행 링크 */}
+          {/* 우측: 실제 배너사 제공 비주얼 이미지 영역 */}
+          {current.imageUrl && (
             <a
               href={current.affiliateUrl}
               target="_blank"
               rel="noopener noreferrer nofollow"
-              className={`px-3.5 py-2 rounded-xl font-bold text-xs flex items-center gap-1.5 shadow-md ${style.btnBg} transition-all duration-200 active:scale-95`}
+              className="group/banner-img relative block w-full lg:w-[320px] xl:w-[360px] h-[130px] sm:h-[150px] shrink-0 rounded-xl overflow-hidden border border-slate-200/80 dark:border-slate-800 shadow-md hover:shadow-xl transition-all duration-300 active:scale-[0.99] cursor-pointer"
+              title={`${current.title} 기획전 바로가기`}
             >
-              <span>기획전 특가 보러가기</span>
-              <ExternalLink className="w-3.5 h-3.5" />
+              <img
+                src={current.imageUrl}
+                alt={current.imageAlt || current.title}
+                fetchPriority={currentIndex === 0 ? 'high' : undefined}
+                loading={currentIndex === 0 ? undefined : 'lazy'}
+                className="w-full h-full object-cover object-center group-hover/banner-img:scale-105 transition-transform duration-500 ease-out"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent opacity-0 group-hover/banner-img:opacity-100 transition-opacity flex items-end p-2.5">
+                <span className="text-[11px] font-bold text-white flex items-center gap-1">
+                  <span>쿠팡 파트너스 공식 특가 확인</span>
+                  <ExternalLink className="w-3 h-3" />
+                </span>
+              </div>
+              <div className="absolute top-2 right-2 bg-slate-900/80 backdrop-blur-sm border border-slate-700/60 px-2 py-0.5 rounded-md text-[10px] font-mono text-cyan-300 font-semibold">
+                쿠팡 기획전
+              </div>
             </a>
-          </div>
+          )}
         </div>
 
         {/* 인디케이터 닷 (여러 개일 경우) */}
         {activeEvents.length > 1 && (
-          <div className="flex items-center justify-center gap-1.5 mt-3 pt-2 border-t border-slate-200/40 dark:border-slate-800/60">
+          <div className="flex items-center justify-center gap-1.5 mt-3.5 pt-2.5 border-t border-slate-200/40 dark:border-slate-800/60">
             {activeEvents.map((evt, idx) => (
               <button
                 key={evt.id}
                 onClick={() => setCurrentIndex(idx)}
-                className={`h-1.5 rounded-full transition-all duration-300 ${
+                className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
                   idx === currentIndex
                     ? 'w-6 bg-cyan-500'
                     : 'w-1.5 bg-slate-300 dark:bg-slate-700 hover:bg-slate-400'
                 }`}
-                aria-label={`이벤트 ${idx + 1}번 선택`}
+                aria-label={`이벤트 ${idx + 1}번 선택: ${evt.title}`}
               />
             ))}
           </div>

@@ -1,4 +1,9 @@
-import { OFFICIAL_PREBUILT_LINK, OFFICIAL_COMPONENTS_LINK } from '@/lib/affiliate';
+import { 
+  OFFICIAL_PREBUILT_LINK, 
+  OFFICIAL_COMPONENTS_LINK,
+  OFFICIAL_MONITOR_LINK,
+  OFFICIAL_GEAR_LINK
+} from '@/lib/affiliate';
 
 export interface PromoEvent {
   id: string;
@@ -12,13 +17,16 @@ export interface PromoEvent {
   themeColor: 'cyan' | 'purple' | 'amber' | 'emerald' | 'blue';
   tag: string;
   highlightText?: string;
+  imageUrl?: string; // 실제 배너사 제공 이미지 또는 로컬 최적화 배너 SVG
+  imageAlt?: string;
 }
 
 /**
  * 쿠팡 파트너스 기간 한정 프로모션 & 기획전 데이터베이스
  * - startDate ~ endDate 기간 내에만 사이트에 자동 노출됩니다.
  * - 종료일이 지나면 별도 작업 없이 자동으로 내려갑니다.
- * - https://partners.coupang.com/#affiliate/ws/events 에서 마음에 드는 전자기기/PC 기획전 링크를 복사하여 아래 affiliateUrl에 넣으시면 됩니다.
+ * - https://partners.coupang.com/#affiliate/ws/events 에서 마음에 드는 기획전 링크를 복사하여 affiliateUrl에 넣으시면 됩니다.
+ * - 실제 배너사(쿠팡)가 제공하는 배너 이미지 URL이 있을 경우 imageUrl에 직접 교체해 넣으실 수 있습니다.
  */
 export const PROMO_EVENTS: PromoEvent[] = [
   {
@@ -28,11 +36,13 @@ export const PROMO_EVENTS: PromoEvent[] = [
     badge: '쿠팡 로켓 기획전',
     discountRate: '최대 15% 즉시할인',
     startDate: '2026-01-01',
-    endDate: '2026-12-31', // 2026 연중 상시 기획전
-    affiliateUrl: OFFICIAL_PREBUILT_LINK, // 기획전 링크 등록 시 해당 링크로 연결
+    endDate: '2026-12-31',
+    affiliateUrl: OFFICIAL_PREBUILT_LINK,
     themeColor: 'cyan',
     tag: '로켓와우 특별전',
-    highlightText: '선착순 쿠폰 & 카드 무이자 할부'
+    highlightText: '선착순 쿠폰 & 카드 무이자 할부',
+    imageUrl: '/banners/banner-gaming-pc.svg',
+    imageAlt: '2026 게이밍 조립 PC 빅세일 기획전'
   },
   {
     id: 'event-hardware-parts-festa',
@@ -45,7 +55,9 @@ export const PROMO_EVENTS: PromoEvent[] = [
     affiliateUrl: OFFICIAL_COMPONENTS_LINK,
     themeColor: 'purple',
     tag: '조립PC 부품전',
-    highlightText: '내일 아침 문 앞 도착'
+    highlightText: '내일 아침 문 앞 도착',
+    imageUrl: '/banners/banner-hardware.svg',
+    imageAlt: 'PC 핵심 부품 최저가 기획전'
   },
   {
     id: 'event-custom-setup-week',
@@ -58,7 +70,39 @@ export const PROMO_EVENTS: PromoEvent[] = [
     affiliateUrl: OFFICIAL_PREBUILT_LINK,
     themeColor: 'emerald',
     tag: '완본체 추천',
-    highlightText: 'A/S 1년 무상보증'
+    highlightText: 'A/S 1년 무상보증',
+    imageUrl: '/banners/banner-prebuilt.svg',
+    imageAlt: '가성비 데스크탑 완본체 기획전'
+  },
+  {
+    id: 'event-gaming-monitors',
+    title: 'QHD 144Hz~240Hz 고주사율 게이밍 모니터 대전',
+    subtitle: 'LG 울트라기어 & 삼성 오디세이 IPS 게이밍 모니터 카드 즉시할인',
+    badge: '모니터 기획전',
+    discountRate: '최대 20% 할인',
+    startDate: '2026-01-01',
+    endDate: '2026-12-31',
+    affiliateUrl: OFFICIAL_MONITOR_LINK,
+    themeColor: 'blue',
+    tag: '고주사율 특별전',
+    highlightText: '무결점 보증 & 로켓배송',
+    imageUrl: '/banners/banner-monitor.svg',
+    imageAlt: '고주사율 게이밍 모니터 기획전'
+  },
+  {
+    id: 'event-gaming-gear-festa',
+    title: '로지텍 G & 레이저 게이밍 기어 페스티벌',
+    subtitle: '초경량 무선 게이밍 마우스 & RGB 기계식 키보드 와우회원 핫딜',
+    badge: '게이밍 기어전',
+    discountRate: '와우 즉시할인',
+    startDate: '2026-01-01',
+    endDate: '2026-12-31',
+    affiliateUrl: OFFICIAL_GEAR_LINK,
+    themeColor: 'amber',
+    tag: '주변기기 특가',
+    highlightText: '프로게이머 실사용 센서',
+    imageUrl: '/banners/banner-gear.svg',
+    imageAlt: '게이밍 기어 키보드 마우스 기획전'
   }
 ];
 
