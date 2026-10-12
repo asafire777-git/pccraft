@@ -117,8 +117,8 @@ export default function AdBanner({
             </div>
 
             {/* 우측: 배너사 스타일 이미지 & 직행 버튼 */}
-            <div className="flex items-center gap-4 shrink-0">
-              <div className="hidden sm:block w-[200px] md:w-[240px] h-[90px] rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-sm relative group-hover:scale-102 transition-transform duration-300">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 shrink-0 w-full sm:w-auto">
+              <div className="w-full sm:w-[200px] md:w-[240px] h-[100px] sm:h-[90px] rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-sm relative group-hover:scale-102 transition-transform duration-300">
                 <img 
                   src={currentConfig.imgSrc} 
                   alt={currentConfig.imgAlt}
@@ -127,7 +127,7 @@ export default function AdBanner({
                 />
               </div>
 
-              <span className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-bold text-xs sm:text-sm flex items-center gap-1.5 shadow-md shadow-cyan-500/20 group-hover:shadow-cyan-500/30 transition-all shrink-0">
+              <span className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-1.5 shadow-md shadow-cyan-500/20 group-hover:shadow-cyan-500/30 transition-all shrink-0">
                 <span>특가 보러가기</span>
                 <ExternalLink className="w-4 h-4" />
               </span>
