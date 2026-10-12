@@ -1,133 +1,118 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" fill="none" class="w-full h-full">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 320" fill="none" class="w-full h-full">
   <defs>
-    <linearGradient id="bgG1" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0a1026"/>
-      <stop offset="50%" stop-color="#0f1b3d"/>
-      <stop offset="100%" stop-color="#080d1e"/>
+    <linearGradient id="gpcBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a122c"/>
+      <stop offset="50%" stop-color="#0f1f4b"/>
+      <stop offset="100%" stop-color="#070c1e"/>
     </linearGradient>
-    <linearGradient id="cyanNeon" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#06b6d4"/>
+    <linearGradient id="neonCyan" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#22d3ee"/>
       <stop offset="100%" stop-color="#3b82f6"/>
     </linearGradient>
-    <linearGradient id="purpleNeon" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#a855f7"/>
-      <stop offset="100%" stop-color="#ec4899"/>
+    <linearGradient id="neonMagenta" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f43f5e"/>
+      <stop offset="100%" stop-color="#a855f7"/>
     </linearGradient>
-    <linearGradient id="amberG" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#f59e0b"/>
-      <stop offset="100%" stop-color="#ef4444"/>
-    </linearGradient>
-    <linearGradient id="glassGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+    <linearGradient id="glassReflection" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.25"/>
-      <stop offset="100%" stop-color="#1e293b" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.85"/>
     </linearGradient>
-    <filter id="glow1" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="8" result="blur" />
+    <filter id="glowF" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="12" result="blur"/>
       <feComposite in="SourceGraphic" in2="blur" operator="over"/>
     </filter>
   </defs>
 
-  <!-- Background -->
-  <rect width="400" height="240" rx="16" fill="url(#bgG1)"/>
+  <!-- Background Base -->
+  <rect width="480" height="320" rx="20" fill="url(#gpcBg)"/>
 
-  <!-- Tech Grid Background -->
-  <g opacity="0.12" stroke="#38bdf8" stroke-width="1">
-    <path d="M0 40 H400 M0 80 H400 M0 120 H400 M0 160 H400 M0 200 H400" />
-    <path d="M40 0 V240 M80 0 V240 M120 0 V240 M160 0 V240 M200 0 V240 M240 0 V240 M280 0 V240 M320 0 V240 M360 0 V240" />
+  <!-- Tech Perspective Grid Lines -->
+  <g opacity="0.1" stroke="#38bdf8" stroke-width="1.2">
+    <path d="M0 60 H480 M0 120 H480 M0 180 H480 M0 240 H480"/>
+    <path d="M60 0 V320 M120 0 V320 M180 0 V320 M240 0 V320 M300 0 V320 M360 0 V320 M420 0 V320"/>
   </g>
 
-  <!-- Ambient Light Orbs -->
-  <circle cx="280" cy="110" r="70" fill="#06b6d4" opacity="0.25" filter="url(#glow1)"/>
-  <circle cx="340" cy="160" r="50" fill="#ec4899" opacity="0.2" filter="url(#glow1)"/>
+  <!-- Ambient Glow Halos -->
+  <circle cx="280" cy="150" r="110" fill="#06b6d4" opacity="0.3" filter="url(#glowF)"/>
+  <circle cx="380" cy="200" r="80" fill="#ec4899" opacity="0.25" filter="url(#glowF)"/>
 
-  <!-- Left: Big Badge & Text Elements -->
-  <!-- Coupang Rocket Pill Badge -->
-  <g transform="translate(24, 26)">
-    <rect width="132" height="28" rx="14" fill="#0f172a" stroke="#06b6d4" stroke-width="1.2" opacity="0.95"/>
-    <!-- Rocket Icon -->
-    <path d="M14 19 L19 14 M17 11 C20 8 23 8 23 8 C23 8 23 11 20 14 C17 17 14 17 14 17 C14 17 14 14 17 11 Z" fill="#ef4444"/>
-    <circle cx="13" cy="20" r="2" fill="#f59e0b"/>
-    <text x="32" y="18" fill="#e0f2fe" font-size="11" font-weight="800" font-family="Pretendard, system-ui, sans-serif">로켓배송 기획전</text>
+  <!-- Left: Stylized Emblem & Rocket Visual -->
+  <g transform="translate(36, 40)">
+    <!-- High-impact rocket delivery badge emblem -->
+    <rect width="140" height="36" rx="18" fill="#e11d48" opacity="0.2" stroke="#f43f5e" stroke-width="1.5"/>
+    <path d="M22 24 L27 19 M25 15 C29 11 34 11 34 11 C34 11 34 16 30 20 C26 24 22 24 22 24 Z" fill="#ef4444"/>
+    <circle cx="20" cy="26" r="3" fill="#fbbf24"/>
+    <text x="46" y="23" fill="#ffffff" font-size="13" font-weight="900" font-family="Pretendard, system-ui, sans-serif">로켓배송</text>
+
+    <!-- Large Decorative Cyber Elements -->
+    <g transform="translate(0, 60)">
+      <circle cx="16" cy="16" r="16" fill="#0f172a" stroke="#22d3ee" stroke-width="2"/>
+      <circle cx="16" cy="16" r="6" fill="#22d3ee" filter="url(#glowF)"/>
+      <text x="40" y="21" fill="#f8fafc" font-size="14" font-weight="900" font-family="monospace">CUSTOM GAMING</text>
+    </g>
+
+    <g transform="translate(0, 105)">
+      <rect width="140" height="28" rx="8" fill="#1e293b" opacity="0.8"/>
+      <text x="12" y="19" fill="#38bdf8" font-size="12" font-weight="800" font-family="monospace">ULTRA EDITION</text>
+    </g>
   </g>
 
-  <!-- Special Offer Title -->
-  <text x="24" y="86" fill="#ffffff" font-size="20" font-weight="900" font-family="Pretendard, system-ui, sans-serif" letter-spacing="-0.5">
-    2026 게이밍 PC
-  </text>
-  <text x="24" y="112" fill="url(#cyanNeon)" font-size="19" font-weight="900" font-family="Pretendard, system-ui, sans-serif" letter-spacing="-0.5">
-    빅세일 페스티벌
-  </text>
+  <!-- Center-Right: 3D High-End Panoramic Gaming Desktop Tower -->
+  <g transform="translate(200, 30)">
+    <!-- Shadow underneath -->
+    <ellipse cx="140" cy="270" rx="100" ry="12" fill="#020617" opacity="0.7"/>
 
-  <!-- Subtitle / Highlights -->
-  <g transform="translate(24, 132)">
-    <rect width="144" height="22" rx="6" fill="#1e293b" opacity="0.8"/>
-    <text x="8" y="15" fill="#94a3b8" font-size="10" font-weight="600" font-family="Pretendard, system-ui, sans-serif">
-      최신 라이젠 · RTX 40 시리즈
-    </text>
-  </g>
+    <!-- Case Outer Frame (Dual-Chamber Panoramic Tempered Glass) -->
+    <rect x="30" y="20" width="200" height="245" rx="14" fill="#0b1120" stroke="#334155" stroke-width="3"/>
+    <rect x="35" y="25" width="190" height="235" rx="10" fill="url(#glassReflection)"/>
 
-  <!-- Discount Pill -->
-  <g transform="translate(24, 164)">
-    <rect width="128" height="32" rx="8" fill="url(#amberG)"/>
-    <text x="12" y="21" fill="#ffffff" font-size="13" font-weight="900" font-family="Pretendard, system-ui, sans-serif">
-      최대 15% 즉시할인
-    </text>
-  </g>
-  <text x="24" y="218" fill="#64748b" font-size="10" font-family="Pretendard, system-ui, sans-serif">
-    * 카드사 혜택 및 로켓와우 추가할인
-  </text>
+    <!-- Glass Reflection Highlights -->
+    <path d="M45 28 L195 210 L180 250 L35 60 Z" fill="#ffffff" opacity="0.06"/>
 
-  <!-- Right: 3D-Style Gaming Desktop Tower (Illustration) -->
-  <g transform="translate(220, 24)">
-    <!-- Case Outer Frame (Panoramic Dual-Chamber) -->
-    <rect x="25" y="15" width="125" height="175" rx="10" fill="#0b1120" stroke="#334155" stroke-width="2.5"/>
-    <rect x="28" y="18" width="119" height="169" rx="8" fill="url(#glassGrad)"/>
+    <!-- Top ARGB Exhaust Fans (3-Fan Array) -->
+    <g transform="translate(45, 36)">
+      <!-- Fan 1 -->
+      <circle cx="25" cy="20" r="18" fill="#020617" stroke="#22d3ee" stroke-width="2.5"/>
+      <circle cx="25" cy="20" r="9" fill="#06b6d4" opacity="0.9" filter="url(#glowF)"/>
+      <!-- Fan 2 -->
+      <circle cx="75" cy="20" r="18" fill="#020617" stroke="#38bdf8" stroke-width="2.5"/>
+      <circle cx="75" cy="20" r="9" fill="#38bdf8" opacity="0.9" filter="url(#glowF)"/>
+      <!-- Fan 3 -->
+      <circle cx="125" cy="20" r="18" fill="#020617" stroke="#a855f7" stroke-width="2.5"/>
+      <circle cx="125" cy="20" r="9" fill="#a855f7" opacity="0.9" filter="url(#glowF)"/>
+    </g>
 
-    <!-- Glass Reflection Diagonal -->
-    <path d="M35 20 L135 150 L125 180 L28 40 Z" fill="#ffffff" opacity="0.05"/>
-
-    <!-- Top Exhaust Fans with RGB -->
-    <circle cx="58" cy="38" r="14" fill="#0f172a" stroke="#06b6d4" stroke-width="2"/>
-    <circle cx="58" cy="38" r="7" fill="#06b6d4" opacity="0.8" filter="url(#glow1)"/>
-    <circle cx="95" cy="38" r="14" fill="#0f172a" stroke="#38bdf8" stroke-width="2"/>
-    <circle cx="95" cy="38" r="7" fill="#38bdf8" opacity="0.8" filter="url(#glow1)"/>
-
-    <!-- Liquid Cooler CPU Block (AIO Pump) -->
-    <g transform="translate(56, 75)">
-      <circle cx="18" cy="18" r="16" fill="#020617" stroke="#ec4899" stroke-width="2.5"/>
-      <circle cx="18" cy="18" r="9" fill="url(#purpleNeon)" opacity="0.9" filter="url(#glow1)"/>
-      <text x="18" y="22" text-anchor="middle" fill="#ffffff" font-size="7" font-weight="bold" font-family="monospace">38°C</text>
+    <!-- Liquid Cooler CPU AIO Block with Digital Temp Display -->
+    <g transform="translate(80, 100)">
+      <circle cx="26" cy="26" r="24" fill="#020617" stroke="#ec4899" stroke-width="3"/>
+      <circle cx="26" cy="26" r="14" fill="url(#neonMagenta)" opacity="0.8" filter="url(#glowF)"/>
+      <text x="26" y="31" text-anchor="middle" fill="#ffffff" font-size="10" font-weight="900" font-family="monospace">36°C</text>
       <!-- Sleeved Tubes -->
-      <path d="M32 14 C48 10 52 28 65 24" fill="none" stroke="#475569" stroke-width="3" stroke-linecap="round"/>
-      <path d="M30 22 C44 20 48 36 62 32" fill="none" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
+      <path d="M46 20 C70 15 80 40 100 35" fill="none" stroke="#475569" stroke-width="4.5" stroke-linecap="round"/>
+      <path d="M44 32 C66 30 74 52 96 46" fill="none" stroke="#334155" stroke-width="4.5" stroke-linecap="round"/>
     </g>
 
-    <!-- RAM Sticks (DDR5 RGB) -->
-    <rect x="98" y="70" width="4" height="26" rx="2" fill="#06b6d4" filter="url(#glow1)"/>
-    <rect x="105" y="70" width="4" height="26" rx="2" fill="#ec4899" filter="url(#glow1)"/>
+    <!-- DDR5 High-Speed RGB RAM Sticks -->
+    <rect x="145" y="90" width="6" height="42" rx="3" fill="#22d3ee" filter="url(#glowF)"/>
+    <rect x="156" y="90" width="6" height="42" rx="3" fill="#ec4899" filter="url(#glowF)"/>
 
-    <!-- High-End GPU (Graphics Card with Side RGB Logo & Support) -->
-    <g transform="translate(36, 120)">
-      <rect x="0" y="0" width="105" height="32" rx="4" fill="#0f172a" stroke="#475569" stroke-width="1.5"/>
-      <!-- GPU Backplate / Shroud Details -->
-      <line x1="10" y1="8" x2="95" y2="8" stroke="#1e293b" stroke-width="2"/>
-      <!-- Glowing RGB Light Bar on GPU -->
-      <rect x="12" y="12" width="70" height="4" rx="2" fill="url(#cyanNeon)" filter="url(#glow1)"/>
-      <text x="14" y="25" fill="#f8fafc" font-size="8" font-weight="900" font-family="monospace">GEFORCE RTX</text>
-      <!-- Triple Fan Preview Underneath -->
-      <circle cx="88" cy="20" r="7" fill="#020617" stroke="#38bdf8" stroke-width="1.5"/>
+    <!-- High-End Triple-Fan Graphics Card with Glowing RGB Accent -->
+    <g transform="translate(48, 160)">
+      <rect x="0" y="0" width="165" height="50" rx="6" fill="#0f172a" stroke="#475569" stroke-width="2"/>
+      <!-- GPU Top RGB Strip -->
+      <rect x="15" y="6" width="135" height="5" rx="2.5" fill="url(#neonCyan)" filter="url(#glowF)"/>
+      <text x="18" y="26" fill="#f8fafc" font-size="11" font-weight="900" font-family="monospace">RTX 40 SERIES</text>
+      <!-- GPU Fan Previews -->
+      <circle cx="130" cy="30" r="14" fill="#020617" stroke="#38bdf8" stroke-width="2"/>
+      <circle cx="130" cy="30" r="5" fill="#38bdf8"/>
     </g>
 
-    <!-- Bottom Intake Fans -->
-    <circle cx="60" cy="172" r="10" fill="#0f172a" stroke="#06b6d4" stroke-width="1.5"/>
-    <circle cx="95" cy="172" r="10" fill="#0f172a" stroke="#06b6d4" stroke-width="1.5"/>
-
-    <!-- Front IO & Power Button Glow -->
-    <circle cx="138" cy="28" r="2.5" fill="#38bdf8" filter="url(#glow1)"/>
-    <line x1="138" y1="36" x2="138" y2="46" stroke="#475569" stroke-width="2"/>
+    <!-- Bottom RGB Intake Fans -->
+    <circle cx="85" cy="235" r="14" fill="#020617" stroke="#22d3ee" stroke-width="2"/>
+    <circle cx="140" cy="235" r="14" fill="#020617" stroke="#22d3ee" stroke-width="2"/>
   </g>
 
-  <!-- Floating Sparkles & Tech Accents -->
-  <path d="M190 45 L193 52 L200 55 L193 58 L190 65 L187 58 L180 55 L187 52 Z" fill="#38bdf8" opacity="0.8"/>
-  <path d="M210 180 L212 185 L217 187 L212 189 L210 194 L208 189 L203 187 L208 185 Z" fill="#ec4899" opacity="0.7"/>
+  <!-- Ambient Light Sparks -->
+  <path d="M220 50 L224 60 L234 64 L224 68 L220 78 L216 68 L206 64 L216 60 Z" fill="#38bdf8" opacity="0.9"/>
+  <path d="M430 110 L433 118 L441 121 L433 124 L430 132 L427 124 L419 121 L427 118 Z" fill="#ec4899" opacity="0.8"/>
 </svg>
