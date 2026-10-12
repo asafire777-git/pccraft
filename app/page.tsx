@@ -4,6 +4,8 @@ import React, { useState, useMemo } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import DisclaimerBanner from '@/components/DisclaimerBanner';
+import EventBanner from '@/components/EventBanner';
+import SearchBar from '@/components/SearchBar';
 import AdBanner from '@/components/AdBanner';
 import GameSelector from '@/components/GameSelector';
 import CompatibilityBadge from '@/components/CompatibilityBadge';
@@ -83,6 +85,9 @@ export default function HomePage() {
       <Header />
 
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-8">
+        {/* 쿠팡 파트너스 기간 한정 프로모션 & 기획전 자동 이벤트 배너 */}
+        <EventBanner />
+
         <DisclaimerBanner />
 
         {/* 히어로 타이틀 영역 */}
@@ -101,28 +106,38 @@ export default function HomePage() {
             는 완성됩니다.
           </h1>
 
-          <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base mt-4 leading-relaxed">
+          <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base mt-4 mb-6 leading-relaxed">
             CPU 소켓 일치 여부부터 파워서플라이 피크 소비전력까지 실시간으로 자동 검증합니다.
             <br className="hidden sm:inline" />
             부품별 개별 최저가 구매와 원클릭 완본체 비교로 가장 스마트한 쇼핑을 경험하세요.
           </p>
+
+          {/* 스마트 자체 검색창 (실시간 부품 & 게임 자동완성 + 쿠팡 로켓 최저가 검색) */}
+          <SearchBar
+            onSelectPreset={handleSelectPreset}
+            onSelectComponent={handleSelectComponent}
+          />
         </section>
 
         {/* 1. 게임 & 용도별 프리셋 선택기 */}
-        <GameSelector
-          selectedPresetId={currentPreset.id}
-          onSelectPreset={handleSelectPreset}
-        />
+        <div id="game-selector-section">
+          <GameSelector
+            selectedPresetId={currentPreset.id}
+            onSelectPreset={handleSelectPreset}
+          />
+        </div>
 
         {/* 2. 실시간 하드웨어 호환성 진단 뱃지 */}
         <CompatibilityBadge report={compatibilityReport} />
 
         {/* 3. 부품별 맞춤 견적 테이블 */}
-        <BuilderTable
-          selectedComponents={selectedComponents}
-          onSelectComponent={handleSelectComponent}
-          totalPrice={totalPrice}
-        />
+        <div id="builder-table-section">
+          <BuilderTable
+            selectedComponents={selectedComponents}
+            onSelectComponent={handleSelectComponent}
+            totalPrice={totalPrice}
+          />
+        </div>
 
         {/* 4. 구글 애드센스 인피드 광고 영역 */}
         <AdBanner slotId="main-infeed-ad-1" />
