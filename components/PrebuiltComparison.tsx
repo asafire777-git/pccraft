@@ -1,7 +1,7 @@
 import React from 'react';
 import { GamePreset } from '@/data/presets';
 import { CheckCircle2, ShieldAlert, ExternalLink, Wrench, PackageCheck } from 'lucide-react';
-import { getCoupangPrebuiltUrl } from '@/lib/affiliate';
+import { getCoupangPrebuiltUrl, getOpenMarketPrebuiltUrl } from '@/lib/affiliate';
 
 interface PrebuiltComparisonProps {
   currentPreset: GamePreset;
@@ -123,15 +123,29 @@ export default function PrebuiltComparison({
               </span>
             </div>
 
-            <a
-              href={getCoupangPrebuiltUrl(currentPreset.id)}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full sm:w-auto px-5 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-sm transition-all"
-            >
-              완본체 로켓배송 확인
-              <ExternalLink className="w-4 h-4" />
-            </a>
+            <div className="flex items-center gap-2 w-full sm:w-auto flex-wrap sm:flex-nowrap">
+              <a
+                href={getCoupangPrebuiltUrl(currentPreset.id)}
+                target="_blank"
+                rel="noopener noreferrer nofollow"
+                className="flex-1 sm:flex-initial px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-sm transition-all"
+                title="쿠팡 로켓 완본체 확인"
+              >
+                <span>🚀 쿠팡 로켓</span>
+                <ExternalLink className="w-3.5 h-3.5" />
+              </a>
+
+              <a
+                href={getOpenMarketPrebuiltUrl(currentPreset.id, prebuilt.title)}
+                target="_blank"
+                rel="noopener noreferrer nofollow"
+                className="flex-1 sm:flex-initial px-4 py-2.5 rounded-xl bg-orange-600 hover:bg-orange-500 text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-sm transition-all"
+                title="11번가·G마켓 오픈마켓 완본체 특가 확인"
+              >
+                <span>🛒 오픈마켓 특가</span>
+                <ExternalLink className="w-3.5 h-3.5" />
+              </a>
+            </div>
           </div>
         </div>
       </div>
