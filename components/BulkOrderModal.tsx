@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { ComponentItem } from '@/data/components';
 import { GamePreset } from '@/data/presets';
 import { getCoupangProductUrl, getCoupangPrebuiltUrl } from '@/lib/affiliate';
-import { X, ShoppingCart, ExternalLink, CheckCircle2, Copy, Check, Truck, ShieldCheck, ArrowRight, Sparkles } from 'lucide-react';
+import { X, ShoppingCart, ExternalLink, CheckCircle2, Copy, Check, Truck, ShieldCheck, ArrowRight, Sparkles, AlertCircle } from 'lucide-react';
 
 interface BulkOrderModalProps {
   isOpen: boolean;
@@ -33,6 +33,7 @@ export default function BulkOrderModal({
   totalPrice
 }: BulkOrderModalProps) {
   const [copyDone, setCopyDone] = useState(false);
+  const [checkedItems, setCheckedItems] = useState<Record<string, boolean>>({});
 
   if (!isOpen) return null;
 
@@ -44,17 +45,14 @@ export default function BulkOrderModal({
       item
     }));
 
-  // 전체 부품 쿠팡 최저가 탭 순차 열기
-  const handleOpenAllTabs = () => {
-    componentsList.forEach(({ item }, idx) => {
-      const url = getCoupangProductUrl(item.id, item.name);
-      setTimeout(() => {
-        window.open(url, '_blank', 'noopener,noreferrer');
-      }, idx * 250);
-    });
+  const checkedCount = Object.values(checkedItems).filter(Boolean).length;
+  const totalCount = componentsList.length;
+
+  const handleItemClick = (id: string, url: string) => {
+    setCheckedItems((prev) => ({ ...prev, [id]: true }));
+    window.open(url, '_blank', 'noopener,noreferrer');
   };
 
-  // 견적서 텍스트 복사
   const handleCopyText = () => {
     const lines = [
       `[PC-Craft] ${currentPreset.title} 부품 일괄 구매 주문서`,
@@ -95,112 +93,128 @@ export default function BulkOrderModal({
           </div>
           <div>
             <h3 className="text-xl font-black tracking-tight flex items-center gap-2">
-              전 부품 일괄 구매 & 장바구니 가이드
+              견적 부품 구매 가이드
             </h3>
             <p className="text-xs text-slate-500 dark:text-slate-400">
-              선택하신 8개 핵심 부품을 가장 빠르고 저렴하게 구매하는 최적의 방법입니다.
+              쿠팡 보안 규정상 부품별로 하나씩 장바구니에 담으시거나, 동급 완본체 PC로 한 번에 구매하실 수 있습니다.
             </p>
           </div>
         </div>
 
-        {/* 총액 및 배송 혜택 요약 배너 */}
-        <div className="p-4 rounded-2xl bg-gradient-to-r from-emerald-500/10 via-teal-500/10 to-cyan-500/10 border border-emerald-500/30 flex items-center justify-between gap-4 mb-4 shrink-0">
+        {/* 쿠팡 보안 정책 안내 배너 */}
+        <div className="p-3 rounded-xl bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800/40 text-amber-900 dark:text-amber-300 text-xs flex items-start gap-2 mb-4 shrink-0">
+          <AlertCircle className="w-4 h-4 shrink-0 mt-0.5 text-amber-600 dark:text-amber-400" />
+          <div className="leading-relaxed">
+            <strong>쿠팡 장바구니 담기 안내:</strong> 외부 웹사이트에서 고객님의 쿠팡 장바구니에 부품을 강제로 자동 추가하는 것은 개인정보 보호상 차단되어 있습니다. 아래 목록에서 부품별 <strong>[담기]</strong>를 누르시면 탭이 1개씩 열려 손쉽게 장바구니에 모으실 수 있습니다.
+          </div>
+        </div>
+
+        {/* 담기 진행률 & 총 견적액 바 */}
+        <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/60 flex items-center justify-between gap-4 mb-4 shrink-0">
           <div>
-            <span className="text-xs text-slate-600 dark:text-slate-300 font-semibold block">
-              8개 부품 최종 견적 총액
+            <span className="text-xs text-slate-500 dark:text-slate-400 font-semibold block">
+              부품 총 견적가 (8종 합산)
             </span>
             <div className="text-2xl font-black font-mono text-emerald-600 dark:text-emerald-400">
               {totalPrice.toLocaleString()} <span className="text-sm font-sans font-normal">원</span>
             </div>
           </div>
 
-          <div className="text-right text-xs">
-            <span className="inline-flex items-center gap-1 text-emerald-700 dark:text-emerald-300 font-bold bg-emerald-100 dark:bg-emerald-950/60 px-2 py-0.5 rounded-full">
-              <Truck className="w-3 h-3" /> 로켓 묶음 무료배송
+          <div className="text-right">
+            <span className="text-xs font-bold text-slate-700 dark:text-slate-300 block mb-1">
+              장바구니 담기 현황: <strong className="text-cyan-600 dark:text-cyan-400">{checkedCount}</strong> / {totalCount}개
             </span>
-            <span className="block text-slate-500 text-[11px] mt-0.5">내일 아침 7시 전 도착</span>
+            <div className="w-32 h-2 rounded-full bg-slate-200 dark:bg-slate-700 overflow-hidden">
+              <div
+                className="h-full bg-cyan-500 transition-all duration-300"
+                style={{ width: `${(checkedCount / totalCount) * 100}%` }}
+              />
+            </div>
           </div>
         </div>
 
-        {/* 8종 부품 리스트 (스크롤 영역) */}
+        {/* 8종 부품 순차 담기 리스트 (스크롤 영역) */}
         <div className="flex-1 overflow-y-auto space-y-2 pr-1 mb-4 divide-y divide-slate-100 dark:divide-slate-800">
-          <div className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">
-            선택된 부품 목록 ({componentsList.length}개)
-          </div>
-
           {componentsList.map(({ label, item }) => {
             const partUrl = getCoupangProductUrl(item.id, item.name);
+            const isChecked = Boolean(checkedItems[item.id]);
+
             return (
               <div
                 key={item.id}
-                className="pt-2 flex items-center justify-between gap-3 text-xs"
+                className={`pt-2.5 pb-1 flex items-center justify-between gap-3 text-xs transition-colors rounded-xl px-2 ${
+                  isChecked ? 'bg-emerald-50/60 dark:bg-emerald-950/20' : ''
+                }`}
               >
-                <div className="min-w-0 flex items-center gap-2">
-                  <span className="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-[10px] font-bold shrink-0">
-                    {label}
+                <div className="min-w-0 flex items-center gap-2.5">
+                  <span
+                    className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold shrink-0 ${
+                      isChecked
+                        ? 'bg-emerald-500 text-white'
+                        : 'bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300'
+                    }`}
+                  >
+                    {isChecked ? <Check className="w-3 h-3" /> : label.slice(0, 2)}
                   </span>
-                  <span className="truncate font-medium text-slate-800 dark:text-slate-200">
-                    {item.name}
-                  </span>
+                  <div className="min-w-0">
+                    <span className="text-[10px] text-slate-400 font-semibold block">{label}</span>
+                    <span className="truncate font-semibold text-slate-800 dark:text-slate-200 block">
+                      {item.name}
+                    </span>
+                  </div>
                 </div>
 
-                <div className="flex items-center gap-2 shrink-0">
+                <div className="flex items-center gap-3 shrink-0">
                   <span className="font-mono font-bold text-slate-900 dark:text-white">
                     {item.price.toLocaleString()}원
                   </span>
-                  <a
-                    href={partUrl}
-                    target="_blank"
-                    rel="noopener noreferrer nofollow"
-                    className="px-2 py-1 rounded-lg bg-rose-50 hover:bg-rose-100 dark:bg-rose-950/50 dark:hover:bg-rose-900/60 text-rose-600 dark:text-rose-400 border border-rose-200 dark:border-rose-800/40 text-[11px] font-bold flex items-center gap-0.5 transition-colors"
-                    title="해당 부품 쿠팡 최저가 열기"
+                  <button
+                    onClick={() => handleItemClick(item.id, partUrl)}
+                    className={`px-3 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1 transition-all cursor-pointer shadow-sm ${
+                      isChecked
+                        ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/60 dark:text-emerald-300'
+                        : 'bg-rose-600 hover:bg-rose-500 text-white active:scale-95'
+                    }`}
                   >
-                    <span>담기</span>
+                    <span>{isChecked ? '확인완료' : '쿠팡 담기'}</span>
                     <ExternalLink className="w-3 h-3" />
-                  </a>
+                  </button>
                 </div>
               </div>
             );
           })}
         </div>
 
-        {/* 3대 추천 구매 옵션 버튼 그룹 */}
-        <div className="space-y-2.5 shrink-0 pt-2 border-t border-slate-200 dark:border-slate-800">
-          {/* 옵션 1: 8개 부품 최저가 탭 순차 열기 */}
-          <button
-            onClick={handleOpenAllTabs}
-            className="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-md shadow-emerald-500/20 active:scale-95 transition-all cursor-pointer"
-          >
-            <ShoppingCart className="w-4 h-4" />
-            <span>8개 부품 쿠팡 로켓배송 탭 차례로 열기 (추천)</span>
-            <ExternalLink className="w-3.5 h-3.5" />
-          </button>
-
-          {/* 옵션 2: 조립이 번거롭다면 완본체 원클릭 구매 */}
+        {/* 조립이 귀찮은 소비자를 위한 완본체 원클릭 구매 배너 & 텍스트 복사 */}
+        <div className="space-y-2 shrink-0 pt-3 border-t border-slate-200 dark:border-slate-800">
+          {/* 완본체 추천 */}
           <a
             href={prebuiltUrl}
             target="_blank"
             rel="noopener noreferrer nofollow"
-            className="w-full py-2.5 px-4 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-bold text-xs flex items-center justify-center gap-2 border border-slate-200 dark:border-slate-700 active:scale-95 transition-all cursor-pointer"
+            className="w-full py-3 px-4 rounded-2xl bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 hover:from-cyan-500 hover:to-indigo-500 text-white font-bold text-xs flex items-center justify-between shadow-lg shadow-cyan-500/20 active:scale-95 transition-all cursor-pointer"
           >
-            <Sparkles className="w-3.5 h-3.5 text-cyan-500" />
-            <span>조립이 번거로우신가요? 동급 완본체 PC 원클릭 로켓배송 바로구매</span>
-            <ArrowRight className="w-3.5 h-3.5" />
+            <div className="flex items-center gap-2">
+              <Sparkles className="w-4 h-4 text-amber-300 shrink-0" />
+              <div className="text-left">
+                <span className="block font-black text-sm">개별 조립이 귀찮으신가요?</span>
+                <span className="text-[11px] text-cyan-100 opacity-90">동급 완본체 조립PC 원클릭 로켓배송 바로구매</span>
+              </div>
+            </div>
+            <div className="flex items-center gap-1 shrink-0 font-bold bg-white/20 px-3 py-1.5 rounded-xl">
+              <span>완본체 보기</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </div>
           </a>
 
-          {/* 옵션 3: 텍스트 복사 */}
+          {/* 견적서 텍스트 복사 */}
           <button
             onClick={handleCopyText}
             className="w-full py-2 px-4 rounded-xl text-slate-500 hover:text-slate-800 dark:hover:text-slate-300 text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
           >
             {copyDone ? <Check className="w-3.5 h-3.5 text-emerald-500" /> : <Copy className="w-3.5 h-3.5" />}
-            <span>{copyDone ? '주문서 복사 완료!' : '부품 주문서 텍스트 복사하기'}</span>
+            <span>{copyDone ? '주문서 복사 완료!' : '부품 주문서 텍스트 복사 (상담 및 타 쇼핑몰 주문용)'}</span>
           </button>
-        </div>
-
-        {/* 쿠팡 보안 정책 안내 안내문구 */}
-        <div className="mt-3 text-[10px] text-slate-400 text-center leading-tight">
-          💡 쿠팡의 개인정보 보안 정책상 외부 사이트에서 개인 장바구니로의 직접 담기는 지원되지 않으며, 각 로켓배송 최저가 페이지에서 원클릭으로 담으시면 동일하게 카드 즉시할인 및 무료배송이 적용됩니다.
         </div>
       </div>
     </div>
