@@ -70,14 +70,15 @@ export const PREBUILT_SEARCH_KEYWORDS: Record<string, string> = {
 };
 
 /**
- * 부품 ID를 기반으로 쿠팡 실시간 로켓배송 최저가 검색 리스트로 자동 직행
+ * 부품 ID를 기반으로 쿠팡 공식 파트너스 최저가 검색 리스트로 자동 직행
+ * - link.coupang.com/re/AFFSRP 경유로 trac_lptag=AF5322745 수익 쿠키 100% 자동 장착
  */
 export function getCoupangProductUrl(componentId: string, fallbackName?: string): string {
   if (CUSTOM_AFFILIATE_LINKS[componentId]) {
     return CUSTOM_AFFILIATE_LINKS[componentId];
   }
   const keyword = COMPONENT_SEARCH_KEYWORDS[componentId] || fallbackName || '컴퓨터 부품';
-  return `https://www.coupang.com/np/search?component=&q=${encodeURIComponent(keyword)}&filter=rocket_delivery%3Atrue`;
+  return `https://link.coupang.com/re/AFFSRP?pageKey=${encodeURIComponent(keyword)}&lptag=${COUPANG_PARTNER_ID}&subid=${COUPANG_SUB_ID}`;
 }
 
 /**
@@ -92,11 +93,12 @@ export function getCoupangPrebuiltUrl(presetId: string): string {
 }
 
 /**
- * 키워드 기반 범용 검색 URL
+ * 키워드 기반 범용 검색 URL (대표님 파트너스 트래킹 공식 게이트웨이)
+ * - 사용자가 5070, RTX 4060 등 무엇을 검색하든 lptag=AF5322745 코드가 100% 심어진 상태로 쿠팡 검색창 직행
  */
 export function getCoupangSearchUrl(keyword?: string): string {
-  const query = keyword || '조립컴퓨터 부품';
-  return `https://www.coupang.com/np/search?component=&q=${encodeURIComponent(query)}&filter=rocket_delivery%3Atrue`;
+  const query = keyword?.trim() || '조립컴퓨터 부품';
+  return `https://link.coupang.com/re/AFFSRP?pageKey=${encodeURIComponent(query)}&lptag=${COUPANG_PARTNER_ID}&subid=${COUPANG_SUB_ID}`;
 }
 
 /**
