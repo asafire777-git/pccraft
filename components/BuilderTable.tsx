@@ -4,12 +4,16 @@ import React, { useState } from 'react';
 import { ComponentItem, COMPONENTS_DATA } from '@/data/components';
 import { ShoppingCart, ExternalLink, RefreshCw, Check, Sparkles, Bookmark, Share2 } from 'lucide-react';
 import ComponentThumbnail from './ComponentThumbnail';
+import BulkOrderModal from './BulkOrderModal';
+import { GamePreset, GAME_PRESETS } from '@/data/presets';
 import { getCoupangProductUrl, getCoupangBulkCartUrl } from '@/lib/affiliate';
 
 interface BuilderTableProps {
   selectedComponents: Record<string, ComponentItem>;
   onSelectComponent: (category: string, item: ComponentItem) => void;
   totalPrice: number;
+  currentPreset?: GamePreset;
+  onOpenSaveModal?: () => void;
 }
 
 const CATEGORY_ORDER = [
@@ -26,9 +30,12 @@ const CATEGORY_ORDER = [
 export default function BuilderTable({
   selectedComponents,
   onSelectComponent,
-  totalPrice
+  totalPrice,
+  currentPreset,
+  onOpenSaveModal
 }: BuilderTableProps) {
   const [modalCategory, setModalCategory] = useState<string | null>(null);
+  const [showBulkModal, setShowBulkModal] = useState(false);
 
   const openSelectModal = (catKey: string) => {
     setModalCategory(catKey);
@@ -44,10 +51,7 @@ export default function BuilderTable({
   };
 
   const handleBulkOrder = () => {
-    alert(
-      '선택하신 8개 부품의 실시간 최저가 쿠팡 목록으로 이동합니다. 쿠팡 장바구니에 담긴 후 할인 혜택을 받으세요!'
-    );
-    window.open(getCoupangBulkCartUrl(), '_blank');
+    setShowBulkModal(true);
   };
 
   const [isSyncing, setIsSyncing] = useState(false);
@@ -124,13 +128,35 @@ export default function BuilderTable({
             </div>
           </div>
 
-          <div className="flex items-center gap-2 w-full sm:w-auto">
+          <div className="flex items-center gap-2 w-full sm:w-auto flex-wrap">
+            {onOpenSaveModal && (
+              <button
+                onClick={onOpenSaveModal}
+                title="내 견적함에 저장"
+                className="px-3.5 py-3 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-xs flex items-center gap-1.5 shadow-sm transition-all cursor-pointer"
+              >
+                <Bookmark className="w-4 h-4" />
+                <span>견적 보관</span>
+              </button>
+            )}
+
             <button
               onClick={handleCopyShareLink}
               title="견적서 링크 공유"
               className="p-3 rounded-xl bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 transition-colors cursor-pointer"
             >
               <Share2 className="w-4 h-4" />
+            </button>
+
+            <button
+              onClick={() => {
+                document.getElementById('price-battle-section')?.scrollIntoView({ behavior: 'smooth' });
+              }}
+              title="쿠팡 vs 네이버 실시간 최저가 빅매치 비교"
+              className="px-3 py-3 rounded-xl bg-slate-900 text-white dark:bg-slate-800 dark:text-white hover:bg-slate-800 font-bold text-xs flex items-center gap-1.5 transition-all cursor-pointer border border-slate-700 shadow-sm"
+            >
+              <span className="text-amber-400">⚔️</span>
+              <span className="hidden sm:inline">최저가 빅매치</span>
             </button>
 
             <button
@@ -340,6 +366,15 @@ export default function BuilderTable({
           </div>
         </div>
       )}
+
+      {/* 전 부품 일괄 구매 및 장바구니 안내 모달 */}
+      <BulkOrderModal
+        isOpen={showBulkModal}
+        onClose={() => setShowBulkModal(false)}
+        selectedComponents={selectedComponents}
+        currentPreset={currentPreset || GAME_PRESETS[1]}
+        totalPrice={totalPrice}
+      />
     </section>
   );
 }

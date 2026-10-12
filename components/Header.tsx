@@ -5,7 +5,11 @@ import Link from 'next/link';
 import { Cpu, Sun, Moon, Bookmark, User, X, Check, Share2 } from 'lucide-react';
 import { useTheme } from './ThemeProvider';
 
-export default function Header() {
+interface HeaderProps {
+  onOpenQuoteStorage?: () => void;
+}
+
+export default function Header({ onOpenQuoteStorage }: HeaderProps = {}) {
   const { theme, toggleTheme } = useTheme();
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [loginAlert, setLoginAlert] = useState(false);
@@ -43,6 +47,12 @@ export default function Header() {
             <Link href="/" className="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">
               맞춤 견적기
             </Link>
+            <a href="#price-battle-section" className="text-rose-600 dark:text-rose-400 font-bold hover:underline flex items-center gap-1">
+              <span>⚔️ 최저가 빅매치</span>
+            </a>
+            <a href="#prebuilt-section" className="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">
+              완본체 비교
+            </a>
             <Link href="/guide" className="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">
               하드웨어 가이드
             </Link>
@@ -69,10 +79,16 @@ export default function Header() {
 
             {/* 견적 저장 및 로그인 버튼 */}
             <button
-              onClick={() => setShowLoginModal(true)}
+              onClick={() => {
+                if (onOpenQuoteStorage) {
+                  onOpenQuoteStorage();
+                } else {
+                  setShowLoginModal(true);
+                }
+              }}
               className="px-3.5 py-2 rounded-xl bg-slate-900 text-white dark:bg-cyan-500 dark:text-slate-950 font-bold text-xs flex items-center gap-1.5 hover:opacity-90 transition-opacity shadow-sm cursor-pointer"
             >
-              <User className="w-3.5 h-3.5" />
+              <Bookmark className="w-3.5 h-3.5 text-cyan-400 dark:text-slate-950" />
               <span className="hidden sm:inline">내 견적 보관 /</span> 로그인
             </button>
           </div>

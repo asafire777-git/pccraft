@@ -11,6 +11,7 @@ import GameSelector from '@/components/GameSelector';
 import CompatibilityBadge from '@/components/CompatibilityBadge';
 import BuilderTable from '@/components/BuilderTable';
 import PriceBattle from '@/components/PriceBattle';
+import QuoteStorageModal from '@/components/QuoteStorageModal';
 import PrebuiltComparison from '@/components/PrebuiltComparison';
 import AiAnalysisCard from '@/components/AiAnalysisCard';
 import { GAME_PRESETS, GamePreset } from '@/data/presets';
@@ -20,6 +21,7 @@ import { Sparkles } from 'lucide-react';
 
 export default function HomePage() {
   const [currentPreset, setCurrentPreset] = useState<GamePreset>(GAME_PRESETS[1]);
+  const [showQuoteStorage, setShowQuoteStorage] = useState(false);
 
   const [selectedComponents, setSelectedComponents] = useState<Record<string, ComponentItem>>(() => {
     const initial: Record<string, ComponentItem> = {};
@@ -44,6 +46,16 @@ export default function HomePage() {
       }
     });
     setSelectedComponents(updated);
+  };
+
+  const handleLoadQuote = (components: Record<string, ComponentItem>, presetTitle?: string) => {
+    setSelectedComponents(components);
+    if (presetTitle) {
+      const matched = GAME_PRESETS.find((p) => p.title === presetTitle);
+      if (matched) {
+        setCurrentPreset(matched);
+      }
+    }
   };
 
   const handleSelectComponent = (category: string, item: ComponentItem) => {
@@ -83,7 +95,7 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <Header />
+      <Header onOpenQuoteStorage={() => setShowQuoteStorage(true)} />
 
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-8">
         {/* 쿠팡 파트너스 기간 한정 프로모션 & 기획전 자동 이벤트 배너 */}
@@ -131,12 +143,33 @@ export default function HomePage() {
         {/* 2. 실시간 하드웨어 호환성 진단 뱃지 */}
         <CompatibilityBadge report={compatibilityReport} />
 
+        {/* 플랫폼 최저가 빅매치 퀵 앵커 배너 */}
+        <div className="mb-4 flex items-center justify-between p-3.5 rounded-2xl bg-gradient-to-r from-rose-500/10 via-amber-500/10 to-emerald-500/10 border border-slate-200 dark:border-slate-800 text-xs">
+          <div className="flex items-center gap-2">
+            <span className="font-bold text-slate-800 dark:text-slate-200">
+              ⚔️ [실시간 최저가 빅매치] 쿠팡 로켓배송 vs 네이버 쇼핑
+            </span>
+            <span className="hidden sm:inline text-slate-500 dark:text-slate-400">
+              • 배송속도 vs 네이버페이 5% 적립 체감가 비교
+            </span>
+          </div>
+          <button
+            onClick={() => document.getElementById('price-battle-section')?.scrollIntoView({ behavior: 'smooth' })}
+            className="px-3 py-1.5 rounded-xl bg-slate-900 text-white dark:bg-white dark:text-slate-950 font-bold text-xs flex items-center gap-1 hover:opacity-90 transition-opacity cursor-pointer shadow-sm"
+          >
+            <span>비교 보기</span>
+            <span>↓</span>
+          </button>
+        </div>
+
         {/* 3. 부품별 맞춤 견적 테이블 */}
         <div id="builder-table-section">
           <BuilderTable
             selectedComponents={selectedComponents}
             onSelectComponent={handleSelectComponent}
             totalPrice={totalPrice}
+            currentPreset={currentPreset}
+            onOpenSaveModal={() => setShowQuoteStorage(true)}
           />
         </div>
 
@@ -164,6 +197,16 @@ export default function HomePage() {
         <div id="specs-analysis">
           <AiAnalysisCard currentPreset={currentPreset} />
         </div>
+
+        {/* 견적 보관함 모달 */}
+        <QuoteStorageModal
+          isOpen={showQuoteStorage}
+          onClose={() => setShowQuoteStorage(false)}
+          currentComponents={selectedComponents}
+          currentPreset={currentPreset}
+          totalPrice={totalPrice}
+          onLoadQuote={handleLoadQuote}
+        />
       </main>
 
       <Footer />
