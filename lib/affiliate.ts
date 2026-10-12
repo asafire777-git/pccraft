@@ -10,9 +10,13 @@
 export const COUPANG_PARTNER_ID = 'AF5322745';
 export const COUPANG_SUB_ID = 'pccraft';
 
-// 특정 부품/완본체에 대해 대표님이 직접 생성한 공식 단축링크(link.coupang.com/a/...)가 있을 경우 여기에 입력
+// 대표님의 공식 검증된 쿠팡 파트너스 간편 링크 (24시간 수익 추적 + lptag 공식 승인)
+export const OFFICIAL_PREBUILT_LINK = 'https://link.coupang.com/a/hMDhTKsW5I'; // 게이밍 조립PC 검색결과
+export const OFFICIAL_COMPONENTS_LINK = 'https://link.coupang.com/a/hMDkzpg8om'; // 컴퓨터 부품 검색결과
+
+// 특정 부품에 대해 대표님이 직접 생성한 공식 단축링크가 있을 경우 여기에 입력
 export const CUSTOM_AFFILIATE_LINKS: Record<string, string> = {
-  // 예: 'mainstream-gaming': 'https://link.coupang.com/a/xxxxxx',
+  // 개별 부품별 링크 등록 시 즉시 최우선 적용
 };
 
 // 각 부품별 최적화된 로켓배송 실시간 최저가 검색 키워드
@@ -77,14 +81,14 @@ export function getCoupangProductUrl(componentId: string, fallbackName?: string)
 }
 
 /**
- * 완본체 추천 상품 실시간 쿠팡 로켓배송 검색 리스트 직행 URL
+ * 완본체 추천 상품 실시간 쿠팡 로켓배송 직행 (대표님 파트너스 공식 링크)
  */
 export function getCoupangPrebuiltUrl(presetId: string): string {
   if (CUSTOM_AFFILIATE_LINKS[presetId]) {
     return CUSTOM_AFFILIATE_LINKS[presetId];
   }
-  const keyword = PREBUILT_SEARCH_KEYWORDS[presetId] || '게이밍 조립PC 완본체';
-  return `https://www.coupang.com/np/search?component=&q=${encodeURIComponent(keyword)}&filter=rocket_delivery%3Atrue`;
+  // 대표님 전용 파트너스 게이밍 조립PC 공식 단축링크
+  return OFFICIAL_PREBUILT_LINK;
 }
 
 /**
@@ -96,8 +100,9 @@ export function getCoupangSearchUrl(keyword?: string): string {
 }
 
 /**
- * 전 부품 일괄 담기 / 핫딜 직행 URL
+ * 전 부품 일괄 담기 / 핫딜 직행 (대표님 파트너스 공식 링크)
  */
 export function getCoupangBulkCartUrl(): string {
-  return `https://www.coupang.com/np/search?component=&q=${encodeURIComponent('조립컴퓨터 부품')}&filter=rocket_delivery%3Atrue`;
+  // 대표님 전용 파트너스 컴퓨터 부품 공식 단축링크
+  return OFFICIAL_COMPONENTS_LINK;
 }
