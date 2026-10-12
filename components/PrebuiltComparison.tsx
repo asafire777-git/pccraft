@@ -140,9 +140,9 @@ export default function PrebuiltComparison({
                 target="_blank"
                 rel="noopener noreferrer nofollow"
                 className="flex-1 sm:flex-initial px-4 py-2.5 rounded-xl bg-orange-600 hover:bg-orange-500 text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-sm transition-all"
-                title="11번가·G마켓 오픈마켓 완본체 특가 확인"
+                title="G마켓 공식 입점 완본체 특가 확인"
               >
-                <span>🛒 오픈마켓 특가</span>
+                <span>🛒 G마켓 특가</span>
                 <ExternalLink className="w-3.5 h-3.5" />
               </a>
             </div>

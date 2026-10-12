@@ -141,21 +141,22 @@ export function getNaverShoppingUrl(keyword: string, componentId?: string): stri
 export const LINKPRICE_AFFILIATE_ID = process.env.NEXT_PUBLIC_LINKPRICE_A_ID || 'A100708723';
 
 /**
- * 오픈마켓 (11번가, G마켓 등) 실시간 최저가 직행 URL 생성기
- * - 링크프라이스 공식 클릭 게이트웨이를 통해 대표님 고유 트래킹 코드(A100708723)가 100% 자동 장착
+ * 오픈마켓 (G마켓, 11번가 등) 실시간 최저가 직행 URL 생성기
+ * - 현재 제휴 승인 완료된 G마켓(gmarket) 공식 게이트웨이로 100% 안전하게 연결
+ * - 링크프라이스 공식 트래킹 코드(A100708723)가 100% 자동 장착
  */
 export function getOpenMarketProductUrl(
   componentId: string,
   fallbackName?: string,
-  mall: '11st' | 'gmarket' = '11st'
+  mall: 'gmarket' | '11st' = 'gmarket'
 ): string {
   const keyword = COMPONENT_SEARCH_KEYWORDS[componentId] || fallbackName || '컴퓨터 부품';
 
-  let targetUrl = `https://search.11st.co.kr/Search.tmall?kwd=${encodeURIComponent(keyword)}`;
-  const merchant = mall === 'gmarket' ? 'gmarket' : '11st';
+  let targetUrl = `https://browse.gmarket.co.kr/search?keyword=${encodeURIComponent(keyword)}`;
+  const merchant = mall === '11st' ? '11st' : 'gmarket';
 
-  if (mall === 'gmarket') {
-    targetUrl = `https://browse.gmarket.co.kr/search?keyword=${encodeURIComponent(keyword)}`;
+  if (mall === '11st') {
+    targetUrl = `https://search.11st.co.kr/Search.tmall?kwd=${encodeURIComponent(keyword)}`;
   }
 
   // 링크프라이스 공식 트래킹 게이트웨이로 래핑
@@ -167,18 +168,19 @@ export function getOpenMarketProductUrl(
 }
 
 /**
- * 완본체 게이밍 PC 오픈마켓 최저가 검색 URL
+ * 완본체 게이밍 PC 오픈마켓 최저가 검색 URL (승인 완료된 G마켓 연동)
  */
 export function getOpenMarketPrebuiltUrl(presetId: string, fallbackName?: string): string {
   const keyword = PREBUILT_SEARCH_KEYWORDS[presetId] || fallbackName || '게이밍 조립PC';
-  const targetUrl = `https://search.11st.co.kr/Search.tmall?kwd=${encodeURIComponent(keyword)}`;
+  const targetUrl = `https://browse.gmarket.co.kr/search?keyword=${encodeURIComponent(keyword)}`;
 
   if (LINKPRICE_AFFILIATE_ID) {
-    return `https://click.linkprice.com/click.php?m=11st&a=${LINKPRICE_AFFILIATE_ID}&l=0000&url=${encodeURIComponent(targetUrl)}`;
+    return `https://click.linkprice.com/click.php?m=gmarket&a=${LINKPRICE_AFFILIATE_ID}&l=0000&url=${encodeURIComponent(targetUrl)}`;
   }
 
   return targetUrl;
 }
+
 
 
 

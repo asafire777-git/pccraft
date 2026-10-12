@@ -59,10 +59,10 @@ export default function PriceBattle({ currentPreset, selectedComponents, totalPr
           </div>
         </div>
         <h2 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-tight">
-          쿠팡 로켓 <span className="text-rose-500">VS</span> 오픈마켓 특가 <span className="text-orange-500">VS</span> 네이버 쇼핑
+          쿠팡 로켓 <span className="text-rose-500">VS</span> G마켓 공식 특가 <span className="text-orange-500">VS</span> 네이버 쇼핑
         </h2>
         <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
-          정기 수집된 부품 기준 시세를 바탕으로 <strong>로켓 빠른배송, 오픈마켓 공식총판 카드할인, 네이버페이 적립금</strong> 혜택을 투명하게 비교합니다.<br className="hidden sm:inline" />
+          정기 수집된 부품 기준 시세를 바탕으로 <strong>로켓 빠른배송, G마켓 공식총판 카드할인, 네이버페이 적립금</strong> 혜택을 투명하게 비교합니다.<br className="hidden sm:inline" />
           <span className="text-slate-500 dark:text-slate-400"> (실시간 최종 가격과 재고는 각 판매처 바로가기를 통해 직접 실시간 연동 확인하실 수 있습니다)</span>
         </p>
       </div>
@@ -143,11 +143,11 @@ export default function PriceBattle({ currentPreset, selectedComponents, totalPr
           </div>
         </div>
 
-        {/* 2. 11번가·G마켓 오픈마켓 특가 카드 */}
+        {/* 2. G마켓 공식 특가 카드 (링크프라이스 승인 연동) */}
         <div className="rounded-2xl border-2 border-orange-500/30 dark:border-orange-500/40 bg-gradient-to-b from-orange-50/50 via-white to-orange-50/30 dark:from-orange-950/20 dark:via-slate-900 dark:to-orange-950/10 p-5 flex flex-col justify-between shadow-lg relative group hover:border-orange-500 transition-colors">
           <div className="absolute top-4 right-4">
             <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-orange-500 text-white text-[11px] font-extrabold shadow-sm">
-              <Trophy className="w-3 h-3" /> 총판특가 1위
+              <Trophy className="w-3 h-3" /> G마켓 총판특가
             </span>
           </div>
 
@@ -158,10 +158,10 @@ export default function PriceBattle({ currentPreset, selectedComponents, totalPr
               </div>
               <div>
                 <h3 className="font-black text-base sm:text-lg text-slate-900 dark:text-white flex items-center gap-1.5">
-                  11번가 · G마켓 특가
+                  G마켓 공식 특가
                 </h3>
                 <span className="text-[11px] text-orange-600 dark:text-orange-400 font-semibold">
-                  공식 수입사 직영 &amp; 쿠폰가
+                  공식 총판 직영 &amp; 빅스마일데이 쿠폰
                 </span>
               </div>
             </div>
@@ -173,7 +173,7 @@ export default function PriceBattle({ currentPreset, selectedComponents, totalPr
                 <span className="font-mono line-through">{totalPrice.toLocaleString()}원</span>
               </div>
               <div className="flex justify-between items-center text-xs text-orange-600 dark:text-orange-400 mt-1">
-                <span>총판 쿠폰/카드할인 (예상 -6%)</span>
+                <span>G마켓 쿠폰/카드할인 (예상 -6%)</span>
                 <span className="font-mono font-bold">-{openMarketDiscount.toLocaleString()}원</span>
               </div>
               <div className="flex justify-between items-end mt-2 pt-2 border-t border-orange-100 dark:border-orange-900/30">
@@ -191,11 +191,11 @@ export default function PriceBattle({ currentPreset, selectedComponents, totalPr
             <ul className="space-y-1.5 text-xs text-slate-600 dark:text-slate-300 my-3">
               <li className="flex items-start gap-1.5">
                 <Check className="w-3.5 h-3.5 text-orange-500 shrink-0 mt-0.5" />
-                <span><strong>공식 총판 100% 정품:</strong> 이엠텍·대원CTS·제이씨현 직영</span>
+                <span><strong>G마켓 공식 총판 100% 정품:</strong> 이엠텍·대원CTS·제이씨현</span>
               </li>
               <li className="flex items-start gap-1.5">
                 <Check className="w-3.5 h-3.5 text-orange-500 shrink-0 mt-0.5" />
-                <span><strong>카드사 중복 할인:</strong> 십일절 &amp; 빅스마일데이 극강 가성비</span>
+                <span><strong>스마일클럽 &amp; 카드사 중복할인:</strong> 빅스마일데이 극강 핫딜</span>
               </li>
               <li className="flex items-start gap-1.5">
                 <Check className="w-3.5 h-3.5 text-orange-500 shrink-0 mt-0.5" />
@@ -211,7 +211,7 @@ export default function PriceBattle({ currentPreset, selectedComponents, totalPr
               rel="noopener noreferrer nofollow"
               className="w-full py-2.5 px-3 rounded-xl bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-500 hover:to-amber-500 text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-md shadow-orange-500/20 active:scale-95 transition-all cursor-pointer"
             >
-              <span>오픈마켓 실시간 특가 확인</span>
+              <span>G마켓 실시간 특가 검색</span>
               <ExternalLink className="w-3.5 h-3.5" />
             </a>
           </div>
@@ -307,9 +307,9 @@ export default function PriceBattle({ currentPreset, selectedComponents, totalPr
           </div>
           <div className="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800">
             <strong className="text-orange-600 dark:text-orange-400 block mb-1">
-              🛒 오픈마켓 특가를 추천하는 분
+              🛒 G마켓 공식 특가를 추천하는 분
             </strong>
-            “그래픽카드나 CPU 단일 부품을 공식 총판 카드할인과 쿠폰을 최대한 먹여 실결제 최저가로 구매하고 싶다면 11번가·G마켓이 가장 유리합니다.”
+            “그래픽카드나 CPU 단일 부품을 G마켓 공식 총판 즉시할인과 빅스마일데이 쿠폰을 최대한 먹여 실결제 최저가로 구매하고 싶다면 가장 유리합니다.”
           </div>
           <div className="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800">
             <strong className="text-emerald-600 dark:text-emerald-400 block mb-1">
@@ -352,7 +352,7 @@ export default function PriceBattle({ currentPreset, selectedComponents, totalPr
               if (!comp) return null;
 
               const coupangUrl = getCoupangProductUrl(comp.id, comp.name);
-              const openMarketUrl = getOpenMarketProductUrl(comp.id, comp.name, '11st');
+              const openMarketUrl = getOpenMarketProductUrl(comp.id, comp.name, 'gmarket');
               const naverUrl = getNaverShoppingUrl(comp.name, comp.id);
 
               return (
@@ -392,9 +392,9 @@ export default function PriceBattle({ currentPreset, selectedComponents, totalPr
                       target="_blank"
                       rel="noopener noreferrer nofollow"
                       className="px-2.5 py-1.5 rounded-lg bg-orange-50 hover:bg-orange-100 dark:bg-orange-950/60 dark:hover:bg-orange-900/60 text-orange-600 dark:text-orange-400 border border-orange-200 dark:border-orange-800/60 text-xs font-bold flex items-center gap-1 transition-colors"
-                      title="11번가·G마켓 오픈마켓 실시간 특가 확인"
+                      title="G마켓 공식 총판 실시간 특가 확인"
                     >
-                      <span>🛒 오픈마켓 실시간가</span>
+                      <span>🛒 G마켓 실시간가</span>
                       <ExternalLink className="w-3 h-3" />
                     </a>
 
@@ -418,7 +418,7 @@ export default function PriceBattle({ currentPreset, selectedComponents, totalPr
 
       {/* 하단 제휴 및 경제적 대가 안내 */}
       <div className="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 text-[10px] text-slate-400 text-center leading-relaxed">
-        ※ 본 플랫폼 최저가 비교는 {latestUpdateDate} 정기 수집된 시장 기준 시세 및 각 제휴 플랫폼(쿠팡, 오픈마켓, 네이버)의 예상 프로모션 할인율을 바탕으로 산출되었습니다. 허위 LIVE 표기를 하지 않으며, 정확한 실시간 재고와 변동 가격은 각 판매처 바로가기를 통해 실시간 확인하실 수 있습니다.
+        ※ 본 플랫폼 최저가 비교는 {latestUpdateDate} 정기 수집된 시장 기준 시세 및 각 제휴 플랫폼(쿠팡, G마켓 공식 제휴, 네이버)의 예상 프로모션 할인율을 바탕으로 산출되었습니다. 허위 LIVE 표기를 하지 않으며, 정확한 실시간 재고와 변동 가격은 각 판매처 바로가기를 통해 실시간 확인하실 수 있습니다.
       </div>
     </section>
   );
