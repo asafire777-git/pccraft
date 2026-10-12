@@ -301,20 +301,25 @@ export default function SearchBar({ onSelectPreset, onSelectComponent }: SearchB
             )}
           </div>
 
-          {/* 하단 고정: 쿠팡 전체 실시간 검색 CTA */}
-          <div className="p-3 bg-slate-50 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between">
-            <div className="text-xs text-slate-500 dark:text-slate-400 truncate">
-              ‘<strong className="text-slate-800 dark:text-slate-200">{query}</strong>’ 쿠팡 로켓배송 실시간 검색
+          {/* 하단 고정: 쿠팡 전체 실시간 검색 CTA & 공정위 경제적 이해관계 표기 */}
+          <div className="p-3 bg-slate-50 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800">
+            <div className="flex items-center justify-between gap-2">
+              <div className="text-xs text-slate-500 dark:text-slate-400 truncate">
+                ‘<strong className="text-slate-800 dark:text-slate-200">{query}</strong>’ 쿠팡 로켓배송 실시간 검색
+              </div>
+              <a
+                href={getCoupangSearchUrl(query.trim())}
+                target="_blank"
+                rel="noopener noreferrer nofollow"
+                className="px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-rose-600 to-red-600 hover:from-rose-500 hover:to-red-500 text-white font-bold text-xs flex items-center gap-1.5 shadow-sm transition-all duration-150 shrink-0"
+              >
+                <span>쿠팡 최저가 결과 보기</span>
+                <ExternalLink className="w-3.5 h-3.5" />
+              </a>
             </div>
-            <a
-              href={getCoupangSearchUrl(query.trim())}
-              target="_blank"
-              rel="noopener noreferrer nofollow"
-              className="px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-rose-600 to-red-600 hover:from-rose-500 hover:to-red-500 text-white font-bold text-xs flex items-center gap-1.5 shadow-sm transition-all duration-150 shrink-0"
-            >
-              <span>쿠팡 최저가 결과 보기</span>
-              <ExternalLink className="w-3.5 h-3.5" />
-            </a>
+            <p className="mt-2 text-[10px] text-slate-400 dark:text-slate-500 text-center leading-tight">
+              ※ 본 검색 링크 및 추천 상품을 통한 구매 시 쿠팡 파트너스 활동의 일환으로 일정액의 수수료를 제공받습니다.
+            </p>
           </div>
         </div>
       )}
