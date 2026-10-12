@@ -36,6 +36,12 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true
+  },
+  verification: {
+    google: 'NH-fqxnp2rEw1qCojW91YvycdtMrKbg90G_6v8EaKK8',
+    other: {
+      'naver-site-verification': '15c5b036e34e3588fe1b4cb4b78cce49f2e1c095'
+    }
   }
 };
 
@@ -46,6 +52,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko" suppressHydrationWarning className="h-full antialiased scroll-smooth">
+      <head>
+        <meta name="naver-site-verification" content="15c5b036e34e3588fe1b4cb4b78cce49f2e1c095" />
+        <meta name="google-site-verification" content="NH-fqxnp2rEw1qCojW91YvycdtMrKbg90G_6v8EaKK8" />
+      </head>
       <body className="min-h-full flex flex-col bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 font-sans transition-colors duration-200">
         <ThemeProvider>
           {children}
