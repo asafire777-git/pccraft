@@ -89,7 +89,7 @@ export default function PrebuiltComparison({
                 <PackageCheck className="w-5 h-5" />
               </span>
               <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-emerald-100 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/40">
-                {prebuilt.brand} 공식 완본체
+                {prebuilt.brand} 완본체 추천
               </span>
             </div>
 

@@ -54,8 +54,8 @@ export const GAME_PRESETS: GamePreset[] = [
       case: 'case-darkflash-dk200'
     },
     recommendedPrebuilt: {
-      title: '한성컴퓨터 Master T56 (라이젠 5600 + GTX 1650 완본체)',
-      brand: '한성컴퓨터',
+      title: '롤·발로란트 e스포츠 가성비 추천 완본체 PC (라이젠 5600 + GTX 1650)',
+      brand: 'e스포츠 게이밍',
       price: 599000,
       affiliateUrl: 'https://link.coupang.com/a/sample_prebuilt_entry',
       imageUrl: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=500&auto=format&fit=crop&q=60',
@@ -94,8 +94,8 @@ export const GAME_PRESETS: GamePreset[] = [
       case: 'case-darkflash-dk200'
     },
     recommendedPrebuilt: {
-      title: '프리플로우 게이밍 PC (라이젠 7500F + RTX 4060 완제)',
-      brand: '프리플로우',
+      title: '국민 게이밍 & 배틀그라운드 완본체 PC (라이젠 7500F + RTX 4060)',
+      brand: '국민 게이밍',
       price: 1199000,
       affiliateUrl: 'https://link.coupang.com/a/sample_prebuilt_mainstream',
       imageUrl: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=500&auto=format&fit=crop&q=60',
@@ -134,8 +134,8 @@ export const GAME_PRESETS: GamePreset[] = [
       case: 'case-aquarium-panoramic'
     },
     recommendedPrebuilt: {
-      title: '주연테크 게이밍 PC (7800X3D + RTX 4070 SUPER 파노라마 완본체)',
-      brand: '주연테크',
+      title: '스팀 AAA 대작 & QHD 종결 완본체 PC (7800X3D + RTX 4070 SUPER)',
+      brand: '하이엔드 게이밍',
       price: 2280000,
       affiliateUrl: 'https://link.coupang.com/a/sample_prebuilt_highend',
       imageUrl: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=500&auto=format&fit=crop&q=60',
@@ -174,12 +174,12 @@ export const GAME_PRESETS: GamePreset[] = [
       case: 'case-aquarium-panoramic'
     },
     recommendedPrebuilt: {
-      title: 'ASUS ROG 게이밍 워크스테이션 (i7/i5 + RTX 4080 SUPER 완제)',
-      brand: 'ASUS ROG',
+      title: '4K UHD 플래그십 & 영상편집 워크스테이션 PC (RTX 4080 SUPER)',
+      brand: '플래그십 워크스테이션',
       price: 3390000,
       affiliateUrl: 'https://link.coupang.com/a/sample_prebuilt_flagship',
       imageUrl: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=500&auto=format&fit=crop&q=60',
-      pros: ['ROG 플래그십 감성 튜닝', '골드 등급 파워와 3열 수랭 기본 적용', 'VIP 핫라인 케어'],
+      pros: ['플래그십 감성 튜닝', '골드 등급 파워와 3열 수랭 기본 적용', 'VIP 무상 케어'],
       specsSummary: '인텔 i5/i7 / RTX 4080 SUPER 16G / 32GB DDR5 / 1TB Gen4 / 850W Gold'
     },
     aiAnalysis: {
