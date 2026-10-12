@@ -10,6 +10,7 @@ import AdBanner from '@/components/AdBanner';
 import GameSelector from '@/components/GameSelector';
 import CompatibilityBadge from '@/components/CompatibilityBadge';
 import BuilderTable from '@/components/BuilderTable';
+import PriceBattle from '@/components/PriceBattle';
 import PrebuiltComparison from '@/components/PrebuiltComparison';
 import AiAnalysisCard from '@/components/AiAnalysisCard';
 import { GAME_PRESETS, GamePreset } from '@/data/presets';
@@ -139,10 +140,19 @@ export default function HomePage() {
           />
         </div>
 
-        {/* 4. 구글 애드센스 인피드 광고 영역 */}
+        {/* 4. 실시간 플랫폼 최저가 배틀: 쿠팡 로켓배송 VS 네이버 쇼핑 */}
+        <div id="price-battle-section">
+          <PriceBattle
+            currentPreset={currentPreset}
+            selectedComponents={selectedComponents}
+            totalPrice={totalPrice}
+          />
+        </div>
+
+        {/* 5. 구글 애드센스 인피드 광고 영역 */}
         <AdBanner slotId="main-infeed-ad-1" />
 
-        {/* 5. 직접 조립 vs 완본체(완제PC) 비교 섹션 */}
+        {/* 6. 직접 조립 vs 완본체(완제PC) 비교 섹션 */}
         <div id="prebuilt-section">
           <PrebuiltComparison
             currentPreset={currentPreset}
@@ -150,7 +160,7 @@ export default function HomePage() {
           />
         </div>
 
-        {/* 6. AI 정밀 벤치마크 및 SEO 콘텐츠 카드 */}
+        {/* 7. AI 정밀 벤치마크 및 SEO 콘텐츠 카드 */}
         <div id="specs-analysis">
           <AiAnalysisCard currentPreset={currentPreset} />
         </div>

@@ -108,3 +108,25 @@ export function getCoupangBulkCartUrl(): string {
   // 대표님 전용 파트너스 컴퓨터 부품 공식 단축링크
   return OFFICIAL_COMPONENTS_LINK;
 }
+
+// -------------------------------------------------------------
+// 네이버 쇼핑 & 네이버 브랜드커넥트 연동 게이트웨이
+// -------------------------------------------------------------
+
+// 네이버 브랜드커넥트 또는 개별 단축 제휴 링크가 있을 경우 등록
+export const CUSTOM_NAVER_AFFILIATE_LINKS: Record<string, string> = {
+  // 대표님이 네이버 브랜드커넥트에서 생성한 코드가 생기면 여기에 ID별로 입력 시 즉시 최우선 적용
+};
+
+/**
+ * 네이버 쇼핑 실시간 최저가 검색 URL 생성기
+ * - 브랜드커넥트 링크 등록 시 해당 링크 최우선 반영
+ */
+export function getNaverShoppingUrl(keyword: string, componentId?: string): string {
+  if (componentId && CUSTOM_NAVER_AFFILIATE_LINKS[componentId]) {
+    return CUSTOM_NAVER_AFFILIATE_LINKS[componentId];
+  }
+  const cleanKeyword = keyword.trim() || '컴퓨터 부품';
+  return `https://search.shopping.naver.com/search/all?query=${encodeURIComponent(cleanKeyword)}`;
+}
+
