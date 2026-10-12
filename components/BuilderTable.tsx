@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { ComponentItem, COMPONENTS_DATA } from '@/data/components';
 import { ShoppingCart, ExternalLink, RefreshCw, Check, Sparkles, Bookmark, Share2 } from 'lucide-react';
 import ComponentThumbnail from './ComponentThumbnail';
+import { getCoupangSearchUrl, getCoupangBulkCartUrl } from '@/lib/affiliate';
 
 interface BuilderTableProps {
   selectedComponents: Record<string, ComponentItem>;
@@ -44,9 +45,9 @@ export default function BuilderTable({
 
   const handleBulkOrder = () => {
     alert(
-      '선택하신 8개 부품의 최저가 제휴 링크가 새 탭으로 순차 호출됩니다. 쿠팡 장바구니에 담긴 후 할인 쿠폰을 적용하세요!'
+      '선택하신 8개 부품의 실시간 최저가 쿠팡 목록으로 이동합니다. 쿠팡 장바구니에 담긴 후 할인 혜택을 받으세요!'
     );
-    window.open('https://link.coupang.com/a/sample_bulk_cart', '_blank');
+    window.open(getCoupangBulkCartUrl(), '_blank');
   };
 
   const [isSyncing, setIsSyncing] = useState(false);
@@ -240,7 +241,7 @@ export default function BuilderTable({
                   </button>
 
                   <a
-                    href={item.affiliateUrl}
+                    href={getCoupangSearchUrl(item.name)}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="px-3.5 py-2 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-bold flex items-center gap-1.5 transition-colors shadow-sm"

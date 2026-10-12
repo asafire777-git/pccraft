@@ -1,6 +1,7 @@
 import React from 'react';
 import { GamePreset } from '@/data/presets';
 import { CheckCircle2, ShieldAlert, ExternalLink, Wrench, PackageCheck } from 'lucide-react';
+import { getCoupangSearchUrl } from '@/lib/affiliate';
 
 interface PrebuiltComparisonProps {
   currentPreset: GamePreset;
@@ -123,7 +124,7 @@ export default function PrebuiltComparison({
             </div>
 
             <a
-              href={prebuilt.affiliateUrl}
+              href={getCoupangSearchUrl(prebuilt.title)}
               target="_blank"
               rel="noopener noreferrer"
               className="w-full sm:w-auto px-5 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-sm transition-all"
