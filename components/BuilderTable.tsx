@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { ComponentItem, COMPONENTS_DATA } from '@/data/components';
 import { ShoppingCart, ExternalLink, RefreshCw, Check, Sparkles, Bookmark, Share2 } from 'lucide-react';
 import ComponentThumbnail from './ComponentThumbnail';
-import { getCoupangSearchUrl, getCoupangBulkCartUrl } from '@/lib/affiliate';
+import { getCoupangProductUrl, getCoupangBulkCartUrl } from '@/lib/affiliate';
 
 interface BuilderTableProps {
   selectedComponents: Record<string, ComponentItem>;
@@ -241,7 +241,7 @@ export default function BuilderTable({
                   </button>
 
                   <a
-                    href={getCoupangSearchUrl(item.name)}
+                    href={getCoupangProductUrl(item.id, item.name)}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="px-3.5 py-2 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-bold flex items-center gap-1.5 transition-colors shadow-sm"
