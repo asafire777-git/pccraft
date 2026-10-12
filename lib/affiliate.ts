@@ -137,13 +137,12 @@ export function getNaverShoppingUrl(keyword: string, componentId?: string): stri
 // 링크프라이스(LinkPrice) & 오픈마켓 (11번가 / G마켓) 연동 게이트웨이
 // -------------------------------------------------------------
 
-// 대표님 링크프라이스 어필리에이트 회원 ID (발급 후 여기에 입력하거나 환경변수 설정)
-export const LINKPRICE_AFFILIATE_ID = process.env.NEXT_PUBLIC_LINKPRICE_A_ID || '';
+// 대표님 링크프라이스 공식 어필리에이트 사이트 코드 (PC-Craft 채널: A100708723)
+export const LINKPRICE_AFFILIATE_ID = process.env.NEXT_PUBLIC_LINKPRICE_A_ID || 'A100708723';
 
 /**
  * 오픈마켓 (11번가, G마켓 등) 실시간 최저가 직행 URL 생성기
- * - 링크프라이스 AutoLink 스크립트 적용 시 오픈마켓 URL이 클릭 순간 자동으로 수익 딥링크로 전환
- * - 또는 a_id가 설정된 경우 링크프라이스 공식 클릭 게이트웨이로 래핑
+ * - 링크프라이스 공식 클릭 게이트웨이를 통해 대표님 고유 트래킹 코드(A100708723)가 100% 자동 장착
  */
 export function getOpenMarketProductUrl(
   componentId: string,
@@ -159,9 +158,9 @@ export function getOpenMarketProductUrl(
     targetUrl = `https://browse.gmarket.co.kr/search?keyword=${encodeURIComponent(keyword)}`;
   }
 
-  // 링크프라이스 ID가 활성화된 경우 딥링크 게이트웨이로 래핑
+  // 링크프라이스 공식 트래킹 게이트웨이로 래핑
   if (LINKPRICE_AFFILIATE_ID) {
-    return `https://click.linkprice.com/click.php?m=${merchant}&a=${LINKPRICE_AFFILIATE_ID}&l=0000&u=${encodeURIComponent(targetUrl)}`;
+    return `https://click.linkprice.com/click.php?m=${merchant}&a=${LINKPRICE_AFFILIATE_ID}&l=0000&url=${encodeURIComponent(targetUrl)}`;
   }
 
   return targetUrl;
@@ -175,10 +174,11 @@ export function getOpenMarketPrebuiltUrl(presetId: string, fallbackName?: string
   const targetUrl = `https://search.11st.co.kr/Search.tmall?kwd=${encodeURIComponent(keyword)}`;
 
   if (LINKPRICE_AFFILIATE_ID) {
-    return `https://click.linkprice.com/click.php?m=11st&a=${LINKPRICE_AFFILIATE_ID}&l=0000&u=${encodeURIComponent(targetUrl)}`;
+    return `https://click.linkprice.com/click.php?m=11st&a=${LINKPRICE_AFFILIATE_ID}&l=0000&url=${encodeURIComponent(targetUrl)}`;
   }
 
   return targetUrl;
 }
+
 
 
