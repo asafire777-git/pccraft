@@ -7,21 +7,24 @@ type Theme = 'light' | 'dark';
 interface ThemeContextType {
   theme: Theme;
   toggleTheme: () => void;
+  mounted: boolean;
 }
 
 const ThemeContext = createContext<ThemeContextType>({
   theme: 'light',
   toggleTheme: () => {},
+  mounted: false,
 });
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  // 기본값을 'light'로 설정
   const [theme, setTheme] = useState<Theme>('light');
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     const saved = localStorage.getItem('pc_craft_theme') as Theme | null;
-    const initial = saved || 'light';
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const initial: Theme = saved || (prefersDark ? 'dark' : 'light');
+    
     setTheme(initial);
     applyTheme(initial);
     setMounted(true);
@@ -31,20 +34,26 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     const root = document.documentElement;
     if (t === 'dark') {
       root.classList.add('dark');
+      root.style.colorScheme = 'dark';
     } else {
       root.classList.remove('dark');
+      root.style.colorScheme = 'light';
     }
   };
 
   const toggleTheme = () => {
-    const next = theme === 'light' ? 'dark' : 'light';
+    const next: Theme = theme === 'light' ? 'dark' : 'light';
     setTheme(next);
-    localStorage.setItem('pc_craft_theme', next);
+    try {
+      localStorage.setItem('pc_craft_theme', next);
+    } catch {
+      // ignore storage errors
+    }
     applyTheme(next);
   };
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+    <ThemeContext.Provider value={{ theme, toggleTheme, mounted }}>
       {children}
     </ThemeContext.Provider>
   );

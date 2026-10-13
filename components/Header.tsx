@@ -67,13 +67,13 @@ export default function Header({ onOpenQuoteStorage }: HeaderProps = {}) {
             <button
               onClick={toggleTheme}
               aria-label="테마 변경"
-              className="p-2 rounded-xl bg-slate-100 dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 transition-colors cursor-pointer"
+              className="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 transition-all cursor-pointer active:scale-95 shadow-sm"
               title={theme === 'light' ? '다크 모드로 전환' : '라이트 모드로 전환'}
             >
-              {theme === 'light' ? (
-                <Moon className="w-4 h-4 text-slate-700" />
-              ) : (
+              {theme === 'dark' ? (
                 <Sun className="w-4 h-4 text-amber-400" />
+              ) : (
+                <Moon className="w-4 h-4 text-slate-700" />
               )}
             </button>
 
