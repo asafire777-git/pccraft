@@ -31,6 +31,26 @@ export default function GuidePage() {
             <p className="text-slate-600 dark:text-slate-400 text-sm mt-3 leading-relaxed">
               조립 컴퓨터를 처음 맞추거나 부품을 업그레이드할 때 가장 많이 실수하는 호환성 규칙과 필수 지식을 알기 쉽게 정리했습니다.
             </p>
+
+            {/* 신설 하드웨어 랩 10대 리포트 바로가기 배너 */}
+            <div className="mt-5 p-4 rounded-2xl bg-gradient-to-r from-cyan-500/15 via-blue-500/10 to-indigo-500/15 border border-cyan-500/30 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div>
+                <strong className="text-sm font-black text-slate-900 dark:text-white flex items-center gap-1.5">
+                  <span>📖 [하드웨어 랩] 2026 심층 분석 리포트 10선 OPEN!</span>
+                  <span className="text-[10px] font-black px-1.5 py-0.5 rounded bg-rose-600 text-white">NEW</span>
+                </strong>
+                <p className="text-xs text-slate-600 dark:text-slate-300 mt-1">
+                  RTX 50 vs 40 계급도, 라이젠 9800X3D 벤치마크, ATX 3.1 파워 계산법 등 각 3,000~6,000자 전문 리포트
+                </p>
+              </div>
+              <Link
+                href="/lab"
+                className="px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white dark:bg-white dark:text-slate-950 font-bold text-xs shrink-0 flex items-center gap-1 transition-all shadow-sm"
+              >
+                <span>리포트 허브 이동</span>
+                <span>→</span>
+              </Link>
+            </div>
           </div>
 
           {/* 섹션 1: CPU 소켓 호환성 */}

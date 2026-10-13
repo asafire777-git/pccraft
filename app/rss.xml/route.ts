@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { GAME_PRESETS } from '@/data/presets';
+import { ALL_ARTICLES } from '@/data/articles';
 
 export async function GET(request: NextRequest) {
   // 네이버 서치어드바이저 도메인 일치 규격:
@@ -13,6 +14,32 @@ export async function GET(request: NextRequest) {
   const siteDescription = '스마트 컴퓨터 부품 및 2026 차세대 게이밍 맞춤 견적 큐레이션 플랫폼';
 
   const items = [
+    {
+      title: 'PC-Craft 하드웨어 랩 (Hardware Lab) 2026 벤치마크 허브',
+      link: `${baseUrl}/lab`,
+      guid: `${baseUrl}/lab`,
+      description: `
+        <p><strong>PC-Craft 하드웨어 랩(Hardware Research Lab)의 2026년 10월 최신 심층 분석 허브입니다.</strong></p>
+        <p>2026년 최신 그래픽카드 계급도, 라이젠 9800X3D vs 인텔 코어 Ultra 200S 벤치마크, ATX 3.1 파워 서플라이 계산법, 직접 조립 vs 완본체 실구매가 비교 등 10대 전문 하드웨어 리포트를 제공합니다.</p>
+        <p><a href="${baseUrl}/lab">하드웨어 랩 허브 바로가기</a></p>
+      `.trim(),
+      category: '하드웨어/랩',
+      pubDate: new Date('2026-10-13T09:00:00Z').toUTCString(),
+    },
+    ...ALL_ARTICLES.map((article) => ({
+      title: `[하드웨어 리포트] ${article.title}`,
+      link: `${baseUrl}/lab/${article.slug}`,
+      guid: `${baseUrl}/lab/${article.slug}`,
+      description: `
+        <p><strong>${article.title}</strong></p>
+        <p>${article.subtitle}</p>
+        <p>🏷️ 카테고리: ${article.categoryLabel} | ⏱️ 예상 소요 시간: ${article.readTimeMinutes}분</p>
+        <p>💡 요약: ${article.summary}</p>
+        <p><a href="${baseUrl}/lab/${article.slug}">리포트 전문 읽기</a></p>
+      `.trim(),
+      category: `하드웨어/${article.category}`,
+      pubDate: new Date(`${article.publishedAt}T09:00:00Z`).toUTCString(),
+    })),
     {
       title: '2026 데스크톱 PC 하드웨어 호환성 및 사양 가이드',
       link: `${baseUrl}/guide`,

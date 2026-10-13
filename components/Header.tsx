@@ -160,12 +160,23 @@ export default function Header({ onOpenQuoteStorage }: HeaderProps = {}) {
               완본체 비교
             </a>
             <Link
+              href="/lab"
+              className={`hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors cursor-pointer flex items-center gap-1.5 ${
+                pathname?.startsWith('/lab') ? 'text-cyan-600 dark:text-cyan-400 font-bold' : ''
+              }`}
+            >
+              <span>📖 하드웨어 랩</span>
+              <span className="text-[9px] font-black px-1.5 py-0.5 rounded-full bg-rose-500 text-white shadow-xs">
+                10대 리포트
+              </span>
+            </Link>
+            <Link
               href="/guide"
               className={`hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors cursor-pointer ${
                 pathname === '/guide' ? 'text-cyan-600 dark:text-cyan-400 font-bold' : ''
               }`}
             >
-              하드웨어 가이드
+              호환성 가이드
             </Link>
             <Link
               href="/about"
