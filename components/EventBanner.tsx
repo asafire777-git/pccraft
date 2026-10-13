@@ -50,34 +50,34 @@ export default function EventBanner() {
     setTimeout(() => setCopiedCode(false), 2500);
   };
 
-  // 플랫폼별 브랜드 배지 스타일
+  // 플랫폼별 브랜드 배지 스타일 (가독성을 위한 선명한 고대비 컬러)
   const platformStyles: Record<string, { badge: string; border: string; glow: string; btn: string }> = {
     coupang: {
-      badge: 'bg-cyan-500/20 text-cyan-700 dark:text-cyan-300 border-cyan-500/30',
+      badge: 'bg-cyan-600 text-white border-cyan-400 shadow-sm',
       border: 'border-cyan-500/30 hover:border-cyan-500/60',
       glow: 'from-cyan-950/40 via-slate-900/60 to-slate-900/90 dark:from-cyan-950/60 dark:via-slate-900/80 dark:to-slate-950/90',
       btn: 'bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white shadow-cyan-500/20'
     },
     gmarket: {
-      badge: 'bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 border-emerald-500/30',
+      badge: 'bg-emerald-600 text-white border-emerald-400 shadow-sm',
       border: 'border-emerald-500/30 hover:border-emerald-500/60',
       glow: 'from-emerald-950/40 via-slate-900/60 to-slate-900/90 dark:from-emerald-950/60 dark:via-slate-900/80 dark:to-slate-950/90',
       btn: 'bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white shadow-emerald-500/20'
     },
     lotteon: {
-      badge: 'bg-rose-500/20 text-rose-700 dark:text-rose-300 border-rose-500/30',
+      badge: 'bg-rose-600 text-white border-rose-400 shadow-sm',
       border: 'border-rose-500/30 hover:border-rose-500/60',
       glow: 'from-rose-950/40 via-slate-900/60 to-slate-900/90 dark:from-rose-950/60 dark:via-slate-900/80 dark:to-slate-950/90',
       btn: 'bg-gradient-to-r from-rose-600 to-red-600 hover:from-rose-500 hover:to-red-500 text-white shadow-rose-500/20'
     },
     aliexpress: {
-      badge: 'bg-rose-500/20 text-rose-700 dark:text-rose-300 border-rose-500/30',
+      badge: 'bg-red-600 text-white border-red-400 shadow-sm',
       border: 'border-rose-500/30 hover:border-rose-500/60',
       glow: 'from-rose-950/40 via-slate-900/60 to-slate-900/90 dark:from-rose-950/60 dark:via-slate-900/80 dark:to-slate-950/90',
       btn: 'bg-gradient-to-r from-rose-600 to-red-600 hover:from-rose-500 hover:to-red-500 text-white shadow-rose-500/20'
     },
     ssg: {
-      badge: 'bg-amber-500/20 text-amber-700 dark:text-amber-300 border-amber-500/30',
+      badge: 'bg-amber-600 text-white border-amber-400 shadow-sm',
       border: 'border-amber-500/30 hover:border-amber-500/60',
       glow: 'from-amber-950/40 via-slate-900/60 to-slate-900/90 dark:from-amber-950/60 dark:via-slate-900/80 dark:to-slate-950/90',
       btn: 'bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-500 hover:to-orange-500 text-white shadow-amber-500/20'
@@ -96,34 +96,34 @@ export default function EventBanner() {
         className={`relative border ${style.border} bg-gradient-to-r ${style.glow} p-4 sm:p-5 backdrop-blur-md rounded-2xl transition-colors`}
       >
         {/* 상단 뱃지 & 마감 카운트다운 */}
-        <div className="flex items-center justify-between mb-2.5">
+        <div className="flex items-center justify-between mb-3">
           <div className="flex items-center gap-2 flex-wrap">
             {/* 플랫폼 태그 */}
             <span
-              className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-black border ${style.badge}`}
+              className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-black border ${style.badge}`}
             >
-              <Sparkles className="w-3 h-3" />
+              <Sparkles className="w-3.5 h-3.5" />
               {current.platformName} • {current.badge}
             </span>
 
             {/* 마감일 뱃지 */}
-            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-bold bg-rose-500/15 text-rose-600 dark:text-rose-400 border border-rose-500/30">
-              <Clock className="w-3 h-3" />
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-bold bg-slate-900 text-white dark:bg-slate-800 dark:text-rose-300 border border-slate-700 dark:border-slate-700 shadow-sm">
+              <Clock className="w-3.5 h-3.5 text-rose-400" />
               {remaining}
             </span>
 
             {/* 할인율 뱃지 */}
             {current.discountRate && (
-              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-bold bg-amber-500/15 text-amber-600 dark:text-amber-400 border border-amber-500/30">
-                <Tag className="w-3 h-3" />
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-bold bg-amber-500 text-slate-950 border border-amber-300 shadow-sm">
+                <Tag className="w-3.5 h-3.5 text-slate-950" />
                 {current.discountRate}
               </span>
             )}
 
             {/* 쿠폰 안내 뱃지 */}
             {current.couponText && (
-              <span className="hidden sm:inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-bold bg-purple-500/15 text-purple-600 dark:text-purple-300 border border-purple-500/30">
-                <Ticket className="w-3 h-3" />
+              <span className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-bold bg-purple-900/90 text-purple-100 border border-purple-500/50 shadow-sm">
+                <Ticket className="w-3.5 h-3.5 text-purple-300" />
                 {current.couponText}
               </span>
             )}
