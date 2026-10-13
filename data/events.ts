@@ -52,10 +52,10 @@ export const PROMO_EVENTS: PromoEvent[] = [
     themeColor: 'red',
     tag: '온쇼페 특가',
     highlightText: '10/12 ~ 10/21 한정 기획전',
-    imageUrl: '/banners/banner-hardware.jpg',
-    imageAlt: '롯데ON 30주년 온쇼페 기획전'
+    imageUrl: '/banners/banner-lotteon-onshope.jpg',
+    imageAlt: '롯데ON 30주년 온쇼페 디지털 가전 메가딜 기획전'
   },
-  // 1. [쿠팡] 2026 게이밍 조립 PC & 로켓배송 실시간 기획전 (공식 승인 파트너스 링크)
+  // 2. [쿠팡] 2026 게이밍 조립 PC & 로켓배송 실시간 기획전 (공식 승인 파트너스 링크)
   {
     id: 'event-pc-gaming-coupang',
     platform: 'coupang',
@@ -75,7 +75,7 @@ export const PROMO_EVENTS: PromoEvent[] = [
     imageAlt: '2026 게이밍 조립 PC 빅세일 기획전'
   },
 
-  // 2. [쿠팡] 로지텍 G & 레이저 게이밍 기어 페스티벌 (공식 승인 파트너스 링크)
+  // 3. [쿠팡] 로지텍 G & 레이저 게이밍 기어 페스티벌 (공식 승인 파트너스 링크)
   {
     id: 'event-gaming-gear-festa',
     platform: 'coupang',
@@ -95,7 +95,7 @@ export const PROMO_EVENTS: PromoEvent[] = [
     imageAlt: '게이밍 기어 키보드 마우스 기획전'
   },
 
-  // 3. [쿠팡] 조립 PC 주요 하드웨어 부품 특가전 (공식 승인 파트너스 링크)
+  // 4. [쿠팡] 조립 PC 주요 하드웨어 부품 특가전 (공식 승인 파트너스 링크)
   {
     id: 'event-hardware-components',
     platform: 'coupang',
@@ -115,7 +115,7 @@ export const PROMO_EVENTS: PromoEvent[] = [
     imageAlt: '조립 PC 부품 기획전'
   },
 
-  // 4. [G마켓] PC 주요 부품 & 완본체 실시간 최저가 탐색전
+  // 5. [G마켓] PC 주요 부품 & 완본체 실시간 최저가 탐색전
   {
     id: 'event-gmarket-pc',
     platform: 'gmarket',
@@ -133,6 +133,26 @@ export const PROMO_EVENTS: PromoEvent[] = [
     highlightText: '오픈마켓 최저가 비교',
     imageUrl: '/banners/banner-gaming-pc.jpg',
     imageAlt: 'G마켓 PC 부품 특가'
+  },
+
+  // 6. [쿠팡] 삼성 오디세이 & LG 울트라기어 고주사율 게이밍 모니터 대전 (공식 승인 파트너스 링크)
+  {
+    id: 'event-gaming-monitor-festa',
+    platform: 'coupang',
+    platformName: '쿠팡',
+    title: '삼성 오디세이 & LG 울트라기어 고주사율 게이밍 모니터 대전',
+    subtitle: '4K OLED & QHD 240Hz 커브드 게이밍 모니터 불량화소 무결점 보증 로켓배송 특가',
+    badge: '게이밍 모니터',
+    discountRate: '와우회원 쿠폰할인',
+    couponText: '카드사 즉시할인 & 무이자할부',
+    startDate: '2026-01-01',
+    endDate: '2026-12-31',
+    affiliateUrl: OFFICIAL_MONITOR_LINK,
+    themeColor: 'purple',
+    tag: '디스플레이',
+    highlightText: '로켓배송 무료설치',
+    imageUrl: '/banners/banner-monitor.jpg',
+    imageAlt: '삼성 LG 고주사율 게이밍 모니터 기획전'
   }
 ];
 
