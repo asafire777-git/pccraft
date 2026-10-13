@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { ThemeProvider } from '@/components/ThemeProvider';
+import AuthProvider from '@/components/AuthProvider';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://pccraft.kr'),
@@ -57,9 +58,11 @@ export default function RootLayout({
         <meta name="google-site-verification" content="NH-fqxnp2rEw1qCojW91YvycdtMrKbg90G_6v8EaKK8" />
       </head>
       <body className="min-h-full flex flex-col bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 font-sans transition-colors duration-200">
-        <ThemeProvider>
-          {children}
-        </ThemeProvider>
+        <AuthProvider>
+          <ThemeProvider>
+            {children}
+          </ThemeProvider>
+        </AuthProvider>
       </body>
     </html>
   );

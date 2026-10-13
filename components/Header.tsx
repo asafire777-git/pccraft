@@ -2,8 +2,9 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { Cpu, Sun, Moon, Bookmark, User, X, Check, Share2 } from 'lucide-react';
+import { Cpu, Sun, Moon, Bookmark, User, X, Check, Share2, LogOut } from 'lucide-react';
 import { useTheme } from './ThemeProvider';
+import { useSession, signIn, signOut } from 'next-auth/react';
 
 interface HeaderProps {
   onOpenQuoteStorage?: () => void;
@@ -11,16 +12,20 @@ interface HeaderProps {
 
 export default function Header({ onOpenQuoteStorage }: HeaderProps = {}) {
   const { theme, toggleTheme } = useTheme();
+  const { data: session, status } = useSession();
   const [showLoginModal, setShowLoginModal] = useState(false);
-  const [loginAlert, setLoginAlert] = useState(false);
+  const [isLoggingIn, setIsLoggingIn] = useState(false);
 
-  const handleSimulateLogin = (provider: string) => {
-    setLoginAlert(true);
-    setTimeout(() => {
-      setLoginAlert(false);
-      setShowLoginModal(false);
-      alert(`[알림] 정식 도메인 연결 후 ${provider} 간편 로그인이 즉시 활성화됩니다. 현재는 브라우저 로컬 저장소로 견적이 안전하게 자동 저장됩니다!`);
-    }, 800);
+  const handleProviderLogin = async (provider: 'kakao' | 'google') => {
+    try {
+      setIsLoggingIn(true);
+      await signIn(provider);
+    } catch (e) {
+      console.error(e);
+      alert('로그인 처리 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.');
+    } finally {
+      setIsLoggingIn(false);
+    }
   };
 
   return (
@@ -78,19 +83,52 @@ export default function Header({ onOpenQuoteStorage }: HeaderProps = {}) {
             </button>
 
             {/* 견적 저장 및 로그인 버튼 */}
-            <button
-              onClick={() => {
-                if (onOpenQuoteStorage) {
-                  onOpenQuoteStorage();
-                } else {
+            {session?.user ? (
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => {
+                    if (onOpenQuoteStorage) onOpenQuoteStorage();
+                  }}
+                  className="px-3 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-bold text-xs flex items-center gap-1.5 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors shadow-sm cursor-pointer"
+                >
+                  <Bookmark className="w-3.5 h-3.5 text-cyan-600 dark:text-cyan-400" />
+                  <span className="hidden sm:inline">내 견적</span>
+                </button>
+                <div className="flex items-center gap-2 pl-2 border-l border-slate-200 dark:border-slate-800">
+                  {session.user.image ? (
+                    <img
+                      src={session.user.image}
+                      alt={session.user.name || 'User'}
+                      className="w-7 h-7 rounded-full ring-2 ring-cyan-500/30"
+                    />
+                  ) : (
+                    <div className="w-7 h-7 rounded-full bg-cyan-600 text-white flex items-center justify-center text-xs font-bold">
+                      {session.user.name?.[0] || 'U'}
+                    </div>
+                  )}
+                  <span className="text-xs font-bold text-slate-800 dark:text-slate-200 hidden md:inline max-w-[80px] truncate">
+                    {session.user.name || '회원'}님
+                  </span>
+                  <button
+                    onClick={() => signOut()}
+                    title="로그아웃"
+                    className="p-1.5 rounded-lg text-slate-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors"
+                  >
+                    <LogOut className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <button
+                onClick={() => {
                   setShowLoginModal(true);
-                }
-              }}
-              className="px-3.5 py-2 rounded-xl bg-slate-900 text-white dark:bg-cyan-500 dark:text-slate-950 font-bold text-xs flex items-center gap-1.5 hover:opacity-90 transition-opacity shadow-sm cursor-pointer"
-            >
-              <Bookmark className="w-3.5 h-3.5 text-cyan-400 dark:text-slate-950" />
-              <span className="hidden sm:inline">내 견적 보관 /</span> 로그인
-            </button>
+                }}
+                className="px-3.5 py-2 rounded-xl bg-slate-900 text-white dark:bg-cyan-500 dark:text-slate-950 font-bold text-xs flex items-center gap-1.5 hover:opacity-90 transition-opacity shadow-sm cursor-pointer"
+              >
+                <Bookmark className="w-3.5 h-3.5 text-cyan-400 dark:text-slate-950" />
+                <span className="hidden sm:inline">내 견적 보관 /</span> 로그인
+              </button>
+            )}
           </div>
         </div>
       </header>
@@ -119,16 +157,18 @@ export default function Header({ onOpenQuoteStorage }: HeaderProps = {}) {
             <div className="space-y-3">
               {/* 카카오 간편 로그인 버튼 */}
               <button
-                onClick={() => handleSimulateLogin('카카오')}
-                className="w-full py-3 px-4 rounded-xl bg-[#FEE500] hover:bg-[#FADA0A] text-[#191919] font-bold text-xs flex items-center justify-center gap-2 transition-colors cursor-pointer shadow-sm"
+                onClick={() => handleProviderLogin('kakao')}
+                disabled={isLoggingIn}
+                className="w-full py-3 px-4 rounded-xl bg-[#FEE500] hover:bg-[#FADA0A] text-[#191919] font-bold text-xs flex items-center justify-center gap-2 transition-colors cursor-pointer shadow-sm disabled:opacity-50"
               >
                 <span>💬 카카오 1초 간편 로그인</span>
               </button>
 
               {/* 구글 간편 로그인 버튼 */}
               <button
-                onClick={() => handleSimulateLogin('구글')}
-                className="w-full py-3 px-4 rounded-xl bg-white border border-slate-300 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200 font-bold text-xs flex items-center justify-center gap-2 transition-colors cursor-pointer shadow-sm"
+                onClick={() => handleProviderLogin('google')}
+                disabled={isLoggingIn}
+                className="w-full py-3 px-4 rounded-xl bg-white border border-slate-300 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200 font-bold text-xs flex items-center justify-center gap-2 transition-colors cursor-pointer shadow-sm disabled:opacity-50"
               >
                 <span>구글 계정으로 계속하기</span>
               </button>
