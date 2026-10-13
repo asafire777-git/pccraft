@@ -192,6 +192,17 @@ export default async function ArticleDetailPage({ params }: PageProps) {
           </div>
         </header>
 
+        {/* 대표 썸네일 커버 배너 */}
+        {article.coverImage && (
+          <div className="mb-8 w-full h-[240px] sm:h-[360px] md:h-[420px] rounded-3xl overflow-hidden relative shadow-xl bg-slate-950 border border-slate-200/80 dark:border-slate-800">
+            <img
+              src={article.coverImage}
+              alt={article.title}
+              className="w-full h-full object-cover object-center"
+            />
+          </div>
+        )}
+
         {/* 상단 핵심 요약 (Key Takeaways) */}
         {article.keyTakeaways && article.keyTakeaways.length > 0 && (
           <aside aria-label="핵심 요약" className="my-6 p-5 sm:p-6 rounded-2xl bg-gradient-to-br from-cyan-50/80 to-blue-50/80 dark:from-slate-900 dark:to-cyan-950/30 border border-cyan-200 dark:border-cyan-800/60 shadow-sm">

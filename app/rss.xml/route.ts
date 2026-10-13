@@ -59,6 +59,7 @@ export async function GET(request: NextRequest) {
         <p>${article.subtitle}</p>
         <p>🏷️ 카테고리: ${article.categoryLabel} | ⏱️ 예상 소요 시간: ${article.readTimeMinutes}분</p>
         <p>💡 요약: ${article.summary}</p>
+        ${article.coverImage ? `<p><img src="${baseUrl}${article.coverImage}" alt="${article.title}" style="max-width:100%; height:auto;" /></p>` : ''}
         <p><a href="${baseUrl}/lab/${article.slug}">리포트 전문 읽기</a></p>
       `.trim(),
       category: `하드웨어/${article.category}`,

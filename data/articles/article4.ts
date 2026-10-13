@@ -12,7 +12,7 @@ export const article4: Article = {
   updatedAt: '2026-10-13',
   readTimeMinutes: 13,
   viewCount: 3120,
-  coverImage: '/banners/banner-hardware.jpg',
+  coverImage: '/banners/articles/article-4-bottleneck-guide.jpg',
   tags: ['병목현상', 'CPU 병목', 'GPU 로드율', '해상도 매칭', 'MSI 애프터버너', 'FHD vs QHD'],
   summary: 'CPU와 그래픽카드의 밸런스가 맞지 않을 때 발생하는 프레임 드랍과 스터터링의 기술적 원인을 규명하고, 내 모니터 해상도(FHD/QHD/4K)에 최적화된 하드웨어 조합 공식을 제공합니다.',
   keyTakeaways: [

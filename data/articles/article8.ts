@@ -12,7 +12,7 @@ export const article8: Article = {
   updatedAt: '2026-10-13',
   readTimeMinutes: 14,
   viewCount: 3650,
-  coverImage: '/banners/banner-monitor.jpg',
+  coverImage: '/banners/articles/article-8-gaming-monitor.jpg',
   tags: ['OLED 게이밍 모니터', 'Fast-IPS', '240Hz', '360Hz', 'QD-OLED', '삼성 오디세이', 'LG 울트라기어'],
   summary: '게이밍 모니터 시장의 대세로 자리 잡은 OLED 패널과 성숙된 Fast-IPS의 장단점을 비교하고, 인간의 눈이 인지할 수 있는 주사율의 한계와 그래픽카드 체급별 최적 모니터 조합을 정리합니다.',
   keyTakeaways: [

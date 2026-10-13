@@ -13,7 +13,7 @@ export const article2: Article = {
   readTimeMinutes: 15,
   viewCount: 3890,
   featured: true,
-  coverImage: '/banners/banner-hardware.jpg',
+  coverImage: '/banners/articles/article-2-cpu-hierarchy.jpg',
   tags: ['라이젠 9800X3D', '코어 Ultra 285K', 'CPU 계급도', '7800X3D', '7500F', 'LGA1851', 'AM5 소켓'],
   summary: '2026년 10월 최신 게이밍 CPU 시장의 양대 산맥인 AMD 젠 5(Zen 5) 3D V-Cache 프로세서와 인텔 코어 Ultra 200S(Arrow Lake)의 아키텍처, 실측 프레임, 발열, 소켓 수명을 비교 분석합니다.',
   keyTakeaways: [

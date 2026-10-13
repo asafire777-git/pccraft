@@ -13,7 +13,7 @@ export const article9: Article = {
   readTimeMinutes: 16,
   viewCount: 5120,
   featured: true,
-  coverImage: '/banners/banner-prebuilt.jpg',
+  coverImage: '/banners/articles/article-9-budget-pc-tier.jpg',
   tags: ['조립PC 견적', '80만원 견적', '120만원 견적', '180만원 견적', '250만원 견적', '가성비 컴퓨터', '게이밍PC 추천'],
   summary: '2026년 10월 실시간 부품 시세를 반영하여 80만 원대 초가성비 엔트리부터 400만 원대 플래그십 종결 세팅까지 5단계 예산별 가장 이상적인 부품 조합표와 타협 기준을 총정리했습니다.',
   keyTakeaways: [

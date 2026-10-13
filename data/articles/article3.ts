@@ -13,7 +13,7 @@ export const article3: Article = {
   readTimeMinutes: 16,
   viewCount: 4520,
   featured: true,
-  coverImage: '/banners/banner-prebuilt.jpg',
+  coverImage: '/banners/articles/article-3-diy-vs-prebuilt.jpg',
   tags: ['드래곤볼 조립', '완본체 PC', '완제 컴퓨터', '조립 공임비', '윈도우 정품', '하이마트 PC', '쿠팡 완본체'],
   summary: '직접 부품을 따로따로 모으는 이른바 "드래곤볼" 조립과, 대형 플랫폼(하이마트, 쿠팡, G마켓)에서 판매하는 완본체 컴퓨터의 실제 지출 비용, 숨겨진 리스크, 사후 지원 가치를 낱낱이 파헤친 실구매 가이드입니다.',
   keyTakeaways: [

@@ -13,7 +13,7 @@ export const article1: Article = {
   readTimeMinutes: 14,
   viewCount: 4210,
   featured: true,
-  coverImage: '/banners/banner-hardware.jpg',
+  coverImage: '/banners/articles/article-1-gpu-hierarchy.jpg',
   tags: ['RTX 5090', 'RTX 5080', 'RTX 4070 SUPER', '그래픽카드 서열표', 'GDDR7', 'DLSS 4', '블랙웰'],
   summary: '2026년 10월 하반기 기준 최신 엔비디아 블랙웰(Blackwell) RTX 50 시리즈와 현역 에이다 러브레이스 RTX 40 슈퍼 시리즈의 성능, 전력 소모, 실측 게이밍 프레임을 완벽 분석한 종합 계급도 가이드입니다.',
   keyTakeaways: [

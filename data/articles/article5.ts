@@ -12,7 +12,7 @@ export const article5: Article = {
   updatedAt: '2026-10-13',
   readTimeMinutes: 14,
   viewCount: 2950,
-  coverImage: '/banners/banner-hardware.jpg',
+  coverImage: '/banners/articles/article-5-psu-atx31.jpg',
   tags: ['ATX 3.1', '12V-2x6', '파워서플라이', '80PLUS 골드', 'Cybenetics', '뻥파워 감별', '정격출력'],
   summary: 'PC 시스템의 심장인 파워서플라이의 최신 안전 규격(ATX 3.1)과 고사양 그래픽카드의 피크 소비전력 방어 원리를 분석하고, 시스템 사양별 정확한 정격 W 계산 공식을 제공합니다.',
   keyTakeaways: [

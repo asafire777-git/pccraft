@@ -12,7 +12,7 @@ export const article6: Article = {
   updatedAt: '2026-10-13',
   readTimeMinutes: 13,
   viewCount: 3410,
-  coverImage: '/banners/banner-hardware.jpg',
+  coverImage: '/banners/articles/article-6-ddr5-ram.jpg',
   tags: ['DDR5', '6000MHz CL30', 'EXPO', 'XMP 3.0', '풀뱅크 클럭 강하', '하이닉스 A다이', '듀얼채널'],
   summary: 'DDR5 규격의 아키텍처 특성과 AMD 라이젠 및 인텔 시스템에서의 최적 메모리 클럭 스윗스팟(Sweet Spot)을 명쾌하게 정리하고, 초보자가 가장 많이 실수하는 풀뱅크 구성의 함정을 분석합니다.',
   keyTakeaways: [

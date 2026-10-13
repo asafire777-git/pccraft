@@ -13,7 +13,7 @@ export const article10: Article = {
   readTimeMinutes: 15,
   viewCount: 4890,
   featured: true,
-  coverImage: '/banners/banner-infeed-wide.jpg',
+  coverImage: '/banners/articles/article-10-openmarket-deals.jpg',
   tags: ['오픈마켓 핫딜', 'G마켓 빅스마일데이', '하이마트 청구할인', '롯데ON 온쇼페', '쿠팡 반품특가', '정품 수입사', '체감가 계산'],
   summary: '국내 메이저 4대 쇼핑 플랫폼(G마켓, 롯데하이마트, 롯데ON, 쿠팡)의 할인 알고리즘과 쿠폰 정책을 심층 분석하여, 정가 대비 최대 20%~30% 이상 저렴하게 컴퓨터 부품과 완제품을 구매하는 실전 꿀팁을 전수합니다.',
   keyTakeaways: [

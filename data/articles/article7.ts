@@ -12,7 +12,7 @@ export const article7: Article = {
   updatedAt: '2026-10-13',
   readTimeMinutes: 12,
   viewCount: 2780,
-  coverImage: '/banners/banner-hardware.jpg',
+  coverImage: '/banners/articles/article-7-nvme-ssd.jpg',
   tags: ['PCIe 5.0 SSD', 'PCIe 4.0', '삼성 990 PRO', 'SK하이닉스 P41', '다이렉트스토리지', 'DRAM 탑재', '로딩 속도'],
   summary: '차세대 PCIe 5.0 SSD의 압도적인 순차 전송 속도가 실제 게임 로딩과 윈도우 환경에서 체감할 수 있는 실질적 가치를 지니는지 벤치마크 데이터를 통해 분석하고 현명한 가성비 SSD 선택법을 제시합니다.',
   keyTakeaways: [
