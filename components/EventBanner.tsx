@@ -150,14 +150,14 @@ export default function EventBanner() {
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-5 sm:gap-7 mt-2">
           {/* 좌측: 타이틀, 혜택 설명, 쿠폰 복사 & CTA 버튼 */}
           <div className="flex-1 min-w-0">
-            <h3 className="text-lg sm:text-2xl md:text-3xl font-black text-slate-900 dark:text-white tracking-tight leading-snug">
+            <h3 className="text-xl sm:text-2xl md:text-3xl font-black text-slate-900 dark:text-white tracking-tight leading-snug">
               <span>{current.title}</span>
             </h3>
-            <p className="text-xs sm:text-sm md:text-base text-slate-600 dark:text-slate-300 mt-2 leading-relaxed font-medium">
+            <p className="text-sm sm:text-base md:text-lg text-slate-700 dark:text-slate-100 mt-2.5 leading-relaxed font-semibold">
               {current.subtitle}
               {current.highlightText && (
-                <span className="hidden sm:inline font-bold text-cyan-600 dark:text-cyan-400 ml-2">
-                  • {current.highlightText}
+                <span className="inline-block font-extrabold text-cyan-600 dark:text-cyan-300 ml-2 bg-cyan-500/10 dark:bg-cyan-950/60 px-2 py-0.5 rounded-md border border-cyan-500/30">
+                  {current.highlightText}
                 </span>
               )}
             </p>
