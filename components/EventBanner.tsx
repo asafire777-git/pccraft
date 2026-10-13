@@ -153,10 +153,10 @@ export default function EventBanner() {
             <h3 className="text-xl sm:text-2xl md:text-3xl font-black text-slate-900 dark:text-white tracking-tight leading-snug">
               <span>{current.title}</span>
             </h3>
-            <p className="text-sm sm:text-base md:text-lg text-slate-700 dark:text-slate-100 mt-2.5 leading-relaxed font-semibold">
+            <p className="text-sm sm:text-base md:text-lg text-slate-800 dark:text-slate-100 mt-2.5 leading-relaxed font-semibold">
               {current.subtitle}
               {current.highlightText && (
-                <span className="inline-block font-extrabold text-cyan-600 dark:text-cyan-300 ml-2 bg-cyan-500/10 dark:bg-cyan-950/60 px-2 py-0.5 rounded-md border border-cyan-500/30">
+                <span className="inline-flex items-center font-black text-xs sm:text-sm text-white ml-2 bg-cyan-600 px-2.5 py-1 rounded-lg border border-cyan-400 shadow-sm align-middle tracking-tight">
                   {current.highlightText}
                 </span>
               )}
