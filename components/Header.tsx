@@ -82,8 +82,13 @@ export default function Header({ onOpenQuoteStorage }: HeaderProps = {}) {
               )}
             </button>
 
-            {/* 견적 저장 및 로그인 버튼 */}
-            {session?.user ? (
+            {/* 견적 저장 및 로그인 버튼 (새로고침 깜빡임 방지: status === 'loading' 스켈레톤 처리) */}
+            {status === 'loading' ? (
+              <div className="flex items-center gap-2">
+                <div className="h-8 w-20 rounded-xl bg-slate-200 dark:bg-slate-800 animate-pulse" />
+                <div className="h-7 w-7 rounded-full bg-slate-200 dark:bg-slate-800 animate-pulse" />
+              </div>
+            ) : session?.user ? (
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => {
