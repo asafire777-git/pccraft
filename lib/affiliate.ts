@@ -73,14 +73,18 @@ export const PREBUILT_SEARCH_KEYWORDS: Record<string, string> = {
 };
 
 /**
- * 부품 ID를 기반으로 쿠팡 공식 파트너스 최저가 검색 리스트로 자동 직행
- * - link.coupang.com/re/AFFSRP 경유로 trac_lptag=AF5322745 수익 쿠키 100% 자동 장착
+ * 부품 ID 및 모델명을 기반으로 쿠팡 공식 파트너스 최저가 검색 리스트로 자동 직행
+ * - 1순위: 관리자 지정 특정 단축링크(CUSTOM_AFFILIATE_LINKS)
+ * - 2순위: 견적 추천에 명시된 '정확한 브랜드 + 모델명 풀네임'으로 검색 직행 (예: "Thermalright Assassin X 120 Refined SE", "MSI MAG B760M 박격포 II")
+ * - 3순위: 기본 하드웨어 키워드 사전
+ * - link.coupang.com/re/AFFSRP 경유로 lptag=AF5322745 수익 쿠키 100% 자동 장착
  */
 export function getCoupangProductUrl(componentId: string, fallbackName?: string): string {
   if (CUSTOM_AFFILIATE_LINKS[componentId]) {
     return CUSTOM_AFFILIATE_LINKS[componentId];
   }
-  const keyword = COMPONENT_SEARCH_KEYWORDS[componentId] || fallbackName || '컴퓨터 부품';
+  // 정확한 브랜드 + 상품 풀네임 우선 적용 (지마켓과 동일하게 정확한 모델 최저가 검색)
+  const keyword = fallbackName || COMPONENT_SEARCH_KEYWORDS[componentId] || '컴퓨터 부품';
   return `https://link.coupang.com/re/AFFSRP?pageKey=${encodeURIComponent(keyword)}&lptag=${COUPANG_PARTNER_ID}&subid=${COUPANG_SUB_ID}`;
 }
 
