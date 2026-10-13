@@ -20,22 +20,26 @@ const USER_CACHE_KEY = 'pccraft_user_cache_v1';
 export default function Header({ onOpenQuoteStorage }: HeaderProps = {}) {
   const { theme, toggleTheme } = useTheme();
   const { data: session, status } = useSession();
-  const [cachedUser, setCachedUser] = useState<CachedUser | null>(null);
-  const [isClientReady, setIsClientReady] = useState(false);
+
+  // 브라우저 첫 렌더링 즉시 동기식으로 캐시를 읽어와 초기 상태로 세팅 (useEffect 대기 시간 0초)
+  const [cachedUser, setCachedUser] = useState<CachedUser | null>(() => {
+    if (typeof window !== 'undefined') {
+      try {
+        const saved = localStorage.getItem(USER_CACHE_KEY);
+        if (saved) return JSON.parse(saved);
+      } catch (e) {
+        console.error(e);
+      }
+    }
+    return null;
+  });
+
+  const [mounted, setMounted] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [isLoggingIn, setIsLoggingIn] = useState(false);
 
-  // 로컬 캐시에서 로그인 정보 즉시 복원하여 새로고침 시 0.001초만에 프로필 표시
   useEffect(() => {
-    setIsClientReady(true);
-    try {
-      const saved = localStorage.getItem(USER_CACHE_KEY);
-      if (saved) {
-        setCachedUser(JSON.parse(saved));
-      }
-    } catch (e) {
-      console.error(e);
-    }
+    setMounted(true);
   }, []);
 
   // 세션 상태가 업데이트되면 캐시 동기화
@@ -153,55 +157,62 @@ export default function Header({ onOpenQuoteStorage }: HeaderProps = {}) {
             </button>
 
             {/* 2. 유저 프로필 영역: 캐시된 정보를 활용하여 새로고침 시에도 즉시 프로필 렌더링 (깜빡임 0%) */}
-            {(() => {
-              // 실제 세션 유저 또는 즉시 복원된 캐시 유저
-              const currentUser = session?.user || cachedUser;
+            <div className="min-w-[84px] flex items-center justify-end">
+              {(() => {
+                const currentUser = session?.user || cachedUser;
 
-              if (currentUser && (status !== 'unauthenticated' || cachedUser)) {
+                // 브라우저에 캐시된 유저가 있거나 세션이 있는 경우 즉시 프로필 렌더링
+                if (currentUser && (status !== 'unauthenticated' || cachedUser)) {
+                  return (
+                    <div className="flex items-center gap-2 pl-1 sm:pl-2 border-l border-slate-200 dark:border-slate-800">
+                      <Link
+                        href="/mypage"
+                        className="flex items-center gap-1.5 sm:gap-2 hover:opacity-80 transition-opacity"
+                        title="마이페이지로 이동"
+                      >
+                        {currentUser.image ? (
+                          <img
+                            src={currentUser.image}
+                            alt={currentUser.name || 'User'}
+                            className="w-7 h-7 rounded-full ring-2 ring-cyan-500/30 object-cover"
+                          />
+                        ) : (
+                          <div className="w-7 h-7 rounded-full bg-cyan-600 text-white flex items-center justify-center text-xs font-bold">
+                            {currentUser.name?.[0] || 'U'}
+                          </div>
+                        )}
+                        <span className="text-xs font-bold text-slate-800 dark:text-slate-200 hidden md:inline max-w-[80px] truncate">
+                          {currentUser.name || '회원'}님
+                        </span>
+                      </Link>
+                      <button
+                        onClick={handleSignOut}
+                        title="로그아웃"
+                        className="p-1.5 rounded-lg text-slate-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors cursor-pointer"
+                      >
+                        <LogOut className="w-3.5 h-3.5" />
+                      </button>
+                    </div>
+                  );
+                }
+
+                // 아직 클라이언트 마운트 전(SSR 순간)에는 로그인 버튼을 성급히 그리지 않고 보이지 않게 자리만 유지
+                if (!mounted) {
+                  return <div className="w-[72px] h-[34px]" />;
+                }
+
+                // 마운트 후 확실한 비로그인 상태일 때만 로그인 버튼 표시
                 return (
-                  <div className="flex items-center gap-2 pl-1 sm:pl-2 border-l border-slate-200 dark:border-slate-800">
-                    <Link
-                      href="/mypage"
-                      className="flex items-center gap-1.5 sm:gap-2 hover:opacity-80 transition-opacity"
-                      title="마이페이지로 이동"
-                    >
-                      {currentUser.image ? (
-                        <img
-                          src={currentUser.image}
-                          alt={currentUser.name || 'User'}
-                          className="w-7 h-7 rounded-full ring-2 ring-cyan-500/30 object-cover"
-                        />
-                      ) : (
-                        <div className="w-7 h-7 rounded-full bg-cyan-600 text-white flex items-center justify-center text-xs font-bold">
-                          {currentUser.name?.[0] || 'U'}
-                        </div>
-                      )}
-                      <span className="text-xs font-bold text-slate-800 dark:text-slate-200 hidden md:inline max-w-[80px] truncate">
-                        {currentUser.name || '회원'}님
-                      </span>
-                    </Link>
-                    <button
-                      onClick={handleSignOut}
-                      title="로그아웃"
-                      className="p-1.5 rounded-lg text-slate-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors cursor-pointer"
-                    >
-                      <LogOut className="w-3.5 h-3.5" />
-                    </button>
-                  </div>
+                  <button
+                    onClick={() => setShowLoginModal(true)}
+                    className="px-3.5 py-2 rounded-xl bg-slate-900 text-white dark:bg-cyan-500 dark:text-slate-950 font-bold text-xs flex items-center gap-1.5 hover:opacity-90 transition-opacity shadow-sm cursor-pointer"
+                  >
+                    <User className="w-3.5 h-3.5 text-cyan-400 dark:text-slate-950" />
+                    <span>로그인</span>
+                  </button>
                 );
-              }
-
-              // 비로그인 상태일 때만 로그인 버튼 표시
-              return (
-                <button
-                  onClick={() => setShowLoginModal(true)}
-                  className="px-3.5 py-2 rounded-xl bg-slate-900 text-white dark:bg-cyan-500 dark:text-slate-950 font-bold text-xs flex items-center gap-1.5 hover:opacity-90 transition-opacity shadow-sm cursor-pointer"
-                >
-                  <User className="w-3.5 h-3.5 text-cyan-400 dark:text-slate-950" />
-                  <span>로그인</span>
-                </button>
-              );
-            })()}
+              })()}
+            </div>
           </div>
         </div>
       </header>
