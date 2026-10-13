@@ -161,6 +161,14 @@ export default function Header({ onOpenQuoteStorage }: HeaderProps = {}) {
               <span>💻 노트북&amp;완제관</span>
             </Link>
             <Link
+              href="/deals"
+              className={`hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors cursor-pointer flex items-center gap-1 ${
+                pathname === '/deals' ? 'text-cyan-600 dark:text-cyan-400 font-bold' : ''
+              }`}
+            >
+              <span>🏷️ 할인 캘린더</span>
+            </Link>
+            <Link
               href="/lab"
               className={`hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors cursor-pointer flex items-center gap-1.5 ${
                 pathname?.startsWith('/lab') ? 'text-cyan-600 dark:text-cyan-400 font-bold' : ''

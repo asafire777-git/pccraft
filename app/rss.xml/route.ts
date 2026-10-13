@@ -38,6 +38,18 @@ export async function GET(request: NextRequest) {
       category: '쇼핑/노트북',
       pubDate: new Date('2026-10-14T00:00:00Z').toUTCString(),
     },
+    {
+      title: '2026 주요 오픈마켓 쇼핑몰별 카드 청구할인 & 핫딜 캘린더',
+      link: `${baseUrl}/deals`,
+      guid: `${baseUrl}/deals`,
+      description: `
+        <p><strong>롯데하이마트, 롯데ON 온쇼페, G마켓, 쿠팡 공식 승인 제휴몰 실시간 카드할인 및 쿠폰 혜택 캘린더입니다.</strong></p>
+        <p>컴퓨터 부품 및 게이밍 완제품 결제 시 요일별 5~10% 카드사 청구할인, 선착순 다운로드 쿠폰 코드, 간편결제 청구할인 주의사항 등 실결제 금액을 절약하는 금융 팁을 제공합니다.</p>
+        <p><a href="${baseUrl}/deals">할인 캘린더 바로가기</a></p>
+      `.trim(),
+      category: '쇼핑/할인정보',
+      pubDate: new Date('2026-10-14T00:00:00Z').toUTCString(),
+    },
     ...ALL_ARTICLES.map((article) => ({
       title: `[하드웨어 리포트] ${article.title}`,
       link: `${baseUrl}/lab/${article.slug}`,
