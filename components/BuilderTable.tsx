@@ -223,21 +223,14 @@ export default function BuilderTable({
                   {key === 'cpu' && (
                     <div className="mt-1.5 flex items-center gap-1.5 flex-wrap">
                       <span className="text-[10px] font-bold text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-950/50 border border-red-200 dark:border-red-800/40 px-2 py-0.5 rounded">
-                        ⚡ 알리 초이스데이 직구특가 (할인코드: CHOICE04) 대상
+                        ⚡ 알리익스프레스 글로벌 직구 시세 비교 지원
                       </span>
                     </div>
                   )}
                   {key === 'gpu' && (
                     <div className="mt-1.5 flex items-center gap-1.5 flex-wrap">
                       <span className="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/50 border border-emerald-200 dark:border-emerald-800/40 px-2 py-0.5 rounded">
-                        🎫 G마켓 디지털 빅세일 최대 15% 중복쿠폰 적용 가능
-                      </span>
-                    </div>
-                  )}
-                  {key === 'ssd' && (
-                    <div className="mt-1.5 flex items-center gap-1.5 flex-wrap">
-                      <span className="text-[10px] font-bold text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/50 border border-amber-200 dark:border-amber-800/40 px-2 py-0.5 rounded">
-                        🟡 SSG 신세계위크 행사카드 즉시할인 진행중
+                        🟢 G마켓 실시간 판매처 최저가 비교 가능
                       </span>
                     </div>
                   )}

@@ -31,9 +31,7 @@ export default function MultiPlatformExhibitionGrid() {
   const platformTabs = [
     { key: 'all', label: '전체 보기', icon: '🔥' },
     { key: 'coupang', label: '쿠팡 로켓특가', icon: '🚀' },
-    { key: 'gmarket', label: 'G마켓 빅세일', icon: '🟢' },
-    { key: 'aliexpress', label: '알리 직구특가', icon: '⚡' },
-    { key: 'ssg', label: 'SSG 신세계', icon: '🟡' }
+    { key: 'gmarket', label: 'G마켓 특가전', icon: '🟢' }
   ];
 
   return (
@@ -41,15 +39,15 @@ export default function MultiPlatformExhibitionGrid() {
       {/* 헤더 타이틀 영역 */}
       <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-6">
         <div>
-          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20 mb-2">
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-cyan-500/10 text-cyan-700 dark:text-cyan-400 border border-cyan-500/20 mb-2">
             <Sparkles className="w-3.5 h-3.5" />
-            전 플랫폼 실시간 프로모션 &amp; 할인코드 허브
+            공식 제휴 실시간 기획전 &amp; 부품 할인전
           </div>
           <h3 className="text-xl sm:text-2xl md:text-3xl font-black text-slate-900 dark:text-white tracking-tight">
-            🔥 2026 오픈마켓·쿠팡 공식 빅세일 &amp; 쿠폰 대전
+            🔥 주요 플랫폼 실시간 PC 기획전 &amp; 부품 모음
           </h3>
           <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
-            G마켓 중복쿠폰부터 알리 직구 할인코드, SSG 청구할인, 쿠팡 로켓배송까지 실시간 혜택을 모아 제공합니다.
+            공식 승인된 쿠팡 로켓배송 및 G마켓 실시간 최저가 기획전을 투명하게 제공합니다.
           </p>
         </div>
         <div className="flex items-center gap-1 text-[11px] text-slate-400 mt-2 sm:mt-0 font-mono">
