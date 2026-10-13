@@ -64,6 +64,12 @@ export default function EventBanner() {
       glow: 'from-emerald-950/40 via-slate-900/60 to-slate-900/90 dark:from-emerald-950/60 dark:via-slate-900/80 dark:to-slate-950/90',
       btn: 'bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white shadow-emerald-500/20'
     },
+    lotteon: {
+      badge: 'bg-rose-500/20 text-rose-700 dark:text-rose-300 border-rose-500/30',
+      border: 'border-rose-500/30 hover:border-rose-500/60',
+      glow: 'from-rose-950/40 via-slate-900/60 to-slate-900/90 dark:from-rose-950/60 dark:via-slate-900/80 dark:to-slate-950/90',
+      btn: 'bg-gradient-to-r from-rose-600 to-red-600 hover:from-rose-500 hover:to-red-500 text-white shadow-rose-500/20'
+    },
     aliexpress: {
       badge: 'bg-rose-500/20 text-rose-700 dark:text-rose-300 border-rose-500/30',
       border: 'border-rose-500/30 hover:border-rose-500/60',

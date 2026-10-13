@@ -30,6 +30,7 @@ export default function MultiPlatformExhibitionGrid() {
 
   const platformTabs = [
     { key: 'all', label: '전체 보기', icon: '🔥' },
+    { key: 'lotteon', label: '롯데ON 온쇼페', icon: '🔴' },
     { key: 'coupang', label: '쿠팡 로켓특가', icon: '🚀' },
     { key: 'gmarket', label: 'G마켓 특가전', icon: '🟢' }
   ];

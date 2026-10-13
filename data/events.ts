@@ -6,7 +6,7 @@ import {
   getPromoGatewayUrl
 } from '@/lib/affiliate';
 
-export type PlatformType = 'coupang' | 'gmarket' | 'ssg' | 'aliexpress' | '11st';
+export type PlatformType = 'coupang' | 'gmarket' | 'lotteon' | 'ssg' | 'aliexpress' | '11st';
 
 export interface PromoEvent {
   id: string;
@@ -29,12 +29,32 @@ export interface PromoEvent {
 }
 
 /**
- * 전 플랫폼(쿠팡, G마켓, 알리익스프레스, SSG닷컴) 실시간 프로모션 & 쿠폰 기획전 데이터베이스
+ * 전 플랫폼(쿠팡, G마켓, 롯데ON 등) 실시간 프로모션 & 쿠폰 기획전 데이터베이스
+ * - 공식 승인된 머천트의 실제 진행 기획전만 엄선하여 노출합니다.
  * - startDate ~ endDate 기간 내에만 사이트에 자동 노출됩니다.
  * - 종료일이 지나면 사람의 개입 없이 100% 자동으로 내려갑니다.
  * - 각 플랫폼의 제휴 트래킹 링크(링크프라이스, 쿠팡 파트너스)가 탑재되어 있어 전환 시 수익이 자동 귀속됩니다.
  */
 export const PROMO_EVENTS: PromoEvent[] = [
+  // 1. [롯데ON] 30주년 온쇼페! (공식 승인 완료 머천트 실제 진행 기획전)
+  {
+    id: 'event-lotteon-30th',
+    platform: 'lotteon',
+    platformName: '롯데ON',
+    title: '[롯데ON] 30주년 온쇼페! 디지털/가전 카테고리데이 & 메가딜',
+    subtitle: '최대 30% 포인트백, 배민클럽 제휴할인 & 디지털가전 특별 기획전',
+    badge: '30주년 온쇼페',
+    discountRate: '최대 30% 혜택',
+    couponText: '일 3회 순차오픈 & 결제할인',
+    startDate: '2026-10-12',
+    endDate: '2026-10-21',
+    affiliateUrl: 'https://click.linkprice.com/click.php?m=lotteon&a=A100708723&l=9999&l_cd1=3&l_cd2=0&tu=https%3A%2F%2Fwww.lotteon.com%2Fdisplay%2Fshop%2FseltDpShop%2F53749%3Fch_no%3D100995%26ch_dtl_no%3D1075172',
+    themeColor: 'red',
+    tag: '온쇼페 특가',
+    highlightText: '10/12 ~ 10/21 한정 기획전',
+    imageUrl: '/banners/banner-hardware.jpg',
+    imageAlt: '롯데ON 30주년 온쇼페 기획전'
+  },
   // 1. [쿠팡] 2026 게이밍 조립 PC & 로켓배송 실시간 기획전 (공식 승인 파트너스 링크)
   {
     id: 'event-pc-gaming-coupang',
