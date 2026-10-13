@@ -6,7 +6,7 @@ import { ShoppingCart, ExternalLink, RefreshCw, Check, Sparkles, Bookmark, Share
 import ComponentThumbnail from './ComponentThumbnail';
 import BulkOrderModal from './BulkOrderModal';
 import { GamePreset, GAME_PRESETS } from '@/data/presets';
-import { getCoupangProductUrl, getCoupangBulkCartUrl, getOpenMarketProductUrl } from '@/lib/affiliate';
+import { getCoupangProductUrl, getCoupangBulkCartUrl, getOpenMarketProductUrl, getPromoGatewayUrl } from '@/lib/affiliate';
 
 interface BuilderTableProps {
   selectedComponents: Record<string, ComponentItem>;
@@ -218,6 +218,29 @@ export default function BuilderTable({
                       {item.recommendationReason}
                     </p>
                   )}
+
+                  {/* 실시간 플랫폼 프로모션 및 쿠폰 적용 힌트 배지 */}
+                  {key === 'cpu' && (
+                    <div className="mt-1.5 flex items-center gap-1.5 flex-wrap">
+                      <span className="text-[10px] font-bold text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-950/50 border border-red-200 dark:border-red-800/40 px-2 py-0.5 rounded">
+                        ⚡ 알리 초이스데이 직구특가 (할인코드: CHOICE04) 대상
+                      </span>
+                    </div>
+                  )}
+                  {key === 'gpu' && (
+                    <div className="mt-1.5 flex items-center gap-1.5 flex-wrap">
+                      <span className="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/50 border border-emerald-200 dark:border-emerald-800/40 px-2 py-0.5 rounded">
+                        🎫 G마켓 디지털 빅세일 최대 15% 중복쿠폰 적용 가능
+                      </span>
+                    </div>
+                  )}
+                  {key === 'ssd' && (
+                    <div className="mt-1.5 flex items-center gap-1.5 flex-wrap">
+                      <span className="text-[10px] font-bold text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/50 border border-amber-200 dark:border-amber-800/40 px-2 py-0.5 rounded">
+                        🟡 SSG 신세계위크 행사카드 즉시할인 진행중
+                      </span>
+                    </div>
+                  )}
                 </div>
               </div>
 
@@ -288,6 +311,19 @@ export default function BuilderTable({
                     <span>🛒 G마켓 특가</span>
                     <ExternalLink className="w-3 h-3" />
                   </a>
+
+                  {key === 'cpu' && (
+                    <a
+                      href={getPromoGatewayUrl('aliexpress', undefined, item.name)}
+                      target="_blank"
+                      rel="noopener noreferrer nofollow"
+                      className="px-2.5 sm:px-3 py-2 rounded-xl bg-red-600 hover:bg-red-500 text-white text-xs font-bold flex items-center gap-1 transition-colors shadow-sm"
+                      title="알리익스프레스 초이스데이 직구 특가"
+                    >
+                      <span>⚡ 알리직구</span>
+                      <ExternalLink className="w-3 h-3" />
+                    </a>
+                  )}
                 </div>
               </div>
             </div>

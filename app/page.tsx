@@ -13,7 +13,7 @@ import BuilderTable from '@/components/BuilderTable';
 import PriceBattle from '@/components/PriceBattle';
 import QuoteStorageModal from '@/components/QuoteStorageModal';
 import PrebuiltComparison from '@/components/PrebuiltComparison';
-import CoupangExhibitionGrid from '@/components/CoupangExhibitionGrid';
+import MultiPlatformExhibitionGrid from '@/components/MultiPlatformExhibitionGrid';
 import AiAnalysisCard from '@/components/AiAnalysisCard';
 import { GAME_PRESETS, GamePreset } from '@/data/presets';
 import { COMPONENTS_DATA, ComponentItem } from '@/data/components';
@@ -194,8 +194,8 @@ export default function HomePage() {
           />
         </div>
 
-        {/* 하단 쿠팡 테마별 기획전 핫딜 배너 그리드 (모니터 / 게이밍 기어 / 완본체) */}
-        <CoupangExhibitionGrid />
+        {/* 하단 오픈마켓·쿠팡 통합 실시간 프로모션 & 핫딜 허브 그리드 */}
+        <MultiPlatformExhibitionGrid />
 
         {/* 7. AI 정밀 벤치마크 및 SEO 콘텐츠 카드 */}
         <div id="specs-analysis">

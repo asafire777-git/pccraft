@@ -2,24 +2,26 @@
 
 import React, { useState, useEffect } from 'react';
 import { PromoEvent, getActivePromoEvents, getEventRemainingDays } from '@/data/events';
-import { Sparkles, ExternalLink, ChevronLeft, ChevronRight, Clock, Tag, X } from 'lucide-react';
+import { Sparkles, ExternalLink, ChevronLeft, ChevronRight, Clock, Tag, X, Copy, Check, Ticket } from 'lucide-react';
 
 export default function EventBanner() {
   const [activeEvents, setActiveEvents] = useState<PromoEvent[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isDismissed, setIsDismissed] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
+  const [copiedCode, setCopiedCode] = useState(false);
 
   useEffect(() => {
     setActiveEvents(getActivePromoEvents());
   }, []);
 
-  // 활성 이벤트가 여러 개일 경우 6초마다 자동 슬라이드
+  // 활성 이벤트가 여러 개일 경우 7초마다 자동 슬라이드
   useEffect(() => {
     if (activeEvents.length <= 1 || isPaused || isDismissed) return;
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % activeEvents.length);
-    }, 6000);
+      setCopiedCode(false);
+    }, 7000);
     return () => clearInterval(interval);
   }, [activeEvents.length, isPaused, isDismissed]);
 
@@ -32,52 +34,51 @@ export default function EventBanner() {
 
   const prevSlide = () => {
     setCurrentIndex((prev) => (prev === 0 ? activeEvents.length - 1 : prev - 1));
+    setCopiedCode(false);
   };
 
   const nextSlide = () => {
     setCurrentIndex((prev) => (prev + 1) % activeEvents.length);
+    setCopiedCode(false);
   };
 
-  // 테마 색상 맵핑
-  const themeStyles = {
-    cyan: {
+  const handleCopyCode = (code: string, e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    navigator.clipboard.writeText(code);
+    setCopiedCode(true);
+    setTimeout(() => setCopiedCode(false), 2500);
+  };
+
+  // 플랫폼별 브랜드 배지 스타일
+  const platformStyles: Record<string, { badge: string; border: string; glow: string; btn: string }> = {
+    coupang: {
+      badge: 'bg-cyan-500/20 text-cyan-700 dark:text-cyan-300 border-cyan-500/30',
       border: 'border-cyan-500/30 hover:border-cyan-500/60',
-      bg: 'bg-gradient-to-r from-cyan-950/40 via-slate-900/60 to-slate-900/90 dark:from-cyan-950/60 dark:via-slate-900/80 dark:to-slate-950/90',
-      badgeBg: 'bg-cyan-500/20 text-cyan-700 dark:text-cyan-300 border-cyan-500/30',
-      btnBg: 'bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white shadow-cyan-500/20',
-      glow: 'from-cyan-500/10 to-transparent'
+      glow: 'from-cyan-950/40 via-slate-900/60 to-slate-900/90 dark:from-cyan-950/60 dark:via-slate-900/80 dark:to-slate-950/90',
+      btn: 'bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white shadow-cyan-500/20'
     },
-    purple: {
-      border: 'border-purple-500/30 hover:border-purple-500/60',
-      bg: 'bg-gradient-to-r from-purple-950/40 via-slate-900/60 to-slate-900/90 dark:from-purple-950/60 dark:via-slate-900/80 dark:to-slate-950/90',
-      badgeBg: 'bg-purple-500/20 text-purple-700 dark:text-purple-300 border-purple-500/30',
-      btnBg: 'bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white shadow-purple-500/20',
-      glow: 'from-purple-500/10 to-transparent'
-    },
-    emerald: {
+    gmarket: {
+      badge: 'bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 border-emerald-500/30',
       border: 'border-emerald-500/30 hover:border-emerald-500/60',
-      bg: 'bg-gradient-to-r from-emerald-950/40 via-slate-900/60 to-slate-900/90 dark:from-emerald-950/60 dark:via-slate-900/80 dark:to-slate-950/90',
-      badgeBg: 'bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 border-emerald-500/30',
-      btnBg: 'bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white shadow-emerald-500/20',
-      glow: 'from-emerald-500/10 to-transparent'
+      glow: 'from-emerald-950/40 via-slate-900/60 to-slate-900/90 dark:from-emerald-950/60 dark:via-slate-900/80 dark:to-slate-950/90',
+      btn: 'bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white shadow-emerald-500/20'
     },
-    amber: {
+    aliexpress: {
+      badge: 'bg-rose-500/20 text-rose-700 dark:text-rose-300 border-rose-500/30',
+      border: 'border-rose-500/30 hover:border-rose-500/60',
+      glow: 'from-rose-950/40 via-slate-900/60 to-slate-900/90 dark:from-rose-950/60 dark:via-slate-900/80 dark:to-slate-950/90',
+      btn: 'bg-gradient-to-r from-rose-600 to-red-600 hover:from-rose-500 hover:to-red-500 text-white shadow-rose-500/20'
+    },
+    ssg: {
+      badge: 'bg-amber-500/20 text-amber-700 dark:text-amber-300 border-amber-500/30',
       border: 'border-amber-500/30 hover:border-amber-500/60',
-      bg: 'bg-gradient-to-r from-amber-950/40 via-slate-900/60 to-slate-900/90 dark:from-amber-950/60 dark:via-slate-900/80 dark:to-slate-950/90',
-      badgeBg: 'bg-amber-500/20 text-amber-700 dark:text-amber-300 border-amber-500/30',
-      btnBg: 'bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-500 hover:to-orange-500 text-white shadow-amber-500/20',
-      glow: 'from-amber-500/10 to-transparent'
-    },
-    blue: {
-      border: 'border-blue-500/30 hover:border-blue-500/60',
-      bg: 'bg-gradient-to-r from-blue-950/40 via-slate-900/60 to-slate-900/90 dark:from-blue-950/60 dark:via-slate-900/80 dark:to-slate-950/90',
-      badgeBg: 'bg-blue-500/20 text-blue-700 dark:text-blue-300 border-blue-500/30',
-      btnBg: 'bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white shadow-blue-500/20',
-      glow: 'from-blue-500/10 to-transparent'
+      glow: 'from-amber-950/40 via-slate-900/60 to-slate-900/90 dark:from-amber-950/60 dark:via-slate-900/80 dark:to-slate-950/90',
+      btn: 'bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-500 hover:to-orange-500 text-white shadow-amber-500/20'
     }
   };
 
-  const style = themeStyles[current.themeColor] || themeStyles.cyan;
+  const style = platformStyles[current.platform] || platformStyles.coupang;
 
   return (
     <div
@@ -86,27 +87,38 @@ export default function EventBanner() {
       className="relative mb-6 rounded-2xl overflow-hidden shadow-lg transition-all duration-300"
     >
       <div
-        className={`relative border ${style.border} ${style.bg} p-4 sm:p-5 backdrop-blur-md rounded-2xl transition-colors`}
+        className={`relative border ${style.border} bg-gradient-to-r ${style.glow} p-4 sm:p-5 backdrop-blur-md rounded-2xl transition-colors`}
       >
         {/* 상단 뱃지 & 마감 카운트다운 */}
         <div className="flex items-center justify-between mb-2.5">
           <div className="flex items-center gap-2 flex-wrap">
+            {/* 플랫폼 태그 */}
             <span
-              className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold border ${style.badgeBg}`}
+              className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-black border ${style.badge}`}
             >
               <Sparkles className="w-3 h-3" />
-              {current.badge}
+              {current.platformName} • {current.badge}
             </span>
 
+            {/* 마감일 뱃지 */}
             <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-bold bg-rose-500/15 text-rose-600 dark:text-rose-400 border border-rose-500/30">
               <Clock className="w-3 h-3" />
               {remaining}
             </span>
 
+            {/* 할인율 뱃지 */}
             {current.discountRate && (
               <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-bold bg-amber-500/15 text-amber-600 dark:text-amber-400 border border-amber-500/30">
                 <Tag className="w-3 h-3" />
                 {current.discountRate}
+              </span>
+            )}
+
+            {/* 쿠폰 안내 뱃지 */}
+            {current.couponText && (
+              <span className="hidden sm:inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-bold bg-purple-500/15 text-purple-600 dark:text-purple-300 border border-purple-500/30">
+                <Ticket className="w-3 h-3" />
+                {current.couponText}
               </span>
             )}
           </div>
@@ -120,7 +132,7 @@ export default function EventBanner() {
             <button
               onClick={() => setIsDismissed(true)}
               aria-label="이벤트 배너 닫기"
-              className="p-1 rounded-lg hover:bg-slate-200/50 dark:hover:bg-slate-800 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors"
+              className="p-1 rounded-lg hover:bg-slate-200/50 dark:hover:bg-slate-800 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors cursor-pointer"
               title="배너 닫기"
             >
               <X className="w-3.5 h-3.5" />
@@ -130,7 +142,7 @@ export default function EventBanner() {
 
         {/* 이벤트 내용 & 큼직한 배너 이미지 & CTA 버튼 */}
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-5 sm:gap-7 mt-2">
-          {/* 좌측: 큼직하고 시원한 타이틀, 혜택 설명, CTA 버튼 */}
+          {/* 좌측: 타이틀, 혜택 설명, 쿠폰 복사 & CTA 버튼 */}
           <div className="flex-1 min-w-0">
             <h3 className="text-lg sm:text-2xl md:text-3xl font-black text-slate-900 dark:text-white tracking-tight leading-snug">
               <span>{current.title}</span>
@@ -150,11 +162,23 @@ export default function EventBanner() {
                 href={current.affiliateUrl}
                 target="_blank"
                 rel="noopener noreferrer nofollow"
-                className={`px-5 py-3 rounded-xl font-black text-xs sm:text-sm md:text-base flex items-center gap-2 shadow-lg ${style.btnBg} transition-all duration-200 active:scale-95`}
+                className={`px-5 py-3 rounded-xl font-black text-xs sm:text-sm md:text-base flex items-center gap-2 shadow-lg ${style.btn} transition-all duration-200 active:scale-95 cursor-pointer`}
               >
-                <span>🚀 기획전 특가 보러가기</span>
+                <span>🔥 {current.platformName} 특가 보러가기</span>
                 <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5" />
               </a>
+
+              {/* 프로모션 코드 원클릭 복사 버튼 */}
+              {current.promoCode && (
+                <button
+                  onClick={(e) => handleCopyCode(current.promoCode!, e)}
+                  className="px-3.5 py-3 rounded-xl bg-slate-900/90 text-white dark:bg-slate-800 dark:text-slate-100 border border-slate-700 hover:border-amber-400 text-xs sm:text-sm font-bold flex items-center gap-1.5 transition-all active:scale-95 cursor-pointer shadow-md"
+                  title="할인코드 클립보드 복사"
+                >
+                  {copiedCode ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4 text-amber-400" />}
+                  <span>{copiedCode ? '코드 복사완료!' : `코드: ${current.promoCode}`}</span>
+                </button>
+              )}
 
               {/* 좌우 슬라이드 버튼 */}
               {activeEvents.length > 1 && (
@@ -180,14 +204,14 @@ export default function EventBanner() {
             </div>
           </div>
 
-          {/* 우측: 큼직하고 시원한 배너사 기획전 비주얼 (잘림 방지) */}
+          {/* 우측: 배너사 기획전 비주얼 */}
           {current.imageUrl && (
             <a
               href={current.affiliateUrl}
               target="_blank"
               rel="noopener noreferrer nofollow"
               className="group/banner-img relative block w-full lg:w-[400px] xl:w-[460px] h-[170px] sm:h-[220px] lg:h-[200px] xl:h-[220px] shrink-0 rounded-2xl overflow-hidden border-2 border-slate-200/90 dark:border-slate-800/90 shadow-xl hover:shadow-2xl transition-all duration-300 active:scale-[0.99] cursor-pointer bg-slate-950"
-              title={`${current.title} 기획전 바로가기`}
+              title={`${current.title} 바로가기`}
             >
               <img
                 src={current.imageUrl}
@@ -198,19 +222,19 @@ export default function EventBanner() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-0 group-hover/banner-img:opacity-100 transition-opacity flex items-end p-3">
                 <span className="text-xs font-black text-white flex items-center gap-1.5">
-                  <span>쿠팡 파트너스 공식 특가 바로가기</span>
+                  <span>{current.platformName} 공식 특가 바로가기</span>
                   <ExternalLink className="w-3.5 h-3.5" />
                 </span>
               </div>
-              <div className="absolute top-2.5 right-2.5 bg-slate-950/85 backdrop-blur-md border border-slate-700/80 px-2.5 py-1 rounded-lg text-[11px] font-bold text-cyan-300 font-mono shadow-md flex items-center gap-1">
-                <span>쿠팡 기획전</span>
-                <span>🚀</span>
+              <div className="absolute top-2.5 right-2.5 bg-slate-950/85 backdrop-blur-md border border-slate-700/80 px-2.5 py-1 rounded-lg text-[11px] font-bold text-white font-mono shadow-md flex items-center gap-1">
+                <span>{current.platformName} 공식</span>
+                <span>🔥</span>
               </div>
             </a>
           )}
         </div>
 
-        {/* 인디케이터 닷 (여러 개일 경우) */}
+        {/* 인디케이터 닷 */}
         {activeEvents.length > 1 && (
           <div className="flex items-center justify-center gap-1.5 mt-3.5 pt-2.5 border-t border-slate-200/40 dark:border-slate-800/60">
             {activeEvents.map((evt, idx) => (

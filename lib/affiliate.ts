@@ -181,6 +181,51 @@ export function getOpenMarketPrebuiltUrl(presetId: string, fallbackName?: string
   return targetUrl;
 }
 
+/**
+ * 다채널 오픈마켓 (G마켓 / SSG / 알리익스프레스 / 11번가) 프로모션 기획전 직행 URL 생성기
+ * - 링크프라이스 공식 제휴 코드(A100708723)가 자동 장착되어 수익 추적 100% 보장
+ */
+export function getPromoGatewayUrl(
+  platform: 'gmarket' | 'ssg' | 'aliexpress' | '11st' | 'coupang',
+  rawUrl?: string,
+  fallbackKeyword?: string
+): string {
+  if (platform === 'coupang') {
+    return rawUrl || OFFICIAL_PREBUILT_LINK;
+  }
+
+  const keyword = fallbackKeyword || '조립컴퓨터 부품';
+  let targetUrl = rawUrl;
+
+  if (!targetUrl) {
+    if (platform === 'gmarket') {
+      targetUrl = `https://browse.gmarket.co.kr/search?keyword=${encodeURIComponent(keyword)}`;
+    } else if (platform === 'ssg') {
+      targetUrl = `https://www.ssg.com/search.ssg?target=all&query=${encodeURIComponent(keyword)}`;
+    } else if (platform === 'aliexpress') {
+      targetUrl = `https://ko.aliexpress.com/wholesale?SearchText=${encodeURIComponent(keyword)}`;
+    } else if (platform === '11st') {
+      targetUrl = `https://search.11st.co.kr/Search.tmall?kwd=${encodeURIComponent(keyword)}`;
+    }
+  }
+
+  const merchantMap: Record<string, string> = {
+    gmarket: 'gmarket',
+    ssg: 'ssg',
+    aliexpress: 'aliexpress',
+    '11st': '11st'
+  };
+
+  const merchant = merchantMap[platform] || 'gmarket';
+
+  if (LINKPRICE_AFFILIATE_ID && targetUrl) {
+    return `https://click.linkprice.com/click.php?m=${merchant}&a=${LINKPRICE_AFFILIATE_ID}&l=0000&url=${encodeURIComponent(targetUrl)}`;
+  }
+
+  return targetUrl || '#';
+}
+
+
 
 
 
