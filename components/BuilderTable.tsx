@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { ComponentItem, COMPONENTS_DATA } from '@/data/components';
-import { ShoppingCart, ExternalLink, RefreshCw, Check, Sparkles, Bookmark, Share2 } from 'lucide-react';
+import { ShoppingCart, ExternalLink, RefreshCw, Check, Sparkles, Bookmark, Share2, Smartphone, Info } from 'lucide-react';
 import ComponentThumbnail from './ComponentThumbnail';
 import BulkOrderModal from './BulkOrderModal';
 import { GamePreset, GAME_PRESETS } from '@/data/presets';
@@ -166,6 +166,21 @@ export default function BuilderTable({
               <ShoppingCart className="w-4 h-4" />
               전 부품 일괄 담기
             </button>
+          </div>
+        </div>
+      </div>
+
+      {/* 모바일 방문자 전용 결제 안내 가이드 (오픈마켓 웹 결제 권장) */}
+      <div className="block md:hidden bg-amber-500/10 border border-amber-500/20 rounded-xl p-3 text-xs text-amber-800 dark:text-amber-300">
+        <div className="flex items-start gap-2">
+          <Smartphone className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
+          <div className="leading-relaxed">
+            <span className="font-bold block text-[11px] text-amber-900 dark:text-amber-200 mb-0.5">
+              📱 모바일 구매 팁: 웹 브라우저 결제 안내
+            </span>
+            <span className="text-[11px]">
+              G마켓/롯데ON 등 오픈마켓 이동 시 <strong>앱으로 전환하지 않고 브라우저(사파리·크롬)에서 바로 결제</strong>하시면 제휴 할인 및 적립 혜택이 정상 유지됩니다.
+            </span>
           </div>
         </div>
       </div>
