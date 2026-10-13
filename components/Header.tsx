@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Cpu, Sun, Moon, Bookmark, User, X, Check, Share2, LogOut } from 'lucide-react';
 import { useTheme } from './ThemeProvider';
@@ -10,11 +10,66 @@ interface HeaderProps {
   onOpenQuoteStorage?: () => void;
 }
 
+interface CachedUser {
+  name?: string | null;
+  image?: string | null;
+}
+
+const USER_CACHE_KEY = 'pccraft_user_cache_v1';
+
 export default function Header({ onOpenQuoteStorage }: HeaderProps = {}) {
   const { theme, toggleTheme } = useTheme();
   const { data: session, status } = useSession();
+  const [cachedUser, setCachedUser] = useState<CachedUser | null>(null);
+  const [isClientReady, setIsClientReady] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [isLoggingIn, setIsLoggingIn] = useState(false);
+
+  // 로컬 캐시에서 로그인 정보 즉시 복원하여 새로고침 시 0.001초만에 프로필 표시
+  useEffect(() => {
+    setIsClientReady(true);
+    try {
+      const saved = localStorage.getItem(USER_CACHE_KEY);
+      if (saved) {
+        setCachedUser(JSON.parse(saved));
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  }, []);
+
+  // 세션 상태가 업데이트되면 캐시 동기화
+  useEffect(() => {
+    if (session?.user) {
+      const info: CachedUser = {
+        name: session.user.name,
+        image: session.user.image,
+      };
+      setCachedUser(info);
+      try {
+        localStorage.setItem(USER_CACHE_KEY, JSON.stringify(info));
+      } catch (e) {
+        console.error(e);
+      }
+    } else if (status === 'unauthenticated') {
+      setCachedUser(null);
+      try {
+        localStorage.removeItem(USER_CACHE_KEY);
+      } catch (e) {
+        console.error(e);
+      }
+    }
+  }, [session, status]);
+
+  const handleSignOut = () => {
+    setCachedUser(null);
+    try {
+      localStorage.removeItem(USER_CACHE_KEY);
+    } catch (e) {
+      console.error(e);
+    }
+    signOut();
+  };
 
   const handleProviderLogin = async (provider: 'kakao' | 'google') => {
     try {
@@ -82,64 +137,71 @@ export default function Header({ onOpenQuoteStorage }: HeaderProps = {}) {
               )}
             </button>
 
-            {/* 견적 저장 및 로그인 버튼 (새로고침 깜빡임 방지: status === 'loading' 스켈레톤 처리) */}
-            {status === 'loading' ? (
-              <div className="flex items-center gap-2">
-                <div className="h-8 w-20 rounded-xl bg-slate-200 dark:bg-slate-800 animate-pulse" />
-                <div className="h-7 w-7 rounded-full bg-slate-200 dark:bg-slate-800 animate-pulse" />
-              </div>
-            ) : session?.user ? (
-              <div className="flex items-center gap-2">
-                <button
-                  onClick={() => {
-                    if (onOpenQuoteStorage) onOpenQuoteStorage();
-                  }}
-                  className="px-3 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-bold text-xs flex items-center gap-1.5 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors shadow-sm cursor-pointer"
-                >
-                  <Bookmark className="w-3.5 h-3.5 text-cyan-600 dark:text-cyan-400" />
-                  <span className="hidden sm:inline">내 견적</span>
-                </button>
-                <div className="flex items-center gap-2 pl-2 border-l border-slate-200 dark:border-slate-800">
-                  <Link
-                    href="/mypage"
-                    className="flex items-center gap-2 hover:opacity-80 transition-opacity"
-                    title="마이페이지로 이동"
-                  >
-                    {session.user.image ? (
-                      <img
-                        src={session.user.image}
-                        alt={session.user.name || 'User'}
-                        className="w-7 h-7 rounded-full ring-2 ring-cyan-500/30 object-cover"
-                      />
-                    ) : (
-                      <div className="w-7 h-7 rounded-full bg-cyan-600 text-white flex items-center justify-center text-xs font-bold">
-                        {session.user.name?.[0] || 'U'}
-                      </div>
-                    )}
-                    <span className="text-xs font-bold text-slate-800 dark:text-slate-200 hidden md:inline max-w-[80px] truncate">
-                      {session.user.name || '회원'}님
-                    </span>
-                  </Link>
-                  <button
-                    onClick={() => signOut()}
-                    title="로그아웃"
-                    className="p-1.5 rounded-lg text-slate-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors"
-                  >
-                    <LogOut className="w-3.5 h-3.5" />
-                  </button>
-                </div>
-              </div>
-            ) : (
-              <button
-                onClick={() => {
+            {/* 1. 내 견적 보관함 버튼: 로그인/비로그인/로딩 상관없이 항상 안정적으로 고정 렌더링 */}
+            <button
+              onClick={() => {
+                if (onOpenQuoteStorage) {
+                  onOpenQuoteStorage();
+                } else {
                   setShowLoginModal(true);
-                }}
-                className="px-3.5 py-2 rounded-xl bg-slate-900 text-white dark:bg-cyan-500 dark:text-slate-950 font-bold text-xs flex items-center gap-1.5 hover:opacity-90 transition-opacity shadow-sm cursor-pointer"
-              >
-                <Bookmark className="w-3.5 h-3.5 text-cyan-400 dark:text-slate-950" />
-                <span className="hidden sm:inline">내 견적 보관 /</span> 로그인
-              </button>
-            )}
+                }
+              }}
+              className="px-3 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-bold text-xs flex items-center gap-1.5 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors shadow-sm cursor-pointer"
+            >
+              <Bookmark className="w-3.5 h-3.5 text-cyan-600 dark:text-cyan-400" />
+              <span>내 견적</span>
+            </button>
+
+            {/* 2. 유저 프로필 영역: 캐시된 정보를 활용하여 새로고침 시에도 즉시 프로필 렌더링 (깜빡임 0%) */}
+            {(() => {
+              // 실제 세션 유저 또는 즉시 복원된 캐시 유저
+              const currentUser = session?.user || cachedUser;
+
+              if (currentUser && (status !== 'unauthenticated' || cachedUser)) {
+                return (
+                  <div className="flex items-center gap-2 pl-1 sm:pl-2 border-l border-slate-200 dark:border-slate-800">
+                    <Link
+                      href="/mypage"
+                      className="flex items-center gap-1.5 sm:gap-2 hover:opacity-80 transition-opacity"
+                      title="마이페이지로 이동"
+                    >
+                      {currentUser.image ? (
+                        <img
+                          src={currentUser.image}
+                          alt={currentUser.name || 'User'}
+                          className="w-7 h-7 rounded-full ring-2 ring-cyan-500/30 object-cover"
+                        />
+                      ) : (
+                        <div className="w-7 h-7 rounded-full bg-cyan-600 text-white flex items-center justify-center text-xs font-bold">
+                          {currentUser.name?.[0] || 'U'}
+                        </div>
+                      )}
+                      <span className="text-xs font-bold text-slate-800 dark:text-slate-200 hidden md:inline max-w-[80px] truncate">
+                        {currentUser.name || '회원'}님
+                      </span>
+                    </Link>
+                    <button
+                      onClick={handleSignOut}
+                      title="로그아웃"
+                      className="p-1.5 rounded-lg text-slate-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors cursor-pointer"
+                    >
+                      <LogOut className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
+                );
+              }
+
+              // 비로그인 상태일 때만 로그인 버튼 표시
+              return (
+                <button
+                  onClick={() => setShowLoginModal(true)}
+                  className="px-3.5 py-2 rounded-xl bg-slate-900 text-white dark:bg-cyan-500 dark:text-slate-950 font-bold text-xs flex items-center gap-1.5 hover:opacity-90 transition-opacity shadow-sm cursor-pointer"
+                >
+                  <User className="w-3.5 h-3.5 text-cyan-400 dark:text-slate-950" />
+                  <span>로그인</span>
+                </button>
+              );
+            })()}
           </div>
         </div>
       </header>
