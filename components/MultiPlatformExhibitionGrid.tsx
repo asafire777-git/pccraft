@@ -176,9 +176,9 @@ export default function MultiPlatformExhibitionGrid() {
       </div>
 
       {/* 하단 제휴 고지 */}
-      <div className="mt-4 px-3.5 py-2.5 bg-slate-50/80 dark:bg-slate-900/40 rounded-xl border border-slate-200/60 dark:border-slate-800/60 text-[10px] text-slate-400 dark:text-slate-500 flex items-center justify-between">
-        <span>※ 본 프로모션 허브는 쿠팡 파트너스 및 링크프라이스(G마켓, SSG, 알리) 공식 제휴 프로모션 링크를 기반으로 안내하며, 구매 시 소정의 수수료를 제공받을 수 있습니다.</span>
-        <span className="font-mono text-[9px] text-slate-400/80">실시간 프로모션 허브</span>
+      <div className="mt-4 px-3.5 py-2.5 bg-slate-50/80 dark:bg-slate-900/40 rounded-xl border border-slate-200/60 dark:border-slate-800/60 text-[10px] text-slate-400 dark:text-slate-500 flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+        <span>※ 본 기획전 및 추천 링크는 제휴마케팅이 포함된 정보로 링크 경유 구매 시 운영자에게 소정의 수수료가 지급될 수 있습니다. (쿠팡 파트너스, 링크프라이스 롯데ON·G마켓 공식 제휴)</span>
+        <span className="font-mono text-[9px] text-slate-400/80 shrink-0">공식 제휴 프로모션 허브</span>
       </div>
     </section>
   );
