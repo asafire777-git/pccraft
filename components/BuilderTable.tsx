@@ -326,6 +326,24 @@ export default function BuilderTable({
         })}
       </div>
 
+      {/* 실시간 시세 및 오픈마켓 재고 투명성 안내 */}
+      <div className="mt-4 p-4 rounded-2xl bg-slate-100/90 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/60 text-xs text-slate-600 dark:text-slate-400 flex items-start gap-3 leading-relaxed shadow-sm">
+        <div className="w-6 h-6 rounded-lg bg-cyan-500/10 dark:bg-cyan-500/20 text-cyan-600 dark:text-cyan-400 flex items-center justify-center shrink-0 mt-0.5 font-bold">
+          ℹ️
+        </div>
+        <div className="space-y-1">
+          <p className="font-semibold text-slate-900 dark:text-slate-200">
+            실시간 부품 시세 및 오픈마켓 재고 안내
+          </p>
+          <p>
+            ※ 견적서에 표기된 부품별 가격은 오픈마켓(쿠팡 로켓배송 / G마켓 공식유통사) 최근 실시간 평균 출고가 기준이며, 판매처의 카드 즉시할인 및 재고 변동에 따라 최종 결제 금액이 다를 수 있습니다.
+          </p>
+          <p className="text-[11px] text-slate-500 dark:text-slate-500">
+            각 부품의 <strong>[🚀 쿠팡 로켓]</strong> 또는 <strong>[🛒 G마켓 특가]</strong> 버튼을 누르면 단종/중고품이 배제된 실제 정품 재고 최저가 페이지로 바로 연결됩니다.
+          </p>
+        </div>
+      </div>
+
       {/* 부품 변경 모달 */}
       {modalCategory && (
         <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">

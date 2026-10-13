@@ -44,11 +44,14 @@ export const COMPONENT_SEARCH_KEYWORDS: Record<string, string> = {
   'ram-ddr4-16gb': 'DDR4 16GB 데스크탑 램',
   'ram-ddr5-32gb': 'DDR5 32GB 데스크탑 램',
 
-  // 그래픽카드
+  // 그래픽카드 (2026 최신 라인업 및 검증된 가성비 라인업)
   'gpu-gtx-1650': 'GTX 1650 그래픽카드',
   'gpu-rtx-4060': 'RTX 4060 그래픽카드',
-  'gpu-rtx-4070super': 'RTX 4070 SUPER 그래픽카드',
-  'gpu-rtx-4080super': 'RTX 4080 SUPER 그래픽카드',
+  'gpu-rtx-5060': 'RTX 5060 그래픽카드',
+  'gpu-rtx-5070': 'RTX 5070 그래픽카드',
+  'gpu-rtx-5080': 'RTX 5080 그래픽카드',
+  'gpu-rtx-4070super': 'RTX 5070 그래픽카드',
+  'gpu-rtx-4080super': 'RTX 5080 그래픽카드',
 
   // SSD
   'ssd-500gb-nvme': '500GB M.2 NVMe SSD',
@@ -64,27 +67,27 @@ export const COMPONENT_SEARCH_KEYWORDS: Record<string, string> = {
   'case-aquarium-panoramic': '어항 PC 케이스'
 };
 
-// 완본체 게이밍 PC 실시간 검색 키워드 매핑
+// 완본체 게이밍 PC 실시간 검색 키워드 매핑 (2026 최신 사양 반영)
 export const PREBUILT_SEARCH_KEYWORDS: Record<string, string> = {
   'casual-esports': '라이젠 5600 조립PC',
-  'mainstream-gaming': '라이젠 7500F RTX 4060 조립PC',
-  'high-end-aaa': '7800X3D RTX 4070 SUPER 조립PC',
-  'creator-flagship': 'RTX 4080 SUPER 게이밍 조립PC'
+  'mainstream-gaming': '라이젠 7500F RTX 5060 조립PC',
+  'high-end-aaa': '7800X3D RTX 5070 조립PC',
+  'creator-flagship': 'RTX 5080 게이밍 조립PC'
 };
 
 /**
  * 부품 ID 및 모델명을 기반으로 쿠팡 공식 파트너스 최저가 검색 리스트로 자동 직행
  * - 1순위: 관리자 지정 특정 단축링크(CUSTOM_AFFILIATE_LINKS)
- * - 2순위: 견적 추천에 명시된 '정확한 브랜드 + 모델명 풀네임'으로 검색 직행 (예: "Thermalright Assassin X 120 Refined SE", "MSI MAG B760M 박격포 II")
- * - 3순위: 기본 하드웨어 키워드 사전
+ * - 2순위: 실시간 최저가 검증 키워드(COMPONENT_SEARCH_KEYWORDS) - 쿠팡 알고리즘 오작동(구형/중고 노출) 원천 차단
+ * - 3순위: 전달된 상세 상품명 또는 기본 키워드
  * - link.coupang.com/re/AFFSRP 경유로 lptag=AF5322745 수익 쿠키 100% 자동 장착
  */
 export function getCoupangProductUrl(componentId: string, fallbackName?: string): string {
   if (CUSTOM_AFFILIATE_LINKS[componentId]) {
     return CUSTOM_AFFILIATE_LINKS[componentId];
   }
-  // 정확한 브랜드 + 상품 풀네임 우선 적용 (지마켓과 동일하게 정확한 모델 최저가 검색)
-  const keyword = fallbackName || COMPONENT_SEARCH_KEYWORDS[componentId] || '컴퓨터 부품';
+  // 유통사 세부 스펙명(30자 이상) 검색 시 중고/구형 상품으로 매칭되는 것을 방지하고 실시간 로켓배송 새제품으로 직행
+  const keyword = COMPONENT_SEARCH_KEYWORDS[componentId] || fallbackName || '컴퓨터 부품';
   return `https://link.coupang.com/re/AFFSRP?pageKey=${encodeURIComponent(keyword)}&lptag=${COUPANG_PARTNER_ID}&subid=${COUPANG_SUB_ID}`;
 }
 
@@ -169,8 +172,8 @@ export function getOpenMarketProductUrl(
     return itemUrl;
   }
 
-  // 2. 정확한 브랜드 + 모델명 키워드 추출 (예: 'Thermalright Assassin X 120 Refined SE', 'AMD 라이젠5 5600' 등)
-  const keyword = fallbackName || COMPONENT_SEARCH_KEYWORDS[componentId] || '컴퓨터 부품';
+  // 2. 정확한 브랜드 + 최적화 키워드 우선 적용 (품절 및 긴 유통사명으로 인한 검색 0건 방지)
+  const keyword = COMPONENT_SEARCH_KEYWORDS[componentId] || fallbackName || '컴퓨터 부품';
 
   let targetUrl = `https://browse.gmarket.co.kr/search?keyword=${encodeURIComponent(keyword)}`;
   const merchant = mall === '11st' ? '11st' : 'gmarket';
