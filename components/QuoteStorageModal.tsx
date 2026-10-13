@@ -3,7 +3,9 @@
 import React, { useState, useEffect } from 'react';
 import { ComponentItem } from '@/data/components';
 import { GamePreset } from '@/data/presets';
-import { X, Bookmark, Trash2, Download, Copy, Check, Clock, Cpu, Sparkles, FolderHeart } from 'lucide-react';
+import { X, Bookmark, Trash2, Download, Copy, Check, Clock, Cpu, Sparkles, FolderHeart, ShieldCheck, Smartphone, ExternalLink } from 'lucide-react';
+import { useSession } from 'next-auth/react';
+import Link from 'next/link';
 
 export interface SavedQuote {
   id: string;
@@ -33,6 +35,7 @@ export default function QuoteStorageModal({
   totalPrice,
   onLoadQuote
 }: QuoteStorageModalProps) {
+  const { data: session } = useSession();
   const [savedQuotes, setSavedQuotes] = useState<SavedQuote[]>([]);
   const [quoteName, setQuoteName] = useState('');
   const [copySuccess, setCopySuccess] = useState(false);
@@ -155,16 +158,49 @@ export default function QuoteStorageModal({
         </button>
 
         {/* 헤더 */}
-        <div className="flex items-center gap-3 mb-5 shrink-0">
-          <div className="w-10 h-10 rounded-2xl bg-cyan-100 dark:bg-cyan-950/80 text-cyan-600 dark:text-cyan-400 flex items-center justify-center shadow-sm">
-            <FolderHeart className="w-5 h-5" />
+        <div className="flex items-center justify-between mb-5 shrink-0">
+          <div className="flex items-center gap-3">
+            <div className={`w-10 h-10 rounded-2xl flex items-center justify-center shadow-sm ${
+              session?.user 
+                ? 'bg-cyan-100 dark:bg-cyan-950/80 text-cyan-600 dark:text-cyan-400' 
+                : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400'
+            }`}>
+              {session?.user ? <FolderHeart className="w-5 h-5" /> : <Bookmark className="w-5 h-5" />}
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <h3 className="text-lg font-black tracking-tight">내 견적 보관함 (My Quotes)</h3>
+                {session?.user && (
+                  <span className="px-2 py-0.5 rounded-full text-[10px] font-black bg-emerald-100 dark:bg-emerald-950/80 text-emerald-700 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-800 flex items-center gap-1">
+                    <ShieldCheck className="w-3 h-3" />
+                    클라우드 연동중
+                  </span>
+                )}
+              </div>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+                {session?.user ? (
+                  <span>
+                    <strong>{session.user.name || '회원'}</strong>님의 모든 기기(모바일/PC)에 실시간 자동 동기화됩니다.
+                  </span>
+                ) : (
+                  <span>
+                    현재 기기 브라우저에 임시 저장됩니다. (모바일 동기화는 로그인 필요)
+                  </span>
+                )}
+              </p>
+            </div>
           </div>
-          <div>
-            <h3 className="text-lg font-black tracking-tight">내 견적 보관함 (My Quotes)</h3>
-            <p className="text-xs text-slate-500 dark:text-slate-400">
-              비회원도 브라우저에 영구 보관되며 언제든 다시 불러올 수 있습니다.
-            </p>
-          </div>
+
+          {session?.user && (
+            <Link
+              href="/mypage"
+              onClick={onClose}
+              className="hidden sm:flex items-center gap-1 text-[11px] font-bold text-cyan-600 dark:text-cyan-400 hover:underline mr-8"
+            >
+              <span>마이페이지</span>
+              <ExternalLink className="w-3 h-3" />
+            </Link>
+          )}
         </div>
 
         {/* 토스트 알림 */}
@@ -269,8 +305,19 @@ export default function QuoteStorageModal({
         </div>
 
         {/* 푸터 안내 */}
-        <div className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-[11px] text-slate-400 text-center shrink-0">
-          💡 저장된 견적은 현재 기기에 안전하게 보관되며 브라우저를 닫아도 유지됩니다.
+        <div className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-[11px] text-center shrink-0">
+          {session?.user ? (
+            <div className="flex items-center justify-center gap-1.5 text-emerald-600 dark:text-emerald-400 font-medium">
+              <ShieldCheck className="w-3.5 h-3.5" />
+              <span>회원님의 견적은 암호화 클라우드에 영구 보존되며 실시간 부품 특가 추적 대상입니다.</span>
+            </div>
+          ) : (
+            <div className="text-slate-400">
+              💡 <span>비회원 안내: 현재 기기에 임시 보관 중입니다. </span>
+              <span className="text-cyan-600 dark:text-cyan-400 font-bold">로그인 시 PC-모바일 실시간 동기화 및 영구 보존</span>
+              <span>이 지원됩니다.</span>
+            </div>
+          )}
         </div>
       </div>
     </div>
