@@ -152,13 +152,14 @@ export default function Header({ onOpenQuoteStorage }: HeaderProps = {}) {
             >
               <span>⚔️ 최저가 빅매치</span>
             </a>
-            <a
-              href="/#prebuilt-section"
-              onClick={(e) => handleNavigateSection(e, 'prebuilt-section')}
-              className="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors cursor-pointer"
+            <Link
+              href="/laptop"
+              className={`hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors cursor-pointer flex items-center gap-1 ${
+                pathname === '/laptop' ? 'text-cyan-600 dark:text-cyan-400 font-bold' : ''
+              }`}
             >
-              완본체 비교
-            </a>
+              <span>💻 노트북&amp;완제관</span>
+            </Link>
             <Link
               href="/lab"
               className={`hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors cursor-pointer flex items-center gap-1.5 ${

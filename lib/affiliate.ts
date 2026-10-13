@@ -256,6 +256,49 @@ export function getPromoGatewayUrl(
   return targetUrl || '#';
 }
 
+/**
+ * 롯데하이마트 (himart) 공식 제휴 실시간 검색 URL
+ * - 링크프라이스 공식 머천트 himart 게이트웨이 경유 (최대 1.26% 수익 환급)
+ */
+export function getHimartSearchUrl(keyword: string): string {
+  const targetUrl = `https://www.e-himart.co.kr/app/search/searchMain?query=${encodeURIComponent(keyword)}`;
+  if (LINKPRICE_AFFILIATE_ID) {
+    return `https://click.linkprice.com/click.php?m=himart&a=${LINKPRICE_AFFILIATE_ID}&l=0000&url=${encodeURIComponent(targetUrl)}`;
+  }
+  return targetUrl;
+}
+
+/**
+ * 롯데ON (lotteon) 공식 제휴 실시간 검색 URL
+ * - 링크프라이스 공식 머천트 lotteon 딥링크 규격 (최대 1.40% 수익 환급)
+ */
+export function getLotteonSearchUrl(keyword: string): string {
+  const targetUrl = `https://www.lotteon.com/search/search/search.ecn?render=page&platform=pc&q=${encodeURIComponent(keyword)}`;
+  if (LINKPRICE_AFFILIATE_ID) {
+    return `https://click.linkprice.com/click.php?m=lotteon&a=${LINKPRICE_AFFILIATE_ID}&l=9999&l_cd1=3&l_cd2=0&tu=${encodeURIComponent(targetUrl)}`;
+  }
+  return targetUrl;
+}
+
+/**
+ * G마켓 (gmarket) 공식 제휴 실시간 검색 URL
+ */
+export function getGmarketSearchUrl(keyword: string): string {
+  const targetUrl = `https://browse.gmarket.co.kr/search?keyword=${encodeURIComponent(keyword)}`;
+  if (LINKPRICE_AFFILIATE_ID) {
+    return `https://click.linkprice.com/click.php?m=gmarket&a=${LINKPRICE_AFFILIATE_ID}&l=9999&l_cd1=3&l_cd2=0&tu=${encodeURIComponent(targetUrl)}`;
+  }
+  return targetUrl;
+}
+
+/**
+ * 쿠팡 파트너스 공식 실시간 검색 URL
+ */
+export function getCoupangSearchDirectUrl(keyword: string): string {
+  return `https://link.coupang.com/re/AFFSRP?pageKey=${encodeURIComponent(keyword)}&lptag=${COUPANG_PARTNER_ID}&subid=${COUPANG_SUB_ID}`;
+}
+
+
 
 
 

@@ -26,6 +26,18 @@ export async function GET(request: NextRequest) {
       category: '하드웨어/랩',
       pubDate: new Date('2026-10-13T09:00:00Z').toUTCString(),
     },
+    {
+      title: '2026 게이밍 노트북 & 브랜드 완본체 PC 공식 큐레이션관',
+      link: `${baseUrl}/laptop`,
+      guid: `${baseUrl}/laptop`,
+      description: `
+        <p><strong>롯데하이마트(1.26%) & 롯데ON(1.4%) & 쿠팡 공식 제휴 게이밍 노트북 및 대기업 완본체 큐레이션관입니다.</strong></p>
+        <p>레노버 리전, ASUS ROG 제피러스, HP 오멘, 삼성 오디세이 데스크톱 등 전국 공식 A/S를 보장받는 인기 완제품의 스펙 비교와 카드 청구할인 체감가를 제공합니다.</p>
+        <p><a href="${baseUrl}/laptop">게이밍 노트북 큐레이션관 바로가기</a></p>
+      `.trim(),
+      category: '쇼핑/노트북',
+      pubDate: new Date('2026-10-14T00:00:00Z').toUTCString(),
+    },
     ...ALL_ARTICLES.map((article) => ({
       title: `[하드웨어 리포트] ${article.title}`,
       link: `${baseUrl}/lab/${article.slug}`,
