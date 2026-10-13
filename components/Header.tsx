@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
 import { Cpu, Sun, Moon, Bookmark, User, X, Check, Share2, LogOut } from 'lucide-react';
 import { useTheme } from './ThemeProvider';
 import { useSession, signIn, signOut } from 'next-auth/react';
@@ -41,6 +42,33 @@ export default function Header({ onOpenQuoteStorage }: HeaderProps = {}) {
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  const pathname = usePathname();
+  const router = useRouter();
+
+  // 어느 페이지에서든, 어떤 순서로든(앞->뒤, 뒤->앞, 역순, 뒤죽박죽) 해당 메뉴로 정확하고 부드럽게 스크롤 이동
+  const handleNavigateSection = (e: React.MouseEvent, sectionId: string) => {
+    e.preventDefault();
+    if (pathname === '/') {
+      const el = document.getElementById(sectionId);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        window.history.pushState(null, '', `#${sectionId}`);
+      }
+    } else {
+      router.push(`/#${sectionId}`);
+    }
+  };
+
+  const handleNavigateTop = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (pathname === '/') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.history.pushState(null, '', '/');
+    } else {
+      router.push('/');
+    }
+  };
 
   // 세션 상태가 업데이트되면 캐시 동기화
   useEffect(() => {
@@ -106,21 +134,45 @@ export default function Header({ onOpenQuoteStorage }: HeaderProps = {}) {
             </div>
           </Link>
 
-          {/* 중앙 네비게이션 (SEO 및 애드센스 승인을 위한 충실한 정식 메뉴) */}
+          {/* 중앙 네비게이션 (어느 페이지에서든, 어떤 순서로 누르든 부드럽게 화면 이동) */}
           <nav className="hidden md:flex items-center gap-6 text-xs font-semibold text-slate-600 dark:text-slate-300">
-            <Link href="/" className="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">
+            <a
+              href="/"
+              onClick={handleNavigateTop}
+              className={`hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors cursor-pointer ${
+                pathname === '/' ? 'text-slate-900 dark:text-white font-bold' : ''
+              }`}
+            >
               맞춤 견적기
-            </Link>
-            <a href="#price-battle-section" className="text-rose-600 dark:text-rose-400 font-bold hover:underline flex items-center gap-1">
+            </a>
+            <a
+              href="/#price-battle-section"
+              onClick={(e) => handleNavigateSection(e, 'price-battle-section')}
+              className="text-rose-600 dark:text-rose-400 font-bold hover:underline flex items-center gap-1 cursor-pointer"
+            >
               <span>⚔️ 최저가 빅매치</span>
             </a>
-            <a href="#prebuilt-section" className="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">
+            <a
+              href="/#prebuilt-section"
+              onClick={(e) => handleNavigateSection(e, 'prebuilt-section')}
+              className="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors cursor-pointer"
+            >
               완본체 비교
             </a>
-            <Link href="/guide" className="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">
+            <Link
+              href="/guide"
+              className={`hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors cursor-pointer ${
+                pathname === '/guide' ? 'text-cyan-600 dark:text-cyan-400 font-bold' : ''
+              }`}
+            >
               하드웨어 가이드
             </Link>
-            <Link href="/about" className="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">
+            <Link
+              href="/about"
+              className={`hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors cursor-pointer ${
+                pathname === '/about' ? 'text-cyan-600 dark:text-cyan-400 font-bold' : ''
+              }`}
+            >
               플랫폼 소개
             </Link>
           </nav>
