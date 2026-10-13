@@ -32,7 +32,21 @@ export const metadata: Metadata = {
     url: 'https://pccraft.kr',
     type: 'website',
     locale: 'ko_KR',
-    siteName: 'PC-Craft'
+    siteName: 'PC-Craft',
+    images: [
+      {
+        url: 'https://pccraft.kr/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'PC-Craft 스마트 조립 컴퓨터 견적 큐레이션',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'PC-Craft | 스마트 게이밍 컴퓨터 조립 견적 & 최저가 큐레이션',
+    description: '원하는 게임만 고르면 하드웨어 호환성 검증과 실시간 최저가가 완성됩니다.',
+    images: ['https://pccraft.kr/og-image.jpg'],
   },
   robots: {
     index: true,
