@@ -95,20 +95,26 @@ export default function Header({ onOpenQuoteStorage }: HeaderProps = {}) {
                   <span className="hidden sm:inline">내 견적</span>
                 </button>
                 <div className="flex items-center gap-2 pl-2 border-l border-slate-200 dark:border-slate-800">
-                  {session.user.image ? (
-                    <img
-                      src={session.user.image}
-                      alt={session.user.name || 'User'}
-                      className="w-7 h-7 rounded-full ring-2 ring-cyan-500/30"
-                    />
-                  ) : (
-                    <div className="w-7 h-7 rounded-full bg-cyan-600 text-white flex items-center justify-center text-xs font-bold">
-                      {session.user.name?.[0] || 'U'}
-                    </div>
-                  )}
-                  <span className="text-xs font-bold text-slate-800 dark:text-slate-200 hidden md:inline max-w-[80px] truncate">
-                    {session.user.name || '회원'}님
-                  </span>
+                  <Link
+                    href="/mypage"
+                    className="flex items-center gap-2 hover:opacity-80 transition-opacity"
+                    title="마이페이지로 이동"
+                  >
+                    {session.user.image ? (
+                      <img
+                        src={session.user.image}
+                        alt={session.user.name || 'User'}
+                        className="w-7 h-7 rounded-full ring-2 ring-cyan-500/30 object-cover"
+                      />
+                    ) : (
+                      <div className="w-7 h-7 rounded-full bg-cyan-600 text-white flex items-center justify-center text-xs font-bold">
+                        {session.user.name?.[0] || 'U'}
+                      </div>
+                    )}
+                    <span className="text-xs font-bold text-slate-800 dark:text-slate-200 hidden md:inline max-w-[80px] truncate">
+                      {session.user.name || '회원'}님
+                    </span>
+                  </Link>
                   <button
                     onClick={() => signOut()}
                     title="로그아웃"
