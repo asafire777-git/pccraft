@@ -140,17 +140,33 @@ export function getNaverShoppingUrl(keyword: string, componentId?: string): stri
 // 대표님 링크프라이스 공식 어필리에이트 사이트 코드 (PC-Craft 채널: A100708723)
 export const LINKPRICE_AFFILIATE_ID = process.env.NEXT_PUBLIC_LINKPRICE_A_ID || 'A100708723';
 
+// G마켓 특정 상품 고유 코드(goodscode) 수동 매핑 사전 (등록 시 검색결과 대신 100% 해당 상품 상세페이지로 직행)
+export const CUSTOM_GMARKET_GOODS_CODES: Record<string, string> = {
+  // 대표님이 특정 상품 직행 코드를 확보하시면 여기에 등록 시 즉시 적용 (예: 'cpu-amd-5600': '2483861841')
+};
+
 /**
  * 오픈마켓 (G마켓, 11번가 등) 실시간 최저가 직행 URL 생성기
- * - 현재 제휴 승인 완료된 G마켓(gmarket) 공식 게이트웨이로 100% 안전하게 연결
- * - 링크프라이스 공식 트래킹 코드(A100708723)가 100% 자동 장착
+ * - G마켓의 경우 링크프라이스 공식 딥링크 규격(l=9999&l_cd1=3&l_cd2=0&tu=...)을 적용하여
+ *   메인 페이지로 튕기지 않고 정확한 브랜드/모델명 검색 결과 또는 해당 상품 상세페이지로 100% 직행합니다.
+ * - 링크프라이스 공식 트래킹 코드(A100708723)가 100% 장착되어 수익 추적을 유지합니다.
  */
 export function getOpenMarketProductUrl(
   componentId: string,
   fallbackName?: string,
   mall: 'gmarket' | '11st' = 'gmarket'
 ): string {
-  const keyword = COMPONENT_SEARCH_KEYWORDS[componentId] || fallbackName || '컴퓨터 부품';
+  // 1. 특정 상품 goodscode가 등록되어 있는 경우 상품 상세 페이지로 우선 직행
+  if (mall === 'gmarket' && CUSTOM_GMARKET_GOODS_CODES[componentId]) {
+    const itemUrl = `https://item.gmarket.co.kr/Item?goodscode=${CUSTOM_GMARKET_GOODS_CODES[componentId]}`;
+    if (LINKPRICE_AFFILIATE_ID) {
+      return `https://click.linkprice.com/click.php?m=gmarket&a=${LINKPRICE_AFFILIATE_ID}&l=9999&l_cd1=3&l_cd2=0&tu=${encodeURIComponent(itemUrl)}`;
+    }
+    return itemUrl;
+  }
+
+  // 2. 정확한 브랜드 + 모델명 키워드 추출 (예: 'Thermalright Assassin X 120 Refined SE', 'AMD 라이젠5 5600' 등)
+  const keyword = fallbackName || COMPONENT_SEARCH_KEYWORDS[componentId] || '컴퓨터 부품';
 
   let targetUrl = `https://browse.gmarket.co.kr/search?keyword=${encodeURIComponent(keyword)}`;
   const merchant = mall === '11st' ? '11st' : 'gmarket';
@@ -161,6 +177,10 @@ export function getOpenMarketProductUrl(
 
   // 링크프라이스 공식 트래킹 게이트웨이로 래핑
   if (LINKPRICE_AFFILIATE_ID) {
+    if (merchant === 'gmarket') {
+      // G마켓 전용 정밀 딥링크 규격 (l=9999, l_cd1=3, l_cd2=0, tu=인코딩URL)
+      return `https://click.linkprice.com/click.php?m=gmarket&a=${LINKPRICE_AFFILIATE_ID}&l=9999&l_cd1=3&l_cd2=0&tu=${encodeURIComponent(targetUrl)}`;
+    }
     return `https://click.linkprice.com/click.php?m=${merchant}&a=${LINKPRICE_AFFILIATE_ID}&l=0000&url=${encodeURIComponent(targetUrl)}`;
   }
 
@@ -171,11 +191,11 @@ export function getOpenMarketProductUrl(
  * 완본체 게이밍 PC 오픈마켓 최저가 검색 URL (승인 완료된 G마켓 연동)
  */
 export function getOpenMarketPrebuiltUrl(presetId: string, fallbackName?: string): string {
-  const keyword = PREBUILT_SEARCH_KEYWORDS[presetId] || fallbackName || '게이밍 조립PC';
+  const keyword = fallbackName || PREBUILT_SEARCH_KEYWORDS[presetId] || '게이밍 조립PC';
   const targetUrl = `https://browse.gmarket.co.kr/search?keyword=${encodeURIComponent(keyword)}`;
 
   if (LINKPRICE_AFFILIATE_ID) {
-    return `https://click.linkprice.com/click.php?m=gmarket&a=${LINKPRICE_AFFILIATE_ID}&l=0000&url=${encodeURIComponent(targetUrl)}`;
+    return `https://click.linkprice.com/click.php?m=gmarket&a=${LINKPRICE_AFFILIATE_ID}&l=9999&l_cd1=3&l_cd2=0&tu=${encodeURIComponent(targetUrl)}`;
   }
 
   return targetUrl;
@@ -183,6 +203,7 @@ export function getOpenMarketPrebuiltUrl(presetId: string, fallbackName?: string
 
 /**
  * 다채널 오픈마켓 (G마켓 / SSG / 알리익스프레스 / 11번가) 프로모션 기획전 직행 URL 생성기
+ * - G마켓의 경우 딥링크 파라미터(tu)를 적용하여 메인이 아닌 해당 기획전 검색 페이지로 정확히 직행
  * - 링크프라이스 공식 제휴 코드(A100708723)가 자동 장착되어 수익 추적 100% 보장
  */
 export function getPromoGatewayUrl(
@@ -219,6 +240,9 @@ export function getPromoGatewayUrl(
   const merchant = merchantMap[platform] || 'gmarket';
 
   if (LINKPRICE_AFFILIATE_ID && targetUrl) {
+    if (merchant === 'gmarket') {
+      return `https://click.linkprice.com/click.php?m=gmarket&a=${LINKPRICE_AFFILIATE_ID}&l=9999&l_cd1=3&l_cd2=0&tu=${encodeURIComponent(targetUrl)}`;
+    }
     return `https://click.linkprice.com/click.php?m=${merchant}&a=${LINKPRICE_AFFILIATE_ID}&l=0000&url=${encodeURIComponent(targetUrl)}`;
   }
 
