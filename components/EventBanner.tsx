@@ -50,42 +50,42 @@ export default function EventBanner() {
     setTimeout(() => setCopiedCode(false), 2500);
   };
 
-  // 플랫폼별 브랜드 배지 스타일 (가독성을 위한 선명한 고대비 컬러)
-  const platformStyles: Record<string, { badge: string; border: string; glow: string; btn: string }> = {
+  // 플랫폼별 브랜드 배지 및 연한 단색 배경 스타일 (가독성을 극대화한 고대비 컬러)
+  const platformStyles: Record<string, { badge: string; border: string; bg: string; btn: string }> = {
     coupang: {
       badge: 'bg-cyan-600 text-white border-cyan-400 shadow-sm',
-      border: 'border-cyan-500/30 hover:border-cyan-500/60',
-      glow: 'from-cyan-950/40 via-slate-900/60 to-slate-900/90 dark:from-cyan-950/60 dark:via-slate-900/80 dark:to-slate-950/90',
+      border: 'border-cyan-200 dark:border-cyan-800/80 hover:border-cyan-400 dark:hover:border-cyan-600',
+      bg: 'bg-cyan-50/80 dark:bg-slate-900/95',
       btn: 'bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white shadow-cyan-500/20'
     },
     gmarket: {
       badge: 'bg-emerald-600 text-white border-emerald-400 shadow-sm',
-      border: 'border-emerald-500/30 hover:border-emerald-500/60',
-      glow: 'from-emerald-950/40 via-slate-900/60 to-slate-900/90 dark:from-emerald-950/60 dark:via-slate-900/80 dark:to-slate-950/90',
+      border: 'border-emerald-200 dark:border-emerald-800/80 hover:border-emerald-400 dark:hover:border-emerald-600',
+      bg: 'bg-emerald-50/80 dark:bg-slate-900/95',
       btn: 'bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white shadow-emerald-500/20'
     },
     lotteon: {
       badge: 'bg-rose-600 text-white border-rose-400 shadow-sm',
-      border: 'border-rose-500/30 hover:border-rose-500/60',
-      glow: 'from-rose-950/40 via-slate-900/60 to-slate-900/90 dark:from-rose-950/60 dark:via-slate-900/80 dark:to-slate-950/90',
+      border: 'border-rose-200 dark:border-rose-800/80 hover:border-rose-400 dark:hover:border-rose-600',
+      bg: 'bg-rose-50/80 dark:bg-slate-900/95',
       btn: 'bg-gradient-to-r from-rose-600 to-red-600 hover:from-rose-500 hover:to-red-500 text-white shadow-rose-500/20'
     },
     aliexpress: {
       badge: 'bg-red-600 text-white border-red-400 shadow-sm',
-      border: 'border-rose-500/30 hover:border-rose-500/60',
-      glow: 'from-rose-950/40 via-slate-900/60 to-slate-900/90 dark:from-rose-950/60 dark:via-slate-900/80 dark:to-slate-950/90',
-      btn: 'bg-gradient-to-r from-rose-600 to-red-600 hover:from-rose-500 hover:to-red-500 text-white shadow-rose-500/20'
+      border: 'border-red-200 dark:border-red-800/80 hover:border-red-400 dark:hover:border-red-600',
+      bg: 'bg-red-50/80 dark:bg-slate-900/95',
+      btn: 'bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 text-white shadow-rose-500/20'
     },
     ssg: {
       badge: 'bg-amber-600 text-white border-amber-400 shadow-sm',
-      border: 'border-amber-500/30 hover:border-amber-500/60',
-      glow: 'from-amber-950/40 via-slate-900/60 to-slate-900/90 dark:from-amber-950/60 dark:via-slate-900/80 dark:to-slate-950/90',
+      border: 'border-amber-200 dark:border-amber-800/80 hover:border-amber-400 dark:hover:border-amber-600',
+      bg: 'bg-amber-50/80 dark:bg-slate-900/95',
       btn: 'bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-500 hover:to-orange-500 text-white shadow-amber-500/20'
     },
     '11st': {
       badge: 'bg-red-600 text-white border-red-400 shadow-sm',
-      border: 'border-red-500/30 hover:border-red-500/60',
-      glow: 'from-red-950/40 via-slate-900/60 to-slate-900/90 dark:from-red-950/60 dark:via-slate-900/80 dark:to-slate-950/90',
+      border: 'border-red-200 dark:border-red-800/80 hover:border-red-400 dark:hover:border-red-600',
+      bg: 'bg-red-50/80 dark:bg-slate-900/95',
       btn: 'bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 text-white shadow-red-500/20'
     }
   };
@@ -96,10 +96,10 @@ export default function EventBanner() {
     <div
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
-      className="relative mb-6 rounded-2xl overflow-hidden shadow-lg transition-all duration-300"
+      className="relative mb-6 rounded-2xl overflow-hidden shadow-sm transition-all duration-300"
     >
       <div
-        className={`relative border ${style.border} bg-gradient-to-r ${style.glow} p-4 sm:p-5 backdrop-blur-md rounded-2xl transition-colors`}
+        className={`relative border ${style.border} ${style.bg} p-4 sm:p-5 backdrop-blur-md rounded-2xl transition-colors`}
       >
         {/* 상단 뱃지 & 마감 카운트다운 */}
         <div className="flex items-center justify-between mb-3">
@@ -113,14 +113,14 @@ export default function EventBanner() {
             </span>
 
             {/* 마감일 뱃지 */}
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-bold bg-slate-900 text-white dark:bg-slate-800 dark:text-rose-300 border border-slate-700 dark:border-slate-700 shadow-sm">
-              <Clock className="w-3.5 h-3.5 text-rose-400" />
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-bold bg-white text-slate-800 dark:bg-slate-800 dark:text-rose-300 border border-slate-200 dark:border-slate-700 shadow-xs">
+              <Clock className="w-3.5 h-3.5 text-rose-500 dark:text-rose-400" />
               {remaining}
             </span>
 
             {/* 할인율 뱃지 */}
             {current.discountRate && (
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-bold bg-amber-500 text-slate-950 border border-amber-300 shadow-sm">
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-bold bg-amber-400 text-slate-950 border border-amber-300 shadow-xs">
                 <Tag className="w-3.5 h-3.5 text-slate-950" />
                 {current.discountRate}
               </span>
@@ -128,23 +128,23 @@ export default function EventBanner() {
 
             {/* 쿠폰 안내 뱃지 */}
             {current.couponText && (
-              <span className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-bold bg-purple-900/90 text-purple-100 border border-purple-500/50 shadow-sm">
-                <Ticket className="w-3.5 h-3.5 text-purple-300" />
+              <span className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-bold bg-purple-100 text-purple-900 dark:bg-purple-950/80 dark:text-purple-200 border border-purple-200 dark:border-purple-800 shadow-xs">
+                <Ticket className="w-3.5 h-3.5 text-purple-600 dark:text-purple-400" />
                 {current.couponText}
               </span>
             )}
           </div>
 
-          <div className="flex items-center gap-1 text-slate-400">
+          <div className="flex items-center gap-1 text-slate-500 dark:text-slate-400">
             {activeEvents.length > 1 && (
-              <span className="text-[11px] font-mono mr-1">
+              <span className="text-[11px] font-mono mr-1 font-semibold">
                 {currentIndex + 1} / {activeEvents.length}
               </span>
             )}
             <button
               onClick={() => setIsDismissed(true)}
               aria-label="이벤트 배너 닫기"
-              className="p-1 rounded-lg hover:bg-slate-200/50 dark:hover:bg-slate-800 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors cursor-pointer"
+              className="p-1 rounded-lg hover:bg-slate-200/80 dark:hover:bg-slate-800 text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200 transition-colors cursor-pointer"
               title="배너 닫기"
             >
               <X className="w-3.5 h-3.5" />
@@ -184,7 +184,7 @@ export default function EventBanner() {
               {current.promoCode && (
                 <button
                   onClick={(e) => handleCopyCode(current.promoCode!, e)}
-                  className="px-3.5 py-3 rounded-xl bg-slate-900/90 text-white dark:bg-slate-800 dark:text-slate-100 border border-slate-700 hover:border-amber-400 text-xs sm:text-sm font-bold flex items-center gap-1.5 transition-all active:scale-95 cursor-pointer shadow-md"
+                  className="px-3.5 py-3 rounded-xl bg-slate-900 text-white dark:bg-slate-800 dark:text-slate-100 border border-slate-700 hover:border-amber-400 text-xs sm:text-sm font-bold flex items-center gap-1.5 transition-all active:scale-95 cursor-pointer shadow-md"
                   title="할인코드 클립보드 복사"
                 >
                   {copiedCode ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4 text-amber-400" />}
@@ -198,7 +198,7 @@ export default function EventBanner() {
                   <button
                     onClick={prevSlide}
                     aria-label="이전 기획전"
-                    className="p-2.5 rounded-xl bg-slate-200/80 dark:bg-slate-800/90 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 transition-colors cursor-pointer"
+                    className="p-2.5 rounded-xl bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700 shadow-xs transition-colors cursor-pointer"
                     title="이전 기획전"
                   >
                     <ChevronLeft className="w-5 h-5" />
@@ -206,7 +206,7 @@ export default function EventBanner() {
                   <button
                     onClick={nextSlide}
                     aria-label="다음 기획전"
-                    className="p-2.5 rounded-xl bg-slate-200/80 dark:bg-slate-800/90 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 transition-colors cursor-pointer"
+                    className="p-2.5 rounded-xl bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700 shadow-xs transition-colors cursor-pointer"
                     title="다음 기획전"
                   >
                     <ChevronRight className="w-5 h-5" />
