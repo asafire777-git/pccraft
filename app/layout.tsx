@@ -70,6 +70,11 @@ export default function RootLayout({
       <head>
         <meta name="naver-site-verification" content="15c5b036e34e3588fe1b4cb4b78cce49f2e1c095" />
         <meta name="google-site-verification" content="NH-fqxnp2rEw1qCojW91YvycdtMrKbg90G_6v8EaKK8" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var s=localStorage.getItem('pc_craft_theme');if(s==='dark'){document.documentElement.classList.add('dark');document.documentElement.style.colorScheme='dark';}else{document.documentElement.classList.remove('dark');document.documentElement.style.colorScheme='light';}}catch(e){}})();`,
+          }}
+        />
       </head>
       <body className="min-h-full flex flex-col bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 font-sans transition-colors duration-200">
         <AuthProvider>

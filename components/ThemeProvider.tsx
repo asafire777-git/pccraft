@@ -21,9 +21,16 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    const saved = localStorage.getItem('pc_craft_theme') as Theme | null;
-    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const initial: Theme = saved || (prefersDark ? 'dark' : 'light');
+    let saved: Theme | null = null;
+    try {
+      saved = localStorage.getItem('pc_craft_theme') as Theme | null;
+    } catch {
+      // ignore storage errors
+    }
+
+    // 모바일/PC 모두 기본값은 화이트(낮) 모드로 통일
+    // 사용자가 수동으로 다크 모드를 선택해 저장한 경우에만 'dark' 적용
+    const initial: Theme = saved === 'dark' ? 'dark' : 'light';
     
     setTheme(initial);
     applyTheme(initial);
