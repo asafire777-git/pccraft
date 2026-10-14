@@ -15,6 +15,7 @@ import QuoteStorageModal from '@/components/QuoteStorageModal';
 import PrebuiltComparison from '@/components/PrebuiltComparison';
 import MultiPlatformExhibitionGrid from '@/components/MultiPlatformExhibitionGrid';
 import AiAnalysisCard from '@/components/AiAnalysisCard';
+import HardwareLabShowcase from '@/components/HardwareLabShowcase';
 import { GAME_PRESETS, GamePreset } from '@/data/presets';
 import { COMPONENTS_DATA, ComponentItem } from '@/data/components';
 import { checkCompatibility } from '@/lib/compatibility';
@@ -222,6 +223,11 @@ export default function HomePage() {
             currentPreset={currentPreset}
             customTotalPrice={totalPrice}
           />
+        </div>
+
+        {/* 7. 하드웨어 랩 2026 실측 벤치마크 & 전문 심층 리포트 쇼케이스 (구글 애드센스 고품질 저널리즘 섹션) */}
+        <div id="hardware-lab-showcase">
+          <HardwareLabShowcase />
         </div>
 
         {/* 하단 오픈마켓·쿠팡 통합 실시간 프로모션 & 핫딜 허브 그리드 */}
