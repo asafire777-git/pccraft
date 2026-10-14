@@ -8,7 +8,7 @@ export const article3: Article = {
   categoryLabel: '구매 방식 비교',
   author: 'PC-Craft 하드웨어 랩',
   authorRole: '소비자 경제성 분석팀',
-  publishedAt: '2026-10-13',
+  publishedAt: '2026-10-11',
   updatedAt: '2026-10-13',
   readTimeMinutes: 16,
   viewCount: 4520,

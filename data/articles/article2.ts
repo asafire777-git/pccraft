@@ -9,7 +9,7 @@ export const article2: Article = {
   author: 'PC-Craft 하드웨어 랩',
   authorRole: '프로세서 아키텍처 분석팀',
   publishedAt: '2026-10-13',
-  updatedAt: '2026-10-13',
+  updatedAt: '2026-10-14',
   readTimeMinutes: 15,
   viewCount: 3890,
   featured: true,

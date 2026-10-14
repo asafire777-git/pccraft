@@ -120,9 +120,6 @@ export default function LabIndexPage() {
             <h3 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white flex items-center gap-2">
               <span>📚 2026 하드웨어 심층 분석 리포트 (총 {ALL_ARTICLES.length}편)</span>
             </h3>
-            <span className="text-xs text-slate-400 font-mono hidden sm:inline">
-              전체 3,000자 ~ 6,000자 이상 고밀도 검증 데이터
-            </span>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-6">
