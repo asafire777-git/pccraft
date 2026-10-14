@@ -197,14 +197,14 @@ export default function BuilderTable({
               className="p-4 sm:p-5 flex flex-col md:flex-row md:items-center justify-between gap-4 hover:bg-slate-50 dark:hover:bg-slate-900/90 transition-colors"
             >
               {/* 왼쪽: 카테고리 뱃지 & 부품 정보 */}
-              <div className="flex items-start gap-4 min-w-0">
+              <div className="flex items-start gap-4 min-w-0 flex-1">
                 <ComponentThumbnail
                   category={item.category}
                   name={item.name}
-                  className="w-14 h-14"
+                  className="w-14 h-14 shrink-0"
                 />
 
-                <div className="min-w-0">
+                <div className="min-w-0 flex-1">
                   <div className="flex items-center gap-2 flex-wrap mb-1">
                     <span className="text-[11px] font-semibold text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded">
                       {label}
@@ -214,7 +214,7 @@ export default function BuilderTable({
                     </span>
                   </div>
 
-                  <h4 className="text-sm sm:text-base font-bold text-slate-900 dark:text-white truncate max-w-xl">
+                  <h4 className="text-sm sm:text-base font-bold text-slate-900 dark:text-white line-clamp-2 md:line-clamp-1">
                     {item.name}
                   </h4>
 
