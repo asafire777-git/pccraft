@@ -43,6 +43,7 @@ export default function DealsPage() {
     { key: 'all', label: '전체 보기', icon: '🔥' },
     { key: 'himart', label: '롯데하이마트', icon: '🏬' },
     { key: 'lotteon', label: '롯데ON 온쇼페', icon: '🔴' },
+    { key: '11st', label: '11번가 슈팅배송', icon: '⚡' },
     { key: 'gmarket', label: 'G마켓', icon: '🟢' },
     { key: 'auction', label: '옥션', icon: '🛒' },
     { key: 'emart', label: '이마트몰', icon: '🚚' },

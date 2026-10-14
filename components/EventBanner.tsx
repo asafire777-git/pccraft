@@ -81,6 +81,12 @@ export default function EventBanner() {
       border: 'border-amber-500/30 hover:border-amber-500/60',
       glow: 'from-amber-950/40 via-slate-900/60 to-slate-900/90 dark:from-amber-950/60 dark:via-slate-900/80 dark:to-slate-950/90',
       btn: 'bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-500 hover:to-orange-500 text-white shadow-amber-500/20'
+    },
+    '11st': {
+      badge: 'bg-red-600 text-white border-red-400 shadow-sm',
+      border: 'border-red-500/30 hover:border-red-500/60',
+      glow: 'from-red-950/40 via-slate-900/60 to-slate-900/90 dark:from-red-950/60 dark:via-slate-900/80 dark:to-slate-950/90',
+      btn: 'bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 text-white shadow-red-500/20'
     }
   };
 

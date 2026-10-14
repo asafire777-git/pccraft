@@ -1,4 +1,4 @@
-export type MallKey = 'himart' | 'lotteon' | 'gmarket' | 'auction' | 'emart' | 'coupang';
+export type MallKey = 'himart' | 'lotteon' | '11st' | 'gmarket' | 'auction' | 'emart' | 'coupang';
 
 export interface CardBenefitItem {
   cardName: string;
@@ -23,7 +23,7 @@ export interface MallDeal {
   subtitle: string;
   badge: string;
   badgeColor: 'rose' | 'red' | 'emerald' | 'amber' | 'cyan' | 'purple';
-  period: string; // e.g., '2026.10.12 ~ 2026.10.21'
+  period: string; // e.g., '2026.10.01 ~ 2026.10.31'
   isHot?: boolean;
   statusText: string;
   cardBenefits: CardBenefitItem[];
@@ -93,7 +93,34 @@ export const MALL_DEALS: MallDeal[] = [
     ctaText: '롯데ON 온쇼페 쿠폰 받기'
   },
 
-  // 3. G마켓
+  // 3. 11번가 슈팅배송 & 월간 십일절
+  {
+    id: 'deal-11st-shooting',
+    mall: '11st',
+    mallName: '11번가',
+    mallLogo: '⚡',
+    title: '11번가 슈팅배송 & 월간 십일절 PC 부품·게이밍 메가세일',
+    subtitle: '평일 24시 자정 전 주문 시 내일 도착 슈팅배송 + SK pay 카드사 최대 15% 즉시할인',
+    badge: '슈팅배송 & 십일절',
+    badgeColor: 'red',
+    period: '2026.10.01 ~ 2026.10.31',
+    isHot: true,
+    statusText: '10월 상시 운영',
+    cardBenefits: [
+      { cardName: 'SK pay (신한/국민/삼성)', discountRate: '최대 10~15% 즉시할인', condition: '슈팅배송 디지털 행사 상품', maxDiscount: '최대 100,000원' },
+      { cardName: '롯데/하나/현대카드', discountRate: '5% ~ 7% 즉시할인', condition: '7만 원 이상 결제 시', maxDiscount: '최대 50,000원' },
+      { cardName: 'SK pay 포인트', discountRate: '최대 5% 적립', condition: 'T멤버십/우주패스 연동 결제', maxDiscount: '적립한도 30,000P' }
+    ],
+    tips: [
+      '평일 밤 12시(24:00) 직전까지 주문 완료 시 다음 날 배송 보장되는 "슈팅배송" 상품을 우선 선택하세요.',
+      '우주패스 회원은 매월 슈팅배송 무료 배송 쿠폰 및 장바구니 추가 5,000원 할인 쿠폰이 중복 적용됩니다.',
+      '매월 1일~11일 열리는 "월간 십일절" 기간에는 타임딜 릴레이로 조립PC 주요 하드웨어를 최저가에 구매할 수 있습니다.'
+    ],
+    affiliateUrl: 'https://click.linkprice.com/click.php?m=11st&a=A100708723&l=0000&url=https%3A%2F%2Fsearch.11st.co.kr%2FSearch.tmall%3Fkwd%3D%EC%A1%B0%EB%A6%BDPC%2B%EC%BB%B4%ED%93%A8%ED%84%B0%EB%B6%80%ED%92%88',
+    ctaText: '11번가 슈팅배송 혜택 확인'
+  },
+
+  // 4. G마켓
   {
     id: 'deal-gmarket-digital',
     mall: 'gmarket',
@@ -205,9 +232,9 @@ export interface WeekDayDiscount {
 
 export const WEEKLY_DISCOUNT_SCHEDULE: WeekDayDiscount[] = [
   { dayName: '월요일 (Mon)', recommendedMall: '롯데ON 온쇼페', bestCard: '롯데카드 / 신한카드', keyBenefit: '카테고리데이 30% 디지털 쿠폰 오픈' },
-  { dayName: '화요일 (Tue)', recommendedMall: 'G마켓 / 옥션', bestCard: '스마일카드 / 국민카드', keyBenefit: '슈퍼브랜드 데이 부품 중복 10% 쿠폰' },
+  { dayName: '화요일 (Tue)', recommendedMall: '11번가 슈팅배송', bestCard: 'SK pay / 신한카드', keyBenefit: '슈팅배송 디지털 데이 최대 15% 할인 + SK pay 5% 적립' },
   { dayName: '수요일 (Wed)', recommendedMall: '롯데하이마트', bestCard: '현대카드 / 롯데카드', keyBenefit: '노트북 & 완본체 7% 청구할인 타임딜' },
   { dayName: '목요일 (Thu)', recommendedMall: '쿠팡 로켓배송', bestCard: '삼성카드 / 신한카드', keyBenefit: '로켓와우 게이밍 부품 카드 10% 즉시할인' },
-  { dayName: '금요일 (Fri)', recommendedMall: 'G마켓 빅딜', bestCard: '농협카드 / 하나카드', keyBenefit: '주말 맞이 부품 특가 & 무료배송 쿠폰' },
+  { dayName: '금요일 (Fri)', recommendedMall: 'G마켓 빅딜', bestCard: '스마일카드 / 농협카드', keyBenefit: '주말 맞이 부품 특가 & 무료배송 쿠폰' },
   { dayName: '주말 (Sat-Sun)', recommendedMall: '이마트몰 / 하이마트', bestCard: '이마트 e카드 / 롯데카드', keyBenefit: '주말 한정 청구할인 10% & L.POINT 5배 적립' }
 ];

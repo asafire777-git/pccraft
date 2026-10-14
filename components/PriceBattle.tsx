@@ -3,7 +3,14 @@
 import React, { useState } from 'react';
 import { ComponentItem } from '@/data/components';
 import { GamePreset } from '@/data/presets';
-import { getCoupangProductUrl, getCoupangSearchUrl, getNaverShoppingUrl, getOpenMarketProductUrl, getOpenMarketPrebuiltUrl } from '@/lib/affiliate';
+import { 
+  getCoupangProductUrl, 
+  getCoupangSearchUrl, 
+  getNaverShoppingUrl, 
+  getOpenMarketProductUrl, 
+  getOpenMarketPrebuiltUrl,
+  get11stSearchUrl 
+} from '@/lib/affiliate';
 import { Zap, Truck, ShieldCheck, Coins, ExternalLink, ChevronDown, ChevronUp, Trophy, Check, ArrowRight, Sparkles, ShoppingBag, Calendar, Info } from 'lucide-react';
 
 interface PriceBattleProps {
@@ -59,10 +66,10 @@ export default function PriceBattle({ currentPreset, selectedComponents, totalPr
           </div>
         </div>
         <h2 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-tight">
-          쿠팡 로켓 <span className="text-rose-500">VS</span> G마켓 공식 특가 <span className="text-orange-500">VS</span> 네이버 쇼핑
+          쿠팡 로켓 <span className="text-rose-500">VS</span> 오픈마켓(G마켓·11st) <span className="text-orange-500">VS</span> 네이버 쇼핑
         </h2>
         <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
-          정기 수집된 부품 기준 시세를 바탕으로 <strong>로켓 빠른배송, G마켓 공식총판 카드할인, 네이버페이 적립금</strong> 혜택을 투명하게 비교합니다.<br className="hidden sm:inline" />
+          정기 수집된 부품 기준 시세를 바탕으로 <strong>로켓 빠른배송, G마켓·11번가 공식총판 카드할인, 네이버페이 적립금</strong> 혜택을 투명하게 비교합니다.<br className="hidden sm:inline" />
           <span className="text-slate-500 dark:text-slate-400"> (실시간 최종 가격과 재고는 각 판매처 바로가기를 통해 직접 실시간 연동 확인하실 수 있습니다)</span>
         </p>
       </div>
@@ -143,11 +150,11 @@ export default function PriceBattle({ currentPreset, selectedComponents, totalPr
           </div>
         </div>
 
-        {/* 2. G마켓 공식 특가 카드 (링크프라이스 승인 연동) */}
+        {/* 2. G마켓 · 11번가 오픈마켓 공식 특가 카드 (링크프라이스 승인 연동) */}
         <div className="rounded-2xl border-2 border-orange-500/30 dark:border-orange-500/40 bg-gradient-to-b from-orange-50/50 via-white to-orange-50/30 dark:from-orange-950/20 dark:via-slate-900 dark:to-orange-950/10 p-5 flex flex-col justify-between shadow-lg relative group hover:border-orange-500 transition-colors">
           <div className="absolute top-4 right-4">
             <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-orange-500 text-white text-[11px] font-extrabold shadow-sm">
-              <Trophy className="w-3 h-3" /> G마켓 총판특가
+              <Trophy className="w-3 h-3" /> 오픈마켓 총판특가
             </span>
           </div>
 
@@ -158,10 +165,10 @@ export default function PriceBattle({ currentPreset, selectedComponents, totalPr
               </div>
               <div>
                 <h3 className="font-black text-base sm:text-lg text-slate-900 dark:text-white flex items-center gap-1.5">
-                  G마켓 공식 특가
+                  G마켓 · 11번가 특가
                 </h3>
                 <span className="text-[11px] text-orange-600 dark:text-orange-400 font-semibold">
-                  공식 총판 직영 &amp; 빅스마일데이 쿠폰
+                  공식 총판 직영 · 11st 슈팅배송 &amp; 빅딜
                 </span>
               </div>
             </div>
@@ -173,7 +180,7 @@ export default function PriceBattle({ currentPreset, selectedComponents, totalPr
                 <span className="font-mono line-through">{totalPrice.toLocaleString()}원</span>
               </div>
               <div className="flex justify-between items-center text-xs text-orange-600 dark:text-orange-400 mt-1">
-                <span>G마켓 쿠폰/카드할인 (예상 -6%)</span>
+                <span>오픈마켓 쿠폰/카드할인 (예상 -6%)</span>
                 <span className="font-mono font-bold">-{openMarketDiscount.toLocaleString()}원</span>
               </div>
               <div className="flex justify-between items-end mt-2 pt-2 border-t border-orange-100 dark:border-orange-900/30">
@@ -191,29 +198,40 @@ export default function PriceBattle({ currentPreset, selectedComponents, totalPr
             <ul className="space-y-1.5 text-xs text-slate-600 dark:text-slate-300 my-3">
               <li className="flex items-start gap-1.5">
                 <Check className="w-3.5 h-3.5 text-orange-500 shrink-0 mt-0.5" />
-                <span><strong>G마켓 공식 총판 100% 정품:</strong> 이엠텍·대원CTS·제이씨현</span>
+                <span><strong>공식 총판 100% 정품:</strong> 이엠텍·대원CTS·제이씨현</span>
               </li>
               <li className="flex items-start gap-1.5">
                 <Check className="w-3.5 h-3.5 text-orange-500 shrink-0 mt-0.5" />
-                <span><strong>스마일클럽 &amp; 카드사 중복할인:</strong> 빅스마일데이 극강 핫딜</span>
+                <span><strong>11번가 슈팅배송 &amp; G마켓 빅딜:</strong> 익일 도착 &amp; SK pay/카드 할인</span>
               </li>
               <li className="flex items-start gap-1.5">
                 <Check className="w-3.5 h-3.5 text-orange-500 shrink-0 mt-0.5" />
-                <span><strong>단일 고가 부품 유리:</strong> GPU·CPU 단품 구매 시 최저가</span>
+                <span><strong>고가 부품 단품 유리:</strong> GPU·CPU 단품 구매 시 최저가</span>
               </li>
             </ul>
           </div>
 
           <div className="pt-2">
-            <a
-              href={getOpenMarketPrebuiltUrl(currentPreset.id, currentPreset.title)}
-              target="_blank"
-              rel="noopener noreferrer nofollow"
-              className="w-full py-2.5 px-3 rounded-xl bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-500 hover:to-amber-500 text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-md shadow-orange-500/20 active:scale-95 transition-all cursor-pointer"
-            >
-              <span>G마켓 실시간 특가 검색</span>
-              <ExternalLink className="w-3.5 h-3.5" />
-            </a>
+            <div className="grid grid-cols-2 gap-2">
+              <a
+                href={getOpenMarketPrebuiltUrl(currentPreset.id, currentPreset.title)}
+                target="_blank"
+                rel="noopener noreferrer nofollow"
+                className="py-2.5 px-2 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold text-xs flex items-center justify-center gap-1 shadow-md shadow-emerald-500/20 active:scale-95 transition-all cursor-pointer text-center"
+              >
+                <span>🛒 G마켓 특가</span>
+                <ExternalLink className="w-3 h-3 shrink-0" />
+              </a>
+              <a
+                href={get11stSearchUrl(currentPreset.title)}
+                target="_blank"
+                rel="noopener noreferrer nofollow"
+                className="py-2.5 px-2 rounded-xl bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 text-white font-bold text-xs flex items-center justify-center gap-1 shadow-md shadow-red-500/20 active:scale-95 transition-all cursor-pointer text-center"
+              >
+                <span>⚡ 11번가 슈팅</span>
+                <ExternalLink className="w-3 h-3 shrink-0" />
+              </a>
+            </div>
           </div>
         </div>
 
@@ -307,9 +325,9 @@ export default function PriceBattle({ currentPreset, selectedComponents, totalPr
           </div>
           <div className="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800">
             <strong className="text-orange-600 dark:text-orange-400 block mb-1">
-              🛒 G마켓 공식 특가를 추천하는 분
+              🛒 G마켓 · 11번가 특가를 추천하는 분
             </strong>
-            “그래픽카드나 CPU 단일 부품을 G마켓 공식 총판 즉시할인과 빅스마일데이 쿠폰을 최대한 먹여 실결제 최저가로 구매하고 싶다면 가장 유리합니다.”
+            “그래픽카드나 CPU 단일 부품을 G마켓·11번가 공식 총판 즉시할인과 슈팅배송, 십일절/빅스마일데이 쿠폰을 최대한 먹여 실결제 최저가로 구매하고 싶다면 가장 유리합니다.”
           </div>
           <div className="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800">
             <strong className="text-emerald-600 dark:text-emerald-400 block mb-1">
@@ -340,7 +358,7 @@ export default function PriceBattle({ currentPreset, selectedComponents, totalPr
           className="w-full flex items-center justify-between text-xs font-bold text-slate-700 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors cursor-pointer py-1"
         >
           <span className="flex items-center gap-1.5">
-            🔍 주요 핵심 부품(CPU·GPU·SSD) 3대 플랫폼 실시간 판매가 확인 바로가기
+            🔍 주요 핵심 부품(CPU·GPU·SSD) 4대 플랫폼(쿠팡·G마켓·11번가·네이버) 실시간 판매가 확인 바로가기
           </span>
           {showPartsDetail ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
         </button>
@@ -352,7 +370,8 @@ export default function PriceBattle({ currentPreset, selectedComponents, totalPr
               if (!comp) return null;
 
               const coupangUrl = getCoupangProductUrl(comp.id, comp.name);
-              const openMarketUrl = getOpenMarketProductUrl(comp.id, comp.name, 'gmarket');
+              const gmarketUrl = getOpenMarketProductUrl(comp.id, comp.name, 'gmarket');
+              const elevenstUrl = getOpenMarketProductUrl(comp.id, comp.name, '11st');
               const naverUrl = getNaverShoppingUrl(comp.name, comp.id);
 
               return (
@@ -383,18 +402,29 @@ export default function PriceBattle({ currentPreset, selectedComponents, totalPr
                       className="px-2.5 py-1.5 rounded-lg bg-rose-50 hover:bg-rose-100 dark:bg-rose-950/60 dark:hover:bg-rose-900/60 text-rose-600 dark:text-rose-400 border border-rose-200 dark:border-rose-800/60 text-xs font-bold flex items-center gap-1 transition-colors"
                       title="쿠팡 로켓배송 실시간 가격 확인"
                     >
-                      <span>🚀 쿠팡 실시간가</span>
+                      <span>🚀 쿠팡 실시간</span>
                       <ExternalLink className="w-3 h-3" />
                     </a>
 
                     <a
-                      href={openMarketUrl}
+                      href={gmarketUrl}
                       target="_blank"
                       rel="noopener noreferrer nofollow"
-                      className="px-2.5 py-1.5 rounded-lg bg-orange-50 hover:bg-orange-100 dark:bg-orange-950/60 dark:hover:bg-orange-900/60 text-orange-600 dark:text-orange-400 border border-orange-200 dark:border-orange-800/60 text-xs font-bold flex items-center gap-1 transition-colors"
+                      className="px-2.5 py-1.5 rounded-lg bg-emerald-50 hover:bg-emerald-100 dark:bg-emerald-950/60 dark:hover:bg-emerald-900/60 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/60 text-xs font-bold flex items-center gap-1 transition-colors"
                       title="G마켓 공식 총판 실시간 특가 확인"
                     >
-                      <span>🛒 G마켓 실시간가</span>
+                      <span>🛒 G마켓</span>
+                      <ExternalLink className="w-3 h-3" />
+                    </a>
+
+                    <a
+                      href={elevenstUrl}
+                      target="_blank"
+                      rel="noopener noreferrer nofollow"
+                      className="px-2.5 py-1.5 rounded-lg bg-red-50 hover:bg-red-100 dark:bg-red-950/60 dark:hover:bg-red-900/60 text-red-600 dark:text-red-400 border border-red-200 dark:border-red-800/60 text-xs font-bold flex items-center gap-1 transition-colors"
+                      title="11번가 슈팅배송 실시간 특가 확인"
+                    >
+                      <span>⚡ 11번가</span>
                       <ExternalLink className="w-3 h-3" />
                     </a>
 
@@ -402,10 +432,10 @@ export default function PriceBattle({ currentPreset, selectedComponents, totalPr
                       href={naverUrl}
                       target="_blank"
                       rel="noopener noreferrer nofollow"
-                      className="px-2.5 py-1.5 rounded-lg bg-emerald-50 hover:bg-emerald-100 dark:bg-emerald-950/60 dark:hover:bg-emerald-900/60 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/60 text-xs font-bold flex items-center gap-1 transition-colors"
+                      className="px-2.5 py-1.5 rounded-lg bg-teal-50 hover:bg-teal-100 dark:bg-teal-950/60 dark:hover:bg-teal-900/60 text-teal-600 dark:text-teal-400 border border-teal-200 dark:border-teal-800/60 text-xs font-bold flex items-center gap-1 transition-colors"
                       title="네이버 쇼핑 실시간 시세 확인"
                     >
-                      <span>🟢 네이버 실시간시세</span>
+                      <span>🟢 네이버</span>
                       <ExternalLink className="w-3 h-3" />
                     </a>
                   </div>

@@ -292,6 +292,19 @@ export function getGmarketSearchUrl(keyword: string): string {
 }
 
 /**
+ * 11번가 (11st) 공식 제휴 실시간 검색 URL
+ * - 링크프라이스 공식 머천트 11st 게이트웨이 경유 (A100708723)
+ */
+export function get11stSearchUrl(keyword: string): string {
+  const cleanKeyword = keyword.trim() || '조립컴퓨터';
+  const targetUrl = `https://search.11st.co.kr/Search.tmall?kwd=${encodeURIComponent(cleanKeyword)}`;
+  if (LINKPRICE_AFFILIATE_ID) {
+    return `https://click.linkprice.com/click.php?m=11st&a=${LINKPRICE_AFFILIATE_ID}&l=0000&url=${encodeURIComponent(targetUrl)}`;
+  }
+  return targetUrl;
+}
+
+/**
  * 쿠팡 파트너스 공식 실시간 검색 URL
  */
 export function getCoupangSearchDirectUrl(keyword: string): string {

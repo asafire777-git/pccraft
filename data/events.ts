@@ -3,7 +3,8 @@ import {
   OFFICIAL_COMPONENTS_LINK,
   OFFICIAL_MONITOR_LINK,
   OFFICIAL_GEAR_LINK,
-  getPromoGatewayUrl
+  getPromoGatewayUrl,
+  get11stSearchUrl
 } from '@/lib/affiliate';
 
 export type PlatformType = 'coupang' | 'gmarket' | 'lotteon' | 'ssg' | 'aliexpress' | '11st';
@@ -153,6 +154,26 @@ export const PROMO_EVENTS: PromoEvent[] = [
     highlightText: '로켓배송 무료설치',
     imageUrl: '/banners/banner-monitor.jpg',
     imageAlt: '삼성 LG 고주사율 게이밍 모니터 기획전'
+  },
+
+  // 7. [11번가] 슈팅배송 & 월간 십일절 PC 부품 페스타 (공식 승인 링크프라이스 링크)
+  {
+    id: 'event-11st-shooting',
+    platform: '11st',
+    platformName: '11번가',
+    title: '[11번가] 슈팅배송 & 월간 십일절 PC 부품 디지털 페스타',
+    subtitle: '평일 자정 24시 전 주문 시 내일 도착 슈팅배송 & SK pay 최대 15% 카드 즉시할인',
+    badge: '슈팅배송 익일도착',
+    discountRate: '최대 15% 카드할인',
+    couponText: 'SK pay 결제 시 5% 추가 적립',
+    startDate: '2026-01-01',
+    endDate: '2026-12-31',
+    affiliateUrl: get11stSearchUrl('게이밍 조립PC 컴퓨터부품'),
+    themeColor: 'red',
+    tag: '슈팅배송',
+    highlightText: '평일 24시 마감 내일도착',
+    imageUrl: '/banners/banner-11st-shooting.jpg',
+    imageAlt: '11번가 슈팅배송 월간 십일절 PC 부품 디지털 페스타'
   }
 ];
 

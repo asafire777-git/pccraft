@@ -31,6 +31,7 @@ export default function MultiPlatformExhibitionGrid() {
   const platformTabs = [
     { key: 'all', label: '전체 보기', icon: '🔥' },
     { key: 'lotteon', label: '롯데ON 온쇼페', icon: '🔴' },
+    { key: '11st', label: '11번가 슈팅배송', icon: '⚡' },
     { key: 'coupang', label: '쿠팡 로켓특가', icon: '🚀' },
     { key: 'gmarket', label: 'G마켓 특가전', icon: '🟢' }
   ];
@@ -48,7 +49,7 @@ export default function MultiPlatformExhibitionGrid() {
             🔥 주요 플랫폼 실시간 PC 기획전 &amp; 부품 모음
           </h3>
           <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
-            공식 승인된 롯데ON 온쇼페, 쿠팡 로켓배송 및 G마켓의 실시간 기획전을 투명하게 제공합니다.
+            공식 승인된 롯데ON 온쇼페, 11번가 슈팅배송, 쿠팡 로켓배송 및 G마켓의 실시간 기획전을 투명하게 제공합니다.
           </p>
         </div>
         <div className="flex items-center gap-1 text-[11px] text-slate-400 mt-2 sm:mt-0 font-mono">
