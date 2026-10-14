@@ -20,6 +20,9 @@ export interface ComponentItem {
   recommendationReason?: string;
 }
 
+const getTrackingUrl = (keyword: string) =>
+  `https://link.coupang.com/re/AFFSRP?pageKey=${encodeURIComponent(keyword)}&lptag=AF5322745&subid=pccraft`;
+
 export const COMPONENTS_DATA: Record<string, ComponentItem[]> = {
   cpu: [
     {
@@ -37,7 +40,7 @@ export const COMPONENTS_DATA: Record<string, ComponentItem[]> = {
       socket: 'AM4',
       tdp: 65,
       imageUrl: 'https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=500&auto=format&fit=crop&q=80',
-      affiliateUrl: 'https://link.coupang.com/a/sample_cpu_5600',
+      affiliateUrl: getTrackingUrl('AMD 라이젠5 5600 (버미어) 멀티팩'),
       tags: ['가성비원탑', '롤/피파', '입문용'],
       recommendationReason: '10만원 초반대에서 롤, 피파, 발로란트 및 국민 배그옵션까지 정복하는 최고의 가성비 CPU'
     },
@@ -56,7 +59,7 @@ export const COMPONENTS_DATA: Record<string, ComponentItem[]> = {
       socket: 'AM5',
       tdp: 65,
       imageUrl: 'https://images.unsplash.com/photo-1555680202-c86f0e12f086?w=500&auto=format&fit=crop&q=80',
-      affiliateUrl: 'https://link.coupang.com/a/sample_cpu_7500f',
+      affiliateUrl: getTrackingUrl('AMD 라이젠5 5세대 7500F (라파엘) 멀티팩'),
       tags: ['DDR5지원', '게이밍표준', 'QHD'],
       recommendationReason: '현재 게이밍 PC 시장의 표준. DDR5 기반으로 향후 차세대 CPU 업그레이드까지 완벽 지원'
     },
@@ -75,7 +78,7 @@ export const COMPONENTS_DATA: Record<string, ComponentItem[]> = {
       socket: 'LGA1700',
       tdp: 65,
       imageUrl: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=500&auto=format&fit=crop&q=80',
-      affiliateUrl: 'https://link.coupang.com/a/sample_cpu_14400f',
+      affiliateUrl: getTrackingUrl('인텔 코어 i5-14세대 14400F (랩터레이크 리프레시)'),
       tags: ['다중작업', '인텔안정성', '영상편집'],
       recommendationReason: '게임과 원컴 방송, 프리미어 영상 편집을 겸하는 멀티태스킹 유저에게 탁월'
     },
@@ -94,7 +97,7 @@ export const COMPONENTS_DATA: Record<string, ComponentItem[]> = {
       socket: 'AM5',
       tdp: 120,
       imageUrl: 'https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=500&auto=format&fit=crop&q=80',
-      affiliateUrl: 'https://link.coupang.com/a/sample_cpu_7800x3d',
+      affiliateUrl: getTrackingUrl('AMD 라이젠7 5세대 7800X3D (라파엘) 정품'),
       tags: ['종결급', '게이밍끝판왕', '3DV캐시'],
       recommendationReason: '압도적인 3D V-Cache 탑재로 현존 모든 게임에서 1% Low 최저 프레임 방어력 전 세계 1위'
     }
@@ -113,7 +116,7 @@ export const COMPONENTS_DATA: Record<string, ComponentItem[]> = {
       brand: 'Thermalright',
       specs: { '방식': '공랭 1열 싱글타워', '팬크기': '120mm', '높이': '148mm' },
       imageUrl: 'https://images.unsplash.com/photo-1544652478-6653e09f18a2?w=500&auto=format&fit=crop&q=80',
-      affiliateUrl: 'https://link.coupang.com/a/sample_cooler_ax120',
+      affiliateUrl: getTrackingUrl('Thermalright Assassin X 120 Refined SE'),
       tags: ['정숙성', '가성비쿨러'],
       recommendationReason: '2만원 초반대에 65W급 CPU의 발열을 완벽하게 잡아내는 국민 공랭 쿨러'
     },
@@ -130,7 +133,7 @@ export const COMPONENTS_DATA: Record<string, ComponentItem[]> = {
       brand: 'Thermalright',
       specs: { '방식': '공랭 듀얼타워', '팬크기': '120mm x 2', '높이': '155mm' },
       imageUrl: 'https://images.unsplash.com/photo-1544652478-6653e09f18a2?w=500&auto=format&fit=crop&q=80',
-      affiliateUrl: 'https://link.coupang.com/a/sample_cooler_pa120',
+      affiliateUrl: getTrackingUrl('Thermalright Peerless Assassin 120 SE'),
       tags: ['듀얼타워', '하이엔드공랭'],
       recommendationReason: '수랭 부럽지 않은 트윈 타워 방열판으로 7800X3D까지 소음 없이 냉각'
     },
@@ -147,7 +150,7 @@ export const COMPONENTS_DATA: Record<string, ComponentItem[]> = {
       brand: 'Valkyrie',
       specs: { '방식': '일체형 수랭 3열', '라디에이터': '360mm', '보증기간': '5년 누수보상' },
       imageUrl: 'https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=500&auto=format&fit=crop&q=80',
-      affiliateUrl: 'https://link.coupang.com/a/sample_cooler_gl360',
+      affiliateUrl: getTrackingUrl('발키리 GL360 ARGB 3열 수랭쿨러'),
       tags: ['3열수랭', 'ARGB감성', '누수보증'],
       recommendationReason: '극강의 쿨링 퍼포먼스와 화려한 ARGB 펌프 캡 디자인'
     }
@@ -167,7 +170,7 @@ export const COMPONENTS_DATA: Record<string, ComponentItem[]> = {
       specs: { '소켓': 'AM4', '칩셋': 'AMD A520', '규격': 'M-ATX', '메모리슬롯': '4개' },
       socket: 'AM4',
       imageUrl: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=500&auto=format&fit=crop&q=80',
-      affiliateUrl: 'https://link.coupang.com/a/sample_mb_a520',
+      affiliateUrl: getTrackingUrl('ASUS PRIME A520M-A II 대원씨티에스'),
       tags: ['AM4가성비', 'M-ATX'],
       recommendationReason: '라이젠 5600과 찰떡궁합. 메모리 슬롯 4개로 추후 램 증설 편리'
     },
@@ -185,7 +188,7 @@ export const COMPONENTS_DATA: Record<string, ComponentItem[]> = {
       specs: { '소켓': 'AM5', '칩셋': 'AMD B650', '전원부': '8+2+1페이즈 Dr.MOS', '규격': 'M-ATX' },
       socket: 'AM5',
       imageUrl: 'https://images.unsplash.com/photo-1555680202-c86f0e12f086?w=500&auto=format&fit=crop&q=80',
-      affiliateUrl: 'https://link.coupang.com/a/sample_mb_b650',
+      affiliateUrl: getTrackingUrl('ASRock B650M-HDV/M.2 디앤디컴'),
       tags: ['DrMOS전원부', 'B650가성비', 'AM5'],
       recommendationReason: '10만원 중반대임에도 탄탄한 Dr.MOS 전원부로 7500F는 물론 7800X3D까지 무리 없이 소화'
     },
@@ -203,7 +206,7 @@ export const COMPONENTS_DATA: Record<string, ComponentItem[]> = {
       specs: { '소켓': 'LGA1700', '칩셋': '인텔 B760', '전원부': '12+1+1페이즈', '규격': 'M-ATX' },
       socket: 'LGA1700',
       imageUrl: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=500&auto=format&fit=crop&q=80',
-      affiliateUrl: 'https://link.coupang.com/a/sample_mb_b760',
+      affiliateUrl: getTrackingUrl('MSI MAG B760M 박격포 II'),
       tags: ['박격포', '인텔명기', '대형방열판'],
       recommendationReason: '두터운 알루미늄 방열판과 안정적인 전원부로 오랜 기간 사랑받는 인텔 메인보드의 정석'
     }
@@ -222,7 +225,7 @@ export const COMPONENTS_DATA: Record<string, ComponentItem[]> = {
       brand: '삼성전자',
       specs: { '규격': 'DDR4', '용량': '16GB (8Gx2)', '동작클럭': '3200MHz (PC4-25600)' },
       imageUrl: 'https://images.unsplash.com/photo-1562976540-1502c2145186?w=500&auto=format&fit=crop&q=80',
-      affiliateUrl: 'https://link.coupang.com/a/sample_ram_ddr4',
+      affiliateUrl: getTrackingUrl('삼성전자 DDR4-3200 (8GB x 2 = 16GB 듀얼채널)'),
       tags: ['DDR4', '가성비16G'],
       recommendationReason: '기본적인 사무 및 캐주얼 온라인 게임에 차고 넘치는 국민 16GB 세팅'
     },
@@ -239,7 +242,7 @@ export const COMPONENTS_DATA: Record<string, ComponentItem[]> = {
       brand: 'TeamGroup',
       specs: { '규격': 'DDR5', '용량': '32GB (16Gx2)', '동작클럭': '5600MHz' },
       imageUrl: 'https://images.unsplash.com/photo-1562976540-1502c2145186?w=500&auto=format&fit=crop&q=80',
-      affiliateUrl: 'https://link.coupang.com/a/sample_ram_ddr5',
+      affiliateUrl: getTrackingUrl('TeamGroup DDR5-5600 CL46 Elite 서린 (16GB x 2 = 32GB)'),
       tags: ['DDR5', '32GB대세', '하이엔드'],
       recommendationReason: '최신 스팀 AAA 대작 게임 및 원활한 크롬 탭 멀티태스킹을 위한 표준 32GB'
     }
@@ -259,7 +262,7 @@ export const COMPONENTS_DATA: Record<string, ComponentItem[]> = {
       specs: { '칩셋': 'GTX 1650', '메모리': 'GDDR6 4GB', '권장파워': '300W', '길이': '170mm' },
       tdp: 75,
       imageUrl: 'https://images.unsplash.com/photo-1587202372634-32705e3bf49c?w=500&auto=format&fit=crop&q=80',
-      affiliateUrl: 'https://link.coupang.com/a/sample_gpu_1650',
+      affiliateUrl: getTrackingUrl('이엠텍 지포스 GTX 1650 MIRACLE D6 4GB'),
       tags: ['초가성비', '롤/오버워치', '저전력'],
       recommendationReason: '롤, 피파, 서든어택 등 캐주얼 e스포츠 게임 144Hz를 완벽 방어하는 착한 가격'
     },
@@ -277,7 +280,7 @@ export const COMPONENTS_DATA: Record<string, ComponentItem[]> = {
       specs: { '칩셋': 'RTX 5060', '아키텍처': '블랙웰 (Blackwell)', '메모리': 'GDDR7 8GB', '권장파워': '550W', 'DLSS': 'DLSS 4' },
       tdp: 130,
       imageUrl: 'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=500&auto=format&fit=crop&q=80',
-      affiliateUrl: 'https://link.coupang.com/a/sample_gpu_5060',
+      affiliateUrl: getTrackingUrl('이엠텍 지포스 RTX 5060 STORM X Dual OC D7 8GB'),
       tags: ['2026신형', 'FHD종결', 'GDDR7', '국민그래픽카드'],
       recommendationReason: '블랙웰 차세대 아키텍처 탑재. FHD 풀옵션 정복 및 압도적인 전력 효율'
     },
@@ -295,7 +298,7 @@ export const COMPONENTS_DATA: Record<string, ComponentItem[]> = {
       specs: { '칩셋': 'RTX 5070', '아키텍처': '블랙웰 (Blackwell)', '메모리': 'GDDR7 12GB', '권장파워': '700W', '쿠다코어': '6144' },
       tdp: 250,
       imageUrl: 'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=500&auto=format&fit=crop&q=80',
-      affiliateUrl: 'https://link.coupang.com/a/sample_gpu_5070',
+      affiliateUrl: getTrackingUrl('GIGABYTE 지포스 RTX 5070 WINDFORCE OC D7 12GB'),
       tags: ['2026주력', 'QHD종결', '차세대게이밍', '블랙웰'],
       recommendationReason: 'QHD 144Hz~240Hz 고주사율 완벽 정복. 차세대 DLSS 4 및 풀 레이트레이싱 구동'
     },
@@ -313,7 +316,7 @@ export const COMPONENTS_DATA: Record<string, ComponentItem[]> = {
       specs: { '칩셋': 'RTX 5080', '아키텍처': '블랙웰 (Blackwell)', '메모리': 'GDDR7 16GB', '권장파워': '850W', '4K지원': '4K 144Hz+' },
       tdp: 380,
       imageUrl: 'https://images.unsplash.com/photo-1587202372634-32705e3bf49c?w=500&auto=format&fit=crop&q=80',
-      affiliateUrl: 'https://link.coupang.com/a/sample_gpu_5080',
+      affiliateUrl: getTrackingUrl('ASUS TUF Gaming 지포스 RTX 5080 O16G OC D7 16GB'),
       tags: ['4K풀옵션', '플래그십', 'AI딥러닝', '괴물스펙'],
       recommendationReason: '4K 해상도 풀옵션 및 영상 렌더링, 로컬 AI 딥러닝까지 압도적으로 처리하는 끝판왕'
     },
@@ -331,7 +334,7 @@ export const COMPONENTS_DATA: Record<string, ComponentItem[]> = {
       specs: { '칩셋': 'RTX 4060', '메모리': 'GDDR6 8GB', '권장파워': '500W', 'DLSS': 'DLSS 3 지원' },
       tdp: 115,
       imageUrl: 'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=500&auto=format&fit=crop&q=80',
-      affiliateUrl: 'https://link.coupang.com/a/sample_gpu_4060',
+      affiliateUrl: getTrackingUrl('ZOTAC GAMING 지포스 RTX 4060 TWIN Edge OC D6 8GB'),
       tags: ['가성비대안', 'DLSS3', '초저전력'],
       recommendationReason: '안정화된 40만원대 가격으로 즐기는 합리적인 FHD 게이밍 카드'
     }
@@ -350,7 +353,7 @@ export const COMPONENTS_DATA: Record<string, ComponentItem[]> = {
       brand: '삼성전자',
       specs: { '폼팩터': 'M.2 NVMe (PCIe 4.0)', '용량': '512GB', '읽기속도': '6,900MB/s' },
       imageUrl: 'https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=500&auto=format&fit=crop&q=80',
-      affiliateUrl: 'https://link.coupang.com/a/sample_ssd_pm9a1_500',
+      affiliateUrl: getTrackingUrl('삼성전자 PM9A1 M.2 NVMe 병행수입 (512GB)'),
       tags: ['PCIe4.0', '가성비SSD'],
       recommendationReason: '속도와 안정성을 검증받은 PCIe 4.0 국민 OEM 초고속 SSD'
     },
@@ -367,7 +370,7 @@ export const COMPONENTS_DATA: Record<string, ComponentItem[]> = {
       brand: 'SK하이닉스',
       specs: { '폼팩터': 'M.2 NVMe (PCIe 4.0)', '용량': '1TB', '읽기속도': '7,000MB/s', 'DRAM': 'DRAM 탑재' },
       imageUrl: 'https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=500&auto=format&fit=crop&q=80',
-      affiliateUrl: 'https://link.coupang.com/a/sample_ssd_p41_1tb',
+      affiliateUrl: getTrackingUrl('SK하이닉스 Platinum P41 M.2 NVMe (1TB)'),
       tags: ['하이엔드SSD', '발열제어', 'DRAM탑재'],
       recommendationReason: '독보적인 전력 효율과 저발열, 대용량 스팀 게임 설치에 필수적인 1TB 용량'
     }
@@ -387,7 +390,7 @@ export const COMPONENTS_DATA: Record<string, ComponentItem[]> = {
       specs: { '정격출력': '500W', '인증': '80PLUS 230V EU Bronze', '무상보증': '6년' },
       wattage: 500,
       imageUrl: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=500&auto=format&fit=crop&q=80',
-      affiliateUrl: 'https://link.coupang.com/a/sample_power_500w',
+      affiliateUrl: getTrackingUrl('마이크로닉스 Classic II 풀체인지 500W 80PLUS 브론즈'),
       tags: ['국민파워', '브론즈인증', '500W'],
       recommendationReason: '입문형 및 1650/4060 시스템에 가장 믿을 수 있는 6년 AS 보증 파워'
     },
@@ -405,7 +408,7 @@ export const COMPONENTS_DATA: Record<string, ComponentItem[]> = {
       specs: { '정격출력': '700W', '인증': '80PLUS Bronze', '규격': 'ATX 3.1 / PCIe 5.1' },
       wattage: 700,
       imageUrl: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=500&auto=format&fit=crop&q=80',
-      affiliateUrl: 'https://link.coupang.com/a/sample_power_700w',
+      affiliateUrl: getTrackingUrl('마이크로닉스 Classic II 풀체인지 700W 80PLUS 브론즈 ATX3.1'),
       tags: ['700W', 'ATX3.1', 'RTX5070추천'],
       recommendationReason: '최신 12V-2x6 전원 케이블 기본 제공으로 RTX 5070 시리즈 완벽 호환'
     },
@@ -423,7 +426,7 @@ export const COMPONENTS_DATA: Record<string, ComponentItem[]> = {
       specs: { '정격출력': '850W', '인증': '80PLUS GOLD', '풀모듈러': '지원', '무상보증': '10년' },
       wattage: 850,
       imageUrl: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=500&auto=format&fit=crop&q=80',
-      affiliateUrl: 'https://link.coupang.com/a/sample_power_850w',
+      affiliateUrl: getTrackingUrl('시소닉 NEW FOCUS GX-850 GOLD Full Modular ATX 3.0'),
       tags: ['명품파워', '골드인증', '10년보증'],
       recommendationReason: '파워서플라이의 명가 시소닉, 10년 무상보증과 칼전압 유지'
     }
@@ -442,7 +445,7 @@ export const COMPONENTS_DATA: Record<string, ComponentItem[]> = {
       brand: 'darkFlash',
       specs: { '규격': '미들타워', '기본팬': 'RGB 6팬 기본제공', '그래픽카드장착': '최대 320mm' },
       imageUrl: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=500&auto=format&fit=crop&q=80',
-      affiliateUrl: 'https://link.coupang.com/a/sample_case_dk200',
+      affiliateUrl: getTrackingUrl('darkFlash DK200 RGB 강화유리 (블랙/화이트)'),
       tags: ['6팬기본', '가성비케이스', '통풍우수'],
       recommendationReason: '3만원대에 6개의 쿨링팬 기본 장착으로 별도 튜닝 없이도 시원한 쿨링력'
     },
@@ -459,7 +462,7 @@ export const COMPONENTS_DATA: Record<string, ComponentItem[]> = {
       brand: '앱코',
       specs: { '규격': '미들타워 어항형', '기본팬': 'ARGB 리버스 팬 3개', '측면/전면': '무프레임 통유리' },
       imageUrl: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=500&auto=format&fit=crop&q=80',
-      affiliateUrl: 'https://link.coupang.com/a/sample_case_aquarium',
+      affiliateUrl: getTrackingUrl('앱코 U30 마린 어항케이스 파노라마 뷰 강화유리'),
       tags: ['어항케이스', '데스크테리어', '파노라마뷰'],
       recommendationReason: '기둥 없는 파노라마 강화유리로 책상 위 인테리어를 완성하는 요즘 대세 디자인'
     }

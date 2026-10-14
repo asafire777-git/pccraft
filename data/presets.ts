@@ -57,7 +57,7 @@ export const GAME_PRESETS: GamePreset[] = [
       title: '롤·발로란트 e스포츠 가성비 추천 완본체 PC (라이젠 5600 + GTX 1650)',
       brand: 'e스포츠 게이밍',
       price: 599000,
-      affiliateUrl: 'https://link.coupang.com/a/sample_prebuilt_entry',
+      affiliateUrl: 'https://link.coupang.com/a/hMDhTKsW5I',
       imageUrl: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=500&auto=format&fit=crop&q=60',
       pros: ['1년 무상 출장 방문 AS', '윈도우 미포함 최저가 구성', '원클릭 즉시 배송'],
       specsSummary: '라이젠 5600 / GTX 1650 / 16GB DDR4 / 512GB NVMe / 500W'
@@ -97,7 +97,7 @@ export const GAME_PRESETS: GamePreset[] = [
       title: '2026 국민 게이밍 & 배틀그라운드 완본체 PC (라이젠 7500F + RTX 5060)',
       brand: '국민 게이밍',
       price: 1289000,
-      affiliateUrl: 'https://link.coupang.com/a/sample_prebuilt_mainstream',
+      affiliateUrl: 'https://link.coupang.com/a/hMDhTKsW5I',
       imageUrl: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=500&auto=format&fit=crop&q=60',
       pros: ['선정리 완벽 마감', '정품 바이오스 세팅 및 번인 테스트 완료', '로켓설치 지원'],
       specsSummary: '라이젠 7500F / RTX 5060 8G / 32GB DDR5 / 1TB NVMe / 700W'
@@ -137,7 +137,7 @@ export const GAME_PRESETS: GamePreset[] = [
       title: '스팀 AAA 대작 & QHD 종결 완본체 PC (7800X3D + RTX 5070)',
       brand: '하이엔드 게이밍',
       price: 2490000,
-      affiliateUrl: 'https://link.coupang.com/a/sample_prebuilt_highend',
+      affiliateUrl: 'https://link.coupang.com/a/hMDhTKsW5I',
       imageUrl: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=500&auto=format&fit=crop&q=60',
       pros: ['파노라마 어항케이스 디자인 감성', '전 부품 3년 무상보증 패키지', '정품 윈도우 11 사전탑재'],
       specsSummary: '라이젠 7800X3D / RTX 5070 12G / 32GB DDR5 / 1TB P41 / 750W'
@@ -177,7 +177,7 @@ export const GAME_PRESETS: GamePreset[] = [
       title: '4K UHD 플래그십 & 영상편집 워크스테이션 PC (RTX 5080)',
       brand: '플래그십 워크스테이션',
       price: 4150000,
-      affiliateUrl: 'https://link.coupang.com/a/sample_prebuilt_flagship',
+      affiliateUrl: 'https://link.coupang.com/a/hMDhTKsW5I',
       imageUrl: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=500&auto=format&fit=crop&q=60',
       pros: ['플래그십 감성 튜닝', '골드 등급 파워와 3열 수랭 기본 적용', 'VIP 무상 케어'],
       specsSummary: '인텔 i5/i7 / RTX 5080 16G / 32GB DDR5 / 1TB Gen4 / 850W Gold'
