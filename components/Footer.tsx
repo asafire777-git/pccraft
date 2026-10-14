@@ -5,7 +5,7 @@ import { ShieldCheck, Mail, Globe } from 'lucide-react';
 export default function Footer() {
   return (
     <footer className="w-full bg-white dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 text-slate-500 dark:text-slate-400 py-12 px-4 sm:px-6 transition-colors">
-      <div className="max-w-7xl mx-auto space-y-6">
+      <div className="max-w-[1600px] 2xl:max-w-[1800px] mx-auto px-2 sm:px-4 space-y-6">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-slate-100 dark:border-slate-900">
           <div>
             <div className="flex items-center gap-2">

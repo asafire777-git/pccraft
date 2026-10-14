@@ -76,7 +76,7 @@ export default function MultiPlatformExhibitionGrid() {
       </div>
 
       {/* 프로모션 카드 그리드 */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-5">
         {filteredEvents.map((item) => {
           const remaining = isMounted ? getEventRemainingDays(item.endDate) : '진행중';
           const isCopied = Boolean(copiedCodes[item.id]);

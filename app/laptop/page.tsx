@@ -62,7 +62,7 @@ export default function LaptopCurationPage() {
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex flex-col font-sans transition-colors">
       <Header />
 
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-8">
+      <main className="flex-1 max-w-[1600px] 2xl:max-w-[1760px] w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
         {/* 상단 빵부스러기 및 견적기 바로가기 */}
         <div className="flex items-center justify-between mb-6">
           <Link
@@ -130,7 +130,7 @@ export default function LaptopCurationPage() {
 
         {/* 큐레이션 제품 카드 그리드 */}
         <section className="mb-14">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-6">
             {filteredProducts.map((p) => {
               const himartUrl = getHimartSearchUrl(p.searchKeyword);
               const lotteonUrl = getLotteonSearchUrl(p.searchKeyword);

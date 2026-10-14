@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { Cpu, Sun, Moon, Bookmark, User, X, Check, Share2, LogOut } from 'lucide-react';
+import { Cpu, Sun, Moon, Bookmark, User, X, Check, Share2, LogOut, Menu } from 'lucide-react';
 import { useTheme } from './ThemeProvider';
 import { useSession, signIn, signOut } from 'next-auth/react';
 
@@ -38,6 +38,7 @@ export default function Header({ onOpenQuoteStorage }: HeaderProps = {}) {
   const [mounted, setMounted] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [isLoggingIn, setIsLoggingIn] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     setMounted(true);
@@ -117,30 +118,30 @@ export default function Header({ onOpenQuoteStorage }: HeaderProps = {}) {
 
   return (
     <>
-      <header className="sticky top-0 z-40 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-colors">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <header className="sticky top-0 z-40 bg-white/90 dark:bg-slate-950/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-colors">
+        <div className="max-w-[1600px] 2xl:max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-2 sm:gap-4">
           {/* 로고 영역 */}
-          <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-cyan-600 to-blue-600 flex items-center justify-center text-white shadow-md shadow-cyan-500/20 group-hover:scale-105 transition-transform">
+          <Link href="/" className="flex items-center gap-2.5 sm:gap-3 group shrink-0">
+            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-cyan-600 to-blue-600 flex items-center justify-center text-white shadow-md shadow-cyan-500/20 group-hover:scale-105 transition-transform shrink-0">
               <Cpu className="w-5 h-5" />
             </div>
-            <div>
-              <span className="text-base font-black tracking-tight text-slate-900 dark:text-white flex items-center gap-1.5">
+            <div className="shrink-0">
+              <span className="text-base font-black tracking-tight text-slate-900 dark:text-white flex items-center gap-1.5 whitespace-nowrap">
                 PC-Craft <span className="text-cyan-600 dark:text-cyan-400 font-mono text-xs font-semibold px-1.5 py-0.5 rounded bg-cyan-100 dark:bg-cyan-950/60 border border-cyan-200 dark:border-cyan-800/40">2026</span>
               </span>
-              <span className="text-[10px] text-slate-500 dark:text-slate-400 block -mt-1 hidden sm:block">
-                스마트 컴퓨터 부품 & 게이밍 맞춤 견적 큐레이션
+              <span className="text-[10px] text-slate-500 dark:text-slate-400 block -mt-0.5 hidden xl:block whitespace-nowrap">
+                스마트 컴퓨터 부품 &amp; 맞춤 견적 큐레이션
               </span>
             </div>
           </Link>
 
-          {/* 중앙 네비게이션 (어느 페이지에서든, 어떤 순서로 누르든 부드럽게 화면 이동) */}
-          <nav className="hidden md:flex items-center gap-6 text-xs font-semibold text-slate-600 dark:text-slate-300">
+          {/* 중앙 네비게이션: 일반 모니터에서도 줄바꿈 없는 깔끔한 1줄 정렬 */}
+          <nav className="hidden lg:flex items-center gap-1 xl:gap-2.5 2xl:gap-5 text-xs xl:text-[13px] font-semibold text-slate-600 dark:text-slate-300 whitespace-nowrap shrink-0">
             <a
               href="/"
               onClick={handleNavigateTop}
-              className={`hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors cursor-pointer ${
-                pathname === '/' ? 'text-slate-900 dark:text-white font-bold' : ''
+              className={`px-2.5 py-1.5 rounded-xl hover:text-cyan-600 dark:hover:text-cyan-400 hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-colors cursor-pointer whitespace-nowrap shrink-0 ${
+                pathname === '/' ? 'text-slate-900 dark:text-white font-bold bg-slate-100/80 dark:bg-slate-800/80' : ''
               }`}
             >
               맞춤 견적기
@@ -148,62 +149,63 @@ export default function Header({ onOpenQuoteStorage }: HeaderProps = {}) {
             <a
               href="/#price-battle-section"
               onClick={(e) => handleNavigateSection(e, 'price-battle-section')}
-              className="text-rose-600 dark:text-rose-400 font-bold hover:underline flex items-center gap-1 cursor-pointer"
+              className="px-2.5 py-1.5 rounded-xl text-rose-600 dark:text-rose-400 font-bold hover:underline flex items-center gap-1 cursor-pointer whitespace-nowrap shrink-0 hover:bg-rose-50 dark:hover:bg-rose-950/40"
             >
               <span>⚔️ 최저가 빅매치</span>
             </a>
             <Link
               href="/laptop"
-              className={`hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors cursor-pointer flex items-center gap-1 ${
-                pathname === '/laptop' ? 'text-cyan-600 dark:text-cyan-400 font-bold' : ''
+              className={`px-2.5 py-1.5 rounded-xl hover:text-cyan-600 dark:hover:text-cyan-400 hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-colors cursor-pointer flex items-center gap-1 whitespace-nowrap shrink-0 ${
+                pathname === '/laptop' ? 'text-cyan-600 dark:text-cyan-400 font-bold bg-slate-100/80 dark:bg-slate-800/80' : ''
               }`}
             >
               <span>💻 노트북&amp;완제관</span>
             </Link>
             <Link
               href="/deals"
-              className={`hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors cursor-pointer flex items-center gap-1 ${
-                pathname === '/deals' ? 'text-cyan-600 dark:text-cyan-400 font-bold' : ''
+              className={`px-2.5 py-1.5 rounded-xl hover:text-cyan-600 dark:hover:text-cyan-400 hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-colors cursor-pointer flex items-center gap-1 whitespace-nowrap shrink-0 ${
+                pathname === '/deals' ? 'text-cyan-600 dark:text-cyan-400 font-bold bg-slate-100/80 dark:bg-slate-800/80' : ''
               }`}
             >
               <span>🏷️ 할인 캘린더</span>
             </Link>
+            {/* 단일 메뉴로 깔끔하게 통합된 하드웨어 랩 (와이드에서는 10대 리포트 뱃지 노출) */}
             <Link
               href="/lab"
-              className={`hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors cursor-pointer flex items-center gap-1.5 ${
-                pathname?.startsWith('/lab') ? 'text-cyan-600 dark:text-cyan-400 font-bold' : ''
+              className={`px-2.5 py-1.5 rounded-xl hover:text-cyan-600 dark:hover:text-cyan-400 hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-colors cursor-pointer flex items-center gap-1.5 whitespace-nowrap shrink-0 ${
+                pathname?.startsWith('/lab') ? 'text-cyan-600 dark:text-cyan-400 font-bold bg-slate-100/80 dark:bg-slate-800/80' : ''
               }`}
             >
               <span>📖 하드웨어 랩</span>
-              <span className="text-[9px] font-black px-1.5 py-0.5 rounded-full bg-rose-500 text-white shadow-xs">
+              <span className="hidden 2xl:inline-block text-[9px] font-black px-1.5 py-0.5 rounded-full bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20">
                 10대 리포트
               </span>
             </Link>
             <Link
               href="/guide"
-              className={`hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors cursor-pointer ${
-                pathname === '/guide' ? 'text-cyan-600 dark:text-cyan-400 font-bold' : ''
+              className={`px-2.5 py-1.5 rounded-xl hover:text-cyan-600 dark:hover:text-cyan-400 hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-colors cursor-pointer whitespace-nowrap shrink-0 ${
+                pathname === '/guide' ? 'text-cyan-600 dark:text-cyan-400 font-bold bg-slate-100/80 dark:bg-slate-800/80' : ''
               }`}
             >
               호환성 가이드
             </Link>
             <Link
               href="/about"
-              className={`hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors cursor-pointer ${
-                pathname === '/about' ? 'text-cyan-600 dark:text-cyan-400 font-bold' : ''
+              className={`px-2.5 py-1.5 rounded-xl hover:text-cyan-600 dark:hover:text-cyan-400 hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-colors cursor-pointer whitespace-nowrap shrink-0 ${
+                pathname === '/about' ? 'text-cyan-600 dark:text-cyan-400 font-bold bg-slate-100/80 dark:bg-slate-800/80' : ''
               }`}
             >
               플랫폼 소개
             </Link>
           </nav>
 
-          {/* 우측 유틸리티: 테마 토글러 & 로그인 버튼 */}
-          <div className="flex items-center gap-2 sm:gap-3">
+          {/* 우측 유틸리티: 테마 토글러 & 로그인 버튼 & 모바일 햄버거 메뉴 */}
+          <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0 whitespace-nowrap">
             {/* 테마 토글 버튼 (낮/밤 스위치) */}
             <button
               onClick={toggleTheme}
               aria-label="테마 변경"
-              className="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 transition-all cursor-pointer active:scale-95 shadow-sm"
+              className="p-2 sm:p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 transition-all cursor-pointer active:scale-95 shadow-sm shrink-0"
               title={theme === 'light' ? '다크 모드로 전환' : '라이트 모드로 전환'}
             >
               {theme === 'dark' ? (
@@ -213,54 +215,56 @@ export default function Header({ onOpenQuoteStorage }: HeaderProps = {}) {
               )}
             </button>
 
-            {/* 1. 내 견적 보관함 버튼: 로그인/비로그인/로딩 상관없이 항상 안정적으로 고정 렌더링 */}
+            {/* 1. 내 견적 보관함 버튼: 줄바꿈 없이 안정적인 크기 유지 */}
             <button
               onClick={() => {
                 if (onOpenQuoteStorage) {
                   onOpenQuoteStorage();
+                } else if (session?.user || cachedUser) {
+                  router.push('/mypage');
                 } else {
-                  setShowLoginModal(true);
+                  router.push('/');
                 }
               }}
-              className="px-3 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-bold text-xs flex items-center gap-1.5 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors shadow-sm cursor-pointer"
+              className="px-2.5 sm:px-3 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-bold text-xs flex items-center gap-1.5 hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-200/80 dark:border-slate-700/80 transition-colors shadow-sm cursor-pointer whitespace-nowrap shrink-0"
             >
-              <Bookmark className="w-3.5 h-3.5 text-cyan-600 dark:text-cyan-400" />
-              <span>내 견적</span>
+              <Bookmark className="w-3.5 h-3.5 text-cyan-600 dark:text-cyan-400 shrink-0" />
+              <span className="whitespace-nowrap">내 견적</span>
             </button>
 
             {/* 2. 유저 프로필 영역: 캐시된 정보를 활용하여 새로고침 시에도 즉시 프로필 렌더링 (깜빡임 0%) */}
-            <div className="min-w-[84px] flex items-center justify-end">
+            <div className="min-w-[76px] sm:min-w-[84px] flex items-center justify-end shrink-0 whitespace-nowrap">
               {(() => {
                 const currentUser = session?.user || cachedUser;
 
                 // 브라우저에 캐시된 유저가 있거나 세션이 있는 경우 즉시 프로필 렌더링
                 if (currentUser && (status !== 'unauthenticated' || cachedUser)) {
                   return (
-                    <div className="flex items-center gap-2 pl-1 sm:pl-2 border-l border-slate-200 dark:border-slate-800">
+                    <div className="flex items-center gap-1.5 sm:gap-2 pl-1 sm:pl-2 border-l border-slate-200 dark:border-slate-800 shrink-0">
                       <Link
                         href="/mypage"
-                        className="flex items-center gap-1.5 sm:gap-2 hover:opacity-80 transition-opacity"
+                        className="flex items-center gap-1.5 sm:gap-2 hover:opacity-80 transition-opacity whitespace-nowrap shrink-0"
                         title="마이페이지로 이동"
                       >
                         {currentUser.image ? (
                           <img
                             src={currentUser.image}
                             alt={currentUser.name || 'User'}
-                            className="w-7 h-7 rounded-full ring-2 ring-cyan-500/30 object-cover"
+                            className="w-7 h-7 rounded-full ring-2 ring-cyan-500/30 object-cover shrink-0"
                           />
                         ) : (
-                          <div className="w-7 h-7 rounded-full bg-cyan-600 text-white flex items-center justify-center text-xs font-bold">
+                          <div className="w-7 h-7 rounded-full bg-cyan-600 text-white flex items-center justify-center text-xs font-bold shrink-0">
                             {currentUser.name?.[0] || 'U'}
                           </div>
                         )}
-                        <span className="text-xs font-bold text-slate-800 dark:text-slate-200 hidden md:inline max-w-[80px] truncate">
+                        <span className="text-xs font-bold text-slate-800 dark:text-slate-200 hidden md:inline max-w-[80px] truncate whitespace-nowrap">
                           {currentUser.name || '회원'}님
                         </span>
                       </Link>
                       <button
                         onClick={handleSignOut}
                         title="로그아웃"
-                        className="p-1.5 rounded-lg text-slate-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors cursor-pointer"
+                        className="p-1.5 rounded-lg text-slate-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors cursor-pointer shrink-0"
                       >
                         <LogOut className="w-3.5 h-3.5" />
                       </button>
@@ -277,7 +281,7 @@ export default function Header({ onOpenQuoteStorage }: HeaderProps = {}) {
                 return (
                   <button
                     onClick={() => setShowLoginModal(true)}
-                    className="px-3.5 py-2 rounded-xl bg-slate-900 text-white dark:bg-cyan-500 dark:text-slate-950 font-bold text-xs flex items-center gap-1.5 hover:opacity-90 transition-opacity shadow-sm cursor-pointer"
+                    className="px-3 sm:px-3.5 py-2 rounded-xl bg-slate-900 text-white dark:bg-cyan-500 dark:text-slate-950 font-bold text-xs flex items-center gap-1.5 hover:opacity-90 transition-opacity shadow-sm cursor-pointer whitespace-nowrap shrink-0"
                   >
                     <User className="w-3.5 h-3.5 text-cyan-400 dark:text-slate-950" />
                     <span>로그인</span>
@@ -285,8 +289,93 @@ export default function Header({ onOpenQuoteStorage }: HeaderProps = {}) {
                 );
               })()}
             </div>
+
+            {/* 모바일 햄버거 토글 버튼 */}
+            <button
+              onClick={() => setMobileMenuOpen((prev) => !prev)}
+              aria-label="모바일 메뉴 열기/닫기"
+              className="lg:hidden p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors shrink-0 cursor-pointer"
+            >
+              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </button>
           </div>
         </div>
+
+        {/* 모바일 반응형 내비게이션 드로어 */}
+        {mobileMenuOpen && (
+          <div className="lg:hidden border-t border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-950/95 backdrop-blur-md px-4 py-3 space-y-1 animate-in slide-in-from-top-2 duration-150">
+            <a
+              href="/"
+              onClick={(e) => {
+                handleNavigateTop(e);
+                setMobileMenuOpen(false);
+              }}
+              className={`block px-3 py-2 rounded-xl text-xs font-bold transition-colors ${
+                pathname === '/' ? 'bg-cyan-50 dark:bg-cyan-950/50 text-cyan-600 dark:text-cyan-400' : 'text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800'
+              }`}
+            >
+              🖥️ 맞춤 견적기
+            </a>
+            <a
+              href="/#price-battle-section"
+              onClick={(e) => {
+                handleNavigateSection(e, 'price-battle-section');
+                setMobileMenuOpen(false);
+              }}
+              className="block px-3 py-2 rounded-xl text-xs font-bold text-rose-600 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/30 transition-colors"
+            >
+              ⚔️ 최저가 빅매치
+            </a>
+            <Link
+              href="/laptop"
+              onClick={() => setMobileMenuOpen(false)}
+              className={`block px-3 py-2 rounded-xl text-xs font-bold transition-colors ${
+                pathname === '/laptop' ? 'bg-cyan-50 dark:bg-cyan-950/50 text-cyan-600 dark:text-cyan-400' : 'text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800'
+              }`}
+            >
+              💻 노트북 &amp; 완제관
+            </Link>
+            <Link
+              href="/deals"
+              onClick={() => setMobileMenuOpen(false)}
+              className={`block px-3 py-2 rounded-xl text-xs font-bold transition-colors ${
+                pathname === '/deals' ? 'bg-cyan-50 dark:bg-cyan-950/50 text-cyan-600 dark:text-cyan-400' : 'text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800'
+              }`}
+            >
+              🏷️ 할인 캘린더
+            </Link>
+            <Link
+              href="/lab"
+              onClick={() => setMobileMenuOpen(false)}
+              className={`flex items-center justify-between px-3 py-2 rounded-xl text-xs font-bold transition-colors ${
+                pathname?.startsWith('/lab') ? 'bg-cyan-50 dark:bg-cyan-950/50 text-cyan-600 dark:text-cyan-400' : 'text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800'
+              }`}
+            >
+              <span>📖 하드웨어 랩</span>
+              <span className="text-[10px] font-black px-2 py-0.5 rounded-full bg-rose-500 text-white">
+                10대 리포트
+              </span>
+            </Link>
+            <Link
+              href="/guide"
+              onClick={() => setMobileMenuOpen(false)}
+              className={`block px-3 py-2 rounded-xl text-xs font-bold transition-colors ${
+                pathname === '/guide' ? 'bg-cyan-50 dark:bg-cyan-950/50 text-cyan-600 dark:text-cyan-400' : 'text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800'
+              }`}
+            >
+              🛡️ 호환성 가이드
+            </Link>
+            <Link
+              href="/about"
+              onClick={() => setMobileMenuOpen(false)}
+              className={`block px-3 py-2 rounded-xl text-xs font-bold transition-colors ${
+                pathname === '/about' ? 'bg-cyan-50 dark:bg-cyan-950/50 text-cyan-600 dark:text-cyan-400' : 'text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800'
+              }`}
+            >
+              ℹ️ 플랫폼 소개
+            </Link>
+          </div>
+        )}
       </header>
 
       {/* 로그인 & 견적 저장 모달 */}
