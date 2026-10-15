@@ -93,7 +93,7 @@ export default function LaptopCurationPage() {
             </span>
           </h1>
           <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base mt-4 leading-relaxed">
-            <strong>롯데하이마트(최대 1.26%)</strong> 카드 청구할인과 <strong>롯데ON(최대 1.4%) 온쇼페</strong> 메가딜, <strong>쿠팡 로켓배송</strong>까지!
+            <strong>롯데하이마트</strong> 카드 청구할인과 <strong>롯데ON 온쇼페</strong> 메가딜, <strong>쿠팡 로켓배송</strong>까지!
             <br className="hidden sm:inline" />
             복잡한 부품 조립과 윈도우 설치 걱정 없이, 박스 뜯고 전원만 꽂으면 즉시 게임이 가능한 공식 인증 제품만 엄선했습니다.
           </p>
