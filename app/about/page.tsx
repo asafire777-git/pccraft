@@ -8,7 +8,16 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: '플랫폼 소개 & 제휴 운영 원칙 | PC-Craft',
-  description: 'PC-Craft의 설립 목적, 실시간 최저가 수집 철학 및 공정거래위원회 지침 준수 투명성 정책 안내입니다.'
+  description: 'PC-Craft의 설립 목적, 실시간 최저가 수집 철학 및 공정거래위원회 지침 준수 투명성 정책 안내입니다.',
+  alternates: {
+    canonical: 'https://pccraft.kr/about',
+  },
+  openGraph: {
+    title: '플랫폼 소개 & 제휴 운영 원칙 | PC-Craft',
+    description: 'PC-Craft의 설립 목적 및 공정거래위원회 지침 준수 투명성 정책 안내',
+    url: 'https://pccraft.kr/about',
+    images: [{ url: 'https://pccraft.kr/og-image.jpg', width: 1200, height: 630 }],
+  },
 };
 
 export default function AboutPage() {

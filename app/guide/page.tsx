@@ -8,7 +8,16 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'PC 부품 호환성 & 조립 가이드 2026 | PC-Craft',
-  description: 'CPU와 메인보드 소켓 규격(AM5, LGA1700), DDR5 메모리 호환성, 그래픽카드 권장 파워 서플라이 계산법을 완벽 정리한 하드웨어 가이드입니다.'
+  description: 'CPU와 메인보드 소켓 규격(AM5, LGA1700), DDR5 메모리 호환성, 그래픽카드 권장 파워 서플라이 계산법을 완벽 정리한 하드웨어 가이드입니다.',
+  alternates: {
+    canonical: 'https://pccraft.kr/guide',
+  },
+  openGraph: {
+    title: 'PC 부품 호환성 & 조립 가이드 2026 | PC-Craft',
+    description: 'CPU와 메인보드 소켓 규격, DDR5 메모리 호환성, 그래픽카드 권장 파워 서플라이 계산법',
+    url: 'https://pccraft.kr/guide',
+    images: [{ url: 'https://pccraft.kr/og-image.jpg', width: 1200, height: 630 }],
+  },
 };
 
 export default function GuidePage() {

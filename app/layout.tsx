@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     '쿠팡컴퓨터최저가'
   ],
   alternates: {
-    canonical: 'https://pccraft.kr',
+    canonical: 'https://pccraft.kr/',
   },
   openGraph: {
     title: 'PC-Craft | 스마트 게이밍 컴퓨터 조립 견적 & 최저가 큐레이션',

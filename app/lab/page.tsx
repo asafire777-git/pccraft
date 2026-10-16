@@ -12,6 +12,9 @@ export const metadata: Metadata = {
   title: '하드웨어 랩 (Hardware Lab) - 2026 벤치마크 & 조립 심층 가이드 | PC-Craft',
   description: '2026년 10월 최신 데이터 기반 그래픽카드 계급도, 라이젠 9800X3D vs 인텔 Ultra 200S 벤치마크, ATX 3.1 파워 계산법, 직접 조립 vs 완본체 실구매가 비교 등 10대 전문 하드웨어 심층 리포트를 확인하세요.',
   keywords: ['하드웨어 랩', '컴퓨터 조립 가이드', '2026 그래픽카드 계급도', '라이젠 9800X3D', 'PC 부품 벤치마크', 'PC-Craft'],
+  alternates: {
+    canonical: 'https://pccraft.kr/lab',
+  },
   openGraph: {
     title: 'PC-Craft 하드웨어 랩 | 2026 하드웨어 벤치마크 & 심층 분석 가이드',
     description: '최신 하드웨어 실측 데이터와 오픈마켓 실구매가 기반의 10대 전문 리포트',

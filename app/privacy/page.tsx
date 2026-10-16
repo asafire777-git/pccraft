@@ -7,7 +7,14 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: '개인정보처리방침 | PC-Craft',
-  description: 'PC-Craft의 개인정보 수집 항목, 쿠키(Cookie) 운영 및 구글 애드센스 등 제휴 광고 데이터 처리에 관한 방침입니다.'
+  description: 'PC-Craft의 개인정보 수집 항목, 쿠키(Cookie) 운영 및 구글 애드센스 등 제휴 광고 데이터 처리에 관한 방침입니다.',
+  alternates: {
+    canonical: 'https://pccraft.kr/privacy',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function PrivacyPage() {

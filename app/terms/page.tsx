@@ -7,7 +7,14 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: '서비스 이용약관 | PC-Craft',
-  description: 'PC-Craft의 견적 서비스 이용 조건 및 가격 정보 면책 조항 안내입니다.'
+  description: 'PC-Craft의 견적 서비스 이용 조건 및 가격 정보 면책 조항 안내입니다.',
+  alternates: {
+    canonical: 'https://pccraft.kr/terms',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function TermsPage() {
