@@ -241,9 +241,10 @@ export function getOpenMarketProductUrl(
 
   // 링크프라이스 공식 트래킹 게이트웨이로 래핑
   if (LINKPRICE_AFFILIATE_ID) {
-    if (merchant === 'gmarket') {
-      // G마켓 전용 정밀 딥링크 규격 (l=9999, l_cd1=3, l_cd2=0, tu=인코딩URL)
-      return `https://click.linkprice.com/click.php?m=gmarket&a=${LINKPRICE_AFFILIATE_ID}&l=9999&l_cd1=3&l_cd2=0&tu=${encodeURIComponent(targetUrl)}`;
+    if (merchant === 'gmarket' || merchant === '11st') {
+      // G마켓 및 11번가 전용 정밀 딥링크 규격 (l=9999, l_cd1=3, l_cd2=0, tu=인코딩URL)
+      // l=0000 사용 시 메인 홈으로 튕기므로 반드시 l=9999 & tu 규격 적용
+      return `https://click.linkprice.com/click.php?m=${merchant}&a=${LINKPRICE_AFFILIATE_ID}&l=9999&l_cd1=3&l_cd2=0&tu=${encodeURIComponent(targetUrl)}`;
     }
     return `https://click.linkprice.com/click.php?m=${merchant}&a=${LINKPRICE_AFFILIATE_ID}&l=0000&url=${encodeURIComponent(targetUrl)}`;
   }
@@ -304,8 +305,8 @@ export function getPromoGatewayUrl(
   const merchant = merchantMap[platform] || 'gmarket';
 
   if (LINKPRICE_AFFILIATE_ID && targetUrl) {
-    if (merchant === 'gmarket') {
-      return `https://click.linkprice.com/click.php?m=gmarket&a=${LINKPRICE_AFFILIATE_ID}&l=9999&l_cd1=3&l_cd2=0&tu=${encodeURIComponent(targetUrl)}`;
+    if (merchant === 'gmarket' || merchant === '11st') {
+      return `https://click.linkprice.com/click.php?m=${merchant}&a=${LINKPRICE_AFFILIATE_ID}&l=9999&l_cd1=3&l_cd2=0&tu=${encodeURIComponent(targetUrl)}`;
     }
     return `https://click.linkprice.com/click.php?m=${merchant}&a=${LINKPRICE_AFFILIATE_ID}&l=0000&url=${encodeURIComponent(targetUrl)}`;
   }
