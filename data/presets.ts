@@ -88,31 +88,31 @@ export const GAME_PRESETS: GamePreset[] = [
       cooler: 'cooler-basic-air',
       motherboard: 'mb-b650m-k',
       ram: 'ram-ddr5-32gb',
-      gpu: 'gpu-rtx-5060',
+      gpu: 'gpu-rtx-4060',
       ssd: 'ssd-1tb-nvme',
       power: 'power-700w-bronze',
       case: 'case-darkflash-dk200'
     },
     recommendedPrebuilt: {
-      title: '2026 국민 게이밍 & 배틀그라운드 완본체 PC (라이젠 7500F + RTX 5060)',
+      title: '국민 게이밍 & 배틀그라운드 완본체 PC (라이젠 7500F + RTX 4060)',
       brand: '국민 게이밍',
-      price: 1289000,
+      price: 1189000,
       affiliateUrl: 'https://link.coupang.com/a/hMDhTKsW5I',
       imageUrl: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=500&auto=format&fit=crop&q=60',
       pros: ['선정리 완벽 마감', '정품 바이오스 세팅 및 번인 테스트 완료', '로켓설치 지원'],
-      specsSummary: '라이젠 7500F / RTX 5060 8G / 32GB DDR5 / 1TB NVMe / 700W'
+      specsSummary: '라이젠 7500F / RTX 4060 8G / 32GB DDR5 / 1TB NVMe / 700W'
     },
     aiAnalysis: {
       resolution: 'FHD (1920x1080) 풀옵션 / QHD 타협 가능',
       averageFps: {
-        '배틀그라운드 (국민 3트라)': '190~230 FPS',
-        '오버워치 2 (최상옵)': '210+ FPS',
-        '로스트아크 (카제로스 레이드)': '140+ FPS',
-        '디아블로 4 (DLSS4 품질)': '160+ FPS'
+        '배틀그라운드 (국민 3트라)': '180~220 FPS',
+        '오버워치 2 (최상옵)': '200+ FPS',
+        '로스트아크 (카제로스 레이드)': '130+ FPS',
+        '디아블로 4 (DLSS3 품질)': '140+ FPS'
       },
-      pros: ['블랙웰 아키텍처 GDDR7 탑재로 FHD 전 게임 압도적 프레임', 'AM5 소켓 지원으로 2027년까지 CPU만 교체 가능'],
+      pros: ['에이다 러브레이스 아키텍처 및 DLSS 3 탑재로 FHD 전 게임 압도적 프레임', 'AM5 소켓 지원으로 2027년까지 CPU만 교체 가능'],
       cons: ['4K 해상도 모니터 유저에게는 VRAM(8GB) 대역폭 한계'],
-      upgradeAdvice: '모니터를 QHD 144Hz~240Hz로 변경할 예정이라면 그래픽카드를 RTX 5070으로 한 체급 올리는 것을 추천합니다.'
+      upgradeAdvice: '모니터를 QHD 144Hz~240Hz로 변경할 예정이라면 그래픽카드를 RTX 4070 SUPER로 한 체급 올리는 것을 추천합니다.'
     }
   },
   {
@@ -120,38 +120,38 @@ export const GAME_PRESETS: GamePreset[] = [
     title: '스팀 AAA 대작 & QHD 종결',
     badge: '하드코어 게이머',
     targetGames: ['사이버펑크 2077', '검은신화: 오공', '몬스터헌터 와일즈', '엘든링', '호그와트 레거시'],
-    performanceDescription: 'QHD 144Hz 풀옵션 & 레이트레이싱 완벽 지원. 현존 게이밍 최강 CPU 7800X3D + RTX 5070',
-    budgetRange: '약 230만 ~ 260만원',
+    performanceDescription: 'QHD 144Hz 풀옵션 & 레이트레이싱 완벽 지원. 현존 게이밍 최강 CPU 7800X3D + RTX 4070 SUPER',
+    budgetRange: '약 210만 ~ 235만원',
     iconName: 'Zap',
     defaultComponentIds: {
       cpu: 'cpu-amd-7800x3d',
       cooler: 'cooler-dual-air',
       motherboard: 'mb-b650m-k',
       ram: 'ram-ddr5-32gb',
-      gpu: 'gpu-rtx-5070',
+      gpu: 'gpu-rtx-4070super',
       ssd: 'ssd-1tb-nvme',
       power: 'power-700w-bronze',
       case: 'case-aquarium-panoramic'
     },
     recommendedPrebuilt: {
-      title: '스팀 AAA 대작 & QHD 종결 완본체 PC (7800X3D + RTX 5070)',
+      title: '스팀 AAA 대작 & QHD 종결 완본체 PC (7800X3D + RTX 4070 SUPER)',
       brand: '하이엔드 게이밍',
-      price: 2490000,
+      price: 2190000,
       affiliateUrl: 'https://link.coupang.com/a/hMDhTKsW5I',
       imageUrl: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=500&auto=format&fit=crop&q=60',
       pros: ['파노라마 어항케이스 디자인 감성', '전 부품 3년 무상보증 패키지', '정품 윈도우 11 사전탑재'],
-      specsSummary: '라이젠 7800X3D / RTX 5070 12G / 32GB DDR5 / 1TB P41 / 750W'
+      specsSummary: '라이젠 7800X3D / RTX 4070 SUPER 12G / 32GB DDR5 / 1TB P41 / 700W'
     },
     aiAnalysis: {
       resolution: 'QHD (2560x1440) 풀옵션 종결 / 4K 고화질',
       averageFps: {
-        '사이버펑크 2077 (QHD RT울트라)': '130+ FPS (DLSS4)',
-        '검은신화: 오공 (QHD 시네마틱)': '120+ FPS',
-        '배틀그라운드 (QHD 올울트라)': '260+ FPS',
-        '엘든링 (풀옵션)': '60 FPS 완전방어 (락 해제 시 140+)'
+        '사이버펑크 2077 (QHD RT울트라)': '110+ FPS (DLSS3)',
+        '검은신화: 오공 (QHD 시네마틱)': '105+ FPS',
+        '배틀그라운드 (QHD 올울트라)': '240+ FPS',
+        '엘든링 (풀옵션)': '60 FPS 완전방어 (락 해제 시 130+)'
       },
-      pros: ['3D V-Cache와 GDDR7 5070 조합으로 대규모 교전 시 최저 프레임 드랍 전무', '어항케이스로 인테리어 효과 극대화'],
-      cons: ['초기 투자 비용이 200만원 중반대 형성'],
+      pros: ['3D V-Cache와 4070 SUPER 조합으로 대규모 교전 시 최저 프레임 드랍 전무', '어항케이스로 인테리어 효과 극대화'],
+      cons: ['초기 투자 비용이 200만원 초중반대 형성'],
       upgradeAdvice: '정격 파워를 700~850W로 넉넉하게 탑재하여 향후 추가 업그레이드도 여유롭습니다.'
     }
   },
@@ -160,35 +160,35 @@ export const GAME_PRESETS: GamePreset[] = [
     title: '크리에이터 & 4K 플래그십',
     badge: '전문가 / 4K 풀옵션',
     targetGames: ['4K UHD 전 게임', 'AI 스테이블디퓨전', '프리미어 4K 컷편집', '블렌더 3D 렌더링'],
-    performanceDescription: '4K 모니터 풀옵션 + 영상편집/원컴 4K 방송을 위한 끝판왕 워크스테이션 (RTX 5080)',
-    budgetRange: '약 380만 ~ 420만원',
+    performanceDescription: '4K 모니터 풀옵션 + 영상편집/원컴 4K 방송을 위한 끝판왕 워크스테이션 (RTX 4080 SUPER)',
+    budgetRange: '약 320만 ~ 350만원',
     iconName: 'Crown',
     defaultComponentIds: {
-      cpu: 'cpu-intel-14400f',
+      cpu: 'cpu-intel-14700k',
       cooler: 'cooler-liquid-360',
-      motherboard: 'mb-b760m-intel',
+      motherboard: 'mb-b760m-mortar',
       ram: 'ram-ddr5-32gb',
-      gpu: 'gpu-rtx-5080',
-      ssd: 'ssd-1tb-nvme',
+      gpu: 'gpu-rtx-4080super',
+      ssd: 'ssd-hynix-p41-1tb',
       power: 'power-850w-gold',
       case: 'case-aquarium-panoramic'
     },
     recommendedPrebuilt: {
-      title: '4K UHD 플래그십 & 영상편집 워크스테이션 PC (RTX 5080)',
+      title: '4K UHD 플래그십 & 영상편집 워크스테이션 PC (i7-14700K + RTX 4080 SUPER)',
       brand: '플래그십 워크스테이션',
-      price: 4150000,
+      price: 3390000,
       affiliateUrl: 'https://link.coupang.com/a/hMDhTKsW5I',
       imageUrl: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=500&auto=format&fit=crop&q=60',
       pros: ['플래그십 감성 튜닝', '골드 등급 파워와 3열 수랭 기본 적용', 'VIP 무상 케어'],
-      specsSummary: '인텔 i5/i7 / RTX 5080 16G / 32GB DDR5 / 1TB Gen4 / 850W Gold'
+      specsSummary: '인텔 i7-14700K / RTX 4080 SUPER 16G / 32GB DDR5 / 1TB Gen4 P41 / 850W Gold'
     },
     aiAnalysis: {
       resolution: '4K UHD (3840x2160) 및 듀얼/트리플 모니터',
       averageFps: {
-        '사이버펑크 2077 (4K 풀옵션)': '90+ FPS',
-        '검은신화: 오공 (4K 울트라)': '85+ FPS',
+        '사이버펑크 2077 (4K 풀옵션)': '85+ FPS',
+        '검은신화: 오공 (4K 울트라)': '80+ FPS',
         '프리미어 프로 4K 타임라인': '무인코딩 실시간 렌더링',
-        '스테이블 디퓨전 이미지 생성': '이미지 1장당 1.2초'
+        '스테이블 디퓨전 이미지 생성': '이미지 1장당 1.5초'
       },
       pros: ['16GB VRAM으로 4K 고화질 텍스처 및 로컬 LLM, 이미지 생성 AI 구동 최적', '10년 보증 골드 파워 탑재'],
       cons: ['시스템 무게와 부피가 크며 고전력 소비'],

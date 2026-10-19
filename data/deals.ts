@@ -140,7 +140,7 @@ export const MALL_DEALS: MallDeal[] = [
     ],
     tips: [
       '신세계 유니버스 클럽 회원은 매월 12%~15% 할인 쿠폰이 기본 지급됩니다.',
-      '그래픽카드(RTX 4070 SUPER / 5070) 및 CPU 단품은 공식 수입사 직영 스토어에서 쿠폰 중복 적용이 가장 유리합니다.',
+      '그래픽카드(RTX 4070 SUPER / 4070 Ti SUPER) 및 CPU 단품은 공식 수입사 직영 스토어에서 쿠폰 중복 적용이 가장 유리합니다.',
       '스마일페이 간편결제 시 무이자 할부 최대 12~24개월 지원'
     ],
     affiliateUrl: 'https://click.linkprice.com/click.php?m=gmarket&a=A100708723&l=9999&l_cd1=3&l_cd2=0&tu=https%3A%2F%2Fbrowse.gmarket.co.kr%2Fsearch%3Fkeyword%3D%EC%BB%B4%ED%93%A8%ED%84%B0%EB%B6%80%ED%92%88',

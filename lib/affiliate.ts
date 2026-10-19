@@ -82,10 +82,12 @@ export const COMPONENT_SEARCH_KEYWORDS: Record<string, string> = {
   'gpu-rtx-4070super': '이엠텍 RTX 4070 SUPER',
   'gpu-rtx-4070tisuper': 'ZOTAC RTX 4070 Ti SUPER Trinity',
   'gpu-rtx-4080super': 'GIGABYTE RTX 4080 SUPER WINDFORCE',
-  'gpu-rtx-4090': 'MSI RTX 4090 슈프림',
-  'gpu-rtx-5060': 'RTX 5060 그래픽카드',
-  'gpu-rtx-5070': 'RTX 5070 그래픽카드',
-  'gpu-rtx-5080': 'RTX 5080 그래픽카드',
+  'gpu-rx-7600': '라데온 RX 7600',
+  'gpu-rtx-4070-dual': 'ASUS DUAL RTX 4070',
+  'gpu-rx-7800xt': '라데온 RX 7800 XT',
+  'gpu-rtx-5060': '이엠텍 RTX 4060',
+  'gpu-rtx-5070': '이엠텍 RTX 4070 SUPER',
+  'gpu-rtx-5080': 'RTX 4080 SUPER',
 
   // 6. SSD
   'ssd-500gb-nvme': 'SK하이닉스 Gold P31 500GB',
@@ -121,12 +123,12 @@ export const COMPONENT_SEARCH_KEYWORDS: Record<string, string> = {
   'case-lianli-o11d-evo': '리안리 O11D EVO RGB'
 };
 
-// 완본체 게이밍 PC 실시간 검색 키워드 매핑 (2026 최신 사양 반영)
+// 완본체 게이밍 PC 실시간 검색 키워드 매핑 (현재 정품 실판매 사양 반영)
 export const PREBUILT_SEARCH_KEYWORDS: Record<string, string> = {
   'casual-esports': '라이젠 5600 조립PC',
-  'mainstream-gaming': '라이젠 7500F RTX 5060 조립PC',
-  'high-end-aaa': '7800X3D RTX 5070 조립PC',
-  'creator-flagship': 'RTX 5080 게이밍 조립PC'
+  'mainstream-gaming': '라이젠 7500F RTX 4060 조립PC',
+  'high-end-aaa': '7800X3D RTX 4070 SUPER 조립PC',
+  'creator-flagship': 'RTX 4080 SUPER 게이밍 조립PC'
 };
 
 /**
