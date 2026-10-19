@@ -6,6 +6,7 @@ export default function robots(): MetadataRoute.Robots {
   const disallowParams = [
     '/api/',
     '/mypage',
+    '/admin',
     '/*?*', // 모든 불필요한 쿼리 파라미터(?preset=, ?tab=, ?search= 등) 크롤링 차단하여 중복 색인 방지
     '/*?preset=*',
     '/*?tab=*',
@@ -17,6 +18,11 @@ export default function robots(): MetadataRoute.Robots {
 
   return {
     rules: [
+      {
+        userAgent: 'Mediapartners-Google', // 구글 애드센스 심사 및 크롤러 봇 전용
+        allow: '/',
+        disallow: ['/api/', '/mypage', '/admin'],
+      },
       {
         userAgent: 'Googlebot',
         allow: '/',
