@@ -22,49 +22,103 @@ export const CUSTOM_AFFILIATE_LINKS: Record<string, string> = {
   // 개별 부품별 링크 등록 시 즉시 최우선 적용
 };
 
-// 각 부품별 최적화된 로켓배송 실시간 최저가 검색 키워드
+// 각 부품별 최적화된 실시간 최저가 검색 키워드 (브랜드 + 정확한 모델명 100% 매칭)
 export const COMPONENT_SEARCH_KEYWORDS: Record<string, string> = {
-  // CPU
-  'cpu-amd-5600': '라이젠5 5600',
-  'cpu-amd-7500f': '라이젠5 7500F',
-  'cpu-intel-14400f': '인텔 i5 14400F',
-  'cpu-amd-7800x3d': '라이젠7 7800X3D',
+  // 1. CPU
+  'cpu-amd-5600': '라이젠5 5600 멀티팩',
+  'cpu-amd-5600g': '라이젠5 5600G 멀티팩',
+  'cpu-amd-7500f': '라이젠5 7500F 멀티팩',
+  'cpu-amd-7600': '라이젠5 7600 멀티팩',
+  'cpu-amd-7700': '라이젠7 7700 멀티팩',
+  'cpu-amd-7800x3d': '라이젠7 7800X3D 정품',
+  'cpu-amd-9800x3d': '라이젠7 9800X3D',
+  'cpu-intel-12100f': '인텔 i3 12100F 정품',
+  'cpu-intel-12400f': '인텔 i5 12400F 정품',
+  'cpu-intel-14400f': '인텔 i5 14400F 정품',
+  'cpu-intel-14600kf': '인텔 i5 14600KF 정품',
+  'cpu-intel-14700k': '인텔 i7 14700K 정품',
+  'cpu-intel-245k': '인텔 코어 Ultra 5 245K',
 
-  // 쿨러
-  'cooler-basic-air': 'Assassin X 120 쿨러',
-  'cooler-dual-air': 'Peerless Assassin 120 쿨러',
-  'cooler-liquid-360': '3열 수랭쿨러 360',
+  // 2. 쿨러
+  'cooler-basic-air': 'Assassin X 120 Refined SE',
+  'cooler-deepcool-ag400': '딥쿨 AG400 쿨러',
+  'cooler-zalman-cnps9x': '잘만 CNPS9X Performa',
+  'cooler-dual-air': 'Peerless Assassin 120 SE',
+  'cooler-pentawave-z06d': '펜타웨이브 Z06D',
+  'cooler-deepcool-ak620': '딥쿨 AK620 쿨러',
+  'cooler-liquid-360': '다크플래쉬 DX-360 수랭쿨러',
+  'cooler-3rsys-ranni-xy360': '3RSYS 라니 XY 360',
+  'cooler-nzxt-kraken360': 'NZXT 크라켄 360 RGB',
 
-  // 메인보드
-  'mb-a520m': 'A520M 메인보드',
-  'mb-b650m-k': 'B650M 메인보드',
-  'mb-b760m-intel': 'B760M 메인보드',
+  // 3. 메인보드
+  'mb-a520m': 'ASUS PRIME A520M-A II',
+  'mb-b550m-mortar': 'MSI B550M 박격포',
+  'mb-b650m-k': 'ASRock B650M-HDV',
+  'mb-b650m-tuf': 'ASUS TUF Gaming B650M-PLUS',
+  'mb-b650m-aorus-ice': 'B650M AORUS ELITE AX ICE',
+  'mb-h610m-intel': 'ASUS PRIME H610M-K D4',
+  'mb-b760m-intel': 'ASRock B760M Pro RS D5',
+  'mb-b760m-mortar': 'MSI B760M 박격포 맥스 WIFI',
+  'mb-z890-intel': 'ASUS PRIME Z890-P',
 
-  // RAM
-  'ram-ddr4-16gb': 'DDR4 16GB 데스크탑 램',
-  'ram-ddr5-32gb': 'DDR5 32GB 데스크탑 램',
+  // 4. RAM
+  'ram-ddr4-16gb': '삼성전자 DDR4 3200 8GB',
+  'ram-ddr4-32gb': '삼성전자 DDR4 3200 16GB',
+  'ram-ddr5-16gb': '삼성전자 DDR5 5600 8GB',
+  'ram-ddr5-32gb': '삼성전자 DDR5 5600 16GB',
+  'ram-ddr5-teamgroup-32gb': 'TeamGroup DDR5 5600 16GB',
+  'ram-ddr5-hynix-32gb': 'SK하이닉스 DDR5 5600 16GB',
+  'ram-ddr5-tcreate-6000': 'TeamGroup DDR5 6000 CL30 EXPERT',
+  'ram-ddr5-64gb': '삼성전자 DDR5 5600 32GB',
 
-  // 그래픽카드 (2026 최신 라인업 및 검증된 가성비 라인업)
-  'gpu-gtx-1650': 'GTX 1650 그래픽카드',
-  'gpu-rtx-4060': 'RTX 4060 그래픽카드',
+  // 5. 그래픽카드
+  'gpu-gtx-1650': '이엠텍 GTX 1650',
+  'gpu-rtx-3050-6gb': 'RTX 3050 6GB',
+  'gpu-rx-6600': '라데온 RX 6600',
+  'gpu-rtx-4060': '이엠텍 RTX 4060 MIRACLE',
+  'gpu-rtx-4060-zotac': 'ZOTAC RTX 4060 TWIN Edge',
+  'gpu-rtx-4060ti-8gb': '이엠텍 RTX 4060 Ti STORM X',
+  'gpu-rtx-4060ti-16gb': 'RTX 4060 Ti 16GB EAGLE',
+  'gpu-rtx-4070super': '이엠텍 RTX 4070 SUPER',
+  'gpu-rtx-4070tisuper': 'ZOTAC RTX 4070 Ti SUPER Trinity',
+  'gpu-rtx-4080super': 'GIGABYTE RTX 4080 SUPER WINDFORCE',
+  'gpu-rtx-4090': 'MSI RTX 4090 슈프림',
   'gpu-rtx-5060': 'RTX 5060 그래픽카드',
   'gpu-rtx-5070': 'RTX 5070 그래픽카드',
   'gpu-rtx-5080': 'RTX 5080 그래픽카드',
-  'gpu-rtx-4070super': 'RTX 5070 그래픽카드',
-  'gpu-rtx-4080super': 'RTX 5080 그래픽카드',
 
-  // SSD
-  'ssd-500gb-nvme': '500GB M.2 NVMe SSD',
-  'ssd-1tb-nvme': '1TB M.2 NVMe SSD',
+  // 6. SSD
+  'ssd-500gb-nvme': 'SK하이닉스 Gold P31 500GB',
+  'ssd-crucial-p3plus-500gb': '마이크론 Crucial P3 Plus 500GB',
+  'ssd-1tb-nvme': 'SK하이닉스 Gold P31 1TB',
+  'ssd-hynix-p41-1tb': 'SK하이닉스 Platinum P41 1TB',
+  'ssd-samsung-990pro-1tb': '삼성전자 990 PRO 1TB',
+  'ssd-wd-black-sn850x-1tb': 'WD BLACK SN850X 1TB',
+  'ssd-crucial-t500-1tb': '마이크론 Crucial T500 1TB',
+  'ssd-hynix-p41-2tb': 'SK하이닉스 Platinum P41 2TB',
+  'ssd-samsung-990pro-2tb': '삼성전자 990 PRO 2TB',
 
-  // 파워
-  'power-500w-std': '500W 컴퓨터 파워서플라이',
-  'power-700w-bronze': '700W 컴퓨터 파워서플라이',
-  'power-850w-gold': '850W 골드 컴퓨터 파워',
+  // 7. 파워
+  'power-500w-std': '마이크로닉스 Classic II 500W',
+  'power-micronics-600w': '마이크로닉스 Classic II 600W',
+  'power-coolermaster-600w': '쿨러마스터 MWE 600 BRONZE',
+  'power-700w-bronze': '마이크로닉스 Classic II 700W',
+  'power-seasonic-a12-700w': '시소닉 A12 700W',
+  'power-micronics-750w-gold': '마이크로닉스 Classic II 750W 골드 ATX3.1',
+  'power-superflower-850w-gold': 'SuperFlower SF-850F14XG 골드',
+  'power-850w-gold': '시소닉 FOCUS GX-850 골드',
+  'power-fsp-1000w-gold': 'FSP HYDRO G PRO 1000W',
 
-  // 케이스
-  'case-darkflash-dk200': '다크플래쉬 DK200 케이스',
-  'case-aquarium-panoramic': '어항 PC 케이스'
+  // 8. 케이스
+  'case-darkflash-dk200': '다크플래쉬 DK200 블랙',
+  'case-darkflash-dk200-white': '다크플래쉬 DK200 화이트',
+  'case-abko-g30': '앱코 G30 트루파워',
+  'case-micronics-m60': '마이크로닉스 Master M60',
+  'case-aquarium-panoramic': '다크플래쉬 DS900 블랙',
+  'case-ds900-white': '다크플래쉬 DS900 화이트',
+  'case-zalman-p30-white': '잘만 P30 화이트',
+  'case-3rsys-s401': '3RSYS S401 Quiet',
+  'case-lianli-o11d-evo': '리안리 O11D EVO RGB'
 };
 
 // 완본체 게이밍 PC 실시간 검색 키워드 매핑 (2026 최신 사양 반영)
@@ -82,12 +136,12 @@ export const PREBUILT_SEARCH_KEYWORDS: Record<string, string> = {
  * - 3순위: 전달된 상세 상품명 또는 기본 키워드
  * - link.coupang.com/re/AFFSRP 경유로 lptag=AF5322745 수익 쿠키 100% 자동 장착
  */
-export function getCoupangProductUrl(componentId: string, fallbackName?: string): string {
+export function getCoupangProductUrl(componentId: string, fallbackName?: string, itemSearchKeyword?: string): string {
   if (CUSTOM_AFFILIATE_LINKS[componentId]) {
     return CUSTOM_AFFILIATE_LINKS[componentId];
   }
   // 유통사 세부 스펙명(30자 이상) 검색 시 중고/구형 상품으로 매칭되는 것을 방지하고 실시간 로켓배송 새제품으로 직행
-  const keyword = COMPONENT_SEARCH_KEYWORDS[componentId] || fallbackName || '컴퓨터 부품';
+  const keyword = itemSearchKeyword || COMPONENT_SEARCH_KEYWORDS[componentId] || fallbackName || '컴퓨터 부품';
   return `https://link.coupang.com/re/AFFSRP?pageKey=${encodeURIComponent(keyword)}&lptag=${COUPANG_PARTNER_ID}&subid=${COUPANG_SUB_ID}`;
 }
 
@@ -132,11 +186,11 @@ export const CUSTOM_NAVER_AFFILIATE_LINKS: Record<string, string> = {
  * 네이버 쇼핑 실시간 최저가 검색 URL 생성기
  * - 브랜드커넥트 링크 등록 시 해당 링크 최우선 반영
  */
-export function getNaverShoppingUrl(keyword: string, componentId?: string): string {
+export function getNaverShoppingUrl(keyword: string, componentId?: string, itemSearchKeyword?: string): string {
   if (componentId && CUSTOM_NAVER_AFFILIATE_LINKS[componentId]) {
     return CUSTOM_NAVER_AFFILIATE_LINKS[componentId];
   }
-  const cleanKeyword = keyword.trim() || '컴퓨터 부품';
+  const cleanKeyword = itemSearchKeyword || (componentId && COMPONENT_SEARCH_KEYWORDS[componentId]) || keyword.trim() || '컴퓨터 부품';
   return `https://search.shopping.naver.com/search/all?query=${encodeURIComponent(cleanKeyword)}`;
 }
 
@@ -161,7 +215,8 @@ export const CUSTOM_GMARKET_GOODS_CODES: Record<string, string> = {
 export function getOpenMarketProductUrl(
   componentId: string,
   fallbackName?: string,
-  mall: 'gmarket' | '11st' = 'gmarket'
+  mall: 'gmarket' | '11st' = 'gmarket',
+  itemSearchKeyword?: string
 ): string {
   // 1. 특정 상품 goodscode가 등록되어 있는 경우 상품 상세 페이지로 우선 직행
   if (mall === 'gmarket' && CUSTOM_GMARKET_GOODS_CODES[componentId]) {
@@ -173,7 +228,7 @@ export function getOpenMarketProductUrl(
   }
 
   // 2. 정확한 브랜드 + 최적화 키워드 우선 적용 (품절 및 긴 유통사명으로 인한 검색 0건 방지)
-  const keyword = COMPONENT_SEARCH_KEYWORDS[componentId] || fallbackName || '컴퓨터 부품';
+  const keyword = itemSearchKeyword || COMPONENT_SEARCH_KEYWORDS[componentId] || fallbackName || '컴퓨터 부품';
 
   let targetUrl = `https://browse.gmarket.co.kr/search?keyword=${encodeURIComponent(keyword)}`;
   const merchant = mall === '11st' ? '11st' : 'gmarket';

@@ -232,7 +232,7 @@ export default function SearchBar({ onSelectPreset, onSelectComponent }: SearchB
                 </div>
                 <div className="mt-1 space-y-1">
                   {results.components.map((comp) => {
-                    const coupangUrl = getCoupangProductUrl(comp.id, comp.name);
+                    const coupangUrl = getCoupangProductUrl(comp.id, comp.name, comp.searchKeyword);
                     return (
                       <div
                         key={comp.id}

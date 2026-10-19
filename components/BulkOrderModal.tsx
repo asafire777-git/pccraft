@@ -136,7 +136,7 @@ export default function BulkOrderModal({
         {/* 8종 부품 순차 담기 리스트 (스크롤 영역) */}
         <div className="flex-1 overflow-y-auto space-y-2 pr-1 mb-4 divide-y divide-slate-100 dark:divide-slate-800">
           {componentsList.map(({ label, item }) => {
-            const partUrl = getCoupangProductUrl(item.id, item.name);
+            const partUrl = getCoupangProductUrl(item.id, item.name, item.searchKeyword);
             const isChecked = Boolean(checkedItems[item.id]);
 
             return (

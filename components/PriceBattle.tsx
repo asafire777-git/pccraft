@@ -369,10 +369,10 @@ export default function PriceBattle({ currentPreset, selectedComponents, totalPr
               const comp = selectedComponents[key];
               if (!comp) return null;
 
-              const coupangUrl = getCoupangProductUrl(comp.id, comp.name);
-              const gmarketUrl = getOpenMarketProductUrl(comp.id, comp.name, 'gmarket');
-              const elevenstUrl = getOpenMarketProductUrl(comp.id, comp.name, '11st');
-              const naverUrl = getNaverShoppingUrl(comp.name, comp.id);
+              const coupangUrl = getCoupangProductUrl(comp.id, comp.name, comp.searchKeyword);
+              const gmarketUrl = getOpenMarketProductUrl(comp.id, comp.name, 'gmarket', comp.searchKeyword);
+              const elevenstUrl = getOpenMarketProductUrl(comp.id, comp.name, '11st', comp.searchKeyword);
+              const naverUrl = getNaverShoppingUrl(comp.name, comp.id, comp.searchKeyword);
 
               return (
                 <div

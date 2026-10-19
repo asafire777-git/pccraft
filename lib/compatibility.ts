@@ -38,9 +38,9 @@ export function checkCompatibility(selectedComponents: {
     }
   }
 
-  // 2. RAM 규격 호환성 검사
+  // 2. RAM 규격 호환성 검사 (CPU & 메인보드)
   if (cpu && ram) {
-    const isCpuDdr5Only = cpu.socket === 'AM5';
+    const isCpuDdr5Only = cpu.socket === 'AM5' || cpu.socket === 'LGA1851';
     const isRamDdr4 = ram.specs['규격']?.includes('DDR4');
     const isRamDdr5 = ram.specs['규격']?.includes('DDR5');
 
@@ -49,7 +49,7 @@ export function checkCompatibility(selectedComponents: {
       issues.push({
         type: 'error',
         title: '메모리 규격 불일치 (DDR4 / DDR5)',
-        description: `선택하신 라이젠 AM5 CPU는 차세대 DDR5 메모리만 지원합니다. DDR4 메모리는 장착할 수 없으니 DDR5로 교체하세요.`
+        description: `선택하신 [${cpu.socket}] 소켓 CPU는 차세대 DDR5 메모리만 지원합니다. DDR4 메모리는 장착할 수 없으니 DDR5 메모리로 교체해주세요.`
       });
     }
 
@@ -59,6 +59,31 @@ export function checkCompatibility(selectedComponents: {
         type: 'error',
         title: '메모리 규격 불일치 (DDR5 미지원)',
         description: `선택하신 AM4 CPU는 DDR4 규격 메인보드 및 메모리만 지원합니다. DDR4 메모리로 선택해주세요.`
+      });
+    }
+  }
+
+  // 2-1. 메인보드 메모리 슬롯 규격 호환성
+  if (motherboard && ram) {
+    const mbMem = motherboard.specs['메모리 규격'] || '';
+    const isRamDdr4 = ram.specs['규격']?.includes('DDR4');
+    const isRamDdr5 = ram.specs['규격']?.includes('DDR5');
+
+    if (mbMem.includes('DDR5') && isRamDdr4) {
+      isCompatible = false;
+      issues.push({
+        type: 'error',
+        title: '메인보드 슬롯 규격 불일치 (DDR5 보드에 DDR4 장착 불가)',
+        description: `선택하신 메인보드는 DDR5 전용 슬롯을 탑재하고 있습니다. DDR4 메모리는 규격이 달라 장착할 수 없으니 DDR5 메모리로 변경해주세요.`
+      });
+    }
+
+    if (mbMem.includes('DDR4') && isRamDdr5) {
+      isCompatible = false;
+      issues.push({
+        type: 'error',
+        title: '메인보드 슬롯 규격 불일치 (DDR4 보드에 DDR5 장착 불가)',
+        description: `선택하신 메인보드는 DDR4 전용 슬롯을 탑재하고 있습니다. DDR5 메모리는 규격이 달라 장착할 수 없으니 DDR4 메모리로 변경해주세요.`
       });
     }
   }
