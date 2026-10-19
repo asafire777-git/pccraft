@@ -9,6 +9,7 @@ import EstimateImageModal from './EstimateImageModal';
 import MatchingMonitors from './MatchingMonitors';
 import { GamePreset, GAME_PRESETS } from '@/data/presets';
 import { getCoupangProductUrl, getCoupangBulkCartUrl, getOpenMarketProductUrl, getPromoGatewayUrl } from '@/lib/affiliate';
+import { trackEvent } from '@/lib/gtag';
 
 interface BuilderTableProps {
   selectedComponents: Record<string, ComponentItem>;
@@ -365,6 +366,7 @@ export default function BuilderTable({
                     href={getCoupangProductUrl(item.id, item.name, item.searchKeyword)}
                     target="_blank"
                     rel="noopener noreferrer nofollow"
+                    onClick={() => trackEvent('affiliate_click', { platform: 'coupang', item_id: item.id, item_name: item.name, price: item.price, category: item.category })}
                     className="px-2.5 sm:px-3 py-2 rounded-xl bg-rose-600 hover:bg-rose-500 text-white text-xs font-bold flex items-center gap-1 transition-colors shadow-sm"
                     title="쿠팡 로켓배송 실시간 최저가"
                   >
@@ -376,6 +378,7 @@ export default function BuilderTable({
                     href={getOpenMarketProductUrl(item.id, item.name, 'gmarket', item.searchKeyword)}
                     target="_blank"
                     rel="noopener noreferrer nofollow"
+                    onClick={() => trackEvent('affiliate_click', { platform: 'gmarket', item_id: item.id, item_name: item.name, price: item.price, category: item.category })}
                     className="px-2.5 sm:px-3 py-2 rounded-xl bg-orange-600 hover:bg-orange-500 text-white text-xs font-bold flex items-center gap-1 transition-colors shadow-sm"
                     title="G마켓 공식총판 실시간 특가"
                   >
@@ -387,6 +390,7 @@ export default function BuilderTable({
                     href={getOpenMarketProductUrl(item.id, item.name, '11st', item.searchKeyword)}
                     target="_blank"
                     rel="noopener noreferrer nofollow"
+                    onClick={() => trackEvent('affiliate_click', { platform: '11st', item_id: item.id, item_name: item.name, price: item.price, category: item.category })}
                     className="px-2.5 sm:px-3 py-2 rounded-xl bg-red-600 hover:bg-red-500 text-white text-xs font-bold flex items-center gap-1 transition-colors shadow-sm"
                     title="11번가 슈팅배송 실시간 특가"
                   >

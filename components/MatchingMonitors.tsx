@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { MonitorItem, getRecommendedMonitors } from '@/data/monitors';
 import { Monitor, ExternalLink, Sparkles, ChevronDown, ChevronUp, ShieldCheck } from 'lucide-react';
 import { getCoupangProductUrl, getOpenMarketProductUrl } from '@/lib/affiliate';
+import { trackEvent } from '@/lib/gtag';
 
 interface MatchingMonitorsProps {
   gpuName?: string;
@@ -114,6 +115,7 @@ export default function MatchingMonitors({ gpuName }: MatchingMonitorsProps) {
                     href={getCoupangProductUrl(mon.id, mon.name, mon.searchKeyword)}
                     target="_blank"
                     rel="noopener noreferrer nofollow"
+                    onClick={() => trackEvent('affiliate_click', { platform: 'coupang', item_id: mon.id, item_name: mon.name, price: mon.price, category: 'monitor' })}
                     className="flex-1 py-1.5 px-2 rounded-lg bg-rose-600 hover:bg-rose-500 text-white text-[11px] font-bold flex items-center justify-center gap-1 shadow-xs transition-colors"
                     title="쿠팡 로켓배송 최저가 보기"
                   >
@@ -125,6 +127,7 @@ export default function MatchingMonitors({ gpuName }: MatchingMonitorsProps) {
                     href={getOpenMarketProductUrl(mon.id, mon.name, '11st', mon.searchKeyword)}
                     target="_blank"
                     rel="noopener noreferrer nofollow"
+                    onClick={() => trackEvent('affiliate_click', { platform: '11st', item_id: mon.id, item_name: mon.name, price: mon.price, category: 'monitor' })}
                     className="py-1.5 px-2.5 rounded-lg bg-red-600 hover:bg-red-500 text-white text-[11px] font-bold flex items-center justify-center gap-1 shadow-xs transition-colors"
                     title="11번가 슈팅배송 실시간가"
                   >
@@ -135,6 +138,7 @@ export default function MatchingMonitors({ gpuName }: MatchingMonitorsProps) {
                     href={getOpenMarketProductUrl(mon.id, mon.name, 'gmarket', mon.searchKeyword)}
                     target="_blank"
                     rel="noopener noreferrer nofollow"
+                    onClick={() => trackEvent('affiliate_click', { platform: 'gmarket', item_id: mon.id, item_name: mon.name, price: mon.price, category: 'monitor' })}
                     className="py-1.5 px-2.5 rounded-lg bg-orange-600 hover:bg-orange-500 text-white text-[11px] font-bold flex items-center justify-center gap-1 shadow-xs transition-colors"
                     title="G마켓 특가 보기"
                   >

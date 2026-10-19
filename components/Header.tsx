@@ -3,9 +3,10 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { Cpu, Sun, Moon, Bookmark, User, X, Check, Share2, LogOut, Menu } from 'lucide-react';
+import { Cpu, Sun, Moon, Bookmark, User, X, Check, Share2, LogOut, Menu, Shield } from 'lucide-react';
 import { useTheme } from './ThemeProvider';
 import { useSession, signIn, signOut } from 'next-auth/react';
+import { isAdmin } from '@/lib/admin';
 
 interface HeaderProps {
   onOpenQuoteStorage?: () => void;
@@ -197,6 +198,21 @@ export default function Header({ onOpenQuoteStorage }: HeaderProps = {}) {
             >
               플랫폼 소개
             </Link>
+
+            {isAdmin(session?.user || cachedUser) && (
+              <Link
+                href="/admin"
+                className={`px-2.5 py-1.5 rounded-xl transition-all cursor-pointer flex items-center gap-1.5 whitespace-nowrap shrink-0 font-bold ${
+                  pathname === '/admin'
+                    ? 'bg-amber-500 text-slate-950 shadow-sm'
+                    : 'text-amber-700 dark:text-amber-300 bg-amber-50 dark:bg-amber-950/60 hover:bg-amber-100 dark:hover:bg-amber-900/60 border border-amber-200 dark:border-amber-800/60'
+                }`}
+                title="통합 관리자 대시보드"
+              >
+                <Shield className="w-3.5 h-3.5 text-amber-500 shrink-0" />
+                <span>관리자</span>
+              </Link>
+            )}
           </nav>
 
           {/* 우측 유틸리티: 테마 토글러 & 로그인 버튼 & 모바일 햄버거 메뉴 */}
@@ -374,6 +390,21 @@ export default function Header({ onOpenQuoteStorage }: HeaderProps = {}) {
             >
               ℹ️ 플랫폼 소개
             </Link>
+
+            {isAdmin(session?.user || cachedUser) && (
+              <Link
+                href="/admin"
+                onClick={() => setMobileMenuOpen(false)}
+                className={`flex items-center gap-2 px-3 py-2.5 rounded-xl text-xs font-bold transition-colors ${
+                  pathname === '/admin'
+                    ? 'bg-amber-500 text-slate-950 font-black'
+                    : 'bg-amber-50 dark:bg-amber-950/60 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800/60'
+                }`}
+              >
+                <Shield className="w-3.5 h-3.5 text-amber-500" />
+                <span>🛠️ 관리자 대시보드</span>
+              </Link>
+            )}
           </div>
         )}
       </header>

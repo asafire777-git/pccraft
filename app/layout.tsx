@@ -1,7 +1,9 @@
+import React, { Suspense } from 'react';
 import type { Metadata } from 'next';
 import './globals.css';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import AuthProvider from '@/components/AuthProvider';
+import GoogleAnalytics from '@/components/GoogleAnalytics';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://pccraft.kr'),
@@ -79,6 +81,9 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 font-sans transition-colors duration-200">
         <AuthProvider>
           <ThemeProvider>
+            <Suspense fallback={null}>
+              <GoogleAnalytics />
+            </Suspense>
             {children}
           </ThemeProvider>
         </AuthProvider>

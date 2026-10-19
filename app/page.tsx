@@ -19,6 +19,7 @@ import HardwareLabShowcase from '@/components/HardwareLabShowcase';
 import { GAME_PRESETS, GamePreset } from '@/data/presets';
 import { COMPONENTS_DATA, ComponentItem } from '@/data/components';
 import { checkCompatibility } from '@/lib/compatibility';
+import { trackEvent } from '@/lib/gtag';
 import { Sparkles } from 'lucide-react';
 
 export default function HomePage() {
@@ -40,6 +41,10 @@ export default function HomePage() {
 
   const handleSelectPreset = (preset: GamePreset) => {
     setCurrentPreset(preset);
+    trackEvent('preset_select', {
+      preset_id: preset.id,
+      preset_title: preset.title,
+    });
     const updated: Record<string, ComponentItem> = {};
     Object.entries(preset.defaultComponentIds).forEach(([catKey, id]) => {
       const found = COMPONENTS_DATA[catKey]?.find((item) => item.id === id);

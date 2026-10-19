@@ -5,6 +5,7 @@ import { ComponentItem } from '@/data/components';
 import { GamePreset } from '@/data/presets';
 import { X, Download, Copy, Check, Share2, Sparkles, Camera } from 'lucide-react';
 import { useTheme } from './ThemeProvider';
+import { trackEvent } from '@/lib/gtag';
 
 interface EstimateImageModalProps {
   isOpen: boolean;
@@ -396,6 +397,13 @@ export default function EstimateImageModal({
   // 이미지 다운로드 핸들러
   const handleDownload = () => {
     if (!imageUrl) return;
+    trackEvent('quote_capture', {
+      action: 'download',
+      total_price: totalPrice,
+      preset: currentPreset?.title || 'custom',
+      is_light: isLight,
+    });
+
     const now = new Date();
     const dateStr = `${now.getFullYear()}${String(now.getMonth() + 1).padStart(2, '0')}${String(now.getDate()).padStart(2, '0')}`;
     const filename = `pccraft-estimate-${isLight ? 'white' : 'dark'}-${currentPreset?.id || 'custom'}-${dateStr}.png`;
@@ -411,6 +419,13 @@ export default function EstimateImageModal({
   // 클립보드 이미지 복사 (Ctrl+V) 핸들러
   const handleCopyImage = async () => {
     if (!imageBlob) return;
+    trackEvent('quote_capture', {
+      action: 'copy',
+      total_price: totalPrice,
+      preset: currentPreset?.title || 'custom',
+      is_light: isLight,
+    });
+
     try {
       if (navigator.clipboard && typeof ClipboardItem !== 'undefined') {
         const item = new ClipboardItem({ 'image/png': imageBlob });
@@ -428,6 +443,13 @@ export default function EstimateImageModal({
   // 모바일 네이티브 공유 핸들러 (카카오톡 등)
   const handleNativeShare = async () => {
     if (!imageBlob) return;
+    trackEvent('quote_capture', {
+      action: 'share',
+      total_price: totalPrice,
+      preset: currentPreset?.title || 'custom',
+      is_light: isLight,
+    });
+
     try {
       const now = new Date();
       const dateStr = `${now.getFullYear()}${String(now.getMonth() + 1).padStart(2, '0')}${String(now.getDate()).padStart(2, '0')}`;
