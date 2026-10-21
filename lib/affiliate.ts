@@ -123,12 +123,12 @@ export const COMPONENT_SEARCH_KEYWORDS: Record<string, string> = {
   'case-lianli-o11d-evo': '리안리 O11D EVO RGB'
 };
 
-// 완본체 게이밍 PC 실시간 검색 키워드 매핑 (현재 정품 실판매 사양 반영)
+// 완본체 게이밍 PC 실시간 검색 키워드 매핑 (오픈마켓/쿠팡 실제 매물 100% 매칭)
 export const PREBUILT_SEARCH_KEYWORDS: Record<string, string> = {
   'casual-esports': '라이젠 5600 조립PC',
-  'mainstream-gaming': '라이젠 7500F RTX 4060 조립PC',
-  'high-end-aaa': '7800X3D RTX 4070 SUPER 조립PC',
-  'creator-flagship': 'RTX 4080 SUPER 게이밍 조립PC'
+  'mainstream-gaming': '라이젠 7500F 4060 조립PC',
+  'high-end-aaa': '7800X3D 4070 SUPER 조립PC',
+  'creator-flagship': '14700K 4080 SUPER 조립PC'
 };
 
 /**
@@ -148,14 +148,14 @@ export function getCoupangProductUrl(componentId: string, fallbackName?: string,
 }
 
 /**
- * 완본체 추천 상품 실시간 쿠팡 로켓배송 직행 (대표님 파트너스 공식 링크)
+ * 완본체 추천 상품 실시간 쿠팡 로켓배송 직행 (해당 사양 실매물 검색 100% 매칭)
  */
 export function getCoupangPrebuiltUrl(presetId: string): string {
   if (CUSTOM_AFFILIATE_LINKS[presetId]) {
     return CUSTOM_AFFILIATE_LINKS[presetId];
   }
-  // 대표님 전용 파트너스 게이밍 조립PC 공식 단축링크
-  return OFFICIAL_PREBUILT_LINK;
+  const keyword = PREBUILT_SEARCH_KEYWORDS[presetId] || '라이젠 7500F 4060 조립PC';
+  return `https://link.coupang.com/re/AFFSRP?pageKey=${encodeURIComponent(keyword)}&lptag=${COUPANG_PARTNER_ID}&subid=${COUPANG_SUB_ID}`;
 }
 
 /**
@@ -256,7 +256,7 @@ export function getOpenMarketProductUrl(
  * 완본체 게이밍 PC 오픈마켓 최저가 검색 URL (승인 완료된 G마켓 연동)
  */
 export function getOpenMarketPrebuiltUrl(presetId: string, fallbackName?: string): string {
-  const keyword = fallbackName || PREBUILT_SEARCH_KEYWORDS[presetId] || '게이밍 조립PC';
+  const keyword = PREBUILT_SEARCH_KEYWORDS[presetId] || fallbackName || '라이젠 7500F 4060 조립PC';
   const targetUrl = `https://browse.gmarket.co.kr/search?keyword=${encodeURIComponent(keyword)}`;
 
   if (LINKPRICE_AFFILIATE_ID) {

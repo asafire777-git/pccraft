@@ -1,7 +1,7 @@
 import React from 'react';
 import { GamePreset } from '@/data/presets';
 import { CheckCircle2, ShieldAlert, ExternalLink, Wrench, PackageCheck } from 'lucide-react';
-import { getCoupangPrebuiltUrl, getOpenMarketPrebuiltUrl } from '@/lib/affiliate';
+import { getCoupangPrebuiltUrl, getOpenMarketPrebuiltUrl, PREBUILT_SEARCH_KEYWORDS } from '@/lib/affiliate';
 
 interface PrebuiltComparisonProps {
   currentPreset: GamePreset;
@@ -141,7 +141,7 @@ export default function PrebuiltComparison({
               </a>
 
               <a
-                href={getOpenMarketPrebuiltUrl(currentPreset.id, prebuilt.title)}
+                href={getOpenMarketPrebuiltUrl(currentPreset.id)}
                 target="_blank"
                 rel="noopener noreferrer nofollow"
                 className="flex-1 sm:flex-initial px-3.5 py-2.5 rounded-xl bg-orange-600 hover:bg-orange-500 text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-sm transition-all"
@@ -152,7 +152,7 @@ export default function PrebuiltComparison({
               </a>
 
               <a
-                href={`https://search.danawa.com/dsearch.php?query=${encodeURIComponent(prebuilt.title.replace('추천 완본체 PC', '').replace(/\(|\)/g, ' ').trim())}`}
+                href={`https://search.danawa.com/dsearch.php?query=${encodeURIComponent(PREBUILT_SEARCH_KEYWORDS[currentPreset.id] || '라이젠 7500F 4060 조립PC')}`}
                 target="_blank"
                 rel="noopener noreferrer nofollow"
                 className="flex-1 sm:flex-initial px-3.5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 dark:bg-slate-700 dark:hover:bg-slate-600 text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-sm transition-all"
