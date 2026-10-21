@@ -153,63 +153,63 @@ export default function EventBanner() {
         </div>
 
         {/* 이벤트 내용 & 큼직한 배너 이미지 & CTA 버튼 */}
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-5 sm:gap-7 mt-2">
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 sm:gap-6 mt-1.5">
           {/* 좌측: 타이틀, 혜택 설명, 쿠폰 복사 & CTA 버튼 */}
           <div className="flex-1 min-w-0">
-            <h3 className="text-xl sm:text-2xl md:text-3xl font-black text-slate-900 dark:text-white tracking-tight leading-snug">
+            <h3 className="text-lg sm:text-xl lg:text-2xl font-black text-slate-900 dark:text-white tracking-tight leading-snug truncate" title={current.title}>
               <span>{current.title}</span>
             </h3>
-            <p className="text-sm sm:text-base md:text-lg text-slate-800 dark:text-slate-100 mt-2.5 leading-relaxed font-semibold">
-              {current.subtitle}
+            <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 mt-1.5 font-medium flex items-center gap-2 flex-wrap">
+              <span>{current.subtitle}</span>
               {current.highlightText && (
-                <span className="inline-flex items-center font-black text-xs sm:text-sm text-white ml-2 bg-cyan-600 px-2.5 py-1 rounded-lg border border-cyan-400 shadow-sm align-middle tracking-tight">
+                <span className="inline-flex items-center font-bold text-[11px] text-white bg-cyan-600 px-2 py-0.5 rounded-md border border-cyan-400/80 shadow-xs tracking-tight shrink-0">
                   {current.highlightText}
                 </span>
               )}
             </p>
 
-            <div className="flex items-center gap-3 mt-4 flex-wrap">
+            <div className="flex items-center gap-2.5 mt-3 flex-wrap">
               {/* 메인 기획전 직행 링크 */}
               <a
                 href={current.affiliateUrl}
                 target="_blank"
                 rel="noopener noreferrer nofollow"
-                className={`px-5 py-3 rounded-xl font-black text-xs sm:text-sm md:text-base flex items-center gap-2 shadow-lg ${style.btn} transition-all duration-200 active:scale-95 cursor-pointer`}
+                className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm flex items-center gap-1.5 shadow-md ${style.btn} transition-all duration-200 active:scale-95 cursor-pointer whitespace-nowrap`}
               >
                 <span>🔥 {current.platformName} 특가 보러가기</span>
-                <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5" />
+                <ExternalLink className="w-3.5 h-3.5" />
               </a>
 
               {/* 프로모션 코드 원클릭 복사 버튼 */}
               {current.promoCode && (
                 <button
                   onClick={(e) => handleCopyCode(current.promoCode!, e)}
-                  className="px-3.5 py-3 rounded-xl bg-slate-900 text-white dark:bg-slate-800 dark:text-slate-100 border border-slate-700 hover:border-amber-400 text-xs sm:text-sm font-bold flex items-center gap-1.5 transition-all active:scale-95 cursor-pointer shadow-md"
+                  className="px-3 py-2.5 rounded-xl bg-slate-900 text-white dark:bg-slate-800 dark:text-slate-100 border border-slate-700 hover:border-amber-400 text-xs font-bold flex items-center gap-1.5 transition-all active:scale-95 cursor-pointer shadow-sm whitespace-nowrap"
                   title="할인코드 클립보드 복사"
                 >
-                  {copiedCode ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4 text-amber-400" />}
+                  {copiedCode ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5 text-amber-400" />}
                   <span>{copiedCode ? '코드 복사완료!' : `코드: ${current.promoCode}`}</span>
                 </button>
               )}
 
               {/* 좌우 슬라이드 버튼 */}
               {activeEvents.length > 1 && (
-                <div className="flex items-center gap-1.5">
+                <div className="flex items-center gap-1">
                   <button
                     onClick={prevSlide}
                     aria-label="이전 기획전"
-                    className="p-2.5 rounded-xl bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700 shadow-xs transition-colors cursor-pointer"
+                    className="p-2 rounded-xl bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700 shadow-xs transition-colors cursor-pointer"
                     title="이전 기획전"
                   >
-                    <ChevronLeft className="w-5 h-5" />
+                    <ChevronLeft className="w-4 h-4" />
                   </button>
                   <button
                     onClick={nextSlide}
                     aria-label="다음 기획전"
-                    className="p-2.5 rounded-xl bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700 shadow-xs transition-colors cursor-pointer"
+                    className="p-2 rounded-xl bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700 shadow-xs transition-colors cursor-pointer"
                     title="다음 기획전"
                   >
-                    <ChevronRight className="w-5 h-5" />
+                    <ChevronRight className="w-4 h-4" />
                   </button>
                 </div>
               )}
@@ -222,7 +222,7 @@ export default function EventBanner() {
               href={current.affiliateUrl}
               target="_blank"
               rel="noopener noreferrer nofollow"
-              className="group/banner-img relative block w-full lg:w-[400px] xl:w-[460px] h-[170px] sm:h-[220px] lg:h-[200px] xl:h-[220px] shrink-0 rounded-2xl overflow-hidden border-2 border-slate-200/90 dark:border-slate-800/90 shadow-xl hover:shadow-2xl transition-all duration-300 active:scale-[0.99] cursor-pointer bg-slate-950"
+              className="group/banner-img relative block w-full lg:w-[340px] xl:w-[380px] h-[140px] sm:h-[160px] lg:h-[150px] shrink-0 rounded-xl overflow-hidden border border-slate-200/90 dark:border-slate-800/90 shadow-md hover:shadow-lg transition-all duration-300 active:scale-[0.99] cursor-pointer bg-slate-950"
               title={`${current.title} 바로가기`}
             >
               <img
@@ -232,13 +232,13 @@ export default function EventBanner() {
                 loading={currentIndex === 0 ? undefined : 'lazy'}
                 className="w-full h-full object-cover object-center group-hover/banner-img:scale-105 transition-transform duration-500 ease-out"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-0 group-hover/banner-img:opacity-100 transition-opacity flex items-end p-3">
-                <span className="text-xs font-black text-white flex items-center gap-1.5">
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-0 group-hover/banner-img:opacity-100 transition-opacity flex items-end p-2.5">
+                <span className="text-[11px] font-bold text-white flex items-center gap-1">
                   <span>{current.platformName} 공식 특가 바로가기</span>
-                  <ExternalLink className="w-3.5 h-3.5" />
+                  <ExternalLink className="w-3 h-3" />
                 </span>
               </div>
-              <div className="absolute top-2.5 right-2.5 bg-slate-950/85 backdrop-blur-md border border-slate-700/80 px-2.5 py-1 rounded-lg text-[11px] font-bold text-white font-mono shadow-md flex items-center gap-1">
+              <div className="absolute top-2 right-2 bg-slate-950/85 backdrop-blur-md border border-slate-700/80 px-2 py-0.5 rounded text-[10px] font-bold text-white font-mono shadow-xs flex items-center gap-1">
                 <span>{current.platformName} 공식</span>
                 <span>🔥</span>
               </div>
