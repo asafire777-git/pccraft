@@ -41,7 +41,7 @@ export const GAME_PRESETS: GamePreset[] = [
     badge: '입문/가성비 추천',
     targetGames: ['리그오브레전드', '발로란트', 'FC온라인(피파)', '메이플스토리', '서든어택'],
     performanceDescription: 'FHD 해상도에서 144Hz 고주사율 완벽 방어. 50~70만원대 알뜰 세팅',
-    budgetRange: '약 55만 ~ 65만원',
+    budgetRange: '약 60만 ~ 68만원',
     iconName: 'Gamepad2',
     defaultComponentIds: {
       cpu: 'cpu-amd-5600',
@@ -56,7 +56,7 @@ export const GAME_PRESETS: GamePreset[] = [
     recommendedPrebuilt: {
       title: '롤·발로란트 e스포츠 가성비 추천 완본체 PC (라이젠 5600 + GTX 1650)',
       brand: 'e스포츠 게이밍',
-      price: 599000,
+      price: 649000,
       affiliateUrl: 'https://link.coupang.com/a/hMDhTKsW5I',
       imageUrl: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=500&auto=format&fit=crop&q=60',
       pros: ['1년 무상 출장 방문 AS', '윈도우 미포함 최저가 구성', '원클릭 즉시 배송'],
@@ -121,7 +121,7 @@ export const GAME_PRESETS: GamePreset[] = [
     badge: '하드코어 게이머',
     targetGames: ['사이버펑크 2077', '검은신화: 오공', '몬스터헌터 와일즈', '엘든링', '호그와트 레거시'],
     performanceDescription: 'QHD 144Hz 풀옵션 & 레이트레이싱 완벽 지원. 현존 게이밍 최강 CPU 7800X3D + RTX 4070 SUPER',
-    budgetRange: '약 210만 ~ 235만원',
+    budgetRange: '약 200만 ~ 220만원',
     iconName: 'Zap',
     defaultComponentIds: {
       cpu: 'cpu-amd-7800x3d',
@@ -136,11 +136,11 @@ export const GAME_PRESETS: GamePreset[] = [
     recommendedPrebuilt: {
       title: '스팀 AAA 대작 & QHD 종결 완본체 PC (7800X3D + RTX 4070 SUPER)',
       brand: '하이엔드 게이밍',
-      price: 2190000,
+      price: 2099000,
       affiliateUrl: 'https://link.coupang.com/a/hMDhTKsW5I',
       imageUrl: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=500&auto=format&fit=crop&q=60',
       pros: ['파노라마 어항케이스 디자인 감성', '전 부품 3년 무상보증 패키지', '정품 윈도우 11 사전탑재'],
-      specsSummary: '라이젠 7800X3D / RTX 4070 SUPER 12G / 32GB DDR5 / 1TB P41 / 700W'
+      specsSummary: '라이젠 7800X3D / RTX 4070 SUPER 12G / 32GB DDR5 / 1TB NVMe / 700W'
     },
     aiAnalysis: {
       resolution: 'QHD (2560x1440) 풀옵션 종결 / 4K 고화질',
@@ -161,7 +161,7 @@ export const GAME_PRESETS: GamePreset[] = [
     badge: '전문가 / 4K 풀옵션',
     targetGames: ['4K UHD 전 게임', 'AI 스테이블디퓨전', '프리미어 4K 컷편집', '블렌더 3D 렌더링'],
     performanceDescription: '4K 모니터 풀옵션 + 영상편집/원컴 4K 방송을 위한 끝판왕 워크스테이션 (RTX 4080 SUPER)',
-    budgetRange: '약 320만 ~ 350만원',
+    budgetRange: '약 290만 ~ 310만원',
     iconName: 'Crown',
     defaultComponentIds: {
       cpu: 'cpu-intel-14700k',
@@ -176,7 +176,7 @@ export const GAME_PRESETS: GamePreset[] = [
     recommendedPrebuilt: {
       title: '4K UHD 플래그십 & 영상편집 워크스테이션 PC (i7-14700K + RTX 4080 SUPER)',
       brand: '플래그십 워크스테이션',
-      price: 3390000,
+      price: 2990000,
       affiliateUrl: 'https://link.coupang.com/a/hMDhTKsW5I',
       imageUrl: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=500&auto=format&fit=crop&q=60',
       pros: ['플래그십 감성 튜닝', '골드 등급 파워와 3열 수랭 기본 적용', 'VIP 무상 케어'],

@@ -112,15 +112,20 @@ export default function PrebuiltComparison({
 
           <div className="mt-6 pt-4 border-t border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
             <div>
-              <div className="flex items-center gap-2">
-                <span className="text-xs text-slate-500">완제품 특가</span>
-                <span className={`text-[11px] font-mono font-medium ${priceDiff > 0 ? 'text-amber-600 dark:text-amber-400' : 'text-emerald-600 dark:text-emerald-400'}`}>
-                  (직접조립 대비 {priceDiff > 0 ? `+${priceDiff.toLocaleString()}원` : `${priceDiff.toLocaleString()}원`})
+              <div className="flex items-center gap-2 flex-wrap">
+                <span className="text-xs font-semibold text-slate-600 dark:text-slate-300">완제품 특가</span>
+                <span className={`text-[11px] font-medium ${priceDiff > 0 ? 'text-amber-700 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/40 px-2 py-0.5 rounded border border-amber-200 dark:border-amber-800/40' : 'text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 px-2 py-0.5 rounded border border-emerald-200 dark:border-emerald-800/40'}`}>
+                  {priceDiff > 0
+                    ? `부품가 대비 +${priceDiff.toLocaleString()}원 (공임·1년A/S 포함)`
+                    : `기획전 특가 (직접조립 대비 ${Math.abs(priceDiff).toLocaleString()}원 절약)`}
                 </span>
               </div>
-              <span className="text-2xl font-black text-emerald-600 dark:text-emerald-400 font-mono">
-                {prebuilt.price.toLocaleString()}원
-              </span>
+              <div className="mt-1 flex items-baseline gap-2">
+                <span className="text-2xl font-black text-emerald-600 dark:text-emerald-400 font-mono">
+                  {prebuilt.price.toLocaleString()}원
+                </span>
+                <span className="text-[11px] text-slate-400">VAT·조립완제품 포함</span>
+              </div>
             </div>
 
             <div className="flex items-center gap-2 w-full sm:w-auto flex-wrap sm:flex-nowrap">
@@ -128,7 +133,7 @@ export default function PrebuiltComparison({
                 href={getCoupangPrebuiltUrl(currentPreset.id)}
                 target="_blank"
                 rel="noopener noreferrer nofollow"
-                className="flex-1 sm:flex-initial px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-sm transition-all"
+                className="flex-1 sm:flex-initial px-3.5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-sm transition-all"
                 title="쿠팡 로켓 완본체 확인"
               >
                 <span>🚀 쿠팡 로켓</span>
@@ -139,15 +144,31 @@ export default function PrebuiltComparison({
                 href={getOpenMarketPrebuiltUrl(currentPreset.id, prebuilt.title)}
                 target="_blank"
                 rel="noopener noreferrer nofollow"
-                className="flex-1 sm:flex-initial px-4 py-2.5 rounded-xl bg-orange-600 hover:bg-orange-500 text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-sm transition-all"
+                className="flex-1 sm:flex-initial px-3.5 py-2.5 rounded-xl bg-orange-600 hover:bg-orange-500 text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-sm transition-all"
                 title="G마켓 공식 입점 완본체 특가 확인"
               >
                 <span>🛒 G마켓 특가</span>
                 <ExternalLink className="w-3.5 h-3.5" />
               </a>
+
+              <a
+                href={`https://search.danawa.com/dsearch.php?query=${encodeURIComponent(prebuilt.title.replace('추천 완본체 PC', '').replace(/\(|\)/g, ' ').trim())}`}
+                target="_blank"
+                rel="noopener noreferrer nofollow"
+                className="flex-1 sm:flex-initial px-3.5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 dark:bg-slate-700 dark:hover:bg-slate-600 text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-sm transition-all"
+                title="다나와 실시간 완본체 시세 비교"
+              >
+                <span>📊 다나와 시세</span>
+                <ExternalLink className="w-3.5 h-3.5" />
+              </a>
             </div>
           </div>
         </div>
+      </div>
+
+      <div className="mt-3 px-4 py-2.5 rounded-xl bg-slate-100/70 dark:bg-slate-800/40 border border-slate-200/60 dark:border-slate-800 text-[11px] text-slate-500 dark:text-slate-400 flex items-center justify-between flex-wrap gap-2">
+        <span>💡 <strong>가격 차이 안내:</strong> 완본체(완제품) 가격은 순수 부품 원가 외에 <strong>전문 엔지니어 조립 공임 + 완벽 배선 정리 + 윈도우/바이오스 번인 테스트 + 1년 전국 무상 출장 A/S 패키지</strong>가 포함된 실구매가입니다.</span>
+        <span className="text-[10px] text-slate-400">시세 기준: 2026년 10월 다나와/오픈마켓 실매물</span>
       </div>
     </section>
   );
