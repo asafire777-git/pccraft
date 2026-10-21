@@ -26,7 +26,7 @@ const getTrackingUrl = (keyword: string) =>
 
 export const COMPONENTS_DATA: Record<string, ComponentItem[]> = {
   // =========================================================================
-  // 1. CPU (프로세서) - AMD 라이젠 & 인텔 코어 다채로운 라인업 (13종)
+  // 1. CPU (프로세서) (18종)
   // =========================================================================
   cpu: [
     {
@@ -288,11 +288,111 @@ export const COMPONENTS_DATA: Record<string, ComponentItem[]> = {
       affiliateUrl: getTrackingUrl('인텔 코어 Ultra 5 245K'),
       tags: ['2026차세대', 'NPU_AI가속', '저전력설계'],
       recommendationReason: 'TSMC N3B 공정으로 소비전력과 발열을 획기적으로 개선하고 전용 AI 엔진 NPU를 탑재한 차세대 CPU'
+    },
+    {
+      id: 'cpu-amd-9600x',
+      category: 'cpu',
+      categoryName: 'CPU (프로세서)',
+      name: 'AMD 라이젠5 5세대 9600X (그래니트 릿지) 정품',
+      price: 359000,
+      prevPrice: 375000,
+      priceChange: -16000,
+      inStock: true,
+      lastUpdated: '2026-10-21 13:00',
+      brand: 'AMD',
+      searchKeyword: '라이젠5 9600X 정품',
+      specs: { '코어/스레드': '6코어 12스레드', '최대클럭': '5.4GHz', 'TDP': '65W', '소켓': 'AM5' },
+      socket: 'AM5',
+      tdp: 65,
+      imageUrl: 'https://images.unsplash.com/photo-1555680202-c86f0e12f086?w=500&auto=format&fit=crop&q=80',
+      affiliateUrl: getTrackingUrl('라이젠5 9600X 정품'),
+      tags: ['Zen5아키텍처', '9600X', '저발열65W', '게이밍특화'],
+      recommendationReason: '차세대 Zen 5 아키텍처 탑재로 IPC 16% 향상, 낮은 소비전력과 고클럭으로 강력한 게이밍 퍼포먼스'
+    },
+    {
+      id: 'cpu-amd-9700x',
+      category: 'cpu',
+      categoryName: 'CPU (프로세서)',
+      name: 'AMD 라이젠7 5세대 9700X (그래니트 릿지) 정품',
+      price: 469000,
+      prevPrice: 485000,
+      priceChange: -16000,
+      inStock: true,
+      lastUpdated: '2026-10-21 13:00',
+      brand: 'AMD',
+      searchKeyword: '라이젠7 9700X 정품',
+      specs: { '코어/스레드': '8코어 16스레드', '최대클럭': '5.5GHz', 'TDP': '65W', '소켓': 'AM5' },
+      socket: 'AM5',
+      tdp: 65,
+      imageUrl: 'https://images.unsplash.com/photo-1555680202-c86f0e12f086?w=500&auto=format&fit=crop&q=80',
+      affiliateUrl: getTrackingUrl('라이젠7 9700X 정품'),
+      tags: ['Zen5팔코어', '9700X', '원컴방송/편집', '고효율'],
+      recommendationReason: '8코어 16스레드의 넉넉한 멀티스레드 성능과 뛰어난 전력 효율로 게임 방송과 영상 편집을 모두 만족'
+    },
+    {
+      id: 'cpu-amd-9900x',
+      category: 'cpu',
+      categoryName: 'CPU (프로세서)',
+      name: 'AMD 라이젠9 5세대 9900X (그래니트 릿지) 정품',
+      price: 620000,
+      prevPrice: 645000,
+      priceChange: -25000,
+      inStock: true,
+      lastUpdated: '2026-10-21 13:00',
+      brand: 'AMD',
+      searchKeyword: '라이젠9 9900X 정품',
+      specs: { '코어/스레드': '12코어 24스레드', '최대클럭': '5.6GHz', 'TDP': '120W', '소켓': 'AM5' },
+      socket: 'AM5',
+      tdp: 120,
+      imageUrl: 'https://images.unsplash.com/photo-1555680202-c86f0e12f086?w=500&auto=format&fit=crop&q=80',
+      affiliateUrl: getTrackingUrl('라이젠9 9900X 정품'),
+      tags: ['12코어24스레드', '9900X', '전문가워크스테이션', '크리에이터'],
+      recommendationReason: '12코어 24스레드의 폭발적인 다중 코어 연산력으로 3D 렌더링, 컴파일, 4K 편집 시간을 단축'
+    },
+    {
+      id: 'cpu-intel-265k',
+      category: 'cpu',
+      categoryName: 'CPU (프로세서)',
+      name: '인텔 코어 Ultra 7 265K (애로우레이크-S) 정품',
+      price: 549000,
+      prevPrice: 569000,
+      priceChange: -20000,
+      inStock: true,
+      lastUpdated: '2026-10-21 13:00',
+      brand: '인텔',
+      searchKeyword: '인텔 코어 Ultra 7 265K',
+      specs: { '코어/스레드': '20(8P+12E)코어 20스레드', 'NPU 탑재': '13 TOPS', 'TDP': '125W', '소켓': 'LGA1851' },
+      socket: 'LGA1851',
+      tdp: 125,
+      imageUrl: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=500&auto=format&fit=crop&q=80',
+      affiliateUrl: getTrackingUrl('인텔 코어 Ultra 7 265K'),
+      tags: ['애로우레이크', 'Ultra7', '20코어', 'NPU탑재'],
+      recommendationReason: 'TSMC 선단 공정으로 전력 소모를 획기적으로 낮추고 전용 AI 가속 NPU를 탑재한 인텔 차세대 메인스트림'
+    },
+    {
+      id: 'cpu-intel-13400f',
+      category: 'cpu',
+      categoryName: 'CPU (프로세서)',
+      name: '인텔 코어 i5-13세대 13400F (랩터레이크) 정품',
+      price: 189000,
+      prevPrice: 198000,
+      priceChange: -9000,
+      inStock: true,
+      lastUpdated: '2026-10-21 13:00',
+      brand: '인텔',
+      searchKeyword: '인텔 i5 13400F 정품',
+      specs: { '코어/스레드': '10(6P+4E)코어 16스레드', '최대클럭': '4.6GHz', 'TDP': '65W', '소켓': 'LGA1700' },
+      socket: 'LGA1700',
+      tdp: 65,
+      imageUrl: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=500&auto=format&fit=crop&q=80',
+      affiliateUrl: getTrackingUrl('인텔 i5 13400F 정품'),
+      tags: ['10코어16스레드', '인텔가성비', 'E코어탑재'],
+      recommendationReason: '10코어 16스레드의 든든한 다중 코어를 10만원대 후반에 누릴 수 있는 인텔 최고의 가성비 멀티태스킹 픽'
     }
   ],
 
   // =========================================================================
-  // 2. COOLER (쿨러/튜닝) - 가성비 공랭부터 대장급 듀얼타워 & 3열 수랭 (9종)
+  // 2. COOLER (쿨러/튜닝) (11종)
   // =========================================================================
   cooler: [
     {
@@ -465,11 +565,47 @@ export const COMPONENTS_DATA: Record<string, ComponentItem[]> = {
       affiliateUrl: getTrackingUrl('NZXT 크라켄 360 RGB'),
       tags: ['커스텀LCD', '수랭종결자', '하이엔드감성'],
       recommendationReason: '원하는 커스텀 GIF 움짤을 워터블록에 띄울 수 있는 프리미엄 LCD 탑재 하이엔드 수랭의 정점'
+    },
+    {
+      id: 'cooler-thermalright-ps120se',
+      category: 'cooler',
+      categoryName: '쿨러/튜닝',
+      name: 'Thermalright Phantom Spirit 120 SE 서린',
+      price: 45000,
+      prevPrice: 48000,
+      priceChange: -3000,
+      inStock: true,
+      lastUpdated: '2026-10-21 13:00',
+      brand: 'Thermalright',
+      searchKeyword: 'Phantom Spirit 120 SE',
+      specs: { '냉각방식': '공랭 듀얼타워', '히트파이프': '7개 AGHP 4.0', '팬 크기': '120mm x 2', 'TDP': '최대 280W' },
+      imageUrl: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=500&auto=format&fit=crop&q=80',
+      affiliateUrl: getTrackingUrl('Phantom Spirit 120 SE'),
+      tags: ['7개히트파이프', '공랭끝판왕대장급', '가성비종결'],
+      recommendationReason: '7개의 히트파이프로 Peerless Assassin을 능가하는 현존 최강의 가성비 공랭 대장 쿨러'
+    },
+    {
+      id: 'cooler-valkyrie-gl360',
+      category: 'cooler',
+      categoryName: '쿨러/튜닝',
+      name: '발키리 GL360 ARGB (블랙)',
+      price: 179000,
+      prevPrice: 189000,
+      priceChange: -10000,
+      inStock: true,
+      lastUpdated: '2026-10-21 13:00',
+      brand: '발키리',
+      searchKeyword: '발키리 GL360 수랭쿨러',
+      specs: { '냉각방식': '3열 수랭 일체형', '라디에이터': '360mm', '보증기간': '누수보상 5년', '팬': '초고성능 FDB팬' },
+      imageUrl: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=500&auto=format&fit=crop&q=80',
+      affiliateUrl: getTrackingUrl('발키리 GL360 수랭쿨러'),
+      tags: ['수랭성능1위', '발키리', '누수보상5년', 'i7/i9완벽제어'],
+      recommendationReason: '벤치마크 쿨링 성능 최상위권. 고발열 i7-14700K와 라이젠 9000 시리즈를 확실하게 냉각'
     }
   ],
 
   // =========================================================================
-  // 3. MOTHERBOARD (메인보드) - AM4 / AM5 / LGA1700 / LGA1851 규격 완비 (9종)
+  // 3. MOTHERBOARD (메인보드) (13종)
   // =========================================================================
   motherboard: [
     {
@@ -642,11 +778,87 @@ export const COMPONENTS_DATA: Record<string, ComponentItem[]> = {
       affiliateUrl: getTrackingUrl('ASUS PRIME Z890-P'),
       tags: ['2026차세대보드', 'LGA1851전용', '인텔Ultra200'],
       recommendationReason: '인텔 코어 Ultra 200S 전용 차세대 메인보드로 썬더볼트4 및 차세대 인터페이스 완비'
+    },
+    {
+      id: 'mb-b650m-riptide',
+      category: 'motherboard',
+      categoryName: '메인보드',
+      name: 'ASRock B650M PG Riptide 디앤디컴',
+      price: 169000,
+      prevPrice: 178000,
+      priceChange: -9000,
+      inStock: true,
+      lastUpdated: '2026-10-21 13:00',
+      brand: 'ASRock',
+      searchKeyword: 'ASRock B650M PG Riptide',
+      specs: { '폼팩터': 'M-ATX', '소켓': 'AM5', '메모리 규격': 'DDR5', '전원부': '12+2+1페이즈 Dr.MOS', 'PCIe': 'PCIe 5.0 M.2 지원' },
+      socket: 'AM5',
+      imageUrl: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=500&auto=format&fit=crop&q=80',
+      affiliateUrl: getTrackingUrl('ASRock B650M PG Riptide'),
+      tags: ['12+2페이즈DrMOS', '가성비끝판왕', 'PCIe5지원'],
+      recommendationReason: '10만원대 중후반에서 12+2+1페이즈 Dr.MOS 튼실한 전원부로 7800X3D/9800X3D까지 완벽 커버'
+    },
+    {
+      id: 'mb-b650m-k-giga',
+      category: 'motherboard',
+      categoryName: '메인보드',
+      name: 'GIGABYTE B650M K 피씨디렉트',
+      price: 132000,
+      prevPrice: 139000,
+      priceChange: -7000,
+      inStock: true,
+      lastUpdated: '2026-10-21 13:00',
+      brand: 'GIGABYTE',
+      searchKeyword: 'GIGABYTE B650M K',
+      specs: { '폼팩터': 'M-ATX', '소켓': 'AM5', '메모리 규격': 'DDR5', '전원부': '8+2+1페이즈', 'M.2슬롯': '2개' },
+      socket: 'AM5',
+      imageUrl: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=500&auto=format&fit=crop&q=80',
+      affiliateUrl: getTrackingUrl('GIGABYTE B650M K'),
+      tags: ['가성비AM5', '기본충실', '7500F추천'],
+      recommendationReason: '라이젠 7500F 및 7600 시스템을 가장 합리적인 예산으로 맞출 수 있는 긱바 표준 B650'
+    },
+    {
+      id: 'mb-b650m-mortar-amd',
+      category: 'motherboard',
+      categoryName: '메인보드',
+      name: 'MSI MAG B650M 박격포 WIFI',
+      price: 215000,
+      prevPrice: 228000,
+      priceChange: -13000,
+      inStock: true,
+      lastUpdated: '2026-10-21 13:00',
+      brand: 'MSI',
+      searchKeyword: 'MSI B650M 박격포 WIFI',
+      specs: { '폼팩터': 'M-ATX', '소켓': 'AM5', '메모리 규격': 'DDR5', '전원부': '12+2+1페이즈 80A', '무선': 'Wi-Fi 6E 탑재' },
+      socket: 'AM5',
+      imageUrl: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=500&auto=format&fit=crop&q=80',
+      affiliateUrl: getTrackingUrl('MSI B650M 박격포 WIFI'),
+      tags: ['박격포명성', '80A대용량전원부', '와이파이포함'],
+      recommendationReason: 'MSI 전통의 박격포 명성 그대로, 80A SPS 전원부와 와이파이/블루투스를 모두 기본 탑재'
+    },
+    {
+      id: 'mb-h610m-msi',
+      category: 'motherboard',
+      categoryName: '메인보드',
+      name: 'MSI PRO H610M-E DDR4',
+      price: 74000,
+      prevPrice: 78000,
+      priceChange: -4000,
+      inStock: true,
+      lastUpdated: '2026-10-21 13:00',
+      brand: 'MSI',
+      searchKeyword: 'MSI PRO H610M-E DDR4',
+      specs: { '폼팩터': 'M-ATX', '소켓': 'LGA1700', '메모리 규격': 'DDR4', '전원부': 'Core Boost', 'PCIe': 'PCIe 4.0' },
+      socket: 'LGA1700',
+      imageUrl: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=500&auto=format&fit=crop&q=80',
+      affiliateUrl: getTrackingUrl('MSI PRO H610M-E DDR4'),
+      tags: ['초저예산인텔', 'DDR4지원', '7만원대'],
+      recommendationReason: '인텔 12400F/13400F와 저렴한 DDR4 메모리를 조합해 갓성비 PC를 꾸리는 알뜰 보드'
     }
   ],
 
   // =========================================================================
-  // 4. RAM (메모리) - DDR4 가성비부터 DDR5 A다이 & 고클럭 튜닝램 (8종)
+  // 4. RAM (메모리) (11종)
   // =========================================================================
   ram: [
     {
@@ -792,11 +1004,65 @@ export const COMPONENTS_DATA: Record<string, ComponentItem[]> = {
       affiliateUrl: getTrackingUrl('삼성전자 DDR5 5600 32GB'),
       tags: ['64GB초대용량', 'AI작업', '4K영상렌더링'],
       recommendationReason: '언리얼 엔진 5 개발, 4K/8K 고해상도 영상 렌더링, 로컬 AI 대형 모델 구동을 위한 대용량 세팅'
+    },
+    {
+      id: 'ram-ddr5-klevv-16gb',
+      category: 'ram',
+      categoryName: '메모리 (RAM)',
+      name: '에센코어 KLEVV DDR5-5600 CL46 (16GB) (8GBx2)',
+      price: 320000,
+      prevPrice: 335000,
+      priceChange: -15000,
+      inStock: true,
+      lastUpdated: '2026-10-21 13:00',
+      brand: '에센코어',
+      searchKeyword: '에센코어 KLEVV DDR5 5600 8GB',
+      specs: { '용량': '16GB (8GBx2)', '규격': 'DDR5 데스크탑', '동작클럭': '5600MHz', '채널': '듀얼 채널 구성' },
+      imageUrl: 'https://images.unsplash.com/photo-1562976540-1502c2145186?w=500&auto=format&fit=crop&q=80',
+      affiliateUrl: getTrackingUrl('에센코어 KLEVV DDR5 5600 8GB'),
+      tags: ['SK하이닉스칩셋', '검증된호환성', 'KLEVV가성비'],
+      recommendationReason: 'SK하이닉스 프리미엄 칩셋을 사용하여 탁월한 호환성과 오버클럭 마진을 제공하는 실속형 16GB'
+    },
+    {
+      id: 'ram-ddr5-klevv-32gb',
+      category: 'ram',
+      categoryName: '메모리 (RAM)',
+      name: '에센코어 KLEVV DDR5-5600 CL46 (32GB) (16GBx2)',
+      price: 640000,
+      prevPrice: 665000,
+      priceChange: -25000,
+      inStock: true,
+      lastUpdated: '2026-10-21 13:00',
+      brand: '에센코어',
+      searchKeyword: '에센코어 KLEVV DDR5 5600 16GB',
+      specs: { '용량': '32GB (16GBx2)', '규격': 'DDR5 데스크탑', '동작클럭': '5600MHz', '채널': '듀얼 채널 구성' },
+      imageUrl: 'https://images.unsplash.com/photo-1562976540-1502c2145186?w=500&auto=format&fit=crop&q=80',
+      affiliateUrl: getTrackingUrl('에센코어 KLEVV DDR5 5600 16GB'),
+      tags: ['SK하이닉스계열', 'DDR5표준', '안정적인구동'],
+      recommendationReason: '삼성 시금치 대비 더욱 안정적인 메인보드 바이오스 호환성으로 조립 업계 1순위 추천 메모리'
+    },
+    {
+      id: 'ram-ddr5-gskill-32gb',
+      category: 'ram',
+      categoryName: '메모리 (RAM)',
+      name: 'G.SKILL DDR5-6000 CL30 RIPJAWS S5 J (32GB) (16GBx2)',
+      price: 719000,
+      prevPrice: 745000,
+      priceChange: -26000,
+      inStock: true,
+      lastUpdated: '2026-10-21 13:00',
+      brand: 'G.SKILL',
+      searchKeyword: 'G.SKILL DDR5 6000 CL30 RIPJAWS',
+      specs: { '용량': '32GB (16GBx2)', '규격': 'DDR5 튜닝램', '동작클럭': '6000MHz CL30-40-40-96', '프로파일': '인텔 XMP 3.0 / EXPO' },
+      imageUrl: 'https://images.unsplash.com/photo-1562976540-1502c2145186?w=500&auto=format&fit=crop&q=80',
+      affiliateUrl: getTrackingUrl('G.SKILL DDR5 6000 CL30 RIPJAWS'),
+      tags: ['지스킬명품튜닝램', '6000CL30', '최저프레임방어'],
+      recommendationReason: '튜닝램의 명가 지스킬의 6000MHz CL30 황금 타이밍으로 배틀그라운드 1% 하위 프레임 방어 극대화'
     }
   ],
 
   // =========================================================================
-  // 5. GPU (그래픽카드) - FHD 가성비부터 4K 끝판왕 & 2026 차세대 라인업 (14종)
+  // 5. GPU (그래픽카드) (26종)
   // =========================================================================
   gpu: [
     {
@@ -1064,11 +1330,239 @@ export const COMPONENTS_DATA: Record<string, ComponentItem[]> = {
       affiliateUrl: getTrackingUrl('라데온 RX 7800 XT'),
       tags: ['라데온명가이엠텍', '16GB대용량VRAM', 'QHD깡성능'],
       recommendationReason: '라데온 명가 사파이어의 순백색 화이트 디자인과 16GB 대용량 비디오 메모리로 QHD 깡성능 1위'
+    },
+    {
+      id: 'gpu-rtx-5060-emtek',
+      category: 'gpu',
+      categoryName: '그래픽카드 (GPU)',
+      name: '이엠텍 지포스 RTX 5060 MIRACLE WHITE D7 8GB',
+      price: 489000,
+      prevPrice: 499000,
+      priceChange: -10000,
+      inStock: true,
+      lastUpdated: '2026-10-21 13:00',
+      brand: '이엠텍',
+      searchKeyword: '이엠텍 지포스 RTX 5060',
+      specs: { '메모리': 'GDDR7 8GB', '아키텍처': '블랙웰 (Blackwell)', '권장파워': '550W 이상', 'TDP': '125W', 'DLSS': 'DLSS 4 지원' },
+      tdp: 125,
+      imageUrl: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=500&auto=format&fit=crop&q=80',
+      affiliateUrl: getTrackingUrl('이엠텍 지포스 RTX 5060'),
+      tags: ['차세대국민카드', '5060', 'RTX5060', '블랙웰', '화이트감성', 'DLSS4'],
+      recommendationReason: '차세대 블랙웰 아키텍처 탑재로 FHD 풀옵션 및 전력 효율을 극대화한 현 시점 가장 대중적인 1위 카드'
+    },
+    {
+      id: 'gpu-rtx-5060-zotac',
+      category: 'gpu',
+      categoryName: '그래픽카드 (GPU)',
+      name: 'ZOTAC GAMING 지포스 RTX 5060 TWIN Edge OC D7 8GB',
+      price: 485000,
+      prevPrice: 495000,
+      priceChange: -10000,
+      inStock: true,
+      lastUpdated: '2026-10-21 13:00',
+      brand: 'ZOTAC',
+      searchKeyword: 'ZOTAC 지포스 RTX 5060',
+      specs: { '메모리': 'GDDR7 8GB', '아키텍처': '블랙웰 (Blackwell)', '보증기간': '3년+2년 확대보증', 'TDP': '125W' },
+      tdp: 125,
+      imageUrl: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=500&auto=format&fit=crop&q=80',
+      affiliateUrl: getTrackingUrl('ZOTAC 지포스 RTX 5060'),
+      tags: ['5년보증', '5060', 'RTX5060', '콤팩트듀얼팬', '가성비블랙웰'],
+      recommendationReason: '콤팩트 듀얼팬 설계와 최대 5년 보증으로 안심하고 쓸 수 있는 차세대 국민 메인스트림'
+    },
+    {
+      id: 'gpu-rtx-5060-gigabyte',
+      category: 'gpu',
+      categoryName: '그래픽카드 (GPU)',
+      name: 'GIGABYTE 지포스 RTX 5060 WINDFORCE OC D7 8GB',
+      price: 495000,
+      prevPrice: 509000,
+      priceChange: -14000,
+      inStock: true,
+      lastUpdated: '2026-10-21 13:00',
+      brand: 'GIGABYTE',
+      searchKeyword: '기가바이트 지포스 RTX 5060',
+      specs: { '메모리': 'GDDR7 8GB', '쿨링': '윈드포스 쿨링시스템', '권장파워': '550W 이상', 'TDP': '125W' },
+      tdp: 125,
+      imageUrl: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=500&auto=format&fit=crop&q=80',
+      affiliateUrl: getTrackingUrl('기가바이트 지포스 RTX 5060'),
+      tags: ['윈드포스', '5060', 'RTX5060', '저소음', '블랙웰대세'],
+      recommendationReason: '독자적인 윈드포스 쿨링 팬 블레이드로 고사양 게임 중에도 정숙함과 안정적인 온도를 유지'
+    },
+    {
+      id: 'gpu-rtx-5060-galax',
+      category: 'gpu',
+      categoryName: '그래픽카드 (GPU)',
+      name: '갤럭시 GALAX 지포스 RTX 5060 2X OC D7 8GB',
+      price: 492000,
+      prevPrice: 505000,
+      priceChange: -13000,
+      inStock: true,
+      lastUpdated: '2026-10-21 13:00',
+      brand: '갤럭시',
+      searchKeyword: '갤럭시 지포스 RTX 5060',
+      specs: { '메모리': 'GDDR7 8GB', '아키텍처': '블랙웰 (Blackwell)', '권장파워': '550W 이상', 'TDP': '125W' },
+      tdp: 125,
+      imageUrl: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=500&auto=format&fit=crop&q=80',
+      affiliateUrl: getTrackingUrl('갤럭시 지포스 RTX 5060'),
+      tags: ['갤럭시공식', '5060', 'RTX5060', '깔끔한마감', '게이밍국민'],
+      recommendationReason: '준수한 팩토리 오버클럭과 정갈한 블랙 디자인으로 어떤 빌드에도 잘 어울리는 갤럭시 베스트셀러'
+    },
+    {
+      id: 'gpu-rtx-5060ti-8gb',
+      category: 'gpu',
+      categoryName: '그래픽카드 (GPU)',
+      name: '이엠텍 지포스 RTX 5060 Ti STORM X Dual D7 8GB',
+      price: 645000,
+      prevPrice: 660000,
+      priceChange: -15000,
+      inStock: true,
+      lastUpdated: '2026-10-21 13:00',
+      brand: '이엠텍',
+      searchKeyword: '이엠텍 RTX 5060 Ti',
+      specs: { '메모리': 'GDDR7 8GB', '아키텍처': '블랙웰 (Blackwell)', '권장파워': '600W 이상', 'TDP': '165W' },
+      tdp: 165,
+      imageUrl: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=500&auto=format&fit=crop&q=80',
+      affiliateUrl: getTrackingUrl('이엠텍 RTX 5060 Ti'),
+      tags: ['QHD입문종결', '5060Ti', 'RTX5060Ti', '고주사율방어'],
+      recommendationReason: 'QHD 144Hz 게이밍 모니터에서 배그와 오버워치 2를 타협 없이 정복하는 가성비 Ti'
+    },
+    {
+      id: 'gpu-rtx-5060ti-16gb',
+      category: 'gpu',
+      categoryName: '그래픽카드 (GPU)',
+      name: 'GIGABYTE 지포스 RTX 5060 Ti EAGLE OC D7 16GB',
+      price: 749000,
+      prevPrice: 765000,
+      priceChange: -16000,
+      inStock: true,
+      lastUpdated: '2026-10-21 13:00',
+      brand: 'GIGABYTE',
+      searchKeyword: 'RTX 5060 Ti 16GB EAGLE',
+      specs: { '메모리': 'GDDR7 16GB 대용량', '쿨링': '윈드포스 3팬', '권장파워': '650W 이상', 'TDP': '175W' },
+      tdp: 175,
+      imageUrl: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=500&auto=format&fit=crop&q=80',
+      affiliateUrl: getTrackingUrl('RTX 5060 Ti 16GB EAGLE'),
+      tags: ['16GB대용량VRAM', 'AI이미지생성', '5060Ti16G', 'RTX5060Ti', '스팀AAA풀옵'],
+      recommendationReason: '16GB 고용량 VRAM 탑재로 로컬 AI 그림 생성 및 최신 대용량 텍스처 게임 완벽 구동'
+    },
+    {
+      id: 'gpu-rtx-5070-emtek',
+      category: 'gpu',
+      categoryName: '그래픽카드 (GPU)',
+      name: '이엠텍 지포스 RTX 5070 MIRACLE X3 D7 12GB',
+      price: 1420000,
+      prevPrice: 1460000,
+      priceChange: -40000,
+      inStock: true,
+      lastUpdated: '2026-10-21 13:00',
+      brand: '이엠텍',
+      searchKeyword: '이엠텍 지포스 RTX 5070',
+      specs: { '메모리': 'GDDR7 12GB', '아키텍처': '블랙웰 (Blackwell)', '권장파워': '750W 이상', 'TDP': '250W' },
+      tdp: 250,
+      imageUrl: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=500&auto=format&fit=crop&q=80',
+      affiliateUrl: getTrackingUrl('이엠텍 지포스 RTX 5070'),
+      tags: ['QHD정복', '5070', 'RTX5070', '블랙웰하이엔드', '트리플팬'],
+      recommendationReason: 'QHD 풀옵션 종결 및 4K 게이밍 진입을 위한 강력한 블랙웰 하이엔드 대표 주자'
+    },
+    {
+      id: 'gpu-rtx-5070ti',
+      category: 'gpu',
+      categoryName: '그래픽카드 (GPU)',
+      name: 'ZOTAC GAMING 지포스 RTX 5070 Ti Trinity Black D7 16GB',
+      price: 1850000,
+      prevPrice: 1890000,
+      priceChange: -40000,
+      inStock: true,
+      lastUpdated: '2026-10-21 13:00',
+      brand: 'ZOTAC',
+      searchKeyword: 'ZOTAC 지포스 RTX 5070 Ti',
+      specs: { '메모리': 'GDDR7 16GB', '아키텍처': '블랙웰 (Blackwell)', '권장파워': '800W 이상', 'TDP': '300W' },
+      tdp: 300,
+      imageUrl: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=500&auto=format&fit=crop&q=80',
+      affiliateUrl: getTrackingUrl('ZOTAC 지포스 RTX 5070 Ti'),
+      tags: ['4K고주사율', '5070Ti', 'RTX5070Ti', '16GB대역폭', '5년보증'],
+      recommendationReason: '16GB 광대역 메모리와 차세대 텐서 코어로 4K 레이트레이싱 게임을 완벽하게 소화'
+    },
+    {
+      id: 'gpu-rtx-5080',
+      category: 'gpu',
+      categoryName: '그래픽카드 (GPU)',
+      name: 'GIGABYTE 지포스 RTX 5080 WINDFORCE V2 D7 16GB',
+      price: 2390000,
+      prevPrice: 2450000,
+      priceChange: -60000,
+      inStock: true,
+      lastUpdated: '2026-10-21 13:00',
+      brand: 'GIGABYTE',
+      searchKeyword: 'GIGABYTE 지포스 RTX 5080',
+      specs: { '메모리': 'GDDR7 16GB', '아키텍처': '블랙웰 플래그십', '권장파워': '850W 이상', 'TDP': '400W' },
+      tdp: 400,
+      imageUrl: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=500&auto=format&fit=crop&q=80',
+      affiliateUrl: getTrackingUrl('GIGABYTE 지포스 RTX 5080'),
+      tags: ['4K울트라종결', '5080', 'RTX5080', '블랙웰끝판왕', '압도적성능'],
+      recommendationReason: '사이버펑크와 검은신화 오공 4K 풀옵션을 고주사율로 구동하는 초고사양 게이머의 로망'
+    },
+    {
+      id: 'gpu-rtx-5090',
+      category: 'gpu',
+      categoryName: '그래픽카드 (GPU)',
+      name: 'MSI 지포스 RTX 5090 슈프림 X D7 32GB 트라이프로져',
+      price: 4290000,
+      prevPrice: 4350000,
+      priceChange: -60000,
+      inStock: true,
+      lastUpdated: '2026-10-21 13:00',
+      brand: 'MSI',
+      searchKeyword: 'MSI 지포스 RTX 5090 슈프림',
+      specs: { '메모리': 'GDDR7 32GB 초대용량', '아키텍처': '블랙웰 최상위', '권장파워': '1200W 이상', 'TDP': '600W' },
+      tdp: 600,
+      imageUrl: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=500&auto=format&fit=crop&q=80',
+      affiliateUrl: getTrackingUrl('MSI 지포스 RTX 5090 슈프림'),
+      tags: ['지구상최강', '5090', 'RTX5090', '32GB비디오램', 'AI연구/8K'],
+      recommendationReason: '32GB 초광대역 GDDR7 VRAM을 탑재하여 현존하는 모든 8K 게임 및 엔터프라이즈 AI 연구까지 종결'
+    },
+    {
+      id: 'gpu-rx-7600xt',
+      category: 'gpu',
+      categoryName: '그래픽카드 (GPU)',
+      name: 'SAPPHIRE 라데온 RX 7600 XT PULSE OC D6 16GB',
+      price: 445000,
+      prevPrice: 459000,
+      priceChange: -14000,
+      inStock: true,
+      lastUpdated: '2026-10-21 13:00',
+      brand: 'SAPPHIRE',
+      searchKeyword: '라데온 RX 7600 XT',
+      specs: { '메모리': 'GDDR6 16GB', '스트림프로세서': '2048개', '권장파워': '600W 이상', 'TDP': '190W' },
+      tdp: 190,
+      imageUrl: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=500&auto=format&fit=crop&q=80',
+      affiliateUrl: getTrackingUrl('라데온 RX 7600 XT'),
+      tags: ['16GB비디오램', '40만원대가성비', '사파이어펄스'],
+      recommendationReason: '40만원대에서 흔치 않은 16GB 대용량 비디오 메모리로 VRAM 걱정 없는 고사양 게이밍 가성비 픽'
+    },
+    {
+      id: 'gpu-rx-7900gre',
+      category: 'gpu',
+      categoryName: '그래픽카드 (GPU)',
+      name: 'GIGABYTE 라데온 RX 7900 GRE GAMING OC D6 16GB',
+      price: 799000,
+      prevPrice: 825000,
+      priceChange: -26000,
+      inStock: true,
+      lastUpdated: '2026-10-21 13:00',
+      brand: 'GIGABYTE',
+      searchKeyword: '라데온 RX 7900 GRE',
+      specs: { '메모리': 'GDDR6 16GB (256-bit)', '스트림프로세서': '5120개', '권장파워': '700W 이상', 'TDP': '260W' },
+      tdp: 260,
+      imageUrl: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=500&auto=format&fit=crop&q=80',
+      affiliateUrl: getTrackingUrl('라데온 RX 7900 GRE'),
+      tags: ['QHD깡패', '7900GRE', '16GB대역폭', '트리플팬'],
+      recommendationReason: '80만원 언더에서 RTX 4070 SUPER와 경쟁하는 막강한 래스터화 깡성능과 16GB 넉넉한 VRAM'
     }
   ],
 
   // =========================================================================
-  // 6. SSD (저장장치) - 국민 골드 P31부터 플래그십 P41 & 990 PRO 2TB (9종)
+  // 6. SSD (저장장치) (12종)
   // =========================================================================
   ssd: [
     {
@@ -1232,11 +1726,65 @@ export const COMPONENTS_DATA: Record<string, ComponentItem[]> = {
       affiliateUrl: getTrackingUrl('삼성전자 990 PRO 2TB'),
       tags: ['2TB종결', '영상편집자원픽', '삼성최고봉'],
       recommendationReason: '최고 속도와 2TB 대용량을 모두 겸비하여 전문 4K 영상 편집자와 하이엔드 게이머의 종착역'
+    },
+    {
+      id: 'ssd-samsung-980pro-1tb',
+      category: 'ssd',
+      categoryName: '저장장치 (SSD)',
+      name: '삼성전자 980 PRO M.2 NVMe (1TB)',
+      price: 145000,
+      prevPrice: 152000,
+      priceChange: -7000,
+      inStock: true,
+      lastUpdated: '2026-10-21 13:00',
+      brand: '삼성전자',
+      searchKeyword: '삼성전자 980 PRO 1TB',
+      specs: { '용량': '1TB', '인터페이스': 'PCIe 4.0 x4', '읽기/쓰기속도': '최대 7000MB/s / 5000MB/s', 'DRAM': '1GB LPDDR4 탑재' },
+      imageUrl: 'https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=500&auto=format&fit=crop&q=80',
+      affiliateUrl: getTrackingUrl('삼성전자 980 PRO 1TB'),
+      tags: ['D램탑재', '검증된명작', '삼성공식'],
+      recommendationReason: '오랜 시간 전 세계 게이머와 크리에이터에게 검증된 삼성의 스테디셀러 고성능 PCIe 4.0 SSD'
+    },
+    {
+      id: 'ssd-samsung-990evo-plus-1tb',
+      category: 'ssd',
+      categoryName: '저장장치 (SSD)',
+      name: '삼성전자 990 EVO Plus M.2 NVMe (1TB)',
+      price: 129000,
+      prevPrice: 135000,
+      priceChange: -6000,
+      inStock: true,
+      lastUpdated: '2026-10-21 13:00',
+      brand: '삼성전자',
+      searchKeyword: '삼성전자 990 EVO Plus 1TB',
+      specs: { '용량': '1TB', '인터페이스': 'PCIe 4.0/5.0 x2', '읽기/쓰기속도': '최대 7250MB/s / 6300MB/s', '전력효율': '최신 V8 낸드' },
+      imageUrl: 'https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=500&auto=format&fit=crop&q=80',
+      affiliateUrl: getTrackingUrl('삼성전자 990 EVO Plus 1TB'),
+      tags: ['차세대전력효율', '저발열', '7250MBs속도'],
+      recommendationReason: '최신 8세대 V-낸드 적용으로 발열을 대폭 줄이고 7,250MB/s 초고속 읽기 속도를 제공하는 실속형 신제품'
+    },
+    {
+      id: 'ssd-wd-sn580-1tb',
+      category: 'ssd',
+      categoryName: '저장장치 (SSD)',
+      name: 'Western Digital WD Blue SN580 M.2 NVMe (1TB)',
+      price: 99000,
+      prevPrice: 105000,
+      priceChange: -6000,
+      inStock: true,
+      lastUpdated: '2026-10-21 13:00',
+      brand: 'Western Digital',
+      searchKeyword: 'WD Blue SN580 1TB',
+      specs: { '용량': '1TB', '인터페이스': 'PCIe 4.0 x4', '읽기/쓰기속도': '최대 4150MB/s / 4150MB/s', '보증': '5년 제한보증' },
+      imageUrl: 'https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=500&auto=format&fit=crop&q=80',
+      affiliateUrl: getTrackingUrl('WD Blue SN580 1TB'),
+      tags: ['10만원언더1TB', 'WD블루가성비', '스팀게임저장용'],
+      recommendationReason: '10만원 언더에서 1TB의 넉넉한 스팀 게임 설치 공간을 확보할 수 있는 웨스턴디지털의 베스트셀러'
     }
   ],
 
   // =========================================================================
-  // 7. POWER (파워서플라이) - 500W 브론즈부터 850W/1000W 골드 ATX 3.1 (9종)
+  // 7. POWER (파워서플라이) (11종)
   // =========================================================================
   power: [
     {
@@ -1409,11 +1957,47 @@ export const COMPONENTS_DATA: Record<string, ComponentItem[]> = {
       affiliateUrl: getTrackingUrl('FSP HYDRO G PRO 1000W'),
       tags: ['1000W괴물', 'RTX4090/5080전용', '컨포멀방습코팅'],
       recommendationReason: 'RTX 4090 및 차세대 RTX 5080/5090 시스템을 위한 1000W 초고출력 든든한 심장'
+    },
+    {
+      id: 'power-micronics-800w',
+      category: 'power',
+      categoryName: '파워서플라이',
+      name: '마이크로닉스 Classic II 풀체인지 800W 80PLUS 브론즈 230V EU',
+      price: 85000,
+      prevPrice: 89000,
+      priceChange: -4000,
+      inStock: true,
+      lastUpdated: '2026-10-21 13:00',
+      brand: '마이크로닉스',
+      searchKeyword: '마이크로닉스 Classic II 800W',
+      specs: { '정격출력': '800W', '80PLUS인증': 'BRONZE 230V EU', '보증기간': '무상 7년', '냉각팬': '120mm HDB 저소음팬' },
+      imageUrl: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=500&auto=format&fit=crop&q=80',
+      affiliateUrl: getTrackingUrl('마이크로닉스 Classic II 800W'),
+      tags: ['800W여유출력', '국민브론즈', 'RTX5070추천'],
+      recommendationReason: '800W의 넉넉한 용량으로 차세대 RTX 5070 / 5070 Ti 시스템까지 여유롭게 구동하는 국민 파워'
+    },
+    {
+      id: 'power-fsp-vita-850',
+      category: 'power',
+      categoryName: '파워서플라이',
+      name: 'FSP VITA GM 850W 80PLUS 골드 풀모듈러 ATX 3.1 (PCIE5)',
+      price: 169000,
+      prevPrice: 178000,
+      priceChange: -9000,
+      inStock: true,
+      lastUpdated: '2026-10-21 13:00',
+      brand: 'FSP',
+      searchKeyword: 'FSP VITA GM 850W 골드',
+      specs: { '정격출력': '850W', '80PLUS인증': 'GOLD', '규격': 'ATX 3.1 & PCIe 5.1 네이티브', '보증': '무상 10년' },
+      imageUrl: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=500&auto=format&fit=crop&q=80',
+      affiliateUrl: getTrackingUrl('FSP VITA GM 850W 골드'),
+      tags: ['ATX3.1규격', '네이티브12V-2x6', 'FSP골드명작'],
+      recommendationReason: '최신 ATX 3.1 및 12V-2x6 직결 케이블 지원으로 RTX 50시리즈 그래픽카드와 완벽 궁합'
     }
   ],
 
   // =========================================================================
-  // 8. CASE (케이스) - 가성비 6팬 메시부터 파노라마 어항케이스 & 하이엔드 (9종)
+  // 8. CASE (케이스) (11종)
   // =========================================================================
   case: [
     {
@@ -1577,6 +2161,43 @@ export const COMPONENTS_DATA: Record<string, ComponentItem[]> = {
       affiliateUrl: getTrackingUrl('리안리 O11D EVO RGB'),
       tags: ['어항원조', '하이엔드명품', '3열라디3개'],
       recommendationReason: '어항 케이스의 원조이자 끝판왕. 극강의 섀시 마감과 무한한 모듈러 커스텀 지원 명품 쇼케이스'
+    },
+    {
+      id: 'case-darkflash-dlx21',
+      category: 'case',
+      categoryName: '케이스',
+      name: 'darkFlash DLX21 RGB MESH 강화유리 (블랙)',
+      price: 89000,
+      prevPrice: 95000,
+      priceChange: -6000,
+      inStock: true,
+      lastUpdated: '2026-10-21 13:00',
+      brand: 'darkFlash',
+      searchKeyword: 'darkFlash DLX21 블랙',
+      specs: { '케이스크기': '미들타워 (빅사이즈)', '기본팬': '140mm ARGB팬 4개 기본장착', '그래픽카드 장착': '최대 400mm', '수랭호환': '상단 360mm 지원' },
+      imageUrl: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=500&auto=format&fit=crop&q=80',
+      affiliateUrl: getTrackingUrl('darkFlash DLX21 블랙'),
+      tags: ['국민빅미들타워', '140mm팬4개', '최강의조립편의성'],
+      recommendationReason: '대한민국 조립 PC 케이스 역사상 가장 많은 판매량을 기록한 검증된 명작. 거대한 그래픽카드도 거뜬'
+    },
+    {
+      id: 'case-antec-c8',
+      category: 'case',
+      categoryName: '케이스',
+      name: 'Antec C8 MESH 커브드 파노라믹 강화유리 (블랙)',
+      price: 129000,
+      prevPrice: 138000,
+      priceChange: -9000,
+      inStock: true,
+      lastUpdated: '2026-10-21 13:00',
+      brand: 'Antec',
+      searchKeyword: 'Antec C8 케이스',
+      specs: { '케이스크기': '풀타워 어항케이스', '디자인': '이음새 없는 무주름 파노라마 뷰', '라디에이터': '상단/측면/하단 360mm 동시 지원' },
+      imageUrl: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=500&auto=format&fit=crop&q=80',
+      affiliateUrl: getTrackingUrl('Antec C8 케이스'),
+      tags: ['파노라마어항', '안텍C8', '하이엔드쇼케이스'],
+      recommendationReason: '전면과 측면 기둥 프레임이 없는 풀 파노라마 어항 뷰로 내부 튜닝 하드웨어를 예술품처럼 전시'
     }
   ]
+
 };

@@ -514,12 +514,15 @@ export default function BuilderTable({
         const filteredOptions = categoryItems.filter((opt) => {
           const matchesBrand = modalBrand === 'all' || opt.brand === modalBrand;
           const q = modalSearch.toLowerCase().trim();
+          const cleanQ = q.replace(/\s+/g, '');
+          const cleanName = opt.name.toLowerCase().replace(/\s+/g, '');
           const matchesSearch =
             !q ||
             opt.name.toLowerCase().includes(q) ||
+            cleanName.includes(cleanQ) ||
             opt.brand.toLowerCase().includes(q) ||
-            opt.tags.some((t) => t.toLowerCase().includes(q)) ||
-            Object.values(opt.specs).some((s) => s.toLowerCase().includes(q)) ||
+            opt.tags.some((t) => t.toLowerCase().includes(q) || t.toLowerCase().replace(/\s+/g, '').includes(cleanQ)) ||
+            Object.values(opt.specs).some((s) => s.toLowerCase().includes(q) || s.toLowerCase().replace(/\s+/g, '').includes(cleanQ)) ||
             (opt.socket && opt.socket.toLowerCase().includes(q));
           return matchesBrand && matchesSearch;
         });
