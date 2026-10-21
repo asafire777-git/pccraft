@@ -9,6 +9,7 @@ import EstimateImageModal from './EstimateImageModal';
 import MatchingMonitors from './MatchingMonitors';
 import { GamePreset, GAME_PRESETS } from '@/data/presets';
 import { getCoupangProductUrl, getCoupangBulkCartUrl, getOpenMarketProductUrl, getPromoGatewayUrl } from '@/lib/affiliate';
+import { encodeQuoteToShareUrl } from '@/lib/share';
 import { trackEvent } from '@/lib/gtag';
 
 interface BuilderTableProps {
@@ -87,10 +88,15 @@ export default function BuilderTable({
     }
   };
 
-  // 견적 공유 링크 복사 기능
+  // 견적 공유 링크 복사 기능 (선택된 부품 및 프리셋 정보가 포함된 딥링크 생성)
   const handleCopyShareLink = () => {
     if (typeof window !== 'undefined') {
-      navigator.clipboard.writeText(window.location.href);
+      const shareUrl = encodeQuoteToShareUrl(selectedComponents, currentPreset?.id);
+      navigator.clipboard.writeText(shareUrl || window.location.href);
+      trackEvent('quote_share_link', {
+        preset_id: currentPreset?.id || 'custom',
+        total_price: effectiveTotalPrice
+      });
       alert('현재 선택하신 부품 견적서 링크가 클립보드에 복사되었습니다! 카톡이나 커뮤니티에 공유해보세요.');
     }
   };

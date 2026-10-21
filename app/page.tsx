@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useCallback, Suspense } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import DisclaimerBanner from '@/components/DisclaimerBanner';
@@ -16,6 +16,7 @@ import PrebuiltComparison from '@/components/PrebuiltComparison';
 import MultiPlatformExhibitionGrid from '@/components/MultiPlatformExhibitionGrid';
 import AiAnalysisCard from '@/components/AiAnalysisCard';
 import HardwareLabShowcase from '@/components/HardwareLabShowcase';
+import QuoteUrlSync from '@/components/QuoteUrlSync';
 import { GAME_PRESETS, GamePreset } from '@/data/presets';
 import { COMPONENTS_DATA, ComponentItem } from '@/data/components';
 import { checkCompatibility } from '@/lib/compatibility';
@@ -38,6 +39,18 @@ export default function HomePage() {
     });
     return initial;
   });
+
+  const handleRestoreFromUrl = useCallback(
+    (components: Record<string, ComponentItem>, preset?: GamePreset) => {
+      if (preset) {
+        setCurrentPreset(preset);
+      }
+      if (components && Object.keys(components).length > 0) {
+        setSelectedComponents(components);
+      }
+    },
+    []
+  );
 
   const handleSelectPreset = (preset: GamePreset) => {
     setCurrentPreset(preset);
@@ -133,6 +146,11 @@ export default function HomePage() {
       />
 
       <Header onOpenQuoteStorage={() => setShowQuoteStorage(true)} />
+
+      {/* URL 쿼리 파라미터(?preset=, ?c=)로부터 견적 복원 (Suspense 래핑) */}
+      <Suspense fallback={null}>
+        <QuoteUrlSync onRestore={handleRestoreFromUrl} />
+      </Suspense>
 
       <main className="flex-1 max-w-7xl 2xl:max-w-[1360px] w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 pb-24 md:pb-8 space-y-8">
         {/* 쿠팡 파트너스 기간 한정 프로모션 & 기획전 자동 이벤트 배너 */}
