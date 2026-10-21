@@ -7,8 +7,9 @@ import ComponentThumbnail from './ComponentThumbnail';
 import BulkOrderModal from './BulkOrderModal';
 import EstimateImageModal from './EstimateImageModal';
 import MatchingMonitors from './MatchingMonitors';
+import PriceFeedbackSection from './PriceFeedbackSection';
 import { GamePreset, GAME_PRESETS } from '@/data/presets';
-import { getCoupangProductUrl, getCoupangBulkCartUrl, getOpenMarketProductUrl, getPromoGatewayUrl } from '@/lib/affiliate';
+import { getCoupangProductUrl, getCoupangBulkCartUrl, getOpenMarketProductUrl, getPromoGatewayUrl, getDanawaSearchUrl, get11stSearchUrl } from '@/lib/affiliate';
 import { encodeQuoteToShareUrl } from '@/lib/share';
 import { trackEvent } from '@/lib/gtag';
 
@@ -296,8 +297,11 @@ export default function BuilderTable({
                     </span>
                   </div>
 
-                  <span className="text-base sm:text-lg font-bold text-slate-900 dark:text-white font-mono">
+                  <span className="text-base sm:text-lg font-bold text-slate-900 dark:text-white font-mono block">
                     {item.price.toLocaleString()}원
+                  </span>
+                  <span className="text-[10px] text-slate-400 dark:text-slate-500 font-mono block mt-0.5">
+                    약 {Math.round((item.price * 0.95) / 1000) * 1000 >= 10000 ? `${(Math.round((item.price * 0.95) / 10000)).toFixed(0)}만` : `${Math.round((item.price * 0.95)).toLocaleString()}원`} ~ {Math.round((item.price * 1.05) / 1000) * 1000 >= 10000 ? `${(Math.round((item.price * 1.05) / 10000)).toFixed(0)}만원` : `${Math.round((item.price * 1.05)).toLocaleString()}원`} 변동
                   </span>
                 </div>
 
@@ -336,7 +340,7 @@ export default function BuilderTable({
                   </a>
 
                   <a
-                    href={getOpenMarketProductUrl(item.id, item.name, '11st', item.searchKeyword)}
+                    href={get11stSearchUrl(item.searchKeyword || item.name)}
                     target="_blank"
                     rel="noopener noreferrer nofollow"
                     onClick={() => trackEvent('affiliate_click', { platform: '11st', item_id: item.id, item_name: item.name, price: item.price, category: item.category })}
@@ -344,6 +348,19 @@ export default function BuilderTable({
                     title="11번가 실시간 최저가 확인"
                   >
                     <span>⚡ 11번가</span>
+                    <ExternalLink className="w-3 h-3" />
+                  </a>
+
+                  {/* 다나와 실시간 시세/가격비교 직행 버튼 (투명한 신뢰 확보) */}
+                  <a
+                    href={getDanawaSearchUrl(item.name, item.id, item.searchKeyword)}
+                    target="_blank"
+                    rel="noopener noreferrer nofollow"
+                    onClick={() => trackEvent('danawa_click', { item_id: item.id, item_name: item.name, category: item.category })}
+                    className="px-2 sm:px-2.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-bold flex items-center gap-1 transition-colors border border-slate-300 dark:border-slate-700"
+                    title="다나와 실시간 가격비교 및 시세 확인"
+                  >
+                    <span>📊 다나와</span>
                     <ExternalLink className="w-3 h-3" />
                   </a>
                 </div>
@@ -462,6 +479,9 @@ export default function BuilderTable({
 
       {/* 그래픽카드 사양 연동 맞춤 모니터 추천 */}
       <MatchingMonitors gpuName={selectedComponents.gpu?.name} />
+
+      {/* 소비자 집단지성: 실시간 특가 제보 & 구매 꿀팁 섹션 (추천 대체 기능 #3) */}
+      <PriceFeedbackSection selectedComponents={selectedComponents} />
 
       {/* 실시간 시세 및 오픈마켓 재고 투명성 안내 */}
       <div className="mt-4 p-4 rounded-2xl bg-slate-100/90 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/60 text-xs text-slate-600 dark:text-slate-400 flex items-start gap-3 leading-relaxed shadow-sm">

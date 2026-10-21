@@ -369,6 +369,15 @@ export function getCoupangSearchDirectUrl(keyword: string): string {
   return `https://link.coupang.com/re/AFFSRP?pageKey=${encodeURIComponent(keyword)}&lptag=${COUPANG_PARTNER_ID}&subid=${COUPANG_SUB_ID}`;
 }
 
+/**
+ * 다나와 (Danawa) 실시간 가격비교 및 시세 직행 URL 생성기
+ * - 사용자가 부품별 다나와 가격비교 화면으로 1클릭 직행하여 신뢰도 확보
+ */
+export function getDanawaSearchUrl(keyword: string, componentId?: string, itemSearchKeyword?: string): string {
+  const cleanKeyword = itemSearchKeyword || (componentId && COMPONENT_SEARCH_KEYWORDS[componentId]) || keyword.trim() || '컴퓨터 부품';
+  return `https://search.danawa.com/dsearch.php?query=${encodeURIComponent(cleanKeyword)}`;
+}
+
 
 
 
