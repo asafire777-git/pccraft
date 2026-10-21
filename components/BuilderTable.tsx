@@ -70,24 +70,6 @@ export default function BuilderTable({
     setShowBulkModal(true);
   };
 
-  const [isSyncing, setIsSyncing] = useState(false);
-  const [syncNotice, setSyncNotice] = useState<string | null>(null);
-
-  const handleSyncPrices = async () => {
-    setIsSyncing(true);
-    try {
-      const res = await fetch('/api/sync-prices');
-      const data = await res.json();
-      setSyncNotice(`✅ ${data.stats.totalChecked}개 부품 시세 동기화 완료 (하락 ${data.stats.priceDrops}건, 품절 0건)`);
-      setTimeout(() => setSyncNotice(null), 4000);
-    } catch {
-      setSyncNotice('시세 동기화 완료');
-      setTimeout(() => setSyncNotice(null), 3000);
-    } finally {
-      setIsSyncing(false);
-    }
-  };
-
   // 견적 공유 링크 복사 기능 (선택된 부품 및 프리셋 정보가 포함된 딥링크 생성)
   const handleCopyShareLink = () => {
     if (typeof window !== 'undefined') {
@@ -110,35 +92,18 @@ export default function BuilderTable({
             <span className="text-xs font-bold text-cyan-600 dark:text-cyan-400 uppercase tracking-wider block">
               Custom PC Configurator
             </span>
-            <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/40 flex items-center gap-1 font-mono font-medium">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-              실시간 재고·시세 연동중
+            <span className="text-[10px] px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 flex items-center gap-1 font-mono font-medium">
+              💡 시장 표준 기준시세
             </span>
           </div>
 
           <h3 className="text-xl font-bold text-slate-900 dark:text-white mt-1">
-            부품별 맞춤 견적 & 실시간 최저가
+            부품별 맞춤 견적 & 오픈마켓 최저가 비교
           </h3>
 
-          <div className="flex items-center gap-2 mt-1">
-            <p className="text-xs text-slate-500 dark:text-slate-400">
-              오픈마켓 및 쿠팡 파트너스 API 기준 매일 실시간 시세 갱신
-            </p>
-            <button
-              onClick={handleSyncPrices}
-              disabled={isSyncing}
-              className="text-[11px] text-cyan-600 dark:text-cyan-400 hover:underline font-semibold flex items-center gap-1 cursor-pointer"
-            >
-              <RefreshCw className={`w-3 h-3 ${isSyncing ? 'animate-spin' : ''}`} />
-              {isSyncing ? '시세 확인중...' : '지금 최신화'}
-            </button>
-          </div>
-
-          {syncNotice && (
-            <div className="text-xs text-emerald-800 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800/40 px-2.5 py-1 rounded-lg mt-2 inline-block font-medium">
-              {syncNotice}
-            </div>
-          )}
+          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 max-w-xl leading-relaxed">
+            표기 가격은 다나와/오픈마켓 <strong>시장 표준 기준가</strong>입니다. 실시간 재고와 변동 최저가는 각 쇼핑몰 바로가기 버튼(쿠팡/G마켓/11번가)을 통해 다이렉트로 확인하세요.
+          </p>
         </div>
 
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 bg-slate-50 dark:bg-slate-950/70 p-4 rounded-xl border border-slate-200 dark:border-slate-800/80">
@@ -326,31 +291,9 @@ export default function BuilderTable({
               <div className="flex items-center justify-between md:justify-end gap-4 shrink-0 pt-2 md:pt-0 border-t md:border-t-0 border-slate-100 dark:border-slate-800/60">
                 <div className="text-left md:text-right">
                   <div className="flex items-center justify-start md:justify-end gap-1.5 mb-0.5">
-                    {/* 품절 / 재고 여부 뱃지 */}
-                    {item.inStock ? (
-                      <span className="text-[10px] text-emerald-700 dark:text-emerald-400 font-mono bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800/40 px-1.5 py-0.5 rounded font-medium">
-                        ✓ 당일 로켓출고
-                      </span>
-                    ) : (
-                      <span className="text-[10px] text-rose-700 dark:text-rose-400 font-mono bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-800/40 px-1.5 py-0.5 rounded font-medium">
-                        ⚠️ 일시품절
-                      </span>
-                    )}
-
-                    {/* 시세 변동 뱃지 */}
-                    {item.priceChange !== undefined && item.priceChange !== 0 && (
-                      <span
-                        className={`text-[10px] font-mono px-1.5 py-0.5 rounded font-bold ${
-                          item.priceChange < 0
-                            ? 'text-cyan-700 dark:text-cyan-300 bg-cyan-50 dark:bg-cyan-950/50 border border-cyan-200 dark:border-cyan-800/40'
-                            : 'text-rose-700 dark:text-rose-300 bg-rose-50 dark:bg-rose-950/50 border border-rose-200 dark:border-rose-800/40'
-                        }`}
-                      >
-                        {item.priceChange < 0
-                          ? `▼ ${Math.abs(item.priceChange).toLocaleString()}원`
-                          : `▲ ${item.priceChange.toLocaleString()}원`}
-                      </span>
-                    )}
+                    <span className="text-[10px] text-slate-400 dark:text-slate-500 font-mono">
+                      기준가
+                    </span>
                   </div>
 
                   <span className="text-base sm:text-lg font-bold text-slate-900 dark:text-white font-mono">
@@ -374,9 +317,9 @@ export default function BuilderTable({
                     rel="noopener noreferrer nofollow"
                     onClick={() => trackEvent('affiliate_click', { platform: 'coupang', item_id: item.id, item_name: item.name, price: item.price, category: item.category })}
                     className="px-2.5 sm:px-3 py-2 rounded-xl bg-rose-600 hover:bg-rose-500 text-white text-xs font-bold flex items-center gap-1 transition-colors shadow-sm"
-                    title="쿠팡 로켓배송 실시간 최저가"
+                    title="쿠팡 실시간 최저가 확인"
                   >
-                    <span>🚀 쿠팡 로켓</span>
+                    <span>🚀 쿠팡 최저가</span>
                     <ExternalLink className="w-3 h-3" />
                   </a>
 
@@ -386,7 +329,7 @@ export default function BuilderTable({
                     rel="noopener noreferrer nofollow"
                     onClick={() => trackEvent('affiliate_click', { platform: 'gmarket', item_id: item.id, item_name: item.name, price: item.price, category: item.category })}
                     className="px-2.5 sm:px-3 py-2 rounded-xl bg-orange-600 hover:bg-orange-500 text-white text-xs font-bold flex items-center gap-1 transition-colors shadow-sm"
-                    title="G마켓 공식총판 실시간 특가"
+                    title="G마켓 실시간 최저가 확인"
                   >
                     <span>🛒 G마켓</span>
                     <ExternalLink className="w-3 h-3" />
@@ -398,7 +341,7 @@ export default function BuilderTable({
                     rel="noopener noreferrer nofollow"
                     onClick={() => trackEvent('affiliate_click', { platform: '11st', item_id: item.id, item_name: item.name, price: item.price, category: item.category })}
                     className="px-2.5 sm:px-3 py-2 rounded-xl bg-red-600 hover:bg-red-500 text-white text-xs font-bold flex items-center gap-1 transition-colors shadow-sm"
-                    title="11번가 슈팅배송 실시간 특가"
+                    title="11번가 실시간 최저가 확인"
                   >
                     <span>⚡ 11번가</span>
                     <ExternalLink className="w-3 h-3" />

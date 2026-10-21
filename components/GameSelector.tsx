@@ -27,7 +27,7 @@ export default function GameSelector({ selectedPresetId, onSelectPreset }: GameS
           </p>
         </div>
         <span className="text-xs text-slate-400 dark:text-slate-500 font-mono mt-2 sm:mt-0">
-          실시간 최저가 기준 자동 갱신
+          호환성 및 표준 기준가 연동
         </span>
       </div>
 

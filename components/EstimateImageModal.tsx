@@ -138,7 +138,7 @@ export default function EstimateImageModal({
     const dateStr = `${now.getFullYear()}.${String(now.getMonth() + 1).padStart(2, '0')}.${String(now.getDate()).padStart(2, '0')} 기준`;
     ctx.fillStyle = isLight ? '#64748B' : '#94A3B8';
     ctx.font = `14px ${FONT_SANS}`;
-    ctx.fillText(`발행일시: ${dateStr}  |  오픈마켓(쿠팡·G마켓·11번가 공식유통사) 실시간 최저가 검증 완료`, 50, 154);
+    ctx.fillText(`발행일시: ${dateStr}  |  오픈마켓(쿠팡·G마켓·11번가) 표준 시장 기준가 (실시간 최저가는 쇼핑몰 확인)`, 50, 154);
 
     // 구분선
     ctx.strokeStyle = isLight ? '#E2E8F0' : '#334155';

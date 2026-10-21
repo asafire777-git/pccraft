@@ -162,22 +162,22 @@ export default function HomePage() {
         <section className="text-center py-8 sm:py-12 max-w-3xl mx-auto">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-100 dark:bg-cyan-950/50 border border-cyan-200 dark:border-cyan-800/40 text-cyan-800 dark:text-cyan-300 text-xs font-semibold mb-4">
             <Sparkles className="w-3.5 h-3.5" />
-            2026 하드웨어 최신 트렌드 & 실시간 오픈마켓 최저가
+            2026 하드웨어 트렌드 & 스마트 오픈마켓 최저가 큐레이션
           </div>
 
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight leading-tight">
             원하는 게임만 고르세요.
             <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 via-teal-500 to-emerald-600 dark:from-cyan-400 dark:via-teal-300 dark:to-emerald-400">
-              최적의 견적과 최저가
+              최적의 견적과 오픈마켓 최저가
             </span>
-            는 완성됩니다.
+            로 연결됩니다.
           </h1>
 
           <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base mt-4 mb-6 leading-relaxed">
-            CPU 소켓 일치 여부부터 파워서플라이 피크 소비전력까지 실시간으로 자동 검증합니다.
+            CPU 소켓 일치 여부부터 파워서플라이 피크 소비전력까지 호환성을 정밀하게 검증합니다.
             <br className="hidden sm:inline" />
-            부품별 개별 최저가 구매와 원클릭 완본체 비교로 가장 스마트한 쇼핑을 경험하세요.
+            부품별 오픈마켓 최저가 직행 링크와 원클릭 완본체 비교로 가장 합리적인 쇼핑을 경험하세요.
           </p>
 
           {/* 스마트 자체 검색창 (실시간 부품 & 게임 자동완성 + 쿠팡 로켓 최저가 검색) */}
@@ -202,10 +202,10 @@ export default function HomePage() {
         <div className="mb-4 flex items-center justify-between p-3.5 rounded-2xl bg-gradient-to-r from-rose-500/10 via-amber-500/10 to-emerald-500/10 border border-slate-200 dark:border-slate-800 text-xs">
           <div className="flex items-center gap-2">
             <span className="font-bold text-slate-800 dark:text-slate-200">
-              ⚔️ [실시간 최저가 빅매치] 쿠팡 로켓배송 vs 네이버 쇼핑
+              ⚔️ [플랫폼 혜택 빅매치] 쿠팡 로켓배송 vs 네이버 쇼핑
             </span>
             <span className="hidden sm:inline text-slate-500 dark:text-slate-400">
-              • 배송속도 vs 네이버페이 5% 적립 체감가 비교
+              • 당일/익일 빠른 배송 vs 네이버페이 5% 적립 체감가 비교
             </span>
           </div>
           <button
