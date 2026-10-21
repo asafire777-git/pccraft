@@ -107,29 +107,30 @@ export default function BuilderTable({
           </p>
         </div>
 
-        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 bg-slate-50 dark:bg-slate-950/70 p-4 rounded-xl border border-slate-200 dark:border-slate-800/80">
-          <div>
+        <div className="flex flex-col xl:flex-row items-stretch xl:items-center gap-3.5 bg-slate-50 dark:bg-slate-950/70 p-3.5 sm:p-4 rounded-xl border border-slate-200 dark:border-slate-800/80 shrink-0">
+          <div className="shrink-0 min-w-[150px]">
             <span className="text-[11px] text-slate-500 dark:text-slate-400 block font-mono">
               {includeWindows ? '최종 견적가 (OS 포함)' : '부품 총 합산가'}
             </span>
-            <div className="text-2xl font-black text-emerald-600 dark:text-emerald-400 font-mono tracking-tight">
+            <div className="text-xl sm:text-2xl font-black text-emerald-600 dark:text-emerald-400 font-mono tracking-tight leading-none mt-1">
               {effectiveTotalPrice.toLocaleString()} <span className="text-sm font-normal text-slate-600 dark:text-slate-300">원</span>
             </div>
             {includeWindows && (
-              <span className="text-[10px] text-sky-600 dark:text-sky-400 font-mono font-medium block">
-                부품 {totalPrice.toLocaleString()}원 + 윈도우 OS {WINDOWS_PRICE.toLocaleString()}원
+              <span className="text-[10px] text-sky-600 dark:text-sky-400 font-mono font-medium block mt-1">
+                부품 {totalPrice.toLocaleString()}원 + OS {WINDOWS_PRICE.toLocaleString()}원
               </span>
             )}
           </div>
 
-          <div className="flex items-center gap-2 w-full sm:w-auto flex-wrap">
+          {/* 깔끔하게 1열 정렬 및 모바일 최적화된 액션 버튼 그룹 */}
+          <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap sm:flex-nowrap">
             {/* 커뮤니티 공유용 견적서 고화질 캡처 버튼 */}
             <button
               onClick={() => setShowImageModal(true)}
               title="퀘이사존/디시/펨코 공유용 고화질 견적 캡처"
-              className="px-3.5 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs flex items-center gap-1.5 shadow-sm transition-all cursor-pointer"
+              className="px-3 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-sm transition-all cursor-pointer whitespace-nowrap shrink-0"
             >
-              <Camera className="w-4 h-4" />
+              <Camera className="w-3.5 h-3.5" />
               <span>견적 캡처</span>
             </button>
 
@@ -137,9 +138,9 @@ export default function BuilderTable({
               <button
                 onClick={onOpenSaveModal}
                 title="내 견적함에 저장"
-                className="px-3.5 py-3 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-xs flex items-center gap-1.5 shadow-sm transition-all cursor-pointer"
+                className="px-3 py-2.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-sm transition-all cursor-pointer whitespace-nowrap shrink-0"
               >
-                <Bookmark className="w-4 h-4" />
+                <Bookmark className="w-3.5 h-3.5" />
                 <span>견적 보관</span>
               </button>
             )}
@@ -147,9 +148,9 @@ export default function BuilderTable({
             <button
               onClick={handleCopyShareLink}
               title="견적서 링크 공유"
-              className="p-3 rounded-xl bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 transition-colors cursor-pointer"
+              className="p-2.5 rounded-xl bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 transition-colors cursor-pointer shrink-0"
             >
-              <Share2 className="w-4 h-4" />
+              <Share2 className="w-3.5 h-3.5" />
             </button>
 
             <button
@@ -157,18 +158,18 @@ export default function BuilderTable({
                 document.getElementById('price-battle-section')?.scrollIntoView({ behavior: 'smooth' });
               }}
               title="쿠팡 vs 네이버 실시간 최저가 빅매치 비교"
-              className="px-3 py-3 rounded-xl bg-slate-900 text-white dark:bg-slate-800 dark:text-white hover:bg-slate-800 font-bold text-xs flex items-center gap-1.5 transition-all cursor-pointer border border-slate-700 shadow-sm"
+              className="px-3 py-2.5 rounded-xl bg-slate-900 text-white dark:bg-slate-800 dark:text-white hover:bg-slate-800 font-bold text-xs flex items-center justify-center gap-1.5 transition-all cursor-pointer border border-slate-700 shadow-sm whitespace-nowrap shrink-0"
             >
               <span className="text-amber-400">⚔️</span>
-              <span className="hidden sm:inline">최저가 빅매치</span>
+              <span>최저가 빅매치</span>
             </button>
 
             <button
               onClick={handleBulkOrder}
-              className="flex-1 sm:flex-initial px-5 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-sm transition-all cursor-pointer"
+              className="px-3.5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-sm transition-all cursor-pointer whitespace-nowrap shrink-0"
             >
-              <ShoppingCart className="w-4 h-4" />
-              전 부품 일괄 담기
+              <ShoppingCart className="w-3.5 h-3.5" />
+              <span>전 부품 일괄 담기</span>
             </button>
           </div>
         </div>
