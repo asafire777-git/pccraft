@@ -10,11 +10,8 @@ export const ADMIN_IDENTIFIERS = [
 export function isAdmin(user?: { email?: string | null; name?: string | null } | null): boolean {
   if (!user) return false;
   const email = (user.email || '').toLowerCase().trim();
-  const name = (user.name || '').toLowerCase().trim();
 
-  return (
-    email === 'asafire777@gmail.com' ||
-    email.includes('asafire777') ||
-    name.includes('asafire777')
-  );
+  // 닉네임 기반 판별은 악의적 유저가 소셜 프로필명을 변경해 우회할 위험이 있으므로,
+  // 반드시 검증된 관리자 이메일 일치 여부로만 엄격하게 식별합니다.
+  return ADMIN_IDENTIFIERS.some((adminEmail) => email === adminEmail.toLowerCase().trim());
 }
