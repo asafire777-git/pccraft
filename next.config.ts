@@ -30,6 +30,9 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   /* config options here */
+  experimental: {
+    agentUpgrade: 'security',
+  },
   cacheComponents: true,
   partialPrefetching: true,
   async headers() {
