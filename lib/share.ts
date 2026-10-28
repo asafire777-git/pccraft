@@ -6,7 +6,7 @@ import { GAME_PRESETS, GamePreset } from '@/data/presets';
  * 예: ?preset=qhd-high&c=cpu:cpu-amd-7500f,gpu:gpu-rtx-4070-super,...
  */
 export function encodeQuoteToShareUrl(
-  selectedComponents: Record<string, ComponentItem>,
+  selectedComponents: Record<string, ComponentItem | null | undefined>,
   presetId?: string
 ): string {
   if (typeof window === 'undefined') return '';
@@ -17,8 +17,8 @@ export function encodeQuoteToShareUrl(
   }
 
   // 부품 ID들을 'cpu:id,gpu:id' 형태로 컴팩트하게 직렬화
-  const componentPairs = Object.entries(selectedComponents)
-    .filter(([_, item]) => item && item.id)
+  const componentPairs = (Object.entries(selectedComponents) as [string, ComponentItem | null | undefined][])
+    .filter((entry): entry is [string, ComponentItem] => Boolean(entry[1]?.id))
     .map(([cat, item]) => `${cat}:${item.id}`)
     .join(',');
 

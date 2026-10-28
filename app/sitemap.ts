@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next';
 import { ALL_ARTICLES } from '@/data/articles';
+import { GAME_SEO_LIST } from '@/data/games';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://pccraft.kr';
@@ -63,5 +64,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.85,
   }));
 
-  return [...baseRoutes, ...articleRoutes];
+  // 인기 게임별 맞춤 랜딩 페이지 (SEO 롱테일 키워드 장악)
+  const gameRoutes: MetadataRoute.Sitemap = GAME_SEO_LIST.map((game) => ({
+    url: `${baseUrl}/game/${game.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly',
+    priority: 0.9,
+  }));
+
+  return [...baseRoutes, ...articleRoutes, ...gameRoutes];
 }
