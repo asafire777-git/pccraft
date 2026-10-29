@@ -313,9 +313,19 @@ export default function BuilderTable({
                   <span className="text-base sm:text-lg font-bold text-slate-900 dark:text-white font-mono block">
                     {item.price.toLocaleString()}원
                   </span>
-                  <span className="text-[10px] text-slate-400 dark:text-slate-500 font-mono block mt-0.5">
-                    약 {Math.round((item.price * 0.95) / 1000) * 1000 >= 10000 ? `${(Math.round((item.price * 0.95) / 10000)).toFixed(0)}만` : `${Math.round((item.price * 0.95)).toLocaleString()}원`} ~ {Math.round((item.price * 1.05) / 1000) * 1000 >= 10000 ? `${(Math.round((item.price * 1.05) / 10000)).toFixed(0)}만원` : `${Math.round((item.price * 1.05)).toLocaleString()}원`} 변동
-                  </span>
+                  {item.priceChange && item.priceChange !== 0 ? (
+                    <span className={`text-[10px] font-mono block mt-0.5 whitespace-nowrap ${
+                      item.priceChange < 0
+                        ? 'text-emerald-600 dark:text-emerald-400 font-semibold'
+                        : 'text-rose-500 dark:text-rose-400'
+                    }`}>
+                      {item.priceChange < 0 ? '▼' : '▲'} {Math.abs(item.priceChange).toLocaleString()}원 {item.priceChange < 0 ? '인하' : '인상'}
+                    </span>
+                  ) : (
+                    <span className="text-[10px] text-slate-400 dark:text-slate-500 font-mono block mt-0.5 whitespace-nowrap">
+                      실시간 최저가 검증
+                    </span>
+                  )}
                 </div>
 
                 <div className="grid grid-cols-3 sm:flex sm:items-center gap-1.5 sm:gap-2 w-full sm:w-auto">

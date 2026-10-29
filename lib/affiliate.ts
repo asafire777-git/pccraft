@@ -88,14 +88,14 @@ export const COMPONENT_SEARCH_KEYWORDS: Record<string, string> = {
   'ram-ddr5-64gb': '삼성전자 DDR5 5600 32GB',
 
   // 5. 그래픽카드 (RTX 40 및 2026 차세대 RTX 50시리즈 전 라인업)
-  'gpu-gtx-1650': '이엠텍 GTX 1650',
+  'gpu-gtx-1650': 'GTX 1650 4GB',
   'gpu-rtx-3050-6gb': 'RTX 3050 6GB',
   'gpu-rx-6600': '라데온 RX 6600',
   'gpu-rx-7600': '라데온 RX 7600',
   'gpu-rx-7600xt': '라데온 RX 7600 XT',
-  'gpu-rtx-4060': '이엠텍 RTX 4060 MIRACLE',
+  'gpu-rtx-4060': 'RTX 4060 WINDFORCE OC',
   'gpu-rtx-4060-zotac': 'ZOTAC RTX 4060 TWIN Edge',
-  'gpu-rtx-4060ti-8gb': '이엠텍 RTX 4060 Ti STORM X',
+  'gpu-rtx-4060ti-8gb': 'RTX 4060 Ti STORM X',
   'gpu-rtx-4060ti-16gb': 'RTX 4060 Ti 16GB EAGLE',
   'gpu-rtx-4070-dual': 'ASUS DUAL RTX 4070',
   'gpu-rtx-4070super': '이엠텍 RTX 4070 SUPER',
@@ -158,7 +158,7 @@ export const COMPONENT_SEARCH_KEYWORDS: Record<string, string> = {
 
 // 완본체 게이밍 PC 실시간 검색 키워드 매핑 (오픈마켓/쿠팡 실제 매물 100% 매칭)
 export const PREBUILT_SEARCH_KEYWORDS: Record<string, string> = {
-  'casual-esports': '라이젠 5600 1650 조립PC',
+  'casual-esports': '라이젠 5600 3050 조립PC',
   'mainstream-gaming': '프리플로우 7500F 4060',
   'high-end-aaa': '7800X3D 4070 SUPER 조립PC',
   'creator-flagship': '14700K 4080 SUPER 조립PC'
