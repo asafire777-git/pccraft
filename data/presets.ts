@@ -54,12 +54,12 @@ export const GAME_PRESETS: GamePreset[] = [
       case: 'case-darkflash-dk200'
     },
     recommendedPrebuilt: {
-      title: '한성컴퓨터 가성비 게이밍 데스크탑 (라이젠 5600 + RTX 3050 6GB)',
-      brand: '한성컴퓨터',
-      price: 799000,
+      title: '포유컴퓨터 퍼포먼스PC 49 (라이젠 5600 + RTX 3050 6GB)',
+      brand: '포유컴퓨터',
+      price: 945590,
       affiliateUrl: 'https://link.coupang.com/re/AFFSRP?pageKey=%EB%9D%BC%EC%9D%B4%EC%A0%A0+5600+3050+%EC%A1%B0%EB%A6%BDPC&lptag=AF5322745&subid=pccraft',
       imageUrl: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=500&auto=format&fit=crop&q=60',
-      pros: ['1년 무상 전국 출장 방문 AS', '윈도우 미포함 최저가 구성', '원클릭 즉시 배송'],
+      pros: ['다나와 등록 실매물 최저가 (94만원대)', '1년 전국 무상 출장 방문 AS', 'FHD e스포츠 완벽 방어'],
       specsSummary: '라이젠 5600 / RTX 3050 6G / 16GB DDR4 / 512GB NVMe / 500W'
     },
     aiAnalysis: {
@@ -94,12 +94,12 @@ export const GAME_PRESETS: GamePreset[] = [
       case: 'case-darkflash-dk200'
     },
     recommendedPrebuilt: {
-      title: '프리플로우 국민 게이밍 조립PC (라이젠 7500F + RTX 5060)',
-      brand: '프리플로우',
-      price: 1759000,
+      title: '마이피씨샵 DIY 게이밍 마스터 (라이젠 7500F + RTX 5060)',
+      brand: '마이피씨샵',
+      price: 1538990,
       affiliateUrl: 'https://link.coupang.com/re/AFFSRP?pageKey=%EB%9D%BC%EC%9D%B4%EC%A0%A0+7500F+5060+%EC%A1%B0%EB%A6%BDPC&lptag=AF5322745&subid=pccraft',
       imageUrl: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=500&auto=format&fit=crop&q=60',
-      pros: ['선정리 완벽 마감', '정품 바이오스 세팅 및 번인 테스트 완료', '로켓설치 지원'],
+      pros: ['다나와 등록 실매물 최저가 (153만원대)', '정품 바이오스 세팅 및 번인 테스트 완료', '1년 전국 무상 출장 A/S 기본 포함'],
       specsSummary: '라이젠 7500F / RTX 5060 8G / 32GB DDR5 / 1TB NVMe / 700W'
     },
     aiAnalysis: {

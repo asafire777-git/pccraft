@@ -105,8 +105,16 @@ export default function BuilderTable({
           </h3>
 
           <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 max-w-xl leading-relaxed break-keep-all">
-            표기 가격은 다나와/오픈마켓 <strong>시장 표준 기준가</strong>입니다. 실시간 재고와 변동 최저가는 각 쇼핑몰 바로가기 버튼(쿠팡/G마켓/11번가)을 통해 다이렉트로 확인하세요.
+            표기 가격은 다나와 실시간 등록몰 <strong>최저가 기준</strong>입니다. 개별 몰 배송비와 카드 할인 혜택을 비교하여 가장 유리한 곳에서 주문하세요.
           </p>
+
+          <div className="mt-2.5 p-2.5 sm:p-3 rounded-xl bg-blue-50/90 dark:bg-blue-950/40 border border-blue-200/70 dark:border-blue-800/50 text-[11px] sm:text-xs text-blue-950 dark:text-blue-200 flex items-start gap-2 leading-relaxed">
+            <span className="text-sm shrink-0 mt-0.5">💡</span>
+            <div>
+              <strong className="font-semibold text-blue-900 dark:text-blue-100">스마트 구매 팁:</strong> 다나와 최저가는 쇼핑몰별 <strong>개별 배송비(부품당 3,000~4,000원) 및 현금 결제 기준가</strong>입니다.
+              부품 8종을 한 번에 살 때는 <strong>[쿠팡 로켓 무료배송 &amp; 내일 도착]</strong> 및 <strong>[11번가/G마켓 카드 무이자 할인]</strong>을 이용하시면 총 결제액과 배송 속도에서 훨씬 유리합니다.
+            </div>
+          </div>
         </div>
 
         <div className="flex flex-col xl:flex-row items-stretch xl:items-center gap-3.5 bg-slate-50 dark:bg-slate-950/70 p-3.5 sm:p-4 rounded-xl border border-slate-200 dark:border-slate-800/80 shrink-0">
@@ -306,12 +314,12 @@ export default function BuilderTable({
               <div className="flex flex-col sm:flex-row sm:items-center justify-between sm:justify-end gap-3 shrink-0 pt-3 md:pt-0 border-t md:border-t-0 border-slate-100 dark:border-slate-800/60 w-full md:w-auto">
                 <div className="text-left md:text-right shrink-0">
                   <div className="flex items-center justify-start md:justify-end gap-1.5 mb-0.5">
-                    <span className="text-[10px] text-slate-400 dark:text-slate-500 font-mono">
-                      기준가
+                    <span className="text-[10px] text-slate-500 dark:text-slate-400 font-mono font-medium">
+                      다나와 최저가
                     </span>
                   </div>
 
-                  <span className="text-base sm:text-lg font-bold text-slate-900 dark:text-white font-mono block">
+                  <span className="text-base sm:text-lg font-bold text-slate-900 dark:text-white font-mono block whitespace-nowrap">
                     {item.price.toLocaleString()}원
                   </span>
                   {item.priceChange && item.priceChange !== 0 ? (
@@ -332,7 +340,7 @@ export default function BuilderTable({
                 <div className="grid grid-cols-3 sm:flex sm:items-center gap-1.5 sm:gap-2 w-full sm:w-auto">
                   <button
                     onClick={() => openSelectModal(key)}
-                    className="col-span-1 px-2 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-semibold flex items-center justify-center gap-1 transition-colors cursor-pointer border border-slate-200 dark:border-slate-700"
+                    className="col-span-1 px-2 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-semibold flex items-center justify-center gap-1 transition-colors cursor-pointer border border-slate-200 dark:border-slate-700 whitespace-nowrap"
                     title="다른 부품으로 변경"
                   >
                     <RefreshCw className="w-3.5 h-3.5 text-slate-500 dark:text-slate-400" />
@@ -344,11 +352,11 @@ export default function BuilderTable({
                     target="_blank"
                     rel="noopener noreferrer nofollow"
                     onClick={() => trackEvent('affiliate_click', { platform: 'coupang', item_id: item.id, item_name: item.name, price: item.price, category: item.category })}
-                    className="col-span-1 px-2 py-2 rounded-xl bg-rose-600 hover:bg-rose-500 text-white text-xs font-bold flex items-center justify-center gap-1 transition-colors shadow-sm"
-                    title="쿠팡 실시간 최저가 확인"
+                    className="col-span-1 px-2.5 py-2 rounded-xl bg-rose-600 hover:bg-rose-500 text-white text-xs font-bold flex items-center justify-center gap-1 transition-all shadow-sm hover:shadow-md cursor-pointer whitespace-nowrap group"
+                    title="쿠팡 로켓배송: 무료배송 + 내일 새벽 즉시도착 + 카드 무이자"
                   >
-                    <span>🚀 쿠팡</span>
-                    <ExternalLink className="w-3 h-3" />
+                    <span>🚀 쿠팡 로켓</span>
+                    <ExternalLink className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
                   </a>
 
                   <a
@@ -356,7 +364,7 @@ export default function BuilderTable({
                     target="_blank"
                     rel="noopener noreferrer nofollow"
                     onClick={() => trackEvent('affiliate_click', { platform: 'gmarket', item_id: item.id, item_name: item.name, price: item.price, category: item.category })}
-                    className="col-span-1 px-2 py-2 rounded-xl bg-orange-600 hover:bg-orange-500 text-white text-xs font-bold flex items-center justify-center gap-1 transition-colors shadow-sm"
+                    className="col-span-1 px-2 py-2 rounded-xl bg-orange-600 hover:bg-orange-500 text-white text-xs font-bold flex items-center justify-center gap-1 transition-colors shadow-sm whitespace-nowrap"
                     title="G마켓 실시간 최저가 확인"
                   >
                     <span>🛒 G마켓</span>
@@ -368,8 +376,8 @@ export default function BuilderTable({
                     target="_blank"
                     rel="noopener noreferrer nofollow"
                     onClick={() => trackEvent('affiliate_click', { platform: '11st', item_id: item.id, item_name: item.name, price: item.price, category: item.category })}
-                    className="col-span-1 px-2 py-2 rounded-xl bg-red-600 hover:bg-red-500 text-white text-xs font-bold flex items-center justify-center gap-1 transition-colors shadow-sm"
-                    title="11번가 실시간 최저가 확인"
+                    className="col-span-1 px-2.5 py-2 rounded-xl bg-red-600 hover:bg-red-500 text-white text-xs font-bold flex items-center justify-center gap-1 transition-all shadow-sm hover:shadow-md whitespace-nowrap"
+                    title="11번가 슈팅배송: 카드 즉시할인 쿠폰 적용"
                   >
                     <span>⚡ 11번가</span>
                     <ExternalLink className="w-3 h-3" />
@@ -381,8 +389,8 @@ export default function BuilderTable({
                     target="_blank"
                     rel="noopener noreferrer nofollow"
                     onClick={() => trackEvent('danawa_click', { item_id: item.id, item_name: item.name, category: item.category })}
-                    className="col-span-2 sm:col-span-1 px-2 sm:px-2.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-bold flex items-center justify-center gap-1 transition-colors border border-slate-300 dark:border-slate-700"
-                    title="다나와 실시간 가격비교 및 시세 확인"
+                    className="col-span-2 sm:col-span-1 px-2 sm:px-2.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-bold flex items-center justify-center gap-1 transition-colors border border-slate-300 dark:border-slate-700 whitespace-nowrap"
+                    title="다나와 등록몰 최저가 및 실시간 시세 검증"
                   >
                     <span>📊 다나와</span>
                     <ExternalLink className="w-3 h-3" />
