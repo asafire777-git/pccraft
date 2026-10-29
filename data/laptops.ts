@@ -68,7 +68,7 @@ export const CURATED_LAPTOPS: LaptopProduct[] = [
       '콜드프론트 5.0 증기챔버 쿨링으로 쓰로틀링 완벽 억제',
       '2년 동안 소비자 과실 파손까지 무상 수리해 주는 ADP 케어 기본 제공'
     ],
-    searchKeyword: '레노버 리전 프로 5i 16',
+    searchKeyword: '레노버 리전 Pro 5i',
     recommendedReason: '스팀 대작 게임 풀옵션과 4K 영상 편집을 완벽하게 소화하는 명실상부한 2026 게이밍 노트북 원탑 챔피언입니다.'
   },
 
@@ -106,7 +106,7 @@ export const CURATED_LAPTOPS: LaptopProduct[] = [
       '0.2ms 응답속도의 압도적 ROG Nebula OLED 패널 탑재',
       '통알루미늄 절삭 바디의 맥북급 마감과 6스피커 서브우퍼 사운드'
     ],
-    searchKeyword: 'ASUS ROG 제피러스 G16 OLED',
+    searchKeyword: 'ASUS ROG 제피러스 G16',
     recommendedReason: '매일 백팩에 넣고 출퇴근/등하교하며 고사양 게임과 전문 그래픽·영상 편집을 병행하는 직장인·대학생에게 최적입니다.'
   },
 
@@ -144,7 +144,7 @@ export const CURATED_LAPTOPS: LaptopProduct[] = [
       '깔끔한 블랙 무광 디자인으로 카페나 강의실에서도 부담 제로',
       'HP OMEN Gaming Hub를 통한 원클릭 언더볼팅 및 팬 속도 제어'
     ],
-    searchKeyword: 'HP 오멘 16 라이젠7 RTX4060',
+    searchKeyword: 'HP 오멘 16 RTX4060',
     recommendedReason: '140만 원대 실구매가로 240Hz QHD 패널과 RTX 4060의 풀파워 성능을 모두 챙길 수 있는 가성비 모범생입니다.'
   },
 
@@ -182,7 +182,7 @@ export const CURATED_LAPTOPS: LaptopProduct[] = [
       '120W TGP의 넉넉한 쿨링으로 롤·발로란트·오버워치 완벽 방어',
       '100만 원 초반대에서 가장 신뢰받는 국민 입문형 게이밍 랩탑'
     ],
-    searchKeyword: 'HP 빅터스 16 라이젠5 RTX4050',
+    searchKeyword: 'HP 빅터스 16 RTX4050',
     recommendedReason: '부담 없는 가격에 대화면 16.1인치로 대학 과제부터 인기 e스포츠 게임까지 쾌적하게 즐길 수 있는 최고의 가성비 모델입니다.'
   },
 
@@ -258,7 +258,7 @@ export const CURATED_LAPTOPS: LaptopProduct[] = [
       '윈도우 11 Home 정품과 복구 솔루션 탑재로 포맷도 원클릭',
       '소음 억제 챔버 설계로 정숙한 도서관급 서재 게이밍 환경'
     ],
-    searchKeyword: '삼성 오디세이 데스크탑 i7 RTX4060Ti',
+    searchKeyword: '삼성 오디세이 데스크탑 i7',
     recommendedReason: '부모님, 학생 선물용이나 컴퓨터 조립·A/S를 직접 처리하기 번거로운 사용자에게 가장 신뢰받는 대기업 브랜드 PC입니다.'
   },
 
@@ -296,7 +296,7 @@ export const CURATED_LAPTOPS: LaptopProduct[] = [
       '정품 윈도우 11 및 32GB 넉넉한 듀얼 채널 DDR5 메모리',
       '전국 LG전자 서비스센터의 완벽한 기술 지원과 무상 출장 점검'
     ],
-    searchKeyword: 'LG 울트라기어 데스크탑 RTX4070SUPER',
+    searchKeyword: 'LG 울트라기어 데스크탑',
     recommendedReason: '조립 스트레스 없이 최고급 대기업 A/S와 QHD 240Hz 종결급 스펙을 한 번에 누릴 수 있는 프리미엄 완본체입니다.'
   },
 
@@ -334,7 +334,7 @@ export const CURATED_LAPTOPS: LaptopProduct[] = [
       '16GB VRAM의 4070 Ti SUPER로 4K 스팀 대작 완벽 정복',
       '전문 엔지니어 조립 검수 및 1년 무상 출장 방문 서비스 포함'
     ],
-    searchKeyword: '한성 보스몬스터 7800X3D 4070TiSUPER',
+    searchKeyword: '한성 보스몬스터 7800X3D',
     recommendedReason: '부품 하나하나가 하이엔드 사제 부품으로 구성된 최고 사양을 합리적인 완본체 패키지로 만나볼 수 있는 하드코어 게이머의 선택입니다.'
   }
 ];

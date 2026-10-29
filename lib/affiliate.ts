@@ -272,14 +272,9 @@ export function getOpenMarketProductUrl(
     targetUrl = `https://search.11st.co.kr/Search.tmall?kwd=${encodeURIComponent(keyword)}`;
   }
 
-  // 링크프라이스 공식 트래킹 게이트웨이로 래핑
+  // 링크프라이스 공식 트래킹 게이트웨이로 래핑 (정밀 딥링크 l=9999 규격 적용)
   if (LINKPRICE_AFFILIATE_ID) {
-    if (merchant === 'gmarket' || merchant === '11st') {
-      // G마켓 및 11번가 전용 정밀 딥링크 규격 (l=9999, l_cd1=3, l_cd2=0, tu=인코딩URL)
-      // l=0000 사용 시 메인 홈으로 튕기므로 반드시 l=9999 & tu 규격 적용
-      return `https://click.linkprice.com/click.php?m=${merchant}&a=${LINKPRICE_AFFILIATE_ID}&l=9999&l_cd1=3&l_cd2=0&tu=${encodeURIComponent(targetUrl)}`;
-    }
-    return `https://click.linkprice.com/click.php?m=${merchant}&a=${LINKPRICE_AFFILIATE_ID}&l=0000&url=${encodeURIComponent(targetUrl)}`;
+    return `https://click.linkprice.com/click.php?m=${merchant}&a=${LINKPRICE_AFFILIATE_ID}&l=9999&l_cd1=3&l_cd2=0&tu=${encodeURIComponent(targetUrl)}`;
   }
 
   return targetUrl;
@@ -338,10 +333,12 @@ export function getPromoGatewayUrl(
   const merchant = merchantMap[platform] || 'gmarket';
 
   if (LINKPRICE_AFFILIATE_ID && targetUrl) {
-    if (merchant === 'gmarket' || merchant === '11st') {
+    const linkpriceSupportedMerchants = ['gmarket', '11st', 'lotteon', 'himart'];
+    if (linkpriceSupportedMerchants.includes(merchant)) {
       return `https://click.linkprice.com/click.php?m=${merchant}&a=${LINKPRICE_AFFILIATE_ID}&l=9999&l_cd1=3&l_cd2=0&tu=${encodeURIComponent(targetUrl)}`;
     }
-    return `https://click.linkprice.com/click.php?m=${merchant}&a=${LINKPRICE_AFFILIATE_ID}&l=0000&url=${encodeURIComponent(targetUrl)}`;
+    // 미승인 머천트(aliexpress, ssg 등)는 에러 화면 방지를 위해 원본 URL로 안전하게 직행
+    return targetUrl;
   }
 
   return targetUrl || '#';
@@ -349,22 +346,25 @@ export function getPromoGatewayUrl(
 
 /**
  * 롯데하이마트 (himart) 공식 제휴 실시간 검색 URL
- * - 링크프라이스 공식 머천트 himart 게이트웨이 경유 (최대 1.26% 수익 환급)
+ * - totalSearch 엔드포인트 + 링크프라이스 딥링크(l=9999&tu=) 적용으로 메인 리다이렉트 없이 검색 결과로 100% 직행
  */
 export function getHimartSearchUrl(keyword: string): string {
-  const targetUrl = `https://www.e-himart.co.kr/app/search/searchMain?query=${encodeURIComponent(keyword)}`;
+  const cleanKeyword = keyword.trim() || '게이밍PC';
+  const targetUrl = `https://www.e-himart.co.kr/app/search/totalSearch?query=${encodeURIComponent(cleanKeyword)}`;
   if (LINKPRICE_AFFILIATE_ID) {
-    return `https://click.linkprice.com/click.php?m=himart&a=${LINKPRICE_AFFILIATE_ID}&l=0000&url=${encodeURIComponent(targetUrl)}`;
+    return `https://click.linkprice.com/click.php?m=himart&a=${LINKPRICE_AFFILIATE_ID}&l=9999&l_cd1=3&l_cd2=0&tu=${encodeURIComponent(targetUrl)}`;
   }
   return targetUrl;
 }
 
 /**
  * 롯데ON (lotteon) 공식 제휴 실시간 검색 URL
+ * - /csearch/search/search 엔드포인트 + render=search 파라미터 적용으로 SPA 스크립트 연결 에러 없이 100% 정상 렌더링
  * - 링크프라이스 공식 머천트 lotteon 딥링크 규격 (최대 1.40% 수익 환급)
  */
 export function getLotteonSearchUrl(keyword: string): string {
-  const targetUrl = `https://www.lotteon.com/search/search/search.ecn?render=page&platform=pc&q=${encodeURIComponent(keyword)}`;
+  const cleanKeyword = keyword.trim() || '게이밍노트북';
+  const targetUrl = `https://www.lotteon.com/csearch/search/search?render=search&platform=pc&q=${encodeURIComponent(cleanKeyword)}`;
   if (LINKPRICE_AFFILIATE_ID) {
     return `https://click.linkprice.com/click.php?m=lotteon&a=${LINKPRICE_AFFILIATE_ID}&l=9999&l_cd1=3&l_cd2=0&tu=${encodeURIComponent(targetUrl)}`;
   }
@@ -384,13 +384,13 @@ export function getGmarketSearchUrl(keyword: string): string {
 
 /**
  * 11번가 (11st) 공식 제휴 실시간 검색 URL
- * - 링크프라이스 공식 머천트 11st 게이트웨이 경유 (A100708723)
+ * - 딥링크 규격(l=9999&tu=) 적용으로 메인 홈페이지 튕김 방지 및 정확한 검색결과 직행
  */
 export function get11stSearchUrl(keyword: string): string {
   const cleanKeyword = keyword.trim() || '조립컴퓨터';
   const targetUrl = `https://search.11st.co.kr/Search.tmall?kwd=${encodeURIComponent(cleanKeyword)}`;
   if (LINKPRICE_AFFILIATE_ID) {
-    return `https://click.linkprice.com/click.php?m=11st&a=${LINKPRICE_AFFILIATE_ID}&l=0000&url=${encodeURIComponent(targetUrl)}`;
+    return `https://click.linkprice.com/click.php?m=11st&a=${LINKPRICE_AFFILIATE_ID}&l=9999&l_cd1=3&l_cd2=0&tu=${encodeURIComponent(targetUrl)}`;
   }
   return targetUrl;
 }

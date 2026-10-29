@@ -58,7 +58,7 @@ export const MALL_DEALS: MallDeal[] = [
       '카드사별 예산 소진 시 조기 종료될 수 있으므로 결제 직전 "결제 혜택" 탭 확인 필수',
       '전국 하이마트 매장 방문 A/S 접수 대행 무료 서비스 포함'
     ],
-    affiliateUrl: 'https://click.linkprice.com/click.php?m=himart&a=A100708723&l=0000&url=https%3A%2F%2Fwww.e-himart.co.kr%2Fapp%2Fsearch%2FsearchMain%3Fquery%3D%EA%B2%8C%EC%9D%B4%EB%B0%8DPC',
+    affiliateUrl: 'https://click.linkprice.com/click.php?m=himart&a=A100708723&l=9999&l_cd1=3&l_cd2=0&tu=https%3A%2F%2Fwww.e-himart.co.kr%2Fapp%2Fsearch%2FtotalSearch%3Fquery%3D%EA%B2%8C%EC%9D%B4%EB%B0%8DPC',
     ctaText: '하이마트 카드 혜택 보러가기'
   },
 
@@ -116,7 +116,7 @@ export const MALL_DEALS: MallDeal[] = [
       '우주패스 회원은 매월 슈팅배송 무료 배송 쿠폰 및 장바구니 추가 5,000원 할인 쿠폰이 중복 적용됩니다.',
       '매월 1일~11일 열리는 "월간 십일절" 기간에는 타임딜 릴레이로 조립PC 주요 하드웨어를 최저가에 구매할 수 있습니다.'
     ],
-    affiliateUrl: 'https://click.linkprice.com/click.php?m=11st&a=A100708723&l=0000&url=https%3A%2F%2Fsearch.11st.co.kr%2FSearch.tmall%3Fkwd%3D%EC%A1%B0%EB%A6%BDPC%2B%EC%BB%B4%ED%93%A8%ED%84%B0%EB%B6%80%ED%92%88',
+    affiliateUrl: 'https://click.linkprice.com/click.php?m=11st&a=A100708723&l=9999&l_cd1=3&l_cd2=0&tu=https%3A%2F%2Fsearch.11st.co.kr%2FSearch.tmall%3Fkwd%3D%EC%A1%B0%EB%A6%BDPC%2B%EC%BB%B4%ED%93%A8%ED%84%B0%EB%B6%80%ED%92%88',
     ctaText: '11번가 슈팅배송 혜택 확인'
   },
 
@@ -167,7 +167,7 @@ export const MALL_DEALS: MallDeal[] = [
       '스마일배송 상품은 여러 부품을 한 상자에 묶음 무료 배송해 주므로 배송비를 크게 아낄 수 있습니다.',
       'G마켓과 동일하게 신세계 유니버스 쿠폰이 연동됩니다.'
     ],
-    affiliateUrl: 'https://click.linkprice.com/click.php?m=auction&a=A100708723&l=0000&url=https%3A%2F%2Fbrowse.auction.co.kr%2Fsearch%3Fkeyword%3D%EC%A1%B0%EB%A6%BDPC',
+    affiliateUrl: 'https://click.linkprice.com/click.php?m=auction&a=A100708723&l=9999&l_cd1=3&l_cd2=0&tu=https%3A%2F%2Fbrowse.auction.co.kr%2Fsearch%3Fkeyword%3D%EC%A1%B0%EB%A6%BDPC',
     ctaText: '옥션 올킬 특가 보러가기'
   },
 
@@ -191,7 +191,7 @@ export const MALL_DEALS: MallDeal[] = [
       '주말(토/일) 결제 시 카드 청구할인 혜택이 강화됩니다.',
       '이마트몰 매장 픽업 선택 시 배송 대기 없이 당일 수령 가능'
     ],
-    affiliateUrl: 'https://click.linkprice.com/click.php?m=emart&a=A100708723&l=0000&url=https%3A%2F%2Femart.ssg.com%2Fsearch.ssg%3Ftarget%3Dall%26query%3D%EA%B2%8C%EC%9D%B4%EB%B0%8D',
+    affiliateUrl: 'https://click.linkprice.com/click.php?m=emart&a=A100708723&l=9999&l_cd1=3&l_cd2=0&tu=https%3A%2F%2Femart.ssg.com%2Fsearch.ssg%3Ftarget%3Dall%26query%3D%EA%B2%8C%EC%9D%B4%EB%B0%8D',
     ctaText: '이마트몰 혜택 확인'
   },
 

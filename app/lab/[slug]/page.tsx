@@ -319,7 +319,7 @@ export default async function ArticleDetailPage({ params }: PageProps) {
           </p>
           <div className="flex flex-wrap items-center justify-center gap-2.5">
             <a
-              href="https://click.linkprice.com/click.php?m=gmarket&a=A100708723&l=0000&url=https%3A%2F%2Fbrowse.gmarket.co.kr%2Fsearch%3Fkeyword%3D%EC%BB%B4%ED%93%A8%ED%84%B0%EB%B6%80%ED%92%88"
+              href="https://click.linkprice.com/click.php?m=gmarket&a=A100708723&l=9999&l_cd1=3&l_cd2=0&tu=https%3A%2F%2Fbrowse.gmarket.co.kr%2Fsearch%3Fkeyword%3D%EC%BB%B4%ED%93%A8%ED%84%B0%EB%B6%80%ED%92%88"
               target="_blank"
               rel="noopener noreferrer nofollow"
               className="px-4 py-2.5 rounded-xl bg-orange-600 hover:bg-orange-500 text-white font-bold text-xs flex items-center gap-1.5 shadow-sm transition-all"
@@ -328,7 +328,7 @@ export default async function ArticleDetailPage({ params }: PageProps) {
               <ExternalLink className="w-3.5 h-3.5" />
             </a>
             <a
-              href="https://click.linkprice.com/click.php?m=himart&a=A100708723&l=0000&url=https%3A%2F%2Fwww.e-himart.co.kr%2Fapp%2Fsearch%2FsearchMain%3Fquery%3D%EA%B2%8C%EC%9D%B4%EB%B0%8DPC"
+              href="https://click.linkprice.com/click.php?m=himart&a=A100708723&l=9999&l_cd1=3&l_cd2=0&tu=https%3A%2F%2Fwww.e-himart.co.kr%2Fapp%2Fsearch%2FtotalSearch%3Fquery%3D%EA%B2%8C%EC%9D%B4%EB%B0%8DPC"
               target="_blank"
               rel="noopener noreferrer nofollow"
               className="px-4 py-2.5 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-bold text-xs flex items-center gap-1.5 shadow-sm transition-all"
@@ -337,7 +337,7 @@ export default async function ArticleDetailPage({ params }: PageProps) {
               <ExternalLink className="w-3.5 h-3.5" />
             </a>
             <a
-              href="https://click.linkprice.com/click.php?m=lotteon&a=A100708723&l=9999&l_cd1=3&l_cd2=0&tu=https%3A%2F%2Fwww.lotteon.com"
+              href="https://click.linkprice.com/click.php?m=lotteon&a=A100708723&l=9999&l_cd1=3&l_cd2=0&tu=https%3A%2F%2Fwww.lotteon.com%2Fcsearch%2Fsearch%2Fsearch%3Frender%3Dsearch%26platform%3Dpc%26q%3D%EC%BB%B4%ED%93%A8%ED%84%B0%EB%B6%80%ED%92%88"
               target="_blank"
               rel="noopener noreferrer nofollow"
               className="px-4 py-2.5 rounded-xl bg-red-600 hover:bg-red-500 text-white font-bold text-xs flex items-center gap-1.5 shadow-sm transition-all"
