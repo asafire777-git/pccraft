@@ -1,9 +1,10 @@
 import { NextResponse } from 'next/server';
-import { COMPONENTS_DATA, ComponentItem } from '@/data/components';
+import { COMPONENTS_DATA } from '@/data/components';
+import livePricesData from '@/data/live-prices.json';
 
 // 시세 동기화 및 품절 감지 API (Cron Job 또는 수동 새로고침 호출)
 export async function GET() {
-  const syncTimestamp = new Date().toISOString().replace('T', ' ').substring(0, 16);
+  const syncTimestamp = livePricesData?.lastSyncedAt || new Date().toISOString().replace('T', ' ').substring(0, 16);
   
   // 카테고리별 품절 여부 점검 및 대체재 스캔 통계
   const stats = {

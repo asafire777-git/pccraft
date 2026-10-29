@@ -158,7 +158,7 @@ export const COMPONENT_SEARCH_KEYWORDS: Record<string, string> = {
 
 // 완본체 게이밍 PC 실시간 검색 키워드 매핑 (오픈마켓/쿠팡 실제 매물 100% 매칭)
 export const PREBUILT_SEARCH_KEYWORDS: Record<string, string> = {
-  'casual-esports': '라이젠 5600 조립PC',
+  'casual-esports': '라이젠 5600 1650 조립PC',
   'mainstream-gaming': '라이젠 7500F 4060 조립PC',
   'high-end-aaa': '7800X3D 4070 SUPER 조립PC',
   'creator-flagship': '14700K 4080 SUPER 조립PC'

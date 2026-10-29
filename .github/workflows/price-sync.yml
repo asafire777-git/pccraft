@@ -1,0 +1,44 @@
+name: Daily PC Component Price Sync
+
+on:
+  schedule:
+    # 매일 한국 시간(KST) 오전 6:00 (UTC 21:00) 실행
+    - cron: '0 21 * * *'
+  workflow_dispatch: # 관리자가 깃허브 Actions 탭에서 수동으로 즉시 실행 가능
+
+permissions:
+  contents: write
+
+jobs:
+  sync-prices:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run price synchronization
+        run: node scripts/sync-prices.mjs
+
+      - name: Check for price changes
+        id: git-check
+        run: |
+          git status --porcelain
+          if [ -n "$(git status --porcelain data/live-prices.json)" ]; then
+            echo "changed=true" >> $GITHUB_OUTPUT
+          else
+            echo "changed=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit and push updated prices
+        if: steps.git-check.outputs.changed == 'true'
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/live-prices.json
+          git commit -m "chore: [자동화] 데일리 부품 실시간 시세 및 재고 동기화 (KST $(TZ=Asia/Seoul date +'%Y-%m-%d %H:%M'))"
+          git push
