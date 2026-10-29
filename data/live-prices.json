@@ -1,13 +1,13 @@
 {
-  "lastSyncedAt": "2026-10-29 16:37",
+  "lastSyncedAt": "2026-10-29 17:09",
   "totalItems": 113,
   "prices": {
     "cpu-amd-5600": {
-      "price": 138000,
-      "prevPrice": 143000,
-      "priceChange": -5000,
+      "price": 152000,
+      "prevPrice": 138000,
+      "priceChange": 14000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 16:37"
+      "lastUpdated": "2026-10-29 17:09"
     },
     "cpu-amd-5600g": {
       "price": 152000,
@@ -17,74 +17,74 @@
       "lastUpdated": "2026-10-29 16:37"
     },
     "cpu-amd-7500f": {
-      "price": 198000,
-      "prevPrice": 204000,
-      "priceChange": -6000,
+      "price": 164000,
+      "prevPrice": 198000,
+      "priceChange": -34000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 16:37"
+      "lastUpdated": "2026-10-29 17:09"
     },
     "cpu-amd-7600": {
-      "price": 228000,
-      "prevPrice": 235000,
-      "priceChange": -7000,
-      "inStock": true,
-      "lastUpdated": "2026-10-29 16:37"
-    },
-    "cpu-amd-7700": {
-      "price": 335000,
-      "prevPrice": 345000,
-      "priceChange": -10000,
-      "inStock": true,
-      "lastUpdated": "2026-10-29 16:37"
-    },
-    "cpu-amd-7800x3d": {
-      "price": 615000,
-      "prevPrice": 599000,
-      "priceChange": 16000,
-      "inStock": true,
-      "lastUpdated": "2026-10-29 16:37"
-    },
-    "cpu-amd-9800x3d": {
-      "price": 695000,
-      "prevPrice": 710000,
-      "priceChange": -15000,
-      "inStock": true,
-      "lastUpdated": "2026-10-29 16:37"
-    },
-    "cpu-intel-12100f": {
-      "price": 98000,
-      "prevPrice": 102000,
-      "priceChange": -4000,
-      "inStock": true,
-      "lastUpdated": "2026-10-29 16:37"
-    },
-    "cpu-intel-12400f": {
-      "price": 148000,
-      "prevPrice": 153000,
-      "priceChange": -5000,
-      "inStock": true,
-      "lastUpdated": "2026-10-29 16:37"
-    },
-    "cpu-intel-14400f": {
-      "price": 245000,
-      "prevPrice": 245000,
-      "priceChange": 0,
-      "inStock": true,
-      "lastUpdated": "2026-10-29 16:37"
-    },
-    "cpu-intel-14600kf": {
-      "price": 375000,
-      "prevPrice": 385000,
-      "priceChange": -10000,
-      "inStock": true,
-      "lastUpdated": "2026-10-29 16:37"
-    },
-    "cpu-intel-14700k": {
-      "price": 565000,
-      "prevPrice": 579000,
+      "price": 214000,
+      "prevPrice": 228000,
       "priceChange": -14000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 16:37"
+      "lastUpdated": "2026-10-29 17:09"
+    },
+    "cpu-amd-7700": {
+      "price": 350000,
+      "prevPrice": 335000,
+      "priceChange": 15000,
+      "inStock": true,
+      "lastUpdated": "2026-10-29 17:09"
+    },
+    "cpu-amd-7800x3d": {
+      "price": 710000,
+      "prevPrice": 615000,
+      "priceChange": 95000,
+      "inStock": true,
+      "lastUpdated": "2026-10-29 17:09"
+    },
+    "cpu-amd-9800x3d": {
+      "price": 729000,
+      "prevPrice": 695000,
+      "priceChange": 34000,
+      "inStock": true,
+      "lastUpdated": "2026-10-29 17:09"
+    },
+    "cpu-intel-12100f": {
+      "price": 110000,
+      "prevPrice": 98000,
+      "priceChange": 12000,
+      "inStock": true,
+      "lastUpdated": "2026-10-29 17:09"
+    },
+    "cpu-intel-12400f": {
+      "price": 152000,
+      "prevPrice": 148000,
+      "priceChange": 4000,
+      "inStock": true,
+      "lastUpdated": "2026-10-29 17:09"
+    },
+    "cpu-intel-14400f": {
+      "price": 219000,
+      "prevPrice": 245000,
+      "priceChange": -26000,
+      "inStock": true,
+      "lastUpdated": "2026-10-29 17:09"
+    },
+    "cpu-intel-14600kf": {
+      "price": 328000,
+      "prevPrice": 375000,
+      "priceChange": -47000,
+      "inStock": true,
+      "lastUpdated": "2026-10-29 17:09"
+    },
+    "cpu-intel-14700k": {
+      "price": 563000,
+      "prevPrice": 565000,
+      "priceChange": -2000,
+      "inStock": true,
+      "lastUpdated": "2026-10-29 17:09"
     },
     "cpu-intel-245k": {
       "price": 420000,
@@ -122,18 +122,18 @@
       "lastUpdated": "2026-10-29 16:37"
     },
     "cpu-intel-13400f": {
-      "price": 189000,
-      "prevPrice": 198000,
-      "priceChange": -9000,
+      "price": 170000,
+      "prevPrice": 189000,
+      "priceChange": -19000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 16:37"
+      "lastUpdated": "2026-10-29 17:09"
     },
     "cooler-basic-air": {
-      "price": 22000,
-      "prevPrice": 24000,
+      "price": 20000,
+      "prevPrice": 22000,
       "priceChange": -2000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 16:37"
+      "lastUpdated": "2026-10-29 17:09"
     },
     "cooler-deepcool-ag400": {
       "price": 24000,
@@ -150,11 +150,11 @@
       "lastUpdated": "2026-10-29 16:37"
     },
     "cooler-dual-air": {
-      "price": 38500,
-      "prevPrice": 41000,
-      "priceChange": -2500,
+      "price": 38000,
+      "prevPrice": 38500,
+      "priceChange": -500,
       "inStock": true,
-      "lastUpdated": "2026-10-29 16:37"
+      "lastUpdated": "2026-10-29 17:09"
     },
     "cooler-pentawave-z06d": {
       "price": 54000,
@@ -171,11 +171,11 @@
       "lastUpdated": "2026-10-29 16:37"
     },
     "cooler-liquid-360": {
-      "price": 89000,
-      "prevPrice": 94000,
-      "priceChange": -5000,
+      "price": 87000,
+      "prevPrice": 89000,
+      "priceChange": -2000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 16:37"
+      "lastUpdated": "2026-10-29 17:09"
     },
     "cooler-3rsys-ranni-xy360": {
       "price": 135000,
@@ -297,53 +297,53 @@
       "lastUpdated": "2026-10-29 16:37"
     },
     "ram-ddr4-16gb": {
-      "price": 194000,
-      "prevPrice": 198000,
-      "priceChange": -4000,
+      "price": 164000,
+      "prevPrice": 194000,
+      "priceChange": -30000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 16:37"
+      "lastUpdated": "2026-10-29 17:09"
     },
     "ram-ddr4-32gb": {
-      "price": 388000,
-      "prevPrice": 395000,
+      "price": 381000,
+      "prevPrice": 388000,
       "priceChange": -7000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 16:37"
+      "lastUpdated": "2026-10-29 17:09"
     },
     "ram-ddr5-16gb": {
-      "price": 349000,
-      "prevPrice": 355000,
-      "priceChange": -6000,
+      "price": 329000,
+      "prevPrice": 349000,
+      "priceChange": -20000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 16:37"
+      "lastUpdated": "2026-10-29 17:09"
     },
     "ram-ddr5-32gb": {
-      "price": 698000,
-      "prevPrice": 710000,
-      "priceChange": -12000,
+      "price": 757000,
+      "prevPrice": 698000,
+      "priceChange": 59000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 16:37"
+      "lastUpdated": "2026-10-29 17:09"
     },
     "ram-ddr5-teamgroup-32gb": {
-      "price": 680000,
-      "prevPrice": 695000,
-      "priceChange": -15000,
+      "price": 651000,
+      "prevPrice": 680000,
+      "priceChange": -29000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 16:37"
+      "lastUpdated": "2026-10-29 17:09"
     },
     "ram-ddr5-hynix-32gb": {
-      "price": 720000,
-      "prevPrice": 735000,
-      "priceChange": -15000,
+      "price": 687000,
+      "prevPrice": 720000,
+      "priceChange": -33000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 16:37"
+      "lastUpdated": "2026-10-29 17:09"
     },
     "ram-ddr5-tcreate-6000": {
-      "price": 695000,
-      "prevPrice": 710000,
-      "priceChange": -15000,
+      "price": 863000,
+      "prevPrice": 695000,
+      "priceChange": 168000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 16:37"
+      "lastUpdated": "2026-10-29 17:09"
     },
     "ram-ddr5-64gb": {
       "price": 1350000,
@@ -353,18 +353,18 @@
       "lastUpdated": "2026-10-29 16:37"
     },
     "ram-ddr5-klevv-16gb": {
-      "price": 320000,
-      "prevPrice": 335000,
-      "priceChange": -15000,
+      "price": 331000,
+      "prevPrice": 320000,
+      "priceChange": 11000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 16:37"
+      "lastUpdated": "2026-10-29 17:09"
     },
     "ram-ddr5-klevv-32gb": {
-      "price": 640000,
-      "prevPrice": 665000,
-      "priceChange": -25000,
+      "price": 687000,
+      "prevPrice": 640000,
+      "priceChange": 47000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 16:37"
+      "lastUpdated": "2026-10-29 17:09"
     },
     "ram-ddr5-gskill-32gb": {
       "price": 719000,
@@ -374,11 +374,11 @@
       "lastUpdated": "2026-10-29 16:37"
     },
     "gpu-gtx-1650": {
-      "price": 189000,
-      "prevPrice": 195000,
-      "priceChange": -6000,
+      "price": 163000,
+      "prevPrice": 189000,
+      "priceChange": -26000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 16:37"
+      "lastUpdated": "2026-10-29 17:09"
     },
     "gpu-rtx-3050-6gb": {
       "price": 238000,
@@ -395,11 +395,11 @@
       "lastUpdated": "2026-10-29 16:37"
     },
     "gpu-rtx-4060": {
-      "price": 425000,
-      "prevPrice": 435000,
-      "priceChange": -10000,
+      "price": 479000,
+      "prevPrice": 425000,
+      "priceChange": 54000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 16:37"
+      "lastUpdated": "2026-10-29 17:09"
     },
     "gpu-rtx-4060-zotac": {
       "price": 418000,
@@ -409,11 +409,11 @@
       "lastUpdated": "2026-10-29 16:37"
     },
     "gpu-rtx-4060ti-8gb": {
-      "price": 569000,
-      "prevPrice": 585000,
-      "priceChange": -16000,
+      "price": 515000,
+      "prevPrice": 569000,
+      "priceChange": -54000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 16:37"
+      "lastUpdated": "2026-10-29 17:09"
     },
     "gpu-rtx-4060ti-16gb": {
       "price": 658000,
@@ -423,11 +423,11 @@
       "lastUpdated": "2026-10-29 16:37"
     },
     "gpu-rtx-4070super": {
-      "price": 845000,
-      "prevPrice": 870000,
-      "priceChange": -25000,
+      "price": 805000,
+      "prevPrice": 845000,
+      "priceChange": -40000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 16:37"
+      "lastUpdated": "2026-10-29 17:09"
     },
     "gpu-rtx-4070tisuper": {
       "price": 1175000,
@@ -528,11 +528,11 @@
       "lastUpdated": "2026-10-29 16:37"
     },
     "gpu-rtx-5080": {
-      "price": 1790000,
-      "prevPrice": 1850000,
-      "priceChange": -60000,
+      "price": 1638000,
+      "prevPrice": 1790000,
+      "priceChange": -152000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 16:37"
+      "lastUpdated": "2026-10-29 17:09"
     },
     "gpu-rtx-5090": {
       "price": 3490000,
@@ -640,18 +640,18 @@
       "lastUpdated": "2026-10-29 16:37"
     },
     "power-500w-std": {
-      "price": 52000,
-      "prevPrice": 54000,
-      "priceChange": -2000,
+      "price": 55000,
+      "prevPrice": 52000,
+      "priceChange": 3000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 16:37"
+      "lastUpdated": "2026-10-29 17:09"
     },
     "power-micronics-600w": {
-      "price": 61000,
-      "prevPrice": 63000,
-      "priceChange": -2000,
+      "price": 64000,
+      "prevPrice": 61000,
+      "priceChange": 3000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 16:37"
+      "lastUpdated": "2026-10-29 17:09"
     },
     "power-coolermaster-600w": {
       "price": 59000,
@@ -661,11 +661,11 @@
       "lastUpdated": "2026-10-29 16:37"
     },
     "power-700w-bronze": {
-      "price": 73000,
-      "prevPrice": 77000,
-      "priceChange": -4000,
+      "price": 84000,
+      "prevPrice": 73000,
+      "priceChange": 11000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 16:37"
+      "lastUpdated": "2026-10-29 17:09"
     },
     "power-seasonic-a12-700w": {
       "price": 79000,
@@ -689,11 +689,11 @@
       "lastUpdated": "2026-10-29 16:37"
     },
     "power-850w-gold": {
-      "price": 198000,
-      "prevPrice": 209000,
-      "priceChange": -11000,
+      "price": 224000,
+      "prevPrice": 198000,
+      "priceChange": 26000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 16:37"
+      "lastUpdated": "2026-10-29 17:09"
     },
     "power-fsp-1000w-gold": {
       "price": 235000,
