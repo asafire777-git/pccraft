@@ -1,5 +1,5 @@
 {
-  "lastSyncedAt": "2026-10-29 15:57",
+  "lastSyncedAt": "2026-10-29 16:37",
   "totalItems": 113,
   "prices": {
     "cpu-amd-5600": {
@@ -7,791 +7,791 @@
       "prevPrice": 143000,
       "priceChange": -5000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "cpu-amd-5600g": {
       "price": 152000,
       "prevPrice": 155000,
       "priceChange": -3000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "cpu-amd-7500f": {
       "price": 198000,
       "prevPrice": 204000,
       "priceChange": -6000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "cpu-amd-7600": {
       "price": 228000,
       "prevPrice": 235000,
       "priceChange": -7000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "cpu-amd-7700": {
       "price": 335000,
       "prevPrice": 345000,
       "priceChange": -10000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "cpu-amd-7800x3d": {
       "price": 615000,
       "prevPrice": 599000,
       "priceChange": 16000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "cpu-amd-9800x3d": {
       "price": 695000,
       "prevPrice": 710000,
       "priceChange": -15000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "cpu-intel-12100f": {
       "price": 98000,
       "prevPrice": 102000,
       "priceChange": -4000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "cpu-intel-12400f": {
       "price": 148000,
       "prevPrice": 153000,
       "priceChange": -5000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "cpu-intel-14400f": {
       "price": 245000,
       "prevPrice": 245000,
       "priceChange": 0,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "cpu-intel-14600kf": {
       "price": 375000,
       "prevPrice": 385000,
       "priceChange": -10000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "cpu-intel-14700k": {
       "price": 565000,
       "prevPrice": 579000,
       "priceChange": -14000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "cpu-intel-245k": {
       "price": 420000,
       "prevPrice": 435000,
       "priceChange": -15000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "cpu-amd-9600x": {
       "price": 359000,
       "prevPrice": 375000,
       "priceChange": -16000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "cpu-amd-9700x": {
       "price": 469000,
       "prevPrice": 485000,
       "priceChange": -16000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "cpu-amd-9900x": {
       "price": 620000,
       "prevPrice": 645000,
       "priceChange": -25000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "cpu-intel-265k": {
       "price": 549000,
       "prevPrice": 569000,
       "priceChange": -20000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "cpu-intel-13400f": {
       "price": 189000,
       "prevPrice": 198000,
       "priceChange": -9000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "cooler-basic-air": {
       "price": 22000,
       "prevPrice": 24000,
       "priceChange": -2000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "cooler-deepcool-ag400": {
       "price": 24000,
       "prevPrice": 25000,
       "priceChange": -1000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "cooler-zalman-cnps9x": {
       "price": 28000,
       "prevPrice": 29000,
       "priceChange": -1000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "cooler-dual-air": {
       "price": 38500,
       "prevPrice": 41000,
       "priceChange": -2500,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "cooler-pentawave-z06d": {
       "price": 54000,
       "prevPrice": 56000,
       "priceChange": -2000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "cooler-deepcool-ak620": {
       "price": 74000,
       "prevPrice": 77000,
       "priceChange": -3000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "cooler-liquid-360": {
       "price": 89000,
       "prevPrice": 94000,
       "priceChange": -5000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "cooler-3rsys-ranni-xy360": {
       "price": 135000,
       "prevPrice": 142000,
       "priceChange": -7000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "cooler-nzxt-kraken360": {
       "price": 298000,
       "prevPrice": 310000,
       "priceChange": -12000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "cooler-thermalright-ps120se": {
       "price": 45000,
       "prevPrice": 48000,
       "priceChange": -3000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "cooler-valkyrie-gl360": {
       "price": 179000,
       "prevPrice": 189000,
       "priceChange": -10000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "mb-a520m": {
       "price": 79000,
       "prevPrice": 82000,
       "priceChange": -3000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "mb-b550m-mortar": {
       "price": 145000,
       "prevPrice": 152000,
       "priceChange": -7000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "mb-b650m-k": {
       "price": 142000,
       "prevPrice": 148000,
       "priceChange": -6000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "mb-b650m-tuf": {
       "price": 215000,
       "prevPrice": 228000,
       "priceChange": -13000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "mb-b650m-aorus-ice": {
       "price": 239000,
       "prevPrice": 249000,
       "priceChange": -10000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "mb-h610m-intel": {
       "price": 78000,
       "prevPrice": 81000,
       "priceChange": -3000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "mb-b760m-intel": {
       "price": 154000,
       "prevPrice": 159000,
       "priceChange": -5000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "mb-b760m-mortar": {
       "price": 219000,
       "prevPrice": 229000,
       "priceChange": -10000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "mb-z890-intel": {
       "price": 325000,
       "prevPrice": 340000,
       "priceChange": -15000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "mb-b650m-riptide": {
       "price": 169000,
       "prevPrice": 178000,
       "priceChange": -9000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "mb-b650m-k-giga": {
       "price": 132000,
       "prevPrice": 139000,
       "priceChange": -7000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "mb-b650m-mortar-amd": {
       "price": 215000,
       "prevPrice": 228000,
       "priceChange": -13000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "mb-h610m-msi": {
       "price": 74000,
       "prevPrice": 78000,
       "priceChange": -4000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "ram-ddr4-16gb": {
-      "price": 55000,
-      "prevPrice": 58000,
-      "priceChange": -3000,
+      "price": 194000,
+      "prevPrice": 198000,
+      "priceChange": -4000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "ram-ddr4-32gb": {
-      "price": 98000,
-      "prevPrice": 104000,
-      "priceChange": -6000,
-      "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
-    },
-    "ram-ddr5-16gb": {
-      "price": 98000,
-      "prevPrice": 105000,
+      "price": 388000,
+      "prevPrice": 395000,
       "priceChange": -7000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
-    "ram-ddr5-32gb": {
-      "price": 198000,
-      "prevPrice": 210000,
-      "priceChange": -12000,
-      "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
-    },
-    "ram-ddr5-teamgroup-32gb": {
-      "price": 189000,
-      "prevPrice": 199000,
-      "priceChange": -10000,
-      "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
-    },
-    "ram-ddr5-hynix-32gb": {
-      "price": 215000,
-      "prevPrice": 228000,
-      "priceChange": -13000,
-      "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
-    },
-    "ram-ddr5-tcreate-6000": {
-      "price": 229000,
-      "prevPrice": 242000,
-      "priceChange": -13000,
-      "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
-    },
-    "ram-ddr5-64gb": {
-      "price": 398000,
-      "prevPrice": 420000,
-      "priceChange": -22000,
-      "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
-    },
-    "ram-ddr5-klevv-16gb": {
-      "price": 92000,
-      "prevPrice": 98000,
+    "ram-ddr5-16gb": {
+      "price": 349000,
+      "prevPrice": 355000,
       "priceChange": -6000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
+    },
+    "ram-ddr5-32gb": {
+      "price": 698000,
+      "prevPrice": 710000,
+      "priceChange": -12000,
+      "inStock": true,
+      "lastUpdated": "2026-10-29 16:37"
+    },
+    "ram-ddr5-teamgroup-32gb": {
+      "price": 680000,
+      "prevPrice": 695000,
+      "priceChange": -15000,
+      "inStock": true,
+      "lastUpdated": "2026-10-29 16:37"
+    },
+    "ram-ddr5-hynix-32gb": {
+      "price": 720000,
+      "prevPrice": 735000,
+      "priceChange": -15000,
+      "inStock": true,
+      "lastUpdated": "2026-10-29 16:37"
+    },
+    "ram-ddr5-tcreate-6000": {
+      "price": 695000,
+      "prevPrice": 710000,
+      "priceChange": -15000,
+      "inStock": true,
+      "lastUpdated": "2026-10-29 16:37"
+    },
+    "ram-ddr5-64gb": {
+      "price": 1350000,
+      "prevPrice": 1380000,
+      "priceChange": -30000,
+      "inStock": true,
+      "lastUpdated": "2026-10-29 16:37"
+    },
+    "ram-ddr5-klevv-16gb": {
+      "price": 320000,
+      "prevPrice": 335000,
+      "priceChange": -15000,
+      "inStock": true,
+      "lastUpdated": "2026-10-29 16:37"
     },
     "ram-ddr5-klevv-32gb": {
-      "price": 185000,
-      "prevPrice": 198000,
-      "priceChange": -13000,
+      "price": 640000,
+      "prevPrice": 665000,
+      "priceChange": -25000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "ram-ddr5-gskill-32gb": {
-      "price": 238000,
-      "prevPrice": 252000,
-      "priceChange": -14000,
+      "price": 719000,
+      "prevPrice": 745000,
+      "priceChange": -26000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "gpu-gtx-1650": {
       "price": 189000,
       "prevPrice": 195000,
       "priceChange": -6000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "gpu-rtx-3050-6gb": {
       "price": 238000,
       "prevPrice": 245000,
       "priceChange": -7000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "gpu-rx-6600": {
       "price": 259000,
       "prevPrice": 268000,
       "priceChange": -9000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "gpu-rtx-4060": {
       "price": 425000,
       "prevPrice": 435000,
       "priceChange": -10000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "gpu-rtx-4060-zotac": {
       "price": 418000,
       "prevPrice": 426000,
       "priceChange": -8000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "gpu-rtx-4060ti-8gb": {
       "price": 569000,
       "prevPrice": 585000,
       "priceChange": -16000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "gpu-rtx-4060ti-16gb": {
       "price": 658000,
       "prevPrice": 672000,
       "priceChange": -14000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "gpu-rtx-4070super": {
       "price": 845000,
       "prevPrice": 870000,
       "priceChange": -25000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "gpu-rtx-4070tisuper": {
       "price": 1175000,
       "prevPrice": 1210000,
       "priceChange": -35000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "gpu-rtx-4080super": {
       "price": 1489000,
       "prevPrice": 1530000,
       "priceChange": -41000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "gpu-rtx-4090": {
       "price": 2790000,
       "prevPrice": 2850000,
       "priceChange": -60000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "gpu-rx-7600": {
       "price": 348000,
       "prevPrice": 359000,
       "priceChange": -11000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "gpu-rtx-4070-dual": {
       "price": 758000,
       "prevPrice": 775000,
       "priceChange": -17000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "gpu-rx-7800xt": {
       "price": 728000,
       "prevPrice": 749000,
       "priceChange": -21000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "gpu-rtx-5060-emtek": {
       "price": 489000,
       "prevPrice": 499000,
       "priceChange": -10000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "gpu-rtx-5060-zotac": {
       "price": 485000,
       "prevPrice": 495000,
       "priceChange": -10000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "gpu-rtx-5060-gigabyte": {
       "price": 495000,
       "prevPrice": 509000,
       "priceChange": -14000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "gpu-rtx-5060-galax": {
       "price": 492000,
       "prevPrice": 505000,
       "priceChange": -13000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "gpu-rtx-5060ti-8gb": {
       "price": 645000,
       "prevPrice": 660000,
       "priceChange": -15000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "gpu-rtx-5060ti-16gb": {
       "price": 749000,
       "prevPrice": 765000,
       "priceChange": -16000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "gpu-rtx-5070-emtek": {
       "price": 980000,
       "prevPrice": 1020000,
       "priceChange": -40000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "gpu-rtx-5070ti": {
       "price": 1290000,
       "prevPrice": 1350000,
       "priceChange": -60000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "gpu-rtx-5080": {
       "price": 1790000,
       "prevPrice": 1850000,
       "priceChange": -60000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "gpu-rtx-5090": {
       "price": 3490000,
       "prevPrice": 3590000,
       "priceChange": -100000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "gpu-rx-7600xt": {
       "price": 445000,
       "prevPrice": 459000,
       "priceChange": -14000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "gpu-rx-7900gre": {
       "price": 799000,
       "prevPrice": 825000,
       "priceChange": -26000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "ssd-500gb-nvme": {
       "price": 68000,
       "prevPrice": 71000,
       "priceChange": -3000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "ssd-crucial-p3plus-500gb": {
       "price": 52000,
       "prevPrice": 55000,
       "priceChange": -3000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "ssd-1tb-nvme": {
       "price": 119000,
       "prevPrice": 125000,
       "priceChange": -6000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "ssd-hynix-p41-1tb": {
       "price": 154000,
       "prevPrice": 162000,
       "priceChange": -8000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "ssd-samsung-990pro-1tb": {
       "price": 158000,
       "prevPrice": 165000,
       "priceChange": -7000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "ssd-wd-black-sn850x-1tb": {
       "price": 139000,
       "prevPrice": 145000,
       "priceChange": -6000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "ssd-crucial-t500-1tb": {
       "price": 129000,
       "prevPrice": 135000,
       "priceChange": -6000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "ssd-hynix-p41-2tb": {
       "price": 249000,
       "prevPrice": 259000,
       "priceChange": -10000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "ssd-samsung-990pro-2tb": {
       "price": 265000,
       "prevPrice": 279000,
       "priceChange": -14000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "ssd-samsung-980pro-1tb": {
       "price": 145000,
       "prevPrice": 152000,
       "priceChange": -7000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "ssd-samsung-990evo-plus-1tb": {
       "price": 129000,
       "prevPrice": 135000,
       "priceChange": -6000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "ssd-wd-sn580-1tb": {
       "price": 99000,
       "prevPrice": 105000,
       "priceChange": -6000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "power-500w-std": {
       "price": 52000,
       "prevPrice": 54000,
       "priceChange": -2000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "power-micronics-600w": {
       "price": 61000,
       "prevPrice": 63000,
       "priceChange": -2000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "power-coolermaster-600w": {
       "price": 59000,
       "prevPrice": 62000,
       "priceChange": -3000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "power-700w-bronze": {
       "price": 73000,
       "prevPrice": 77000,
       "priceChange": -4000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "power-seasonic-a12-700w": {
       "price": 79000,
       "prevPrice": 83000,
       "priceChange": -4000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "power-micronics-750w-gold": {
       "price": 135000,
       "prevPrice": 142000,
       "priceChange": -7000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "power-superflower-850w-gold": {
       "price": 169000,
       "prevPrice": 178000,
       "priceChange": -9000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "power-850w-gold": {
       "price": 198000,
       "prevPrice": 209000,
       "priceChange": -11000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "power-fsp-1000w-gold": {
       "price": 235000,
       "prevPrice": 248000,
       "priceChange": -13000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "power-micronics-800w": {
       "price": 85000,
       "prevPrice": 89000,
       "priceChange": -4000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "power-fsp-vita-850": {
       "price": 169000,
       "prevPrice": 178000,
       "priceChange": -9000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "case-darkflash-dk200": {
       "price": 38000,
       "prevPrice": 39500,
       "priceChange": -1500,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "case-darkflash-dk200-white": {
       "price": 42000,
       "prevPrice": 44000,
       "priceChange": -2000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "case-abko-g30": {
       "price": 44000,
       "prevPrice": 46000,
       "priceChange": -2000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "case-micronics-m60": {
       "price": 39500,
       "prevPrice": 41000,
       "priceChange": -1500,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "case-aquarium-panoramic": {
       "price": 59000,
       "prevPrice": 63000,
       "priceChange": -4000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "case-ds900-white": {
       "price": 64000,
       "prevPrice": 68000,
       "priceChange": -4000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "case-zalman-p30-white": {
       "price": 89000,
       "prevPrice": 94000,
       "priceChange": -5000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "case-3rsys-s401": {
       "price": 79000,
       "prevPrice": 85000,
       "priceChange": -6000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "case-lianli-o11d-evo": {
       "price": 248000,
       "prevPrice": 259000,
       "priceChange": -11000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "case-darkflash-dlx21": {
       "price": 89000,
       "prevPrice": 95000,
       "priceChange": -6000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     },
     "case-antec-c8": {
       "price": 129000,
       "prevPrice": 138000,
       "priceChange": -9000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 15:57"
+      "lastUpdated": "2026-10-29 16:37"
     }
   }
 }

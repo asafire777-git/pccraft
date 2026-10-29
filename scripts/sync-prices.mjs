@@ -41,18 +41,18 @@ function roundToThousand(num) {
 
 // 주요 부품군별 시세 가이드라인 (왜곡 방지 안전장치)
 const PRICE_BOUNDS = {
-  // RAM (정상 시세 범위: 비정상적인 60만원대 인플레이션 방지)
-  'ram-ddr4-16gb': { min: 45000, max: 65000, baseline: 55000 },
-  'ram-ddr4-32gb': { min: 85000, max: 115000, baseline: 98000 },
-  'ram-ddr5-16gb': { min: 85000, max: 115000, baseline: 98000 },
-  'ram-ddr5-32gb': { min: 180000, max: 220000, baseline: 198000 },
-  'ram-ddr5-teamgroup-32gb': { min: 175000, max: 210000, baseline: 189000 },
-  'ram-ddr5-hynix-32gb': { min: 200000, max: 235000, baseline: 215000 },
-  'ram-ddr5-tcreate-6000': { min: 210000, max: 245000, baseline: 229000 },
-  'ram-ddr5-64gb': { min: 370000, max: 430000, baseline: 398000 },
-  'ram-ddr5-klevv-16gb': { min: 80000, max: 105000, baseline: 92000 },
-  'ram-ddr5-klevv-32gb': { min: 170000, max: 205000, baseline: 185000 },
-  'ram-ddr5-gskill-32gb': { min: 220000, max: 255000, baseline: 238000 },
+  // RAM (2026년 다나와 실시간 시장가 기준)
+  'ram-ddr4-16gb': { min: 180000, max: 210000, baseline: 194000 },
+  'ram-ddr4-32gb': { min: 360000, max: 490000, baseline: 388000 },
+  'ram-ddr5-16gb': { min: 320000, max: 370000, baseline: 349000 },
+  'ram-ddr5-32gb': { min: 670000, max: 820000, baseline: 698000 },
+  'ram-ddr5-teamgroup-32gb': { min: 650000, max: 720000, baseline: 680000 },
+  'ram-ddr5-hynix-32gb': { min: 690000, max: 760000, baseline: 720000 },
+  'ram-ddr5-tcreate-6000': { min: 670000, max: 730000, baseline: 695000 },
+  'ram-ddr5-64gb': { min: 1250000, max: 1450000, baseline: 1350000 },
+  'ram-ddr5-klevv-16gb': { min: 300000, max: 350000, baseline: 320000 },
+  'ram-ddr5-klevv-32gb': { min: 610000, max: 680000, baseline: 640000 },
+  'ram-ddr5-gskill-32gb': { min: 690000, max: 760000, baseline: 719000 },
 
   // CPU
   'cpu-amd-5600': { min: 130000, max: 145000, baseline: 138000 },
