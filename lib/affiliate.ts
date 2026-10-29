@@ -425,8 +425,9 @@ export const CUSTOM_DANAWA_PCODES: Record<string, string> = {
   'gpu-rtx-3050-6gb': '32840502', // MSI 지포스 RTX 3050 벤투스 2X OC D6 6GB
   
   // 메인보드
-  'mb-b650m-k': '21727307', // GIGABYTE B650M K 피씨디렉트
+  'mb-b650m-k': '19536692', // ASRock B650M-HDV/M.2 디앤디컴/에즈윈 (다나와 196,500원 직행)
   'mb-b650m-hdv': '19536692', // ASRock B650M-HDV/M.2 에즈윈
+  'mb-b650m-k-giga': '21727307', // GIGABYTE B650M K 피씨디렉트
   'mb-a520m': '12117565', // ASUS PRIME A520M-A II
   
   // RAM
@@ -437,9 +438,10 @@ export const CUSTOM_DANAWA_PCODES: Record<string, string> = {
   'ram-ddr4-16gb': '12560377', // 삼성전자 DDR4-3200 8GB
   
   // SSD
-  'ssd-1tb-nvme': '69869543', // 삼성전자 990 EVO Plus M.2 NVMe 1TB
+  'ssd-1tb-nvme': '13161338', // SK하이닉스 Gold P31 M.2 NVMe (1TB) (다나와 실물 직행)
+  'ssd-samsung-990evo-plus-1tb': '69869543', // 삼성전자 990 EVO Plus M.2 NVMe 1TB
   'ssd-hynix-p41-1tb': '17001050', // SK하이닉스 Platinum P41 M.2 NVMe 1TB
-  'ssd-500gb-nvme': '13161334', // 500GB NVMe
+  'ssd-500gb-nvme': '13161334', // SK하이닉스 Gold P31 500GB NVMe
   
   // 파워
   'power-700w-bronze': '44906339', // 마이크로닉스 Classic II 풀체인지 700W 80PLUS브론즈 ATX3.1

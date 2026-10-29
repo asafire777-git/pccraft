@@ -129,11 +129,11 @@
       "lastUpdated": "2026-10-29 19:52"
     },
     "cooler-basic-air": {
-      "price": 20000,
-      "prevPrice": 21890,
-      "priceChange": -1890,
+      "price": 21890,
+      "prevPrice": 23000,
+      "priceChange": -1110,
       "inStock": true,
-      "lastUpdated": "2026-10-29 19:52"
+      "lastUpdated": "2026-10-29 20:25"
     },
     "cooler-deepcool-ag400": {
       "price": 24000,
@@ -220,11 +220,11 @@
       "lastUpdated": "2026-10-29 16:37"
     },
     "mb-b650m-k": {
-      "price": 112080,
-      "prevPrice": 148000,
-      "priceChange": -6000,
+      "price": 196500,
+      "prevPrice": 205000,
+      "priceChange": -8500,
       "inStock": true,
-      "lastUpdated": "2026-10-29 19:30"
+      "lastUpdated": "2026-10-29 20:25"
     },
     "mb-b650m-tuf": {
       "price": 215000,
@@ -276,11 +276,11 @@
       "lastUpdated": "2026-10-29 16:37"
     },
     "mb-b650m-k-giga": {
-      "price": 132000,
-      "prevPrice": 139000,
-      "priceChange": -7000,
+      "price": 112080,
+      "prevPrice": 120000,
+      "priceChange": -7920,
       "inStock": true,
-      "lastUpdated": "2026-10-29 16:37"
+      "lastUpdated": "2026-10-29 20:25"
     },
     "mb-b650m-mortar-amd": {
       "price": 215000,
@@ -318,11 +318,11 @@
       "lastUpdated": "2026-10-29 19:52"
     },
     "ram-ddr5-32gb": {
-      "price": 757000,
-      "prevPrice": 699380,
-      "priceChange": 57620,
+      "price": 699380,
+      "prevPrice": 720000,
+      "priceChange": -20620,
       "inStock": true,
-      "lastUpdated": "2026-10-29 19:52"
+      "lastUpdated": "2026-10-29 20:25"
     },
     "ram-ddr5-teamgroup-32gb": {
       "price": 651000,
@@ -486,11 +486,11 @@
       "lastUpdated": "2026-10-29 19:00"
     },
     "gpu-rtx-5060-gigabyte": {
-      "price": 677000,
-      "prevPrice": 677260,
-      "priceChange": -260,
+      "price": 677260,
+      "prevPrice": 685000,
+      "priceChange": -7740,
       "inStock": true,
-      "lastUpdated": "2026-10-29 19:52"
+      "lastUpdated": "2026-10-29 20:25"
     },
     "gpu-rtx-5060-galax": {
       "price": 683000,
@@ -570,11 +570,11 @@
       "lastUpdated": "2026-10-29 16:37"
     },
     "ssd-1tb-nvme": {
-      "price": 322000,
-      "prevPrice": 325290,
-      "priceChange": -3290,
+      "price": 329500,
+      "prevPrice": 340000,
+      "priceChange": -10500,
       "inStock": true,
-      "lastUpdated": "2026-10-29 19:52"
+      "lastUpdated": "2026-10-29 20:25"
     },
     "ssd-hynix-p41-1tb": {
       "price": 435000,
@@ -661,11 +661,11 @@
       "lastUpdated": "2026-10-29 16:37"
     },
     "power-700w-bronze": {
-      "price": 84000,
-      "prevPrice": 88900,
-      "priceChange": -4900,
+      "price": 88900,
+      "prevPrice": 93000,
+      "priceChange": -4100,
       "inStock": true,
-      "lastUpdated": "2026-10-29 19:52"
+      "lastUpdated": "2026-10-29 20:25"
     },
     "power-seasonic-a12-700w": {
       "price": 79000,

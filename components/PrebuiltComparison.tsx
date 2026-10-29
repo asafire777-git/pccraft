@@ -41,25 +41,25 @@ export default function PrebuiltComparison({
               </span>
             </div>
 
-            <h4 className="text-lg font-bold text-slate-900 dark:text-white break-keep-all">
+            <h4 className="text-lg font-bold text-slate-900 dark:text-white break-keep">
               나만의 커스텀 최저가 조립 PC
             </h4>
-            <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 break-keep-all">
+            <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 break-keep">
               8개 부품을 각각 최저가 핫딜로 구매하여 최대의 가성비를 챙기는 방식
             </p>
 
             <ul className="mt-5 space-y-2.5 text-xs text-slate-600 dark:text-slate-300">
               <li className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
-                <span className="break-keep-all">중간 유통 마진 없이 부품 원가 기준 최저가 확보</span>
+                <span className="break-keep">중간 유통 마진 없이 부품 원가 기준 최저가 확보</span>
               </li>
               <li className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
-                <span className="break-keep-all">원하는 제조사 브랜드 부품 100% 선택 가능</span>
+                <span className="break-keep">원하는 제조사 브랜드 부품 100% 선택 가능</span>
               </li>
               <li className="flex items-center gap-2">
                 <ShieldAlert className="w-4 h-4 text-amber-500 shrink-0" />
-                <span className="text-slate-500 break-keep-all">직접 조립 시간(약 1~2시간) 소요 및 초기 불량 개별 대응</span>
+                <span className="text-slate-500 break-keep">직접 조립 시간(약 1~2시간) 소요 및 초기 불량 개별 대응</span>
               </li>
             </ul>
           </div>
@@ -93,10 +93,10 @@ export default function PrebuiltComparison({
               </span>
             </div>
 
-            <h4 className="text-lg font-bold text-slate-900 dark:text-white break-keep-all">
+            <h4 className="text-lg font-bold text-slate-900 dark:text-white break-keep">
               {prebuilt.title}
             </h4>
-            <p className="text-xs text-emerald-700 dark:text-emerald-400/90 font-mono mt-1 font-semibold break-keep-all">
+            <p className="text-xs text-emerald-700 dark:text-emerald-400/90 font-mono mt-1 font-semibold break-keep">
               {prebuilt.specsSummary}
             </p>
 

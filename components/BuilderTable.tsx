@@ -100,11 +100,12 @@ export default function BuilderTable({
             </span>
           </div>
 
-          <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mt-1 break-keep-all leading-snug">
-            부품별 맞춤 견적 &amp; 오픈마켓 최저가 비교
+          <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mt-1 break-keep leading-snug">
+            <span>부품별 맞춤 견적 &amp; </span>
+            <span className="whitespace-nowrap">오픈마켓 최저가 비교</span>
           </h3>
 
-          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 max-w-xl leading-relaxed break-keep-all">
+          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 max-w-xl leading-relaxed break-keep">
             표기 가격은 다나와 실시간 등록몰 <strong>최저가 기준</strong>입니다. 개별 몰 배송비와 카드 할인 혜택을 비교하여 가장 유리한 곳에서 주문하세요.
           </p>
 

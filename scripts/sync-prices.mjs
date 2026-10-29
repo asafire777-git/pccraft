@@ -84,16 +84,21 @@ const SANITY_BOUNDS = {
   'gpu-rtx-5070-emtek': { min: 920000, max: 1250000, query: '지포스 RTX 5070' },
   'gpu-rtx-5080': { min: 1700000, max: 2300000, query: '지포스 RTX 5080' },
 
+  // Motherboard
+  'mb-b650m-k': { min: 170000, max: 230000, query: 'ASRock B650M-HDV/M.2 디앤디컴' },
+  'mb-b650m-k-giga': { min: 95000, max: 135000, query: 'GIGABYTE B650M K 피씨디렉트' },
+
   // SSD
   'ssd-500gb-nvme': { min: 55000, max: 95000, query: 'NVMe SSD 500GB' },
-  'ssd-1tb-nvme': { min: 280000, max: 370000, query: '삼성전자 990 EVO Plus M.2 NVMe 1TB' },
+  'ssd-1tb-nvme': { min: 280000, max: 480000, query: 'SK하이닉스 Gold P31 M.2 NVMe 1TB' },
+  'ssd-samsung-990evo-plus-1tb': { min: 280000, max: 370000, query: '삼성전자 990 EVO Plus M.2 NVMe 1TB' },
   'ssd-hynix-p41-1tb': { min: 410000, max: 520000, query: 'SK하이닉스 Platinum P41 M.2 NVMe 1TB' },
   'ssd-samsung-990pro-1tb': { min: 340000, max: 460000, query: '삼성전자 990 PRO 1TB' },
 
   // Power
   'power-500w-std': { min: 44000, max: 62000, query: '마이크로닉스 Classic II 풀체인지 500W' },
   'power-micronics-600w': { min: 52000, max: 72000, query: '마이크로닉스 Classic II 풀체인지 600W' },
-  'power-700w-bronze': { min: 63000, max: 88000, query: '마이크로닉스 Classic II 풀체인지 700W' },
+  'power-700w-bronze': { min: 75000, max: 98000, query: '마이크로닉스 Classic II 풀체인지 700W' },
   'power-850w-gold': { min: 165000, max: 235000, query: '시소닉 FOCUS GX-850' },
 
   // Cooler
