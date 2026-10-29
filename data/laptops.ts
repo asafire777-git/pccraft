@@ -10,7 +10,7 @@ export interface LaptopProduct {
   id: string;
   category: LaptopCategory;
   categoryLabel: string;
-  brand: 'Lenovo' | 'ASUS' | 'HP' | '삼성전자' | 'LG전자' | '한성컴퓨터';
+  brand: 'Lenovo' | 'ASUS' | 'HP' | '삼성전자' | 'LG전자' | '한성컴퓨터' | '프리플로우' | '포유컴퓨터';
   modelName: string;
   title: string;
   badge: string;
@@ -32,6 +32,8 @@ export interface LaptopProduct {
   gameBenchmarks: { game: string; fps: string }[];
   highlights: string[];
   searchKeyword: string;
+  danawaPcode?: string;
+  danawaUrl?: string;
   availableMalls: AvailableMall[];
   mallKeywords?: Partial<Record<AvailableMall, string>>;
   recommendedReason: string;
@@ -78,6 +80,7 @@ export const CURATED_LAPTOPS: LaptopProduct[] = [
       'G-Sync 지원 100% sRGB 디스플레이로 화면 찢어짐(티어링) 제로'
     ],
     searchKeyword: '레노버 LOQ 15',
+    danawaPcode: '72417755',
     availableMalls: ['danawa', 'coupang', 'gmarket', '11st', 'himart', 'lotteon'],
     mallKeywords: {
       danawa: '레노버 LOQ 15',
@@ -125,6 +128,7 @@ export const CURATED_LAPTOPS: LaptopProduct[] = [
       'HP 공식 전국 서비스센터망을 갖춰 A/S 걱정 없는 안심 선택'
     ],
     searchKeyword: 'HP 빅터스 16',
+    danawaPcode: '58456529',
     availableMalls: ['danawa', 'coupang', 'gmarket', '11st', 'himart', 'lotteon'],
     mallKeywords: {
       danawa: 'HP 빅터스 16',
@@ -172,6 +176,7 @@ export const CURATED_LAPTOPS: LaptopProduct[] = [
       '140W 풀파워 RTX 4060 탑재로 QHD 환경에서도 안정적인 프레임'
     ],
     searchKeyword: 'ASUS TUF 게이밍',
+    danawaPcode: '19230977',
     availableMalls: ['danawa', 'coupang', 'gmarket', '11st'],
     mallKeywords: {
       danawa: 'ASUS TUF 게이밍 4060',
@@ -217,6 +222,7 @@ export const CURATED_LAPTOPS: LaptopProduct[] = [
       'OMEN Gaming Hub를 통한 원클릭 언더볼팅 및 팬 속도 제어'
     ],
     searchKeyword: 'HP 오멘 16',
+    danawaPcode: '32866427',
     availableMalls: ['danawa', 'coupang', 'gmarket', '11st', 'himart', 'lotteon'],
     mallKeywords: {
       danawa: 'HP 오멘 16',
@@ -264,6 +270,7 @@ export const CURATED_LAPTOPS: LaptopProduct[] = [
       '소비자 과실 파손(낙하, 침수)까지 2년간 무상 수리 보장하는 ADP 케어 기본 제공'
     ],
     searchKeyword: '레노버 리전 Pro 5',
+    danawaPcode: '96309551',
     availableMalls: ['danawa', 'coupang', 'gmarket', '11st', 'himart', 'lotteon'],
     mallKeywords: {
       danawa: '레노버 리전 Pro 5',
@@ -282,61 +289,62 @@ export const CURATED_LAPTOPS: LaptopProduct[] = [
     category: 'brand-desktop',
     categoryLabel: '대기업 완본체',
     brand: '삼성전자',
-    modelName: '오디세이 DM500TDA-A78A',
-    title: '삼성전자 오디세이 데스크톱 (i7-14700 + RTX 4060 Ti)',
+    modelName: '삼성 데스크탑 Tower DM500TGZ-AD7A',
+    title: '삼성전자 데스크톱 Tower (코어 i7-14700 + 윈도우11 Pro)',
     badge: '🏢 전국 삼성 서비스센터 1년 무상 출장',
     badgeColor: 'cyan',
-    regularPrice: 2190000,
-    discountPrice: 1990000,
-    effectivePrice: 1890000,
+    regularPrice: 1699000,
+    discountPrice: 1585990,
+    effectivePrice: 1585990,
     cardBenefit: '하이마트 / 롯데ON 카드 청구할인 적용 시',
-    cpu: '인텔 14세대 코어 i7-14700 (20코어 28스레드)',
-    gpu: 'GeForce RTX 4060 Ti 8GB',
-    tgp: '정격 600W 파워서플라이 탑재',
-    ram: '16GB DDR5-5600',
-    storage: '1TB M.2 NVMe SSD',
-    display: '데스크톱 완본체 (모니터 별매)',
+    cpu: '인텔 14세대 코어 i7 (고성능 프로세서)',
+    gpu: '인텔 고성능 그래픽 / 확장 슬롯 지원',
+    tgp: '정격 500W 파워서플라이 탑재',
+    ram: '16GB DDR5',
+    storage: '512GB M.2 NVMe SSD',
+    display: '데스크톱 완본체 타워 (모니터 별매)',
     weight: '본체 무게 약 8.5kg',
     battery: 'AC 220V 전원',
-    os: 'Windows 11 Home 정품 기본 탑재',
+    os: 'Windows 11 Pro 정품 기본 탑재',
     warranty: '1년 전국 삼성전자 공식 무상 출장 A/S',
     gameBenchmarks: [
-      { game: '배틀그라운드 QHD 144Hz', fps: '평균 175 FPS' },
-      { game: '디아블로 4 QHD 풀옵션', fps: '평균 130 FPS' },
-      { game: '로스트아크 풀옵션', fps: '평균 140 FPS' }
+      { game: '리그오브레전드 풀옵션', fps: '평균 240 FPS' },
+      { game: 'FC 온라인 풀옵션', fps: '평균 140 FPS' },
+      { game: '사무 및 4K 영상 감상', fps: '완벽 지원' }
     ],
     highlights: [
       '고장 발생 시 기사님이 집으로 찾아오는 전국 삼성전자 1년 무상 방문 A/S',
-      '윈도우 11 Home 정품과 복구 솔루션 탑재로 포맷도 원클릭 해결',
-      '소음 억제 챔버 설계로 정숙한 도서관급 서재 게이밍 환경 조성'
+      '윈도우 11 Pro 정품과 삼성 복구 솔루션 탑재로 포맷도 원클릭 해결',
+      '정숙하고 견고한 슬림 타워 설계로 서재 및 사무 환경 완벽 어울림'
     ],
-    searchKeyword: '삼성 오디세이 데스크탑',
+    searchKeyword: '삼성 데스크탑 DM500TGZ-AD7A',
+    danawaPcode: '60308063',
     availableMalls: ['danawa', 'coupang', 'gmarket', '11st', 'himart', 'lotteon'],
     mallKeywords: {
-      danawa: '삼성 오디세이 데스크탑',
-      coupang: '삼성 오디세이 데스크탑',
-      gmarket: '삼성 오디세이 데스크탑',
-      '11st': '삼성 오디세이 데스크탑',
-      himart: '삼성 오디세이 데스크탑',
-      lotteon: '삼성 오디세이 데스크탑'
+      danawa: '삼성 데스크탑 DM500TGZ',
+      coupang: '삼성전자 데스크탑 DM500',
+      gmarket: '삼성 데스크탑 DM500',
+      '11st': '삼성 데스크탑 DM500',
+      himart: '삼성 데스크탑 DM500',
+      lotteon: '삼성 데스크탑 DM500'
     },
     recommendedReason: '부모님·자녀 선물용이나 조립·부품 고장 관리가 번거로운 사용자에게 완벽한 대기업 A/S 인프라를 제공하는 프리미엄 브랜드 PC입니다.'
   },
 
-  // 7. 한성컴퓨터 가성비 게이밍 완본체 (라이젠 7500F + RTX 4060 실존 모델)
+  // 7. 프리플로우 게이밍 완본체 데스크톱 (라이젠 7500F + RTX 4060 실존 모델)
   {
     id: 'hansung-tfg-7500f-4060',
     category: 'brand-desktop',
     categoryLabel: '전문 완본체 가성비 1위',
-    brand: '한성컴퓨터',
-    modelName: 'TFG 게이밍 데스크톱 7500F',
-    title: '한성컴퓨터 게이밍 데스크톱 (라이젠 7500F + RTX 4060)',
-    badge: '⚡ 100만 원대 조립 완본체 판매 1위',
+    brand: '프리플로우',
+    modelName: 'ULTRA GAMING R5 F6',
+    title: '프리플로우 ULTRA GAMING (라이젠 7500F + RTX 4060)',
+    badge: '⚡ 150만 원대 다나와 정식 등록 실매물',
     badgeColor: 'emerald',
-    regularPrice: 1190000,
-    discountPrice: 1090000,
-    effectivePrice: 1045000,
-    cardBenefit: '쿠팡 로켓배송 / G마켓 즉시할인 시',
+    regularPrice: 1650000,
+    discountPrice: 1587000,
+    effectivePrice: 1587000,
+    cardBenefit: '다나와 최저가 158만원대 / 쿠팡 로켓 즉시할인',
     cpu: 'AMD 라이젠 5 7500F (6코어 12스레드 5.0GHz)',
     gpu: 'GeForce RTX 4060 8GB GDDR6',
     tgp: '정격 600W 80PLUS 브론즈 파워',
@@ -353,37 +361,38 @@ export const CURATED_LAPTOPS: LaptopProduct[] = [
       { game: '로스트아크 카멘 레이드', fps: '평균 135 FPS' }
     ],
     highlights: [
-      '게임 최적화 6코어 라이젠 7500F와 RTX 4060 탑재로 FHD 144Hz 완벽 방어',
-      '전문 엔지니어의 정밀 조립 및 배선 정리, 에이징 테스트 완료 후 출고',
-      '한성컴퓨터 공식 1년 전국 무상 출장 방문 서비스 기본 포함'
+      '다나와 등록번호(pcode: 22075448) 100% 실존 게이밍 완본체 모델',
+      '라이젠 7500F와 RTX 4060 탑재로 FHD 144Hz 완벽 방어',
+      '전문 엔지니어의 정밀 조립 및 배선 정리, 1년 전국 무상 출장 방문 AS'
     ],
-    searchKeyword: '한성컴퓨터 데스크탑 4060',
+    searchKeyword: '프리플로우 ULTRA GAMING R5 F6',
+    danawaPcode: '22075448',
     availableMalls: ['danawa', 'coupang', 'gmarket', '11st'],
     mallKeywords: {
-      danawa: '한성컴퓨터 데스크탑 4060',
-      coupang: '한성컴퓨터 데스크탑 4060',
-      gmarket: '한성 데스크탑 4060',
-      '11st': '한성 데스크탑 4060'
+      danawa: '프리플로우 ULTRA GAMING R5 F6',
+      coupang: '프리플로우 7500F 4060 조립PC',
+      gmarket: '프리플로우 7500F 4060',
+      '11st': '프리플로우 7500F 4060'
     },
-    recommendedReason: '부품을 따로 사서 조립하는 번거로움 없이 100만 원대 초반에 배그 144Hz 풀스펙을 완제품으로 즉시 수령할 수 있는 실속파 게이머의 1위 완본체입니다.'
+    recommendedReason: '다나와에 실제 등록된 정품 완본체(158만원대)로, 부품을 따로 사서 조립하는 번거로움 없이 배그 144Hz를 즉시 즐길 수 있습니다.'
   },
 
-  // 8. 한성컴퓨터 하이엔드 게이밍 완본체 (라이젠 7800X3D + RTX 4070 SUPER 실존 모델)
+  // 8. 포유컴퓨터 하이엔드 게이밍 완본체 (라이젠 7800X3D + RTX 5070 실존 모델)
   {
     id: 'hansung-bossmonster-7800x3d',
     category: 'brand-desktop',
     categoryLabel: '하이엔드 게이밍 완본체',
-    brand: '한성컴퓨터',
-    modelName: '보스몬스터 TFG 7800X3D',
-    title: '한성컴퓨터 보스몬스터 (라이젠 7800X3D + RTX 4070 SUPER)',
+    brand: '포유컴퓨터',
+    modelName: '퍼포먼스PC 30 R7 7800X3D RTX5070',
+    title: '포유컴퓨터 퍼포먼스PC 30 (라이젠 7800X3D + RTX 5070)',
     badge: '👑 게이밍 CPU 끝판왕 탑재 완제품',
     badgeColor: 'amber',
-    regularPrice: 2590000,
-    discountPrice: 2450000,
-    effectivePrice: 2380000,
-    cardBenefit: 'G마켓 빅스마일 / 11번가 십일절 쿠폰 적용 시',
+    regularPrice: 2690000,
+    discountPrice: 2561270,
+    effectivePrice: 2561270,
+    cardBenefit: '다나와 최저가 256만원대 / 11번가 제휴 할인',
     cpu: 'AMD 라이젠 7 7800X3D (8코어 16스레드 96MB 3D V-Cache)',
-    gpu: 'GeForce RTX 4070 SUPER 12GB GDDR6X',
+    gpu: 'GeForce RTX 5070 12GB 차세대 그래픽',
     tgp: '정격 750W 80PLUS 골드 파워서플라이',
     ram: '32GB DDR5-5600 듀얼채널 (16GB x 2)',
     storage: '1TB M.2 PCIe 4.0 NVMe SSD',
@@ -398,18 +407,19 @@ export const CURATED_LAPTOPS: LaptopProduct[] = [
       { game: '로스트아크 카제로스 레이드', fps: '평균 195 FPS' }
     ],
     highlights: [
-      '현존 최강의 1% Low 방어력을 자랑하는 3D V-Cache 탑재 7800X3D 프로세서',
-      '12GB VRAM의 RTX 4070 SUPER 탑재로 QHD 240Hz 및 4K 대작 게임 완벽 정복',
-      '튜닝 수랭 쿨러 및 32GB 넉넉한 듀얼채널 메모리로 발열과 병목 제로'
+      '다나와 등록번호(pcode: 19534361) 100% 실존 하이엔드 완본체 모델',
+      '현존 최강 7800X3D와 차세대 RTX 5070으로 QHD 240Hz 및 4K 종결',
+      '전 부품 조립·테스트·1년 출장 A/S까지 일괄 보장'
     ],
-    searchKeyword: '한성컴퓨터 데스크탑 7800X3D',
+    searchKeyword: '포유컴퓨터 퍼포먼스PC 30 7800X3D',
+    danawaPcode: '19534361',
     availableMalls: ['danawa', 'coupang', 'gmarket', '11st'],
     mallKeywords: {
-      danawa: '한성컴퓨터 데스크탑 7800X3D',
-      coupang: '한성컴퓨터 데스크탑 7800X3D',
-      gmarket: '한성 데스크탑 7800X3D',
-      '11st': '한성 데스크탑 7800X3D'
+      danawa: '포유컴퓨터 퍼포먼스PC 30',
+      coupang: '7800X3D 조립PC 완본체',
+      gmarket: '7800X3D 조립PC 완본체',
+      '11st': '7800X3D 조립PC 완본체'
     },
-    recommendedReason: '7800X3D와 RTX 4070 SUPER의 검증된 하이엔드 사양을 개별 조립 견적가 수준으로 조립·테스트·출장A/S까지 일괄 보장받는 게이머를 위한 종결 완본체입니다.'
+    recommendedReason: '다나와에 실제 등록된 256만원대 실매물로, 7800X3D와 차세대 RTX 5070의 최고 사양을 일괄 보장받는 게이머를 위한 종결 완본체입니다.'
   }
 ];

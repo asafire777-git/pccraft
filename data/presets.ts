@@ -24,6 +24,7 @@ export interface GamePreset {
     imageUrl: string;
     pros: string[];
     specsSummary: string;
+    danawaPcode?: string;
   };
   aiAnalysis: {
     resolution: string;
@@ -60,7 +61,8 @@ export const GAME_PRESETS: GamePreset[] = [
       affiliateUrl: 'https://link.coupang.com/re/AFFSRP?pageKey=%EB%9D%BC%EC%9D%B4%EC%A0%A0+5600+3050+%EC%A1%B0%EB%A6%BDPC&lptag=AF5322745&subid=pccraft',
       imageUrl: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=500&auto=format&fit=crop&q=60',
       pros: ['다나와 등록 실매물 최저가 (94만원대)', '1년 전국 무상 출장 방문 AS', 'FHD e스포츠 완벽 방어'],
-      specsSummary: '라이젠 5600 / RTX 3050 6G / 16GB DDR4 / 512GB NVMe / 500W'
+      specsSummary: '라이젠 5600 / RTX 3050 6G / 16GB DDR4 / 512GB NVMe / 500W',
+      danawaPcode: '27674522'
     },
     aiAnalysis: {
       resolution: 'FHD (1920x1080) 최적화',
@@ -100,7 +102,8 @@ export const GAME_PRESETS: GamePreset[] = [
       affiliateUrl: 'https://link.coupang.com/re/AFFSRP?pageKey=%EB%9D%BC%EC%9D%B4%EC%A0%A0+7500F+5060+%EC%A1%B0%EB%A6%BDPC&lptag=AF5322745&subid=pccraft',
       imageUrl: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=500&auto=format&fit=crop&q=60',
       pros: ['다나와 등록 실매물 최저가 (153만원대)', '정품 바이오스 세팅 및 번인 테스트 완료', '1년 전국 무상 출장 A/S 기본 포함'],
-      specsSummary: '라이젠 7500F / RTX 5060 8G / 32GB DDR5 / 1TB NVMe / 700W'
+      specsSummary: '라이젠 7500F / RTX 5060 8G / 32GB DDR5 / 1TB NVMe / 700W',
+      danawaPcode: '62160278'
     },
     aiAnalysis: {
       resolution: 'FHD (1920x1080) 풀옵션 / QHD 타협 가능',
@@ -140,7 +143,8 @@ export const GAME_PRESETS: GamePreset[] = [
       affiliateUrl: 'https://link.coupang.com/re/AFFSRP?pageKey=7800X3D+4070+SUPER+%EC%A1%B0%EB%A6%BDPC&lptag=AF5322745&subid=pccraft',
       imageUrl: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=500&auto=format&fit=crop&q=60',
       pros: ['파노라마 어항케이스 디자인 감성', '전 부품 3년 무상보증 패키지', '정품 윈도우 11 사전탑재 옵션'],
-      specsSummary: '라이젠 7800X3D / RTX 4070 SUPER 12G / 32GB DDR5 / 1TB NVMe / 700W'
+      specsSummary: '라이젠 7800X3D / RTX 4070 SUPER 12G / 32GB DDR5 / 1TB NVMe / 700W',
+      danawaPcode: '19534361'
     },
     aiAnalysis: {
       resolution: 'QHD (2560x1440) 풀옵션 종결 / 4K 고화질',

@@ -274,7 +274,9 @@ export default function LaptopCurationPage() {
                         const config = MALL_CONFIG[mallKey];
                         if (!config) return null;
                         const kw = p.mallKeywords?.[mallKey] || p.searchKeyword;
-                        const url = config.getUrl(kw);
+                        const url = (mallKey === 'danawa' && p.danawaPcode)
+                          ? `https://prod.danawa.com/info/?pcode=${p.danawaPcode}`
+                          : config.getUrl(kw);
 
                         return (
                           <a
@@ -283,7 +285,7 @@ export default function LaptopCurationPage() {
                             target="_blank"
                             rel="noopener noreferrer nofollow"
                             className={`py-2 px-2 rounded-xl ${config.bgColor} font-bold text-xs flex items-center justify-center gap-1 shadow-sm transition-all text-center truncate`}
-                            title={config.title}
+                            title={mallKey === 'danawa' && p.danawaPcode ? `다나와 등록 실물 상품(pcode: ${p.danawaPcode}) 최저가 페이지로 직행` : config.title}
                           >
                             <span className="truncate">{config.label}</span>
                             <ExternalLink className="w-3 h-3 shrink-0" />

@@ -158,11 +158,11 @@ export default function PrebuiltComparison({
               </a>
 
               <a
-                href={`https://search.danawa.com/dsearch.php?query=${encodeURIComponent(PREBUILT_SEARCH_KEYWORDS[currentPreset.id] || '프리플로우 7500F 4060')}`}
+                href={prebuilt.danawaPcode ? `https://prod.danawa.com/info/?pcode=${prebuilt.danawaPcode}` : `https://search.danawa.com/dsearch.php?query=${encodeURIComponent(PREBUILT_SEARCH_KEYWORDS[currentPreset.id] || '조립PC')}`}
                 target="_blank"
                 rel="noopener noreferrer nofollow"
                 className="py-2.5 px-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 dark:bg-slate-700 dark:hover:bg-slate-600 text-white font-bold text-xs flex items-center justify-center gap-1 shadow-sm transition-all whitespace-nowrap text-center"
-                title="다나와 실시간 완본체 시세 비교"
+                title="다나와 해당 완본체 실시간 최저가 상세 직행"
               >
                 <span>📊 다나와</span>
                 <ExternalLink className="w-3.5 h-3.5 shrink-0" />
