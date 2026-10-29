@@ -41,7 +41,7 @@ export const GAME_PRESETS: GamePreset[] = [
     badge: '입문/가성비 추천',
     targetGames: ['리그오브레전드', '발로란트', 'FC온라인(피파)', '메이플스토리', '서든어택'],
     performanceDescription: 'FHD 해상도에서 144Hz 고주사율 완벽 방어. 70~80만원대 알뜰 세팅',
-    budgetRange: '약 75만 ~ 85만원',
+    budgetRange: '약 65만 ~ 75만원',
     iconName: 'Gamepad2',
     defaultComponentIds: {
       cpu: 'cpu-amd-5600',
@@ -56,7 +56,7 @@ export const GAME_PRESETS: GamePreset[] = [
     recommendedPrebuilt: {
       title: '한성컴퓨터 가성비 게이밍 데스크탑 (라이젠 5600 + GTX 1650)',
       brand: '한성컴퓨터',
-      price: 829000,
+      price: 649000,
       affiliateUrl: 'https://link.coupang.com/re/AFFSRP?pageKey=%EB%9D%BC%EC%9D%B4%EC%A0%A0+5600+1650+%EC%A1%B0%EB%A6%BDPC&lptag=AF5322745&subid=pccraft',
       imageUrl: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=500&auto=format&fit=crop&q=60',
       pros: ['1년 무상 전국 출장 방문 AS', '윈도우 미포함 최저가 구성', '원클릭 즉시 배송'],
@@ -81,26 +81,26 @@ export const GAME_PRESETS: GamePreset[] = [
     badge: '가장 많은 선택 (BEST)',
     targetGames: ['배틀그라운드(국민옵션)', '오버워치2', '로스트아크', '디아블로4', '팰월드'],
     performanceDescription: 'FHD 풀옵션 & QHD 100Hz 진입. 최신 DDR5 플랫폼으로 차세대 호환성 확보',
-    budgetRange: '약 165만 ~ 180만원',
+    budgetRange: '약 115만 ~ 138만원',
     iconName: 'Flame',
     defaultComponentIds: {
       cpu: 'cpu-amd-7500f',
       cooler: 'cooler-basic-air',
       motherboard: 'mb-b650m-k',
-      ram: 'ram-ddr5-32gb',
+      ram: 'ram-ddr5-16gb',
       gpu: 'gpu-rtx-4060',
       ssd: 'ssd-1tb-nvme',
       power: 'power-700w-bronze',
       case: 'case-darkflash-dk200'
     },
     recommendedPrebuilt: {
-      title: '프리플로우 국민 게이밍 조립PC (라이젠 7500F + RTX 4060)',
+      title: '프리플로우 게이밍 조립PC (라이젠 7500F + RTX 4060)',
       brand: '프리플로우',
-      price: 1759000,
-      affiliateUrl: 'https://link.coupang.com/re/AFFSRP?pageKey=%EB%9D%BC%EC%9D%B4%EC%A0%A0+7500F+4060+%EC%A1%B0%EB%A6%BDPC&lptag=AF5322745&subid=pccraft',
+      price: 1150000,
+      affiliateUrl: 'https://link.coupang.com/re/AFFSRP?pageKey=%ED%94%84%EB%A6%AC%ED%94%8C%EB%A1%9C%EC%9A%B0+7500F+4060&lptag=AF5322745&subid=pccraft',
       imageUrl: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=500&auto=format&fit=crop&q=60',
       pros: ['선정리 완벽 마감', '정품 바이오스 세팅 및 번인 테스트 완료', '로켓설치 지원'],
-      specsSummary: '라이젠 7500F / RTX 4060 8G / 32GB DDR5 / 1TB NVMe / 700W'
+      specsSummary: '라이젠 7500F / RTX 4060 8G / 16GB DDR5 / 512GB NVMe / 600W'
     },
     aiAnalysis: {
       resolution: 'FHD (1920x1080) 풀옵션 / QHD 타협 가능',
@@ -121,7 +121,7 @@ export const GAME_PRESETS: GamePreset[] = [
     badge: '하드코어 게이머',
     targetGames: ['사이버펑크 2077', '검은신화: 오공', '몬스터헌터 와일즈', '엘든링', '호그와트 레거시'],
     performanceDescription: 'QHD 144Hz 풀옵션 & 레이트레이싱 완벽 지원. 현존 게이밍 최강 CPU 7800X3D + RTX 4070 SUPER',
-    budgetRange: '약 255만 ~ 275만원',
+    budgetRange: '약 219만 ~ 275만원',
     iconName: 'Zap',
     defaultComponentIds: {
       cpu: 'cpu-amd-7800x3d',
@@ -136,7 +136,7 @@ export const GAME_PRESETS: GamePreset[] = [
     recommendedPrebuilt: {
       title: '포유컴퓨터 하이엔드 게이밍 PC (7800X3D + RTX 4070 SUPER)',
       brand: '포유컴퓨터',
-      price: 2680000,
+      price: 2190000,
       affiliateUrl: 'https://link.coupang.com/re/AFFSRP?pageKey=7800X3D+4070+SUPER+%EC%A1%B0%EB%A6%BDPC&lptag=AF5322745&subid=pccraft',
       imageUrl: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=500&auto=format&fit=crop&q=60',
       pros: ['파노라마 어항케이스 디자인 감성', '전 부품 3년 무상보증 패키지', '정품 윈도우 11 사전탑재 옵션'],
@@ -161,7 +161,7 @@ export const GAME_PRESETS: GamePreset[] = [
     badge: '전문가 / 4K 풀옵션',
     targetGames: ['4K UHD 전 게임', 'AI 스테이블디퓨전', '프리미어 4K 컷편집', '블렌더 3D 렌더링'],
     performanceDescription: '4K 모니터 풀옵션 + 영상편집/원컴 4K 방송을 위한 끝판왕 워크스테이션 (RTX 4080 SUPER)',
-    budgetRange: '약 345만 ~ 370만원',
+    budgetRange: '약 298만 ~ 355만원',
     iconName: 'Crown',
     defaultComponentIds: {
       cpu: 'cpu-intel-14700k',
@@ -176,7 +176,7 @@ export const GAME_PRESETS: GamePreset[] = [
     recommendedPrebuilt: {
       title: '컴디씨 워크스테이션 & 플래그십 PC (i7-14700K + RTX 4080 SUPER)',
       brand: '컴디씨',
-      price: 3590000,
+      price: 2980000,
       affiliateUrl: 'https://link.coupang.com/re/AFFSRP?pageKey=14700K+4080+SUPER+%EC%A1%B0%EB%A6%BDPC&lptag=AF5322745&subid=pccraft',
       imageUrl: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=500&auto=format&fit=crop&q=60',
       pros: ['플래그십 감성 튜닝', '골드 등급 파워와 3열 수랭 기본 적용', 'VIP 무상 케어'],
