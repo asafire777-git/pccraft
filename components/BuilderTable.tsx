@@ -89,36 +89,37 @@ export default function BuilderTable({
   return (
     <section className="mb-10">
       {/* 견적 테이블 상단 헤더 & 총액 요약 바 */}
-      <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 mb-4 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4 transition-colors">
-        <div>
+      <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 mb-4 shadow-sm flex flex-col lg:flex-row lg:items-center justify-between gap-5 transition-colors">
+        <div className="min-w-0 flex-1">
           <div className="flex items-center gap-2">
-            <span className="text-xs font-bold text-cyan-600 dark:text-cyan-400 uppercase tracking-wider block">
+            <span className="text-xs font-bold text-cyan-600 dark:text-cyan-400 uppercase tracking-wider block whitespace-nowrap">
               Custom PC Configurator
             </span>
-            <span className="text-[10px] px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 flex items-center gap-1 font-mono font-medium">
+            <span className="text-[10px] px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 flex items-center gap-1 font-mono font-medium whitespace-nowrap">
               💡 시장 표준 기준시세
             </span>
           </div>
 
-          <h3 className="text-xl font-bold text-slate-900 dark:text-white mt-1">
-            부품별 맞춤 견적 & 오픈마켓 최저가 비교
+          <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mt-1 break-keep-all leading-snug">
+            부품별 맞춤 견적 &amp; 오픈마켓 최저가 비교
           </h3>
 
-          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 max-w-xl leading-relaxed">
+          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 max-w-xl leading-relaxed break-keep-all">
             표기 가격은 다나와/오픈마켓 <strong>시장 표준 기준가</strong>입니다. 실시간 재고와 변동 최저가는 각 쇼핑몰 바로가기 버튼(쿠팡/G마켓/11번가)을 통해 다이렉트로 확인하세요.
           </p>
         </div>
 
         <div className="flex flex-col xl:flex-row items-stretch xl:items-center gap-3.5 bg-slate-50 dark:bg-slate-950/70 p-3.5 sm:p-4 rounded-xl border border-slate-200 dark:border-slate-800/80 shrink-0">
           <div className="shrink-0 min-w-[150px]">
-            <span className="text-[11px] text-slate-500 dark:text-slate-400 block font-mono">
+            <span className="text-[11px] text-slate-500 dark:text-slate-400 block font-mono whitespace-nowrap">
               {includeWindows ? '최종 견적가 (OS 포함)' : '부품 총 합산가'}
             </span>
-            <div className="text-xl sm:text-2xl font-black text-emerald-600 dark:text-emerald-400 font-mono tracking-tight leading-none mt-1">
-              {effectiveTotalPrice.toLocaleString()} <span className="text-sm font-normal text-slate-600 dark:text-slate-300">원</span>
+            <div className="text-xl sm:text-2xl font-black text-emerald-600 dark:text-emerald-400 font-mono tracking-tight leading-none mt-1 whitespace-nowrap flex items-baseline gap-1">
+              <span>{effectiveTotalPrice.toLocaleString()}</span>
+              <span className="text-sm font-bold text-slate-600 dark:text-slate-300">원</span>
             </div>
             {includeWindows && (
-              <span className="text-[10px] text-sky-600 dark:text-sky-400 font-mono font-medium block mt-1">
+              <span className="text-[10px] text-sky-600 dark:text-sky-400 font-mono font-medium block mt-1 whitespace-nowrap">
                 부품 {totalPrice.toLocaleString()}원 + OS {WINDOWS_PRICE.toLocaleString()}원
               </span>
             )}
@@ -904,8 +905,9 @@ export default function BuilderTable({
             <span className="text-[10px] text-slate-500 dark:text-slate-400 block truncate font-medium">
               {currentPreset?.title || '맞춤 견적'} {includeWindows ? '· OS포함' : ''}
             </span>
-            <div className="text-base font-black text-emerald-600 dark:text-emerald-400 font-mono tracking-tight leading-none mt-0.5">
-              {effectiveTotalPrice.toLocaleString()} <span className="text-xs font-normal text-slate-600 dark:text-slate-400">원</span>
+            <div className="text-base font-black text-emerald-600 dark:text-emerald-400 font-mono tracking-tight leading-none mt-0.5 whitespace-nowrap flex items-baseline gap-0.5">
+              <span>{effectiveTotalPrice.toLocaleString()}</span>
+              <span className="text-xs font-normal text-slate-600 dark:text-slate-400">원</span>
             </div>
           </div>
 

@@ -297,88 +297,88 @@
       "lastUpdated": "2026-10-29 16:37"
     },
     "ram-ddr4-16gb": {
-      "price": 38000,
-      "prevPrice": 40000,
-      "priceChange": -2000,
-      "inStock": true,
-      "lastUpdated": "2026-10-29 17:30"
-    },
-    "ram-ddr4-32gb": {
-      "price": 76000,
-      "prevPrice": 79000,
-      "priceChange": -3000,
-      "inStock": true,
-      "lastUpdated": "2026-10-29 17:30"
-    },
-    "ram-ddr5-16gb": {
-      "price": 56000,
-      "prevPrice": 59000,
-      "priceChange": -3000,
-      "inStock": true,
-      "lastUpdated": "2026-10-29 17:30"
-    },
-    "ram-ddr5-32gb": {
-      "price": 118000,
-      "prevPrice": 122000,
+      "price": 164000,
+      "prevPrice": 168000,
       "priceChange": -4000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 17:30"
+      "lastUpdated": "2026-10-29 19:00"
     },
-    "ram-ddr5-teamgroup-32gb": {
-      "price": 119000,
-      "prevPrice": 125000,
+    "ram-ddr4-32gb": {
+      "price": 381000,
+      "prevPrice": 388000,
+      "priceChange": -7000,
+      "inStock": true,
+      "lastUpdated": "2026-10-29 19:00"
+    },
+    "ram-ddr5-16gb": {
+      "price": 329000,
+      "prevPrice": 335000,
       "priceChange": -6000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 17:30"
+      "lastUpdated": "2026-10-29 19:00"
+    },
+    "ram-ddr5-32gb": {
+      "price": 757000,
+      "prevPrice": 765000,
+      "priceChange": -8000,
+      "inStock": true,
+      "lastUpdated": "2026-10-29 19:00"
+    },
+    "ram-ddr5-teamgroup-32gb": {
+      "price": 735000,
+      "prevPrice": 745000,
+      "priceChange": -10000,
+      "inStock": true,
+      "lastUpdated": "2026-10-29 19:00"
     },
     "ram-ddr5-hynix-32gb": {
-      "price": 128000,
-      "prevPrice": 135000,
-      "priceChange": -7000,
+      "price": 785000,
+      "prevPrice": 795000,
+      "priceChange": -10000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 17:30"
+      "lastUpdated": "2026-10-29 19:00"
     },
     "ram-ddr5-tcreate-6000": {
-      "price": 145000,
-      "prevPrice": 152000,
-      "priceChange": -7000,
+      "price": 790000,
+      "prevPrice": 805000,
+      "priceChange": -15000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 17:30"
+      "lastUpdated": "2026-10-29 19:00"
     },
     "ram-ddr5-64gb": {
-      "price": 236000,
-      "prevPrice": 245000,
-      "priceChange": -9000,
+      "price": 1450000,
+      "prevPrice": 1480000,
+      "priceChange": -30000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 17:30"
+      "lastUpdated": "2026-10-29 19:00"
     },
     "ram-ddr5-klevv-16gb": {
-      "price": 56000,
-      "prevPrice": 59000,
-      "priceChange": -3000,
+      "price": 315000,
+      "prevPrice": 325000,
+      "priceChange": -10000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 17:30"
+      "lastUpdated": "2026-10-29 19:00"
     },
     "ram-ddr5-klevv-32gb": {
-      "price": 118000,
-      "prevPrice": 123000,
-      "priceChange": -5000,
+      "price": 720000,
+      "prevPrice": 735000,
+      "priceChange": -15000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 17:30"
+      "lastUpdated": "2026-10-29 19:00"
     },
     "ram-ddr5-gskill-32gb": {
-      "price": 159000,
-      "prevPrice": 168000,
-      "priceChange": -9000,
+      "price": 795000,
+      "prevPrice": 810000,
+      "priceChange": -15000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 17:30"
+      "lastUpdated": "2026-10-29 19:00"
     },
     "gpu-gtx-1650": {
       "price": 98000,
       "prevPrice": 105000,
       "priceChange": -7000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 17:30"
+      "lastUpdated": "2026-10-29 19:00"
     },
     "gpu-rtx-3050-6gb": {
       "price": 229000,
@@ -395,11 +395,11 @@
       "lastUpdated": "2026-10-29 16:37"
     },
     "gpu-rtx-4060": {
-      "price": 469000,
-      "prevPrice": 479000,
-      "priceChange": -10000,
+      "price": 340000,
+      "prevPrice": 355000,
+      "priceChange": -15000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 17:30"
+      "lastUpdated": "2026-10-29 19:00"
     },
     "gpu-rtx-4060-zotac": {
       "price": 468000,
@@ -476,28 +476,28 @@
       "prevPrice": 499000,
       "priceChange": -10000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 16:37"
+      "lastUpdated": "2026-10-29 19:00"
     },
     "gpu-rtx-5060-zotac": {
       "price": 485000,
       "prevPrice": 495000,
       "priceChange": -10000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 16:37"
+      "lastUpdated": "2026-10-29 19:00"
     },
     "gpu-rtx-5060-gigabyte": {
       "price": 495000,
-      "prevPrice": 509000,
-      "priceChange": -14000,
+      "prevPrice": 505000,
+      "priceChange": -10000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 16:37"
+      "lastUpdated": "2026-10-29 19:00"
     },
     "gpu-rtx-5060-galax": {
       "price": 492000,
-      "prevPrice": 505000,
-      "priceChange": -13000,
+      "prevPrice": 499000,
+      "priceChange": -7000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 16:37"
+      "lastUpdated": "2026-10-29 19:00"
     },
     "gpu-rtx-5060ti-8gb": {
       "price": 645000,

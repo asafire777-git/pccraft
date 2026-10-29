@@ -114,7 +114,7 @@ export default function PriceBattle({ currentPreset, selectedComponents, totalPr
                   <span className="text-xs font-bold text-slate-700 dark:text-slate-300 block">예상 체감 혜택가</span>
                   <span className="text-[10px] text-slate-400 dark:text-slate-500">* 프로모션 추정치</span>
                 </div>
-                <span className="text-lg sm:text-xl font-black font-mono text-rose-600 dark:text-rose-400">
+                <span className="text-lg sm:text-xl font-black font-mono text-rose-600 dark:text-rose-400 whitespace-nowrap">
                   약 {coupangEffectivePrice.toLocaleString()}원
                 </span>
               </div>
@@ -188,7 +188,7 @@ export default function PriceBattle({ currentPreset, selectedComponents, totalPr
                   <span className="text-xs font-bold text-slate-700 dark:text-slate-300 block">예상 체감 혜택가</span>
                   <span className="text-[10px] text-slate-400 dark:text-slate-500">* 프로모션 추정치</span>
                 </div>
-                <span className="text-lg sm:text-xl font-black font-mono text-orange-600 dark:text-orange-400">
+                <span className="text-lg sm:text-xl font-black font-mono text-orange-600 dark:text-orange-400 whitespace-nowrap">
                   약 {openMarketEffectivePrice.toLocaleString()}원
                 </span>
               </div>
@@ -273,7 +273,7 @@ export default function PriceBattle({ currentPreset, selectedComponents, totalPr
                   <span className="text-xs font-bold text-slate-700 dark:text-slate-300 block">포인트 환산 체감가</span>
                   <span className="text-[10px] text-slate-400 dark:text-slate-500">* 멤버십 기준</span>
                 </div>
-                <span className="text-lg sm:text-xl font-black font-mono text-emerald-600 dark:text-emerald-400">
+                <span className="text-lg sm:text-xl font-black font-mono text-emerald-600 dark:text-emerald-400 whitespace-nowrap">
                   약 {naverEffectivePrice.toLocaleString()}원
                 </span>
               </div>

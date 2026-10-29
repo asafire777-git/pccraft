@@ -41,25 +41,25 @@ export default function PrebuiltComparison({
               </span>
             </div>
 
-            <h4 className="text-lg font-bold text-slate-900 dark:text-white">
+            <h4 className="text-lg font-bold text-slate-900 dark:text-white break-keep-all">
               나만의 커스텀 최저가 조립 PC
             </h4>
-            <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+            <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 break-keep-all">
               8개 부품을 각각 최저가 핫딜로 구매하여 최대의 가성비를 챙기는 방식
             </p>
 
             <ul className="mt-5 space-y-2.5 text-xs text-slate-600 dark:text-slate-300">
               <li className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
-                <span>중간 유통 마진 없이 부품 원가 기준 최저가 확보</span>
+                <span className="break-keep-all">중간 유통 마진 없이 부품 원가 기준 최저가 확보</span>
               </li>
               <li className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
-                <span>원하는 제조사 브랜드 부품 100% 선택 가능</span>
+                <span className="break-keep-all">원하는 제조사 브랜드 부품 100% 선택 가능</span>
               </li>
               <li className="flex items-center gap-2">
                 <ShieldAlert className="w-4 h-4 text-amber-500 shrink-0" />
-                <span className="text-slate-500">직접 조립 시간(약 1~2시간) 소요 및 초기 불량 개별 대응</span>
+                <span className="text-slate-500 break-keep-all">직접 조립 시간(약 1~2시간) 소요 및 초기 불량 개별 대응</span>
               </li>
             </ul>
           </div>
@@ -67,11 +67,11 @@ export default function PrebuiltComparison({
           <div className="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
             <div>
               <span className="text-xs text-slate-400 dark:text-slate-500 block">부품 합산 총액</span>
-              <span className="text-xl font-black text-cyan-600 dark:text-cyan-400 font-mono">
+              <span className="text-xl font-black text-cyan-600 dark:text-cyan-400 font-mono whitespace-nowrap">
                 {customTotalPrice.toLocaleString()}원
               </span>
             </div>
-            <span className="text-xs text-slate-500">
+            <span className="text-xs text-slate-500 whitespace-nowrap">
               가성비 최우선 선택지
             </span>
           </div>
@@ -79,7 +79,7 @@ export default function PrebuiltComparison({
 
         {/* 오른쪽: 검증된 완본체 추천 카드 */}
         <div className="bg-gradient-to-br from-white to-slate-50 dark:from-slate-900 dark:to-slate-950 border-2 border-emerald-500/50 rounded-2xl p-6 flex flex-col justify-between relative shadow-md shadow-emerald-500/5 transition-colors">
-          <div className="absolute -top-3 right-6 bg-emerald-600 text-white text-[11px] font-black px-3 py-0.5 rounded-full shadow">
+          <div className="absolute -top-3 right-6 bg-emerald-600 text-white text-[11px] font-black px-3 py-0.5 rounded-full shadow whitespace-nowrap">
             조립 번거로움 ZERO
           </div>
 
@@ -88,15 +88,15 @@ export default function PrebuiltComparison({
               <span className="p-2 rounded-xl bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/20">
                 <PackageCheck className="w-5 h-5" />
               </span>
-              <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-emerald-100 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/40">
+              <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-emerald-100 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/40 whitespace-nowrap">
                 {prebuilt.brand} 완본체 추천
               </span>
             </div>
 
-            <h4 className="text-lg font-bold text-slate-900 dark:text-white">
+            <h4 className="text-lg font-bold text-slate-900 dark:text-white break-keep-all">
               {prebuilt.title}
             </h4>
-            <p className="text-xs text-emerald-700 dark:text-emerald-400/90 font-mono mt-1 font-semibold">
+            <p className="text-xs text-emerald-700 dark:text-emerald-400/90 font-mono mt-1 font-semibold break-keep-all">
               {prebuilt.specsSummary}
             </p>
 

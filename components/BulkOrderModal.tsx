@@ -115,8 +115,9 @@ export default function BulkOrderModal({
             <span className="text-xs text-slate-500 dark:text-slate-400 font-semibold block">
               부품 총 견적가 (8종 합산)
             </span>
-            <div className="text-2xl font-black font-mono text-emerald-600 dark:text-emerald-400">
-              {totalPrice.toLocaleString()} <span className="text-sm font-sans font-normal">원</span>
+            <div className="text-2xl font-black font-mono text-emerald-600 dark:text-emerald-400 whitespace-nowrap flex items-baseline gap-1">
+              <span>{totalPrice.toLocaleString()}</span>
+              <span className="text-sm font-sans font-normal">원</span>
             </div>
           </div>
 

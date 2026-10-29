@@ -40,18 +40,18 @@ function roundToThousand(num) {
 
 // 부품별 현실적인 가격 허용 범위 (스폰서 완본체 260만원이나 튜닝 악세서리 5천원 매칭 방지 필터)
 const SANITY_BOUNDS = {
-  // RAM (정상 데스크탑 규격 현실 시세 필터)
-  'ram-ddr4-16gb': { min: 32000, max: 48000, query: '삼성전자 DDR4-3200 16GB' },
-  'ram-ddr4-32gb': { min: 65000, max: 95000, query: '삼성전자 DDR4-3200 32GB' },
-  'ram-ddr5-16gb': { min: 48000, max: 68000, query: '삼성전자 DDR5-5600 16GB' },
-  'ram-ddr5-32gb': { min: 105000, max: 135000, query: '삼성전자 DDR5-5600 32GB' },
-  'ram-ddr5-teamgroup-32gb': { min: 105000, max: 135000, query: 'TeamGroup DDR5-5600 Elite 32GB' },
-  'ram-ddr5-hynix-32gb': { min: 115000, max: 145000, query: 'SK하이닉스 DDR5-5600 32GB' },
-  'ram-ddr5-tcreate-6000': { min: 135000, max: 165000, query: 'TeamGroup T-CREATE DDR5-6000 CL30 32GB' },
-  'ram-ddr5-64gb': { min: 210000, max: 270000, query: '삼성전자 DDR5-5600 64GB' },
-  'ram-ddr5-klevv-16gb': { min: 48000, max: 68000, query: '에센코어 KLEVV DDR5-5600 16GB' },
-  'ram-ddr5-klevv-32gb': { min: 105000, max: 135000, query: '에센코어 KLEVV DDR5-5600 32GB' },
-  'ram-ddr5-gskill-32gb': { min: 145000, max: 185000, query: 'G.SKILL DDR5-6000 CL30 RIPJAWS 32GB' },
+  // RAM (2026년 D램 폭등 시장 현실 시세 필터)
+  'ram-ddr4-16gb': { min: 140000, max: 210000, query: '삼성전자 DDR4-3200 16GB' },
+  'ram-ddr4-32gb': { min: 320000, max: 460000, query: '삼성전자 DDR4-3200 32GB' },
+  'ram-ddr5-16gb': { min: 280000, max: 390000, query: '삼성전자 DDR5-5600 16GB' },
+  'ram-ddr5-32gb': { min: 650000, max: 880000, query: '삼성전자 DDR5-5600 32GB' },
+  'ram-ddr5-teamgroup-32gb': { min: 640000, max: 860000, query: 'TeamGroup DDR5-5600 Elite 32GB' },
+  'ram-ddr5-hynix-32gb': { min: 680000, max: 910000, query: 'SK하이닉스 DDR5-5600 32GB' },
+  'ram-ddr5-tcreate-6000': { min: 680000, max: 920000, query: 'TeamGroup T-CREATE DDR5-6000 CL30 32GB' },
+  'ram-ddr5-64gb': { min: 1200000, max: 1700000, query: '삼성전자 DDR5-5600 64GB' },
+  'ram-ddr5-klevv-16gb': { min: 270000, max: 380000, query: '에센코어 KLEVV DDR5-5600 16GB' },
+  'ram-ddr5-klevv-32gb': { min: 620000, max: 850000, query: '에센코어 KLEVV DDR5-5600 32GB' },
+  'ram-ddr5-gskill-32gb': { min: 690000, max: 920000, query: 'G.SKILL DDR5-6000 CL30 RIPJAWS 32GB' },
 
   // CPU
   'cpu-amd-5600': { min: 125000, max: 155000, query: 'AMD 라이젠5 5600 멀티팩' },
@@ -72,8 +72,10 @@ const SANITY_BOUNDS = {
   'gpu-gtx-1650': { min: 85000, max: 120000, query: '지포스 GTX 1650' },
   'gpu-rtx-3050-6gb': { min: 210000, max: 250000, query: '지포스 RTX 3050 6GB' },
   'gpu-rx-6600': { min: 235000, max: 285000, query: '라데온 RX 6600' },
-  'gpu-rtx-4060': { min: 440000, max: 510000, query: 'GIGABYTE 지포스 RTX 4060 WINDFORCE OC' },
-  'gpu-rtx-4060-zotac': { min: 440000, max: 510000, query: 'ZOTAC RTX 4060 TWIN Edge' },
+  'gpu-rtx-4060': { min: 300000, max: 380000, query: '지포스 RTX 4060' },
+  'gpu-rtx-5060-gigabyte': { min: 460000, max: 540000, query: 'GIGABYTE 지포스 RTX 5060' },
+  'gpu-rtx-5060-emtek': { min: 460000, max: 540000, query: '이엠텍 지포스 RTX 5060' },
+  'gpu-rtx-5060-zotac': { min: 450000, max: 530000, query: 'ZOTAC 지포스 RTX 5060' },
   'gpu-rtx-4060ti-8gb': { min: 510000, max: 680000, query: '지포스 RTX 4060 Ti 8GB' },
   'gpu-rtx-4070super': { min: 760000, max: 960000, query: '이엠텍 지포스 RTX 4070 SUPER MIRACLE' },
   'gpu-rtx-4070tisuper': { min: 1050000, max: 1350000, query: 'RTX 4070 Ti SUPER 16GB' },
