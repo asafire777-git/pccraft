@@ -144,6 +144,17 @@ export default function MatchingMonitors({ gpuName }: MatchingMonitorsProps) {
                   >
                     <span>🛒 G마켓</span>
                   </a>
+
+                  <a
+                    href={getOpenMarketProductUrl(mon.id, mon.name, 'himart', mon.searchKeyword)}
+                    target="_blank"
+                    rel="noopener noreferrer nofollow"
+                    onClick={() => trackEvent('affiliate_click', { platform: 'himart', item_id: mon.id, item_name: mon.name, price: mon.price, category: 'monitor' })}
+                    className="py-1.5 px-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-[11px] font-bold flex items-center justify-center gap-1 shadow-xs transition-colors"
+                    title="하이마트 카드청구할인 특가 보기"
+                  >
+                    <span>하이마트</span>
+                  </a>
                 </div>
               </div>
             ))}

@@ -250,10 +250,19 @@ export const CUSTOM_GMARKET_GOODS_CODES: Record<string, string> = {
 export function getOpenMarketProductUrl(
   componentId: string,
   fallbackName?: string,
-  mall: 'gmarket' | '11st' = 'gmarket',
+  mall: 'gmarket' | '11st' | 'himart' | 'lotteon' = 'gmarket',
   itemSearchKeyword?: string
 ): string {
-  // 1. 특정 상품 goodscode가 등록되어 있는 경우 상품 상세 페이지로 우선 직행
+  // 1. 하이마트 및 롯데온 특화 라우팅
+  const keyword = itemSearchKeyword || COMPONENT_SEARCH_KEYWORDS[componentId] || fallbackName || '컴퓨터 부품';
+  if (mall === 'himart') {
+    return getHimartSearchUrl(keyword);
+  }
+  if (mall === 'lotteon') {
+    return getLotteonSearchUrl(keyword);
+  }
+
+  // 2. 특정 상품 goodscode가 등록되어 있는 경우 상품 상세 페이지로 우선 직행
   if (mall === 'gmarket' && CUSTOM_GMARKET_GOODS_CODES[componentId]) {
     const itemUrl = `https://item.gmarket.co.kr/Item?goodscode=${CUSTOM_GMARKET_GOODS_CODES[componentId]}`;
     if (LINKPRICE_AFFILIATE_ID) {
@@ -262,9 +271,7 @@ export function getOpenMarketProductUrl(
     return itemUrl;
   }
 
-  // 2. 정확한 브랜드 + 최적화 키워드 우선 적용 (품절 및 긴 유통사명으로 인한 검색 0건 방지)
-  const keyword = itemSearchKeyword || COMPONENT_SEARCH_KEYWORDS[componentId] || fallbackName || '컴퓨터 부품';
-
+  // 3. 정확한 브랜드 + 최적화 키워드 우선 적용 (품절 및 긴 유통사명으로 인한 검색 0건 방지)
   let targetUrl = `https://browse.gmarket.co.kr/search?keyword=${encodeURIComponent(keyword)}`;
   const merchant = mall === '11st' ? '11st' : 'gmarket';
 
