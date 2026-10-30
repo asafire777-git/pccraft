@@ -13,10 +13,12 @@ import { GamePreset, GAME_PRESETS } from '@/data/presets';
 import { getCoupangProductUrl, getCoupangBulkCartUrl, getOpenMarketProductUrl, getPromoGatewayUrl, getDanawaSearchUrl, get11stSearchUrl } from '@/lib/affiliate';
 import { encodeQuoteToShareUrl } from '@/lib/share';
 import { trackEvent } from '@/lib/gtag';
+import { getOptimizedCompatibilityPreset, CompatibilityPresetResult } from '@/lib/recommendation';
 
 interface BuilderTableProps {
   selectedComponents: Record<string, ComponentItem>;
   onSelectComponent: (category: string, item: ComponentItem) => void;
+  onBatchSelectComponents?: (components: Record<string, ComponentItem>, reasoning?: CompatibilityPresetResult['reasoning']) => void;
   totalPrice: number;
   currentPreset?: GamePreset;
   onOpenSaveModal?: () => void;
@@ -36,6 +38,7 @@ const CATEGORY_ORDER = [
 export default function BuilderTable({
   selectedComponents,
   onSelectComponent,
+  onBatchSelectComponents,
   totalPrice,
   currentPreset,
   onOpenSaveModal
@@ -43,6 +46,7 @@ export default function BuilderTable({
   const [modalCategory, setModalCategory] = useState<string | null>(null);
   const [modalSearch, setModalSearch] = useState('');
   const [modalBrand, setModalBrand] = useState('all');
+  const [autoCompatibilityMode, setAutoCompatibilityMode] = useState(true);
   const [showBulkModal, setShowBulkModal] = useState(false);
   const [showImageModal, setShowImageModal] = useState(false);
   const [showTakeoffModal, setShowTakeoffModal] = useState(false);
@@ -66,6 +70,18 @@ export default function BuilderTable({
 
   const handleSelect = (category: string, item: ComponentItem) => {
     onSelectComponent(category, item);
+    closeModal();
+  };
+
+  const handleSmartCpuSelect = (cpuItem: ComponentItem) => {
+    const preset = getOptimizedCompatibilityPreset(cpuItem, selectedComponents);
+    if (onBatchSelectComponents) {
+      onBatchSelectComponents(preset.optimizedComponents, preset.reasoning);
+    } else {
+      Object.entries(preset.optimizedComponents).forEach(([cat, comp]) => {
+        onSelectComponent(cat, comp);
+      });
+    }
     closeModal();
   };
 
@@ -677,6 +693,43 @@ export default function BuilderTable({
                 </button>
               </div>
 
+              {/* CPU 선택 시 AI 스마트 호환 진단 & 일괄 맞춤 배너 */}
+              {modalCategory === 'cpu' && (
+                <div className="p-3 sm:px-4 sm:py-3 bg-gradient-to-r from-cyan-500/15 via-indigo-500/10 to-emerald-500/15 border-b border-cyan-500/20 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
+                  <div className="flex items-start gap-2 min-w-0">
+                    <span className="flex h-2.5 w-2.5 relative shrink-0 mt-1">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-cyan-500"></span>
+                    </span>
+                    <div className="text-xs">
+                      <div className="flex items-center gap-1.5 flex-wrap">
+                        <strong className="font-extrabold text-cyan-800 dark:text-cyan-200">
+                          ⚡ AI 스마트 호환 견적 자동 완성
+                        </strong>
+                        <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-cyan-100 dark:bg-cyan-900/60 text-cyan-700 dark:text-cyan-300 font-bold">
+                          소켓·DDR·파워·병목0% GPU
+                        </span>
+                      </div>
+                      <p className="text-[11px] text-slate-600 dark:text-slate-300 mt-0.5 leading-tight">
+                        CPU를 선택하시면 호환되는 <strong>메인보드(소켓), DDR4/DDR5 메모리, 정격 파워, 병목 없는 최적 GPU</strong>까지 한 번에 최적 세팅합니다.
+                      </p>
+                    </div>
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={() => setAutoCompatibilityMode(!autoCompatibilityMode)}
+                    className={`shrink-0 px-3 py-1.5 rounded-xl font-bold text-xs transition-all flex items-center gap-1.5 cursor-pointer shadow-sm self-end sm:self-center ${
+                      autoCompatibilityMode
+                        ? 'bg-gradient-to-r from-cyan-600 to-indigo-600 text-white ring-2 ring-cyan-400/40'
+                        : 'bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-300'
+                    }`}
+                  >
+                    <span>{autoCompatibilityMode ? '⚡ 호환 세트 자동 맞춤 ON' : '단일 CPU만 변경'}</span>
+                  </button>
+                </div>
+              )}
+
               {/* 검색창 및 브랜드 필터 바 */}
               <div className="p-3 sm:p-4 bg-slate-50/80 dark:bg-slate-900/60 border-b border-slate-200/80 dark:border-slate-800 space-y-2.5">
                 <div className="relative">
@@ -756,7 +809,13 @@ export default function BuilderTable({
                         {/* 좌측: 부품 썸네일 & 상세 스펙 */}
                         <div
                           className="flex items-start gap-3 flex-1 min-w-0 cursor-pointer"
-                          onClick={() => handleSelect(modalCategory, option)}
+                          onClick={() => {
+                            if (modalCategory === 'cpu' && autoCompatibilityMode) {
+                              handleSmartCpuSelect(option);
+                            } else {
+                              handleSelect(modalCategory, option);
+                            }
+                          }}
                         >
                           <ComponentThumbnail
                             category={option.category}
@@ -858,6 +917,24 @@ export default function BuilderTable({
                               <span className="px-3 py-2 rounded-xl bg-cyan-600 text-white text-xs font-bold flex items-center gap-1 shadow-sm">
                                 <Check className="w-3.5 h-3.5" /> 선택중
                               </span>
+                            ) : modalCategory === 'cpu' ? (
+                              <>
+                                <button
+                                  onClick={() => handleSmartCpuSelect(option)}
+                                  className="px-3 py-2 rounded-xl bg-gradient-to-r from-cyan-600 via-indigo-600 to-emerald-600 hover:from-cyan-500 hover:to-indigo-500 text-white text-xs font-bold shadow-sm cursor-pointer transition-all flex items-center gap-1 active:scale-95"
+                                  title="이 CPU에 맞는 메인보드, DDR 메모리, 파워, 최적 GPU까지 일괄 자동 세팅"
+                                >
+                                  <Sparkles className="w-3.5 h-3.5" />
+                                  <span>⚡ 호환세트 완성</span>
+                                </button>
+                                <button
+                                  onClick={() => handleSelect(modalCategory, option)}
+                                  className="px-2.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-medium cursor-pointer transition-colors"
+                                  title="다른 부품 유지하고 CPU만 변경"
+                                >
+                                  CPU만 변경
+                                </button>
+                              </>
                             ) : (
                               <button
                                 onClick={() => handleSelect(modalCategory, option)}

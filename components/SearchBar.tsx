@@ -1,14 +1,17 @@
 'use client';
 
 import React, { useState, useRef, useEffect, useMemo } from 'react';
-import { Search, X, Sparkles, ExternalLink, Cpu, Gamepad2, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { Search, X, Sparkles, ExternalLink, Cpu, Gamepad2, ArrowRight, CheckCircle2, Zap } from 'lucide-react';
 import { COMPONENTS_DATA, ComponentItem } from '@/data/components';
 import { GAME_PRESETS, GamePreset } from '@/data/presets';
 import { getCoupangProductUrl, getCoupangSearchUrl } from '@/lib/affiliate';
+import { getOptimizedCompatibilityPreset, CompatibilityPresetResult } from '@/lib/recommendation';
 
 interface SearchBarProps {
   onSelectPreset?: (preset: GamePreset) => void;
   onSelectComponent?: (category: string, item: ComponentItem) => void;
+  onBatchSelectComponents?: (components: Record<string, ComponentItem>, reasoning?: CompatibilityPresetResult['reasoning']) => void;
+  currentComponents?: Partial<Record<string, ComponentItem>>;
 }
 
 const POPULAR_TAGS = [
@@ -21,9 +24,15 @@ const POPULAR_TAGS = [
   { label: '1TB NVMe SSD', query: '1TB' }
 ];
 
-export default function SearchBar({ onSelectPreset, onSelectComponent }: SearchBarProps) {
+export default function SearchBar({
+  onSelectPreset,
+  onSelectComponent,
+  onBatchSelectComponents,
+  currentComponents
+}: SearchBarProps) {
   const [query, setQuery] = useState('');
   const [isOpen, setIsOpen] = useState(false);
+  const [autoCompatibilityMode, setAutoCompatibilityMode] = useState(true);
   const containerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -114,8 +123,54 @@ export default function SearchBar({ onSelectPreset, onSelectComponent }: SearchB
     setIsOpen(false);
   };
 
+  const handleSmartCpuSelect = (comp: ComponentItem) => {
+    const preset = getOptimizedCompatibilityPreset(comp, currentComponents);
+    if (onBatchSelectComponents) {
+      onBatchSelectComponents(preset.optimizedComponents, preset.reasoning);
+    } else if (onSelectComponent) {
+      onSelectComponent(comp.category, comp);
+    }
+    setIsOpen(false);
+    // 견적서 영역으로 스크롤 이동
+    const element = document.getElementById('builder-table-section') || document.getElementById('price-battle-section');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div ref={containerRef} className="relative w-full max-w-2xl mx-auto mb-8 z-30">
+      {/* 검색창 상단: AI 스마트 호환 진단 & 견적 자동 완성 안내 바 */}
+      <div className="mb-2.5 p-2.5 sm:px-3.5 sm:py-2 rounded-2xl bg-gradient-to-r from-cyan-500/15 via-indigo-500/10 to-emerald-500/15 border border-cyan-500/30 dark:border-cyan-500/20 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+        <div className="flex items-center gap-2 min-w-0">
+          <span className="flex h-2.5 w-2.5 relative shrink-0">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-cyan-500"></span>
+          </span>
+          <div className="text-xs">
+            <span className="font-extrabold text-cyan-700 dark:text-cyan-300">
+              ⚡ AI 스마트 호환 견적 모드:
+            </span>{' '}
+            <span className="text-slate-700 dark:text-slate-300 font-medium">
+              CPU 검색 후 담기 시, <strong className="text-cyan-600 dark:text-cyan-400">호환 보드·DDR램·파워·병목 0% GPU</strong>를 한 번에 자동 세팅합니다.
+            </span>
+          </div>
+        </div>
+
+        <button
+          type="button"
+          onClick={() => setAutoCompatibilityMode(!autoCompatibilityMode)}
+          className={`shrink-0 px-2.5 py-1 rounded-xl font-bold text-[11px] transition-all flex items-center gap-1.5 cursor-pointer shadow-sm self-end sm:self-center ${
+            autoCompatibilityMode
+              ? 'bg-gradient-to-r from-cyan-600 to-indigo-600 text-white ring-2 ring-cyan-400/40'
+              : 'bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-300'
+          }`}
+          title="CPU 선택 시 호환 부품 자동 추천 모드 켜기/끄기"
+        >
+          <span>{autoCompatibilityMode ? '⚡ 자동 맞춤 ON' : '단일 CPU만 변경'}</span>
+        </button>
+      </div>
+
       {/* 스마트 통합 검색 인풋 바 */}
       <div className="relative flex items-center">
         <div className="absolute left-4 text-cyan-600 dark:text-cyan-400 pointer-events-none">
@@ -232,24 +287,53 @@ export default function SearchBar({ onSelectPreset, onSelectComponent }: SearchB
                 </div>
                 <div className="mt-1 space-y-1">
                   {results.components.map((comp) => {
+                    const isCpu = comp.category === 'cpu';
                     const coupangUrl = getCoupangProductUrl(comp.id, comp.name, comp.searchKeyword);
                     return (
                       <div
                         key={comp.id}
-                        className="group p-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/80 transition-colors flex items-center justify-between gap-3"
+                        className={`group p-2.5 rounded-xl transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 ${
+                          isCpu
+                            ? 'bg-gradient-to-r from-cyan-50/80 via-indigo-50/50 to-emerald-50/60 dark:from-cyan-950/30 dark:via-indigo-950/20 dark:to-emerald-950/20 border border-cyan-500/30 shadow-xs'
+                            : 'hover:bg-slate-100 dark:hover:bg-slate-800/80'
+                        }`}
                       >
                         <div
                           className="flex items-center gap-3 flex-1 min-w-0 cursor-pointer"
-                          onClick={() => handleComponentClick(comp)}
+                          onClick={() => {
+                            if (isCpu && autoCompatibilityMode) {
+                              handleSmartCpuSelect(comp);
+                            } else {
+                              handleComponentClick(comp);
+                            }
+                          }}
                         >
-                          <span className="px-1.5 py-0.5 rounded text-[10px] font-bold bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 shrink-0">
+                          <span
+                            className={`px-2 py-0.5 rounded text-[10px] font-bold shrink-0 ${
+                              isCpu
+                                ? 'bg-cyan-600 text-white'
+                                : 'bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300'
+                            }`}
+                          >
                             {comp.categoryName.split(' ')[0]}
                           </span>
                           <div className="min-w-0">
-                            <div className="text-sm font-semibold text-slate-800 dark:text-slate-200 truncate group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
-                              {comp.name}
+                            <div className="flex items-center gap-1.5 flex-wrap">
+                              <span className="text-sm font-semibold text-slate-800 dark:text-slate-200 truncate group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
+                                {comp.name}
+                              </span>
+                              {comp.socket && (
+                                <span className="text-[10px] font-mono font-bold px-1.5 py-0.2 rounded bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800">
+                                  {comp.socket}
+                                </span>
+                              )}
+                              {isCpu && (
+                                <span className="text-[10px] font-bold px-1.5 py-0.2 rounded bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 flex items-center gap-0.5">
+                                  <Zap className="w-2.5 h-2.5" /> 스마트 호환 자동 완성
+                                </span>
+                              )}
                             </div>
-                            <div className="text-xs font-mono font-bold text-slate-900 dark:text-white">
+                            <div className="text-xs font-mono font-bold text-slate-900 dark:text-white mt-0.5">
                               {comp.price.toLocaleString()}원
                               {comp.inStock ? (
                                 <span className="ml-2 text-[10px] text-emerald-600 dark:text-emerald-400 font-sans font-normal inline-flex items-center gap-0.5">
@@ -264,15 +348,35 @@ export default function SearchBar({ onSelectPreset, onSelectComponent }: SearchB
                           </div>
                         </div>
 
-                        <div className="flex items-center gap-1.5 shrink-0">
-                          {onSelectComponent && (
-                            <button
-                              onClick={() => handleComponentClick(comp)}
-                              className="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-semibold transition-colors cursor-pointer"
-                              title="현재 견적에 교체 담기"
-                            >
-                              견적 담기
-                            </button>
+                        <div className="flex items-center gap-1.5 shrink-0 self-end sm:self-center">
+                          {isCpu ? (
+                            <>
+                              <button
+                                onClick={() => handleSmartCpuSelect(comp)}
+                                className="px-3 py-1.5 rounded-lg bg-gradient-to-r from-cyan-600 via-indigo-600 to-emerald-600 hover:from-cyan-500 hover:to-indigo-500 text-white text-xs font-bold transition-all shadow-sm flex items-center gap-1 cursor-pointer active:scale-95"
+                                title="이 CPU에 맞는 메인보드, DDR 메모리, 파워, 최적 GPU까지 일괄 자동 세팅"
+                              >
+                                <Sparkles className="w-3.5 h-3.5" />
+                                <span>⚡ 호환세트 완성</span>
+                              </button>
+                              <button
+                                onClick={() => handleComponentClick(comp)}
+                                className="px-2 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-medium transition-colors cursor-pointer"
+                                title="다른 부품 유지하고 CPU만 변경"
+                              >
+                                CPU만 담기
+                              </button>
+                            </>
+                          ) : (
+                            onSelectComponent && (
+                              <button
+                                onClick={() => handleComponentClick(comp)}
+                                className="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-semibold transition-colors cursor-pointer"
+                                title="현재 견적에 교체 담기"
+                              >
+                                견적 담기
+                              </button>
+                            )
                           )}
                           <a
                             href={coupangUrl}

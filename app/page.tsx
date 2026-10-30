@@ -78,11 +78,52 @@ export default function HomePage() {
     }
   };
 
+  const [smartToast, setSmartToast] = useState<{
+    title: string;
+    desc: string;
+    items: string[];
+  } | null>(null);
+
   const handleSelectComponent = (category: string, item: ComponentItem) => {
     setSelectedComponents((prev) => ({
       ...prev,
       [category]: item
     }));
+  };
+
+  const handleBatchSelectComponents = (
+    newComponents: Record<string, ComponentItem>,
+    reasoning?: {
+      title: string;
+      description: string;
+      socketSummary: string;
+      ramSummary: string;
+      gpuSummary: string;
+      powerSummary: string;
+      coolerSummary: string;
+    }
+  ) => {
+    setSelectedComponents((prev) => ({
+      ...prev,
+      ...newComponents
+    }));
+
+    if (reasoning) {
+      setSmartToast({
+        title: reasoning.title,
+        desc: reasoning.description,
+        items: [
+          `메인보드: ${reasoning.socketSummary}`,
+          `메모리: ${reasoning.ramSummary}`,
+          `그래픽카드: ${reasoning.gpuSummary}`,
+          `파워: ${reasoning.powerSummary}`,
+          `쿨러: ${reasoning.coolerSummary}`
+        ]
+      });
+      setTimeout(() => {
+        setSmartToast((cur) => (cur?.title === reasoning.title ? null : cur));
+      }, 7000);
+    }
   };
 
   const totalPrice = useMemo(() => {
@@ -184,6 +225,8 @@ export default function HomePage() {
           <SearchBar
             onSelectPreset={handleSelectPreset}
             onSelectComponent={handleSelectComponent}
+            onBatchSelectComponents={handleBatchSelectComponents}
+            currentComponents={selectedComponents}
           />
         </section>
 
@@ -222,6 +265,7 @@ export default function HomePage() {
           <BuilderTable
             selectedComponents={selectedComponents}
             onSelectComponent={handleSelectComponent}
+            onBatchSelectComponents={handleBatchSelectComponents}
             totalPrice={totalPrice}
             currentPreset={currentPreset}
             onOpenSaveModal={() => setShowQuoteStorage(true)}
@@ -270,6 +314,45 @@ export default function HomePage() {
           totalPrice={totalPrice}
           onLoadQuote={handleLoadQuote}
         />
+
+        {/* AI 스마트 호환 견적 완성 플로팅 알림창 */}
+        {smartToast && (
+          <div className="fixed bottom-6 right-4 sm:right-6 z-50 max-w-md w-full bg-slate-900/95 dark:bg-slate-950/95 text-white p-4 rounded-2xl shadow-2xl border border-cyan-500/50 backdrop-blur-md animate-in fade-in slide-in-from-bottom-5 duration-300">
+            <div className="flex items-start justify-between gap-3">
+              <div className="flex items-start gap-2.5">
+                <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-cyan-500 to-indigo-600 text-white flex items-center justify-center shrink-0 shadow-md mt-0.5">
+                  <Sparkles className="w-4 h-4" />
+                </div>
+                <div>
+                  <h4 className="text-sm font-extrabold text-white flex items-center gap-1.5 flex-wrap">
+                    <span>{smartToast.title}</span>
+                    <span className="text-[10px] px-1.5 py-0.2 rounded bg-emerald-500/20 text-emerald-400 font-bold border border-emerald-500/30">
+                      호환 100% 검증
+                    </span>
+                  </h4>
+                  <p className="text-xs text-slate-300 mt-1 leading-relaxed">
+                    {smartToast.desc}
+                  </p>
+                  <div className="mt-2.5 space-y-1 text-[11px] text-cyan-300 bg-slate-800/80 p-2 rounded-xl border border-slate-700/60 font-mono">
+                    {smartToast.items.map((item, idx) => (
+                      <div key={idx} className="flex items-center gap-1.5">
+                        <span className="text-emerald-400 font-bold">✓</span>
+                        <span>{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+              <button
+                onClick={() => setSmartToast(null)}
+                className="text-slate-400 hover:text-white p-1 rounded-lg hover:bg-slate-800 cursor-pointer text-xs shrink-0"
+                title="알림 닫기"
+              >
+                ✕
+              </button>
+            </div>
+          </div>
+        )}
       </main>
 
       <Footer />
