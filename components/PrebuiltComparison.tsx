@@ -1,7 +1,7 @@
 import React from 'react';
 import { GamePreset } from '@/data/presets';
 import { CheckCircle2, ShieldAlert, ExternalLink, Wrench, PackageCheck } from 'lucide-react';
-import { getCoupangPrebuiltUrl, getOpenMarketPrebuiltUrl, PREBUILT_SEARCH_KEYWORDS } from '@/lib/affiliate';
+import { getCoupangPrebuiltUrl, getOpenMarketPrebuiltUrl, get11stSearchUrl, PREBUILT_SEARCH_KEYWORDS } from '@/lib/affiliate';
 
 interface PrebuiltComparisonProps {
   currentPreset: GamePreset;
@@ -134,7 +134,7 @@ export default function PrebuiltComparison({
               </div>
             </div>
 
-            <div className="grid grid-cols-3 gap-2 w-full pt-1">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 w-full pt-1">
               <a
                 href={getCoupangPrebuiltUrl(currentPreset.id)}
                 target="_blank"
@@ -154,6 +154,17 @@ export default function PrebuiltComparison({
                 title="G마켓 공식 입점 완본체 특가 확인"
               >
                 <span>🛒 G마켓</span>
+                <ExternalLink className="w-3.5 h-3.5 shrink-0" />
+              </a>
+
+              <a
+                href={get11stSearchUrl(PREBUILT_SEARCH_KEYWORDS[currentPreset.id] || prebuilt.title)}
+                target="_blank"
+                rel="noopener noreferrer nofollow"
+                className="py-2.5 px-1.5 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-bold text-xs flex items-center justify-center gap-1 shadow-sm transition-all whitespace-nowrap text-center"
+                title="11번가 공식 입점 완본체 슈팅배송/특가 확인"
+              >
+                <span>⚡ 11번가</span>
                 <ExternalLink className="w-3.5 h-3.5 shrink-0" />
               </a>
 
