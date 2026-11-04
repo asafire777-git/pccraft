@@ -249,7 +249,7 @@ export default function Header({ onOpenQuoteStorage }: HeaderProps = {}) {
             </button>
 
             {/* 2. 유저 프로필 영역: 캐시된 정보를 활용하여 새로고침 시에도 즉시 프로필 렌더링 (깜빡임 0%) */}
-            <div className="min-w-[76px] sm:min-w-[84px] flex items-center justify-end shrink-0 whitespace-nowrap">
+            <div className="flex items-center justify-end shrink-0 whitespace-nowrap">
               {(() => {
                 const currentUser = session?.user || cachedUser;
 
@@ -266,16 +266,13 @@ export default function Header({ onOpenQuoteStorage }: HeaderProps = {}) {
                           <img
                             src={currentUser.image}
                             alt={currentUser.name || 'User'}
-                            className="w-7 h-7 rounded-full ring-2 ring-cyan-500/30 object-cover shrink-0"
+                            className="w-8 h-8 rounded-full ring-2 ring-cyan-500/40 hover:ring-cyan-500 object-cover shrink-0 transition-all shadow-xs"
                           />
                         ) : (
-                          <div className="w-7 h-7 rounded-full bg-cyan-600 text-white flex items-center justify-center text-xs font-bold shrink-0">
+                          <div className="w-8 h-8 rounded-full bg-cyan-600 text-white flex items-center justify-center text-xs font-bold shrink-0 ring-2 ring-cyan-500/40 shadow-xs">
                             {currentUser.name?.[0] || 'U'}
                           </div>
                         )}
-                        <span className="text-xs font-bold text-slate-800 dark:text-slate-200 hidden md:inline max-w-[80px] truncate whitespace-nowrap">
-                          {currentUser.name || '회원'}님
-                        </span>
                       </Link>
                       <button
                         onClick={handleSignOut}
