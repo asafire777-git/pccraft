@@ -22,8 +22,7 @@ import {
   Volume2,
   Plug,
   Layers,
-  Eye,
-  Info
+  Eye
 } from 'lucide-react';
 import type { Metadata } from 'next';
 
@@ -60,9 +59,198 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-// 챗GPT 특유의 ** 기호 및 지저분한 마크다운을 완벽히 정제하는 클리어타입 텍스트 클리너
+// 텍스트 내 잔여 마크다운 기호 제거 유틸
 function cleanText(text: string): string {
   return text.replace(/\*\*/g, '').replace(/__+/g, '').trim();
+}
+
+/**
+ * PC-Craft 전용 클리어타입 본문 렌더러
+ * - 큰 제목(1, 2번 등) 외에 본문은 불필요한 굵은 글씨를 전면 배제하고 편안한 font-normal로 통일
+ * - 소제목(###)과 설명 본문을 엄격히 분리하여 본문이 굵어지는 현상 원천 차단
+ * - 옵션/모드(- 리스트)는 2x2 분리형 클리어타입 뱃지 카드로 시각화
+ * - 번호 매김(1. 2. 3.)은 독립 가이드 카드로 렌더링
+ */
+function ClearTypeContentRenderer({ content }: { content: string }) {
+  // ## 대제목 기준으로 메이저 섹션 분할
+  const majorSections = content.split(/\n(?=##\s)/g);
+
+  return (
+    <div className="space-y-10 pt-4">
+      {majorSections.map((sec, secIdx) => {
+        const lines = sec.split('\n').map((l) => l.trim()).filter((l) => l.length > 0 && l !== '---');
+        if (lines.length === 0) return null;
+
+        // 1. 대제목 (## )
+        let heading = '';
+        let restLines = lines;
+        if (lines[0].startsWith('## ')) {
+          heading = cleanText(lines[0].replace('## ', ''));
+          restLines = lines.slice(1);
+        }
+
+        // 2. 세부 블록 파싱 (### 서브섹션, 리스트, 번호, 일반 단락)
+        interface SubBlock {
+          type: 'subheading' | 'badge-list' | 'numbered-list' | 'paragraph';
+          subTitle?: string;
+          items?: string[];
+          text?: string;
+        }
+
+        const blocks: SubBlock[] = [];
+        let i = 0;
+        while (i < restLines.length) {
+          const line = restLines[i];
+
+          // ### 소제목
+          if (line.startsWith('### ')) {
+            blocks.push({
+              type: 'subheading',
+              subTitle: cleanText(line.replace('### ', '')),
+            });
+            i++;
+            continue;
+          }
+
+          // - 불릿 리스트 (연속된 - 라인들)
+          if (line.startsWith('- ')) {
+            const listItems: string[] = [];
+            while (i < restLines.length && restLines[i].startsWith('- ')) {
+              listItems.push(cleanText(restLines[i].replace(/^- /, '')));
+              i++;
+            }
+            blocks.push({
+              type: 'badge-list',
+              items: listItems,
+            });
+            continue;
+          }
+
+          // 1. 2. 3. 번호 리스트 (연속된 번호 라인들)
+          if (/^\d+\.\s/.test(line)) {
+            const numItems: string[] = [];
+            while (i < restLines.length && /^\d+\.\s/.test(restLines[i])) {
+              numItems.push(cleanText(restLines[i]));
+              i++;
+            }
+            blocks.push({
+              type: 'numbered-list',
+              items: numItems,
+            });
+            continue;
+          }
+
+          // 일반 본문 단락
+          blocks.push({
+            type: 'paragraph',
+            text: cleanText(line),
+          });
+          i++;
+        }
+
+        return (
+          <section key={secIdx} className="space-y-4">
+            {/* 큰 제목: 1, 2번 등 섹션 헤더만 선명하게 강조 */}
+            {heading && (
+              <div className="pb-3 border-b-2 border-cyan-500/30 flex items-center gap-2.5">
+                <span className="w-2.5 h-6 rounded-full bg-cyan-500 shrink-0" />
+                <h2 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white tracking-tight">
+                  {heading}
+                </h2>
+              </div>
+            )}
+
+            {/* 블록별 클리어타입 렌더링 */}
+            <div className="space-y-4">
+              {blocks.map((block, bIdx) => {
+                // 서브섹션 제목: 깔끔한 소제목 바 (제목만 굵고, 본문과 완전히 분리됨)
+                if (block.type === 'subheading') {
+                  return (
+                    <div key={bIdx} className="pt-3">
+                      <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80">
+                        <span className="w-2 h-2 rounded-full bg-amber-500 shrink-0" />
+                        <h3 className="text-sm sm:text-base font-bold text-slate-900 dark:text-slate-100">
+                          {block.subTitle}
+                        </h3>
+                      </div>
+                    </div>
+                  );
+                }
+
+                // 옵션/모드 리스트: 분리된 클리어타입 뱃지 카드 그리드 시각화!
+                if (block.type === 'badge-list' && block.items) {
+                  return (
+                    <div key={bIdx} className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 my-3">
+                      {block.items.map((it, itemIdx) => {
+                        const parts = it.split(':');
+                        const label = parts[0]?.trim();
+                        const desc = parts.slice(1).join(':').trim();
+
+                        return (
+                          <div 
+                            key={itemIdx} 
+                            className="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200/80 dark:border-slate-700/80 shadow-2xs flex flex-col justify-center space-y-1"
+                          >
+                            <div className="flex items-center gap-1.5 text-xs font-bold text-slate-900 dark:text-white">
+                              <span className="text-cyan-500">•</span>
+                              <span>{label}</span>
+                            </div>
+                            {desc && (
+                              <p className="text-xs text-slate-500 dark:text-slate-400 font-normal pl-3 leading-relaxed">
+                                {desc}
+                              </p>
+                            )}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  );
+                }
+
+                // 번호 리스트: 번호 뱃지가 달린 독립 가이드 카드 (본문 텍스트는 편안한 font-normal)
+                if (block.type === 'numbered-list' && block.items) {
+                  return (
+                    <div key={bIdx} className="space-y-2.5 my-3">
+                      {block.items.map((it, itemIdx) => {
+                        const match = it.match(/^(\d+)\.\s*(.*)$/);
+                        const num = match ? match[1] : `${itemIdx + 1}`;
+                        const content = match ? match[2] : it;
+
+                        return (
+                          <div 
+                            key={itemIdx} 
+                            className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-2xs flex items-start gap-3"
+                          >
+                            <span className="w-5 h-5 rounded-full bg-cyan-600 text-white text-[11px] font-black flex items-center justify-center shrink-0 mt-0.5">
+                              {num}
+                            </span>
+                            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 font-normal leading-relaxed">
+                              {content}
+                            </p>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  );
+                }
+
+                // 일반 본문 단락: 불필요한 굵기 없이 가독성 높은 font-normal
+                if (block.type === 'paragraph' && block.text) {
+                  return (
+                    <p key={bIdx} className="text-sm sm:text-base text-slate-600 dark:text-slate-300 font-normal leading-relaxed">
+                      {block.text}
+                    </p>
+                  );
+                }
+
+                return null;
+              })}
+            </div>
+          </section>
+        );
+      })}
+    </div>
+  );
 }
 
 export default async function PickDetailPage({ params }: Props) {
@@ -72,9 +260,6 @@ export default async function PickDetailPage({ params }: Props) {
   if (!item) {
     notFound();
   }
-
-  // 본문 단락 분리
-  const paragraphs = item.content.split('\n\n');
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex flex-col font-sans transition-colors">
@@ -88,7 +273,7 @@ export default async function PickDetailPage({ params }: Props) {
           <Link href="/picks" className="hover:text-cyan-600 transition-colors">테크&amp;라이프 픽</Link>
           <ChevronRight className="w-3.5 h-3.5" />
           <span className="text-slate-800 dark:text-slate-200 font-medium truncate max-w-[200px] sm:max-w-xs">
-            {item.title}
+            {cleanText(item.title)}
           </span>
         </nav>
 
@@ -112,7 +297,7 @@ export default async function PickDetailPage({ params }: Props) {
             {cleanText(item.title)}
           </h1>
 
-          <p className="text-base sm:text-lg text-slate-600 dark:text-slate-400 leading-relaxed font-medium">
+          <p className="text-base sm:text-lg text-slate-600 dark:text-slate-400 leading-relaxed font-normal">
             {cleanText(item.subtitle)}
           </p>
 
@@ -220,10 +405,10 @@ export default async function PickDetailPage({ params }: Props) {
             <CheckCircle2 className="w-5 h-5 text-cyan-600 dark:text-cyan-400" />
             <span>에디터 3줄 핵심 요약</span>
           </div>
-          <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+          <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-300 font-normal">
             {item.summary.map((line, idx) => (
               <li key={idx} className="flex items-start gap-2.5">
-                <span className="text-cyan-500 font-black text-base leading-none">•</span>
+                <span className="text-cyan-500 font-bold">•</span>
                 <span className="leading-relaxed">{cleanText(line)}</span>
               </li>
             ))}
@@ -237,7 +422,7 @@ export default async function PickDetailPage({ params }: Props) {
               <Layers className="w-5 h-5 text-cyan-500" />
               <span>판매 페이지 실측 스펙 비교표</span>
             </h3>
-            <span className="text-xs text-slate-400">제조사 공식 등록 사양 기준</span>
+            <span className="text-xs text-slate-400 font-normal">제조사 공식 등록 사양 기준</span>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 text-xs sm:text-sm">
@@ -250,8 +435,8 @@ export default async function PickDetailPage({ params }: Props) {
                     : 'bg-slate-50 dark:bg-slate-800/40 border-slate-100 dark:border-slate-800/60'
                 }`}
               >
-                <span className="text-slate-500 dark:text-slate-400 font-medium">{sp.label}</span>
-                <span className={`font-bold ${sp.highlight ? 'text-cyan-700 dark:text-cyan-300' : 'text-slate-800 dark:text-slate-200'}`}>
+                <span className="text-slate-500 dark:text-slate-400 font-normal">{sp.label}</span>
+                <span className={`font-semibold ${sp.highlight ? 'text-cyan-700 dark:text-cyan-300' : 'text-slate-800 dark:text-slate-200'}`}>
                   {cleanText(sp.value)}
                 </span>
               </div>
@@ -267,12 +452,12 @@ export default async function PickDetailPage({ params }: Props) {
                 <Eye className="w-5 h-5 text-amber-500" />
                 <span>제품 구조 및 기능 실사 갤러리 ({item.galleryImages.length})</span>
               </h3>
-              <span className="text-xs text-slate-400">고화질 원본 검증</span>
+              <span className="text-xs text-slate-400 font-normal">고화질 원본 검증</span>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 pt-2">
               {item.galleryImages.map((img, i) => (
-                <div key={i} className="group rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800 flex flex-col shadow-xs">
+                <div key={i} className="group rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800 flex flex-col shadow-2xs">
                   <div className="aspect-[4/3] overflow-hidden bg-slate-900 relative">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img 
@@ -282,7 +467,7 @@ export default async function PickDetailPage({ params }: Props) {
                       loading="lazy"
                     />
                   </div>
-                  <div className="p-3 text-xs text-slate-600 dark:text-slate-300 leading-snug">
+                  <div className="p-3 text-xs text-slate-600 dark:text-slate-300 leading-snug font-normal">
                     <span className="font-bold text-cyan-600 dark:text-cyan-400 mr-1.5">#{i + 1}</span>
                     {cleanText(img.caption)}
                   </div>
@@ -299,7 +484,7 @@ export default async function PickDetailPage({ params }: Props) {
             <div className="font-black text-base text-amber-800 dark:text-amber-300">
               구매 전 필수 확인: 반드시 [EU Plug (220V)] 옵션을 선택하세요!
             </div>
-            <p className="leading-relaxed">
+            <p className="leading-relaxed font-normal">
               도코 헤어드라이어의 <strong>EU 플러그 규격은 220V~240V (50/60Hz, 1600W)</strong>로 설계되어 있어, 별도의 돼지코 변환기 없이 한국 가정용 콘센트에 바로 꽂아 사용하실 수 있습니다. 
               함께 판매되는 <strong>US Plug(110V 전용)</strong>를 선택하실 경우 국내에서 제 성능이 나오지 않으니 주문 시 옵션을 꼭 확인하시기 바랍니다.
             </p>
@@ -313,7 +498,7 @@ export default async function PickDetailPage({ params }: Props) {
               <Check className="w-4 h-4" />
               <span>주요 특장점 및 장점</span>
             </h3>
-            <ul className="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+            <ul className="space-y-2 text-xs sm:text-sm text-slate-600 dark:text-slate-300 font-normal">
               {item.pros.map((pro, i) => (
                 <li key={i} className="flex items-start gap-2">
                   <span className="text-emerald-500 font-bold">✓</span>
@@ -328,7 +513,7 @@ export default async function PickDetailPage({ params }: Props) {
               <AlertTriangle className="w-4 h-4 text-rose-500" />
               <span>아쉬운 점 &amp; 사전 체크포인트</span>
             </h3>
-            <ul className="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+            <ul className="space-y-2 text-xs sm:text-sm text-slate-600 dark:text-slate-300 font-normal">
               {item.cons.map((con, i) => (
                 <li key={i} className="flex items-start gap-2">
                   <span className="text-rose-500 font-bold">!</span>
@@ -347,7 +532,7 @@ export default async function PickDetailPage({ params }: Props) {
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {item.recommendFor.map((rec, i) => (
-              <div key={i} className="flex items-center gap-2.5 p-3 rounded-xl bg-slate-50 dark:bg-slate-800/50 text-xs sm:text-sm text-slate-700 dark:text-slate-300 border border-slate-100 dark:border-slate-800">
+              <div key={i} className="flex items-center gap-2.5 p-3 rounded-xl bg-slate-50 dark:bg-slate-800/50 text-xs sm:text-sm text-slate-600 dark:text-slate-300 font-normal border border-slate-100 dark:border-slate-800">
                 <CheckCircle2 className="w-4 h-4 text-cyan-500 shrink-0" />
                 <span>{cleanText(rec)}</span>
               </div>
@@ -355,89 +540,8 @@ export default async function PickDetailPage({ params }: Props) {
           </div>
         </section>
 
-        {/* 8. 본문 상세 리뷰 - PC-Craft 클리어타입 템플릿 */}
-        <article className="space-y-6 pt-4 text-slate-800 dark:text-slate-200 leading-relaxed text-sm sm:text-base">
-          {paragraphs.map((p, i) => {
-            const trimmed = cleanText(p);
-
-            // 대제목 (## )
-            if (p.trim().startsWith('## ')) {
-              const headingText = cleanText(p.trim().replace('## ', ''));
-              return (
-                <div key={i} className="pt-6 pb-2 border-b-2 border-cyan-500/30 flex items-center gap-2.5">
-                  <span className="w-2.5 h-6 rounded-full bg-cyan-500 inline-block" />
-                  <h2 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white tracking-tight">
-                    {headingText}
-                  </h2>
-                </div>
-              );
-            }
-
-            // 서브섹션 제목 (### ① ...)
-            if (p.trim().startsWith('### ')) {
-              const subText = cleanText(p.trim().replace('### ', ''));
-              return (
-                <div key={i} className="pt-4">
-                  <h3 className="text-base sm:text-lg font-extrabold text-slate-900 dark:text-white flex items-center gap-2 p-3 rounded-xl bg-slate-100/80 dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80">
-                    <span className="w-2 h-2 rounded-full bg-amber-500" />
-                    <span>{subText}</span>
-                  </h3>
-                </div>
-              );
-            }
-
-            // 구분선
-            if (p.trim().startsWith('---')) {
-              return <hr key={i} className="my-6 border-slate-200 dark:border-slate-800" />;
-            }
-
-            // 불릿 리스트 (- 로 시작하는 여러 줄)
-            if (trimmed.includes('\n- ') || trimmed.startsWith('- ')) {
-              const items = trimmed.split('\n- ').map((s) => s.replace(/^- /, '').trim()).filter(Boolean);
-              return (
-                <div key={i} className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 my-3">
-                  {items.map((it, idx) => (
-                    <div key={idx} className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/60 text-xs sm:text-sm flex items-start gap-2 text-slate-700 dark:text-slate-300">
-                      <span className="text-cyan-500 font-bold mt-0.5">•</span>
-                      <span>{it}</span>
-                    </div>
-                  ))}
-                </div>
-              );
-            }
-
-            // 번호 매김 리스트 (1. 2. 3.)
-            if (/^\d+\.\s/.test(trimmed)) {
-              const lines = trimmed.split(/\n(?=\d+\.\s)/);
-              return (
-                <div key={i} className="space-y-3 my-4">
-                  {lines.map((line, idx) => {
-                    const match = line.match(/^(\d+)\.\s*(.*)$/);
-                    const num = match ? match[1] : `${idx + 1}`;
-                    const content = match ? match[2] : line;
-                    return (
-                      <div key={idx} className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs flex items-start gap-3">
-                        <span className="w-6 h-6 rounded-full bg-cyan-600 text-white text-xs font-black flex items-center justify-center shrink-0 mt-0.5">
-                          {num}
-                        </span>
-                        <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
-                          {content}
-                        </p>
-                      </div>
-                    );
-                  })}
-                </div>
-              );
-            }
-
-            // 일반 본문 문단 (클리어타입 스타일)
-            return (
-              <p key={i} className="leading-relaxed text-slate-700 dark:text-slate-300 font-normal">
-                {trimmed}
-              </p>
-            );
-          })}
-        </article>
+        {/* 8. 본문 상세 리뷰 - PC-Craft 클리어타입 렌더러 (큰 제목 외 본문 불필요 볼드 제거 & 분리형 뱃지 카드 적용) */}
+        <ClearTypeContentRenderer content={item.content} />
 
         {/* 9. 하단 최종 CTA 배너 */}
         <section className="p-8 rounded-3xl bg-gradient-to-r from-slate-900 via-cyan-950 to-slate-900 text-white shadow-2xl text-center space-y-4 border border-cyan-500/30">
@@ -447,7 +551,7 @@ export default async function PickDetailPage({ params }: Props) {
           <h3 className="text-xl sm:text-2xl font-black text-white">
             {cleanText(item.title)}
           </h3>
-          <p className="text-xs sm:text-sm text-cyan-200 max-w-xl mx-auto">
+          <p className="text-xs sm:text-sm text-cyan-200 font-normal max-w-xl mx-auto">
             110,000RPM 고속 BLDC 모터 · 실측 390g 초경량 · 220V EU플러그 완벽 호환! 지금 공식 제휴 링크에서 특가 혜택을 확인해 보세요.
           </p>
 
@@ -464,7 +568,7 @@ export default async function PickDetailPage({ params }: Props) {
             </a>
           </div>
 
-          <p className="text-[11px] text-slate-400 pt-3">
+          <p className="text-[11px] text-slate-400 font-normal pt-3">
             ※ 이 글에는 제휴 링크가 포함되어 있으며, 링크를 통한 구매 시 작성자에게 수수료가 지급될 수 있습니다.
           </p>
         </section>
