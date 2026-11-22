@@ -9,15 +9,11 @@ import {
   Clock, 
   ArrowRight, 
   ShieldCheck, 
-  Tag, 
   ExternalLink, 
   CheckCircle2, 
   ShoppingBag,
   ArrowLeft,
   Flame,
-  Zap,
-  Weight,
-  Plug,
   Check
 } from 'lucide-react';
 import type { Metadata } from 'next';
@@ -33,9 +29,13 @@ export const metadata: Metadata = {
     title: 'PC-Craft 테크 & 라이프 픽 | 스마트 가전 & 테크 라이프스타일 큐레이션',
     description: '스펙 분석부터 구매 전 체크포인트까지, 똑똑한 소비자를 위한 AI 에디터의 정밀 리뷰',
     url: 'https://pccraft.kr/picks',
-    images: [{ url: 'https://pccraft.kr/og-image.jpg', width: 1200, height: 630 }],
+    images: [{ url: '/images/picks/doko-hair-dryer/thumb.jpg', width: 800, height: 800 }],
   },
 };
+
+function cleanText(text: string): string {
+  return text.replace(/\*\*/g, '').replace(/__+/g, '').trim();
+}
 
 export default function PicksIndexPage() {
   const picks = getAllPicks();
@@ -82,7 +82,7 @@ export default function PicksIndexPage() {
           <section className="mb-10">
             <div className="relative rounded-3xl p-1 bg-gradient-to-r from-cyan-500 via-sky-500 to-amber-500 shadow-xl overflow-hidden">
               <div className="rounded-[22px] bg-white dark:bg-slate-900 p-6 sm:p-8 flex flex-col lg:flex-row gap-8 items-center">
-                {/* 좌측: 실사 이미지 썸네일 & 뱃지 */}
+                {/* 좌측: 로컬 실사 이미지 썸네일 & 뱃지 */}
                 <div className="w-full lg:w-5/12 aspect-[4/3] sm:aspect-video lg:aspect-square rounded-2xl overflow-hidden relative shadow-md bg-slate-950 shrink-0 border border-slate-200 dark:border-slate-800">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
@@ -127,11 +127,11 @@ export default function PicksIndexPage() {
 
                     <h2 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white leading-snug">
                       <Link href={`/picks/${featured.slug}`} className="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">
-                        {featured.title}
+                        {cleanText(featured.title)}
                       </Link>
                     </h2>
                     <p className="text-sm text-slate-600 dark:text-slate-400 mt-2 line-clamp-2">
-                      {featured.subtitle}
+                      {cleanText(featured.subtitle)}
                     </p>
 
                     {/* 3줄 요약 박스 */}
@@ -144,7 +144,7 @@ export default function PicksIndexPage() {
                         {featured.summary.map((sum, idx) => (
                           <li key={idx} className="flex items-start gap-2">
                             <span className="text-cyan-500 font-bold">•</span>
-                            <span>{sum}</span>
+                            <span>{cleanText(sum)}</span>
                           </li>
                         ))}
                       </ul>
@@ -218,19 +218,19 @@ export default function PicksIndexPage() {
 
                     <h4 className="text-base font-bold text-slate-900 dark:text-white leading-snug group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
                       <Link href={`/picks/${item.slug}`}>
-                        {item.title}
+                        {cleanText(item.title)}
                       </Link>
                     </h4>
 
                     <p className="text-xs text-slate-500 dark:text-slate-400 mt-2 line-clamp-2">
-                      {item.subtitle}
+                      {cleanText(item.subtitle)}
                     </p>
 
                     {/* 태그 모음 */}
                     <div className="flex flex-wrap gap-1.5 mt-3">
                       {item.tags.slice(0, 3).map((tag, i) => (
                         <span key={i} className="text-[10px] px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
-                          #{tag}
+                          #{cleanText(tag)}
                         </span>
                       ))}
                     </div>
@@ -239,7 +239,7 @@ export default function PicksIndexPage() {
                     <div className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800/80 text-xs text-slate-600 dark:text-slate-300 space-y-1">
                       <div className="flex items-center gap-1.5 text-emerald-600 dark:text-emerald-400 font-semibold">
                         <Check className="w-3.5 h-3.5" />
-                        <span>{item.pros[0]}</span>
+                        <span>{cleanText(item.pros[0])}</span>
                       </div>
                     </div>
                   </div>
