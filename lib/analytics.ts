@@ -47,8 +47,11 @@ function readEvents(): AnalyticsEvent[] {
   }
 }
 
-// 파일 쓰기 (최대 3000개 최신 기록 보존)
+// 파일 쓰기 (최대 3000개 최신 기록 보존, Vercel 읽기 전용 환경에서는 파일 쓰기 생략하여 EROFS 에러 방지)
 function writeEvents(events: AnalyticsEvent[]) {
+  if (process.env.VERCEL || process.env.NODE_ENV === 'production') {
+    return;
+  }
   try {
     const dir = path.dirname(DB_FILE);
     if (!fs.existsSync(dir)) {

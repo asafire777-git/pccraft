@@ -39,6 +39,7 @@ const INITIAL_REPORTS: PriceReport[] = [
 ];
 
 function ensureFile() {
+  if (process.env.VERCEL) return;
   const dir = path.dirname(FEEDBACK_FILE);
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir, { recursive: true });
@@ -71,8 +72,14 @@ export function addPriceReport(report: Omit<PriceReport, 'id' | 'createdAt'>): P
   };
 
   reports.unshift(newReport);
-  // 최근 50개 유지
+  // 최근 50개 유지 (Vercel 읽기 전용 환경에서는 파일 쓰기 생략)
   const sliced = reports.slice(0, 50);
-  fs.writeFileSync(FEEDBACK_FILE, JSON.stringify(sliced, null, 2), 'utf-8');
+  if (!process.env.VERCEL) {
+    try {
+      fs.writeFileSync(FEEDBACK_FILE, JSON.stringify(sliced, null, 2), 'utf-8');
+    } catch {
+      // ignore EROFS
+    }
+  }
   return newReport;
 }

@@ -129,7 +129,7 @@ export default function BuilderTable({
           <div className="mt-2.5 p-2.5 sm:p-3 rounded-xl bg-blue-50/90 dark:bg-blue-950/40 border border-blue-200/70 dark:border-blue-800/50 text-[11px] sm:text-xs text-blue-950 dark:text-blue-200 flex items-start gap-2 leading-relaxed">
             <span className="text-sm shrink-0 mt-0.5">💡</span>
             <div>
-              <strong className="font-semibold text-blue-900 dark:text-blue-100">스마트 구매 팁:</strong> 다나와 최저가는 쇼핑몰별 <strong>개별 배송비(부품당 3,000~4,000원) 및 현금 결제 기준가</strong>입니다.
+              <strong className="font-semibold text-blue-900 dark:text-blue-100">스마트 구매 팁:</strong> 다나와 최저가는 쇼핑몰별 <strong>개별 배송비(부품당 2,500~4,000원) 별도 오픈마켓 기준가</strong>입니다.
               부품 8종을 한 번에 살 때는 <strong>[쿠팡 로켓 무료배송 &amp; 내일 도착]</strong> 및 <strong>[11번가/G마켓 카드 무이자 할인]</strong>을 이용하시면 총 결제액과 배송 속도에서 훨씬 유리합니다.
             </div>
           </div>

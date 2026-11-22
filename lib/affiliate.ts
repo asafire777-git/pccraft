@@ -421,6 +421,7 @@ export const CUSTOM_DANAWA_PCODES: Record<string, string> = {
   'cpu-amd-5600': '16741211',  // AMD 라이젠5-4세대 5600 (버미어) (멀티팩 정품)
   'cpu-intel-12400f': '16101353', // 인텔 코어i5-12세대 12400F (엘더레이크) (정품)
   'cpu-intel-14400f': '76555634', // 인텔 코어i5-14세대 14400F (랩터레이크 리프레시) (밸류팩 정품)
+  'cpu-intel-14700k': '28799435', // 인텔 코어i7-14세대 14700K (랩터레이크 리프레시) (정품)
 
   // GPU
   'gpu-rtx-5060': '122676813', // MSI 지포스 RTX 5060 벤투스 2X OC V1 D7 8GB
@@ -449,18 +450,27 @@ export const CUSTOM_DANAWA_PCODES: Record<string, string> = {
   'ssd-samsung-990evo-plus-1tb': '69869543', // 삼성전자 990 EVO Plus M.2 NVMe (1TB)
   'ssd-hynix-p41-1tb': '17001050', // SK하이닉스 Platinum P41 M.2 NVMe (1TB)
   'ssd-500gb-nvme': '13161353', // SK하이닉스 Gold P31 M.2 NVMe (500GB)
+  'ssd-crucial-t500-1tb': '29666111', // 마이크론 Crucial T500 M.2 NVMe (1TB)
+  'ssd-wd-black-sn850x-1tb': '17788487', // Western Digital WD BLACK SN850X M.2 NVMe (1TB)
+  'ssd-samsung-980pro-1tb': '12339347', // 삼성전자 980 PRO M.2 NVMe (1TB)
+  'ssd-samsung-990pro-1tb': '18297002', // 삼성전자 990 PRO M.2 NVMe (1TB)
+  'ssd-hynix-p41-2tb': '17000984', // SK하이닉스 Platinum P41 M.2 NVMe (2TB)
+  'ssd-samsung-990pro-2tb': '18297722', // 삼성전자 990 PRO M.2 NVMe (2TB)
 
   // 파워
   'power-700w-bronze': '44906339', // 마이크로닉스 Classic II 풀체인지 700W 80PLUS브론즈 ATX3.1
   'power-500w-std': '96986219', // 마이크로닉스 Classic II 풀체인지 500W 80PLUS실버 ATX3.1
   'power-micronics-600w': '96986270', // 마이크로닉스 Classic II 풀체인지 600W 80PLUS실버 ATX3.1
+  'power-850w-gold': '67577021', // 시소닉 NEW FOCUS V4 GX-850 GOLD 풀모듈러 ATX3.1
 
   // 쿨러
   'cooler-basic-air': '16209023', // Thermalright Assassin X 120 Refined SE ARGB 서린
   'cooler-dual-air': '16525058', // Thermalright Peerless Assassin 120 SE 서린
+  'cooler-liquid-360': '12055538', // darkFlash Twister DX-360 ARGB
 
   // 케이스
-  'case-darkflash-dk200': '13381634' // darkFlash DK200 RGB 강화유리
+  'case-darkflash-dk200': '13381634', // darkFlash DK200 RGB 강화유리
+  'case-aquarium-panoramic': '32861099' // darkFlash DS900 ARGB 강화유리 (블랙)
 };
 
 // 다나와 단품 pcode를 듀얼 채널(2개 구성)로 합산해야 하는 부품 수량 배수

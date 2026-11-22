@@ -50,7 +50,7 @@ export const GAME_PRESETS: GamePreset[] = [
       motherboard: 'mb-a520m',
       ram: 'ram-ddr4-16gb',
       gpu: 'gpu-rtx-3050-6gb',
-      ssd: 'ssd-500gb-nvme',
+      ssd: 'ssd-samsung-990evo-plus-1tb',
       power: 'power-500w-std',
       case: 'case-darkflash-dk200'
     },
@@ -91,7 +91,7 @@ export const GAME_PRESETS: GamePreset[] = [
       motherboard: 'mb-b650m-k',
       ram: 'ram-ddr5-32gb',
       gpu: 'gpu-rtx-5060-gigabyte',
-      ssd: 'ssd-1tb-nvme',
+      ssd: 'ssd-samsung-990evo-plus-1tb',
       power: 'power-700w-bronze',
       case: 'case-darkflash-dk200'
     },
@@ -132,7 +132,7 @@ export const GAME_PRESETS: GamePreset[] = [
       motherboard: 'mb-b650m-k',
       ram: 'ram-ddr5-32gb',
       gpu: 'gpu-rtx-4070super',
-      ssd: 'ssd-1tb-nvme',
+      ssd: 'ssd-samsung-990evo-plus-1tb',
       power: 'power-700w-bronze',
       case: 'case-aquarium-panoramic'
     },

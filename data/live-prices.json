@@ -1,5 +1,5 @@
 {
-  "lastSyncedAt": "2026-11-23 00:39",
+  "lastSyncedAt": "2026-11-23 01:00",
   "totalItems": 113,
   "prices": {
     "cpu-amd-5600": {
@@ -80,11 +80,11 @@
       "lastUpdated": "2026-11-23 00:39"
     },
     "cpu-intel-14700k": {
-      "price": 561000,
-      "prevPrice": 551000,
-      "priceChange": 10000,
+      "price": 560730,
+      "prevPrice": 561000,
+      "priceChange": -270,
       "inStock": true,
-      "lastUpdated": "2026-11-22 10:02"
+      "lastUpdated": "2026-11-23 01:00"
     },
     "cpu-intel-245k": {
       "price": 420000,
@@ -584,46 +584,46 @@
       "lastUpdated": "2026-11-23 00:39"
     },
     "ssd-samsung-990pro-1tb": {
-      "price": 367000,
-      "prevPrice": 368000,
-      "priceChange": -1000,
+      "price": 382730,
+      "prevPrice": 367000,
+      "priceChange": 15730,
       "inStock": true,
-      "lastUpdated": "2026-11-22 10:02"
+      "lastUpdated": "2026-11-23 01:00"
     },
     "ssd-wd-black-sn850x-1tb": {
-      "price": 139000,
-      "prevPrice": 145000,
-      "priceChange": -6000,
+      "price": 356540,
+      "prevPrice": 139000,
+      "priceChange": 217540,
       "inStock": true,
-      "lastUpdated": "2026-10-29 16:37"
+      "lastUpdated": "2026-11-23 01:00"
     },
     "ssd-crucial-t500-1tb": {
-      "price": 129000,
-      "prevPrice": 135000,
-      "priceChange": -6000,
+      "price": 401060,
+      "prevPrice": 129000,
+      "priceChange": 272060,
       "inStock": true,
-      "lastUpdated": "2026-10-29 16:37"
+      "lastUpdated": "2026-11-23 01:00"
     },
     "ssd-hynix-p41-2tb": {
-      "price": 249000,
-      "prevPrice": 259000,
-      "priceChange": -10000,
+      "price": 727400,
+      "prevPrice": 249000,
+      "priceChange": 478400,
       "inStock": true,
-      "lastUpdated": "2026-10-29 16:37"
+      "lastUpdated": "2026-11-23 01:00"
     },
     "ssd-samsung-990pro-2tb": {
-      "price": 265000,
-      "prevPrice": 279000,
-      "priceChange": -14000,
+      "price": 778810,
+      "prevPrice": 265000,
+      "priceChange": 513810,
       "inStock": true,
-      "lastUpdated": "2026-10-29 16:37"
+      "lastUpdated": "2026-11-23 01:00"
     },
     "ssd-samsung-980pro-1tb": {
-      "price": 145000,
-      "prevPrice": 152000,
-      "priceChange": -7000,
+      "price": 488000,
+      "prevPrice": 145000,
+      "priceChange": 343000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 16:37"
+      "lastUpdated": "2026-11-23 01:00"
     },
     "ssd-samsung-990evo-plus-1tb": {
       "price": 322300,
@@ -689,11 +689,11 @@
       "lastUpdated": "2026-10-29 16:37"
     },
     "power-850w-gold": {
-      "price": 195000,
-      "prevPrice": 214000,
-      "priceChange": -19000,
+      "price": 216320,
+      "prevPrice": 195000,
+      "priceChange": 21320,
       "inStock": true,
-      "lastUpdated": "2026-11-22 10:02"
+      "lastUpdated": "2026-11-23 01:00"
     },
     "power-fsp-1000w-gold": {
       "price": 235000,
@@ -745,11 +745,11 @@
       "lastUpdated": "2026-10-29 16:37"
     },
     "case-aquarium-panoramic": {
-      "price": 59000,
-      "prevPrice": 63000,
-      "priceChange": -4000,
+      "price": 63000,
+      "prevPrice": 59000,
+      "priceChange": 4000,
       "inStock": true,
-      "lastUpdated": "2026-10-29 16:37"
+      "lastUpdated": "2026-11-23 01:00"
     },
     "case-ds900-white": {
       "price": 64000,

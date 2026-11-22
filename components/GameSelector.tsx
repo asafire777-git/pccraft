@@ -1,6 +1,16 @@
 import React from 'react';
 import { GAME_PRESETS, GamePreset } from '@/data/presets';
+import { COMPONENTS_DATA } from '@/data/components';
 import { Gamepad2, Flame, Zap, Crown } from 'lucide-react';
+
+function getPresetLiveTotal(preset: GamePreset): number {
+  let sum = 0;
+  for (const [cat, compId] of Object.entries(preset.defaultComponentIds)) {
+    const found = COMPONENTS_DATA[cat]?.find((c) => c.id === compId);
+    if (found) sum += found.price;
+  }
+  return sum;
+}
 
 interface GameSelectorProps {
   selectedPresetId: string;
@@ -81,9 +91,11 @@ export default function GameSelector({ selectedPresetId, onSelectPreset }: GameS
               </div>
 
               <div className="mt-5 pt-3 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between">
-                <span className="text-[11px] text-slate-500 dark:text-slate-400">예산 가이드</span>
-                <span className="text-sm font-bold text-emerald-600 dark:text-emerald-400">
-                  {preset.budgetRange}
+                <span className="text-[11px] text-slate-500 dark:text-slate-400">부품 합산가</span>
+                <span className="text-sm font-bold text-emerald-600 dark:text-emerald-400 font-mono">
+                  {getPresetLiveTotal(preset) > 0
+                    ? `${getPresetLiveTotal(preset).toLocaleString()}원`
+                    : preset.budgetRange}
                 </span>
               </div>
             </button>
