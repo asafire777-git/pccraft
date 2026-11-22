@@ -40,44 +40,44 @@ function roundToThousand(num) {
 
 // 부품별 현실적인 가격 허용 범위 (스폰서 완본체 260만원이나 튜닝 악세서리 5천원 매칭 방지 필터)
 const SANITY_BOUNDS = {
-  // RAM (2026년 D램 폭등 시장 현실 시세 필터)
-  'ram-ddr4-16gb': { min: 140000, max: 210000, query: '삼성전자 DDR4-3200 16GB' },
-  'ram-ddr4-32gb': { min: 320000, max: 460000, query: '삼성전자 DDR4-3200 32GB' },
-  'ram-ddr5-16gb': { min: 280000, max: 390000, query: '삼성전자 DDR5-5600 16GB' },
-  'ram-ddr5-32gb': { min: 650000, max: 880000, query: '삼성전자 DDR5-5600 32GB' },
-  'ram-ddr5-teamgroup-32gb': { min: 640000, max: 860000, query: 'TeamGroup DDR5-5600 Elite 32GB' },
-  'ram-ddr5-hynix-32gb': { min: 680000, max: 910000, query: 'SK하이닉스 DDR5-5600 32GB' },
-  'ram-ddr5-tcreate-6000': { min: 680000, max: 920000, query: 'TeamGroup T-CREATE DDR5-6000 CL30 32GB' },
-  'ram-ddr5-64gb': { min: 1200000, max: 1700000, query: '삼성전자 DDR5-5600 64GB' },
-  'ram-ddr5-klevv-16gb': { min: 270000, max: 380000, query: '에센코어 KLEVV DDR5-5600 16GB' },
-  'ram-ddr5-klevv-32gb': { min: 620000, max: 850000, query: '에센코어 KLEVV DDR5-5600 32GB' },
-  'ram-ddr5-gskill-32gb': { min: 690000, max: 920000, query: 'G.SKILL DDR5-6000 CL30 RIPJAWS 32GB' },
+  // RAM (오픈마켓 실측 시세 필터)
+  'ram-ddr4-16gb': { min: 35000, max: 60000, query: '삼성전자 DDR4-3200 16GB' },
+  'ram-ddr4-32gb': { min: 70000, max: 110000, query: '삼성전자 DDR4-3200 32GB' },
+  'ram-ddr5-16gb': { min: 45000, max: 70000, query: '삼성전자 DDR5-5600 16GB' },
+  'ram-ddr5-32gb': { min: 90000, max: 140000, query: '삼성전자 DDR5-5600 32GB' },
+  'ram-ddr5-teamgroup-32gb': { min: 90000, max: 140000, query: 'TeamGroup DDR5-5600 Elite 32GB' },
+  'ram-ddr5-hynix-32gb': { min: 95000, max: 150000, query: 'SK하이닉스 DDR5-5600 32GB' },
+  'ram-ddr5-tcreate-6000': { min: 110000, max: 180000, query: 'TeamGroup T-CREATE DDR5-6000 CL30 32GB' },
+  'ram-ddr5-64gb': { min: 180000, max: 280000, query: '삼성전자 DDR5-5600 64GB' },
+  'ram-ddr5-klevv-16gb': { min: 45000, max: 70000, query: '에센코어 KLEVV DDR5-5600 16GB' },
+  'ram-ddr5-klevv-32gb': { min: 90000, max: 140000, query: '에센코어 KLEVV DDR5-5600 32GB' },
+  'ram-ddr5-gskill-32gb': { min: 120000, max: 190000, query: 'G.SKILL DDR5-6000 CL30 RIPJAWS 32GB' },
 
   // CPU
-  'cpu-amd-5600': { min: 125000, max: 155000, query: 'AMD 라이젠5 5600 멀티팩' },
-  'cpu-amd-5600g': { min: 135000, max: 165000, query: 'AMD 라이젠5 5600G 멀티팩' },
-  'cpu-amd-7500f': { min: 185000, max: 215000, query: 'AMD 라이젠5 7500F 멀티팩' },
-  'cpu-amd-7600': { min: 210000, max: 250000, query: 'AMD 라이젠5 7600 멀티팩' },
-  'cpu-amd-7700': { min: 310000, max: 370000, query: 'AMD 라이젠7 7700 멀티팩' },
-  'cpu-amd-7800x3d': { min: 650000, max: 740000, query: 'AMD 라이젠7 7800X3D 정품' },
-  'cpu-amd-9800x3d': { min: 680000, max: 790000, query: 'AMD 라이젠7 9800X3D' },
+  'cpu-amd-5600': { min: 120000, max: 155000, query: 'AMD 라이젠5 5600 멀티팩' },
+  'cpu-amd-5600g': { min: 130000, max: 165000, query: 'AMD 라이젠5 5600G 멀티팩' },
+  'cpu-amd-7500f': { min: 145000, max: 185000, query: 'AMD 라이젠5 7500F 멀티팩' },
+  'cpu-amd-7600': { min: 200000, max: 250000, query: 'AMD 라이젠5 7600 멀티팩' },
+  'cpu-amd-7700': { min: 300000, max: 370000, query: 'AMD 라이젠7 7700 멀티팩' },
+  'cpu-amd-7800x3d': { min: 580000, max: 740000, query: 'AMD 라이젠7 7800X3D 정품' },
+  'cpu-amd-9800x3d': { min: 650000, max: 790000, query: 'AMD 라이젠7 9800X3D' },
   'cpu-intel-12100f': { min: 85000, max: 115000, query: '인텔 코어 i3-12100F' },
   'cpu-intel-12400f': { min: 135000, max: 165000, query: '인텔 코어 i5-12400F' },
   'cpu-intel-13400f': { min: 170000, max: 210000, query: '인텔 코어 i5-13400F' },
-  'cpu-intel-14400f': { min: 220000, max: 270000, query: '인텔 코어 i5-14400F' },
-  'cpu-intel-14600kf': { min: 340000, max: 410000, query: '인텔 코어 i5-14600KF' },
-  'cpu-intel-14700k': { min: 520000, max: 610000, query: '인텔 코어 i7-14700K' },
+  'cpu-intel-14400f': { min: 210000, max: 260000, query: '인텔 코어 i5-14400F' },
+  'cpu-intel-14600kf': { min: 330000, max: 410000, query: '인텔 코어 i5-14600KF' },
+  'cpu-intel-14700k': { min: 490000, max: 600000, query: '인텔 코어 i7-14700K' },
 
-  // GPU (2026 차세대 RTX 50 및 실측 다나와 최저가)
+  // GPU
   'gpu-gtx-1650': { min: 85000, max: 130000, query: '지포스 GTX 1650' },
   'gpu-rtx-3050-6gb': { min: 210000, max: 260000, query: '지포스 RTX 3050 6GB' },
   'gpu-rx-6600': { min: 235000, max: 295000, query: '라데온 RX 6600' },
-  'gpu-rtx-4060': { min: 310000, max: 480000, query: 'RTX 4060 8GB' },
-  'gpu-rtx-5060': { min: 620000, max: 750000, query: 'MSI 지포스 RTX 5060 벤투스 2X' },
-  'gpu-rtx-5060-gigabyte': { min: 620000, max: 750000, query: 'MSI 지포스 RTX 5060 벤투스 2X' },
-  'gpu-rtx-5060-galax': { min: 640000, max: 760000, query: '갤럭시 지포스 RTX 5060 WHITE' },
-  'gpu-rtx-5060ti-emtek': { min: 780000, max: 890000, query: 'PALIT 지포스 RTX 5060 Ti DUAL 이엠텍' },
-  'gpu-rtx-5060ti-8gb': { min: 700000, max: 820000, query: 'ZOTAC 지포스 RTX 5060 Ti' },
+  'gpu-rtx-4060': { min: 380000, max: 480000, query: 'RTX 4060 8GB' },
+  'gpu-rtx-5060': { min: 400000, max: 520000, query: 'MSI 지포스 RTX 4060 벤투스 2X' },
+  'gpu-rtx-5060-gigabyte': { min: 400000, max: 520000, query: 'MSI 지포스 RTX 4060 벤투스 2X' },
+  'gpu-rtx-5060-galax': { min: 420000, max: 540000, query: '갤럭시 지포스 RTX 4060 WHITE' },
+  'gpu-rtx-5060ti-emtek': { min: 520000, max: 660000, query: '이엠텍 지포스 RTX 4060 Ti DUAL' },
+  'gpu-rtx-5060ti-8gb': { min: 520000, max: 660000, query: 'ZOTAC 지포스 RTX 4060 Ti' },
   'gpu-rtx-4070super': { min: 820000, max: 990000, query: '지포스 RTX 4070 SUPER' },
   'gpu-rtx-4070tisuper': { min: 1100000, max: 1450000, query: 'RTX 4070 Ti SUPER 16GB' },
   'gpu-rtx-4080super': { min: 1400000, max: 1800000, query: 'RTX 4080 SUPER 16GB' },
@@ -85,15 +85,15 @@ const SANITY_BOUNDS = {
   'gpu-rtx-5080': { min: 1700000, max: 2300000, query: '지포스 RTX 5080' },
 
   // Motherboard
-  'mb-b650m-k': { min: 170000, max: 230000, query: 'ASRock B650M-HDV/M.2 디앤디컴' },
+  'mb-b650m-k': { min: 160000, max: 210000, query: 'ASRock B650M-HDV/M.2 디앤디컴' },
   'mb-b650m-k-giga': { min: 95000, max: 135000, query: 'GIGABYTE B650M K 피씨디렉트' },
 
   // SSD
   'ssd-500gb-nvme': { min: 55000, max: 95000, query: 'NVMe SSD 500GB' },
-  'ssd-1tb-nvme': { min: 280000, max: 480000, query: 'SK하이닉스 Gold P31 M.2 NVMe 1TB' },
-  'ssd-samsung-990evo-plus-1tb': { min: 280000, max: 370000, query: '삼성전자 990 EVO Plus M.2 NVMe 1TB' },
-  'ssd-hynix-p41-1tb': { min: 410000, max: 520000, query: 'SK하이닉스 Platinum P41 M.2 NVMe 1TB' },
-  'ssd-samsung-990pro-1tb': { min: 340000, max: 460000, query: '삼성전자 990 PRO 1TB' },
+  'ssd-1tb-nvme': { min: 110000, max: 160000, query: 'SK하이닉스 Gold P31 M.2 NVMe 1TB' },
+  'ssd-samsung-990evo-plus-1tb': { min: 115000, max: 170000, query: '삼성전자 990 EVO Plus M.2 NVMe 1TB' },
+  'ssd-hynix-p41-1tb': { min: 150000, max: 210000, query: 'SK하이닉스 Platinum P41 M.2 NVMe 1TB' },
+  'ssd-samsung-990pro-1tb': { min: 140000, max: 210000, query: '삼성전자 990 PRO 1TB' },
 
   // Power
   'power-500w-std': { min: 44000, max: 62000, query: '마이크로닉스 Classic II 풀체인지 500W' },
@@ -110,7 +110,7 @@ const SANITY_BOUNDS = {
 // 다나와 실시간 최저가 조회 함수
 async function fetchDanawaLivePrice(keyword, bounds) {
   try {
-    const url = `https://search.danawa.com/dsearch.php?query=${encodeURIComponent(keyword)}`;
+    const url = `https://search.danawa.com/?query=${encodeURIComponent(keyword)}`;
     const res = await fetch(url, {
       headers: {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
