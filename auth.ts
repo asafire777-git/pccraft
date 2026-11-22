@@ -3,15 +3,16 @@ import KakaoProvider from 'next-auth/providers/kakao';
 import GoogleProvider from 'next-auth/providers/google';
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
-  trustHost: true, // Vercel 커스텀 도메인(pccraft.kr) 및 리버스 프록시 환경 필수 설정 (Configuration 오류 방지)
+  trustHost: true, // Vercel 커스텀 도메인(pccraft.kr) 및 프록시 환경 필수 설정
   providers: [
     KakaoProvider({
-      clientId: process.env.KAKAO_CLIENT_ID || '',
-      clientSecret: process.env.KAKAO_CLIENT_SECRET || '',
+      clientId: process.env.AUTH_KAKAO_ID || process.env.KAKAO_CLIENT_ID || '',
+      clientSecret: process.env.AUTH_KAKAO_SECRET || process.env.KAKAO_CLIENT_SECRET || '',
+      checks: ['state'],
     }),
     GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID || '',
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET || '',
+      clientId: process.env.AUTH_GOOGLE_ID || process.env.GOOGLE_CLIENT_ID || '',
+      clientSecret: process.env.AUTH_GOOGLE_SECRET || process.env.GOOGLE_CLIENT_SECRET || '',
       authorization: {
         params: {
           prompt: 'select_account',
@@ -19,6 +20,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
           response_type: 'code',
         },
       },
+      checks: ['state'],
     }),
   ],
   callbacks: {

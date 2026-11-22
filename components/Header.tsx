@@ -108,7 +108,7 @@ export default function Header({ onOpenQuoteStorage }: HeaderProps = {}) {
   const handleProviderLogin = async (provider: 'kakao' | 'google') => {
     try {
       setIsLoggingIn(true);
-      await signIn(provider);
+      await signIn(provider, { callbackUrl: '/' });
     } catch (e) {
       console.error(e);
       alert('로그인 처리 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.');
