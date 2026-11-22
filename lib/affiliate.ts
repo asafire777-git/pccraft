@@ -415,52 +415,60 @@ export function getCoupangSearchDirectUrl(keyword: string): string {
  */
 export const CUSTOM_DANAWA_PCODES: Record<string, string> = {
   // CPU
-  'cpu-amd-7500f': '21694499', // AMD 라이젠5 7500F
-  'cpu-amd-7600': '18751508',  // AMD 라이젠5 7600
-  'cpu-amd-7800x3d': '19627803', // AMD 라이젠7 7800X3D
-  'cpu-amd-5600': '16738980',  // AMD 라이젠5 5600
-  'cpu-intel-12400f': '16101119', // 인텔 i5-12400F
-  'cpu-intel-14400f': '33796838', // 인텔 i5-14400F
-  
+  'cpu-amd-7500f': '21694499', // AMD 라이젠5-5세대 7500F (라파엘) (멀티팩 정품)
+  'cpu-amd-7600': '18718496',  // AMD 라이젠5-5세대 7600 (라파엘) (멀티팩 정품)
+  'cpu-amd-7800x3d': '19627934', // AMD 라이젠7-5세대 7800X3D (라파엘) (멀티팩 정품)
+  'cpu-amd-5600': '16741211',  // AMD 라이젠5-4세대 5600 (버미어) (멀티팩 정품)
+  'cpu-intel-12400f': '16101353', // 인텔 코어i5-12세대 12400F (엘더레이크) (정품)
+  'cpu-intel-14400f': '76555634', // 인텔 코어i5-14세대 14400F (랩터레이크 리프레시) (밸류팩 정품)
+
   // GPU
   'gpu-rtx-5060': '122676813', // MSI 지포스 RTX 5060 벤투스 2X OC V1 D7 8GB
-  'gpu-rtx-5060-gigabyte': '122676813', // MSI 지포스 RTX 5060 벤투스 2X
-  'gpu-rtx-5060-white': '122676814', // 갤럭시 GALAX 지포스 RTX 5060 WHITE OC V2 D7 8GB
+  'gpu-rtx-5060-gigabyte': '122676813', // MSI 지포스 RTX 5060 벤투스 2X OC V1 D7 8GB
+  'gpu-rtx-5060-white': '99895814', // 갤럭시 GALAX 지포스 RTX 5060 WHITE OC V2 D7 8GB
   'gpu-rtx-5060ti-emtek': '89732453', // PALIT 지포스 RTX 5060 Ti DUAL D7 8GB 이엠텍
   'gpu-rtx-5060ti-zotac': '85410707', // ZOTAC GAMING 지포스 RTX 5060 Ti Twin Edge OC D7 8GB
   'gpu-rtx-5060ti-msi': '86814989', // MSI 지포스 RTX 5060 Ti 벤투스 2X OC 플러스 D7 8GB
-  'gpu-rtx-3050-6gb': '32840502', // MSI 지포스 RTX 3050 벤투스 2X OC D6 6GB
-  
+  'gpu-rtx-3050-6gb': '71010053', // MSI 지포스 RTX 3050 벤투스 2X E OC D6 6GB
+
   // 메인보드
-  'mb-b650m-k': '19536692', // ASRock B650M-HDV/M.2 디앤디컴/에즈윈 (다나와 196,500원 직행)
+  'mb-b650m-k': '19536692', // ASRock B650M-HDV/M.2 에즈윈
   'mb-b650m-hdv': '19536692', // ASRock B650M-HDV/M.2 에즈윈
   'mb-b650m-k-giga': '21727307', // GIGABYTE B650M K 피씨디렉트
-  'mb-a520m': '12117565', // ASUS PRIME A520M-A II
-  
+  'mb-a520m': '16284179', // ASUS PRIME A520M-A II 대원씨티에스
+
   // RAM
-  'ram-ddr5-32gb': '18911780', // 삼성전자 DDR5-5600 (16GB x 2)
+  'ram-ddr5-32gb': '18911780', // 삼성전자 DDR5-5600 (16GB) x 2
   'ram-ddr5-16gb': '18911780', // 삼성전자 DDR5-5600 (16GB)
-  'ram-ddr5-teamgroup-32gb': '17535839', // TeamGroup DDR5-5600 CL46 Elite
-  'ram-ddr5-klevv-32gb': '18965774', // ESSENCORE KLEVV DDR5-5600
-  'ram-ddr4-16gb': '12560377', // 삼성전자 DDR4-3200 8GB
-  
+  'ram-ddr5-teamgroup-32gb': '17535839', // TeamGroup DDR5-5600 CL46 Elite 서린 (16GB) x 2
+  'ram-ddr5-klevv-32gb': '18965774', // ESSENCORE KLEVV DDR5-5600 CL46 파인인포 (16GB) x 2
+  'ram-ddr4-16gb': '11541857', // 삼성전자 DDR4-3200 (8GB) x 2
+
   // SSD
-  'ssd-1tb-nvme': '13161338', // SK하이닉스 Gold P31 M.2 NVMe (1TB) (다나와 실물 직행)
-  'ssd-samsung-990evo-plus-1tb': '69869543', // 삼성전자 990 EVO Plus M.2 NVMe 1TB
-  'ssd-hynix-p41-1tb': '17001050', // SK하이닉스 Platinum P41 M.2 NVMe 1TB
-  'ssd-500gb-nvme': '13161334', // SK하이닉스 Gold P31 500GB NVMe
-  
+  'ssd-1tb-nvme': '13161338', // SK하이닉스 Gold P31 M.2 NVMe (1TB)
+  'ssd-samsung-990evo-plus-1tb': '69869543', // 삼성전자 990 EVO Plus M.2 NVMe (1TB)
+  'ssd-hynix-p41-1tb': '17001050', // SK하이닉스 Platinum P41 M.2 NVMe (1TB)
+  'ssd-500gb-nvme': '13161353', // SK하이닉스 Gold P31 M.2 NVMe (500GB)
+
   // 파워
   'power-700w-bronze': '44906339', // 마이크로닉스 Classic II 풀체인지 700W 80PLUS브론즈 ATX3.1
-  'power-500w-std': '14109477', // 마이크로닉스 Classic II 500W
-  'power-micronics-600w': '14109503', // 마이크로닉스 Classic II 600W
-  
+  'power-500w-std': '96986219', // 마이크로닉스 Classic II 풀체인지 500W 80PLUS실버 ATX3.1
+  'power-micronics-600w': '96986270', // 마이크로닉스 Classic II 풀체인지 600W 80PLUS실버 ATX3.1
+
   // 쿨러
   'cooler-basic-air': '16209023', // Thermalright Assassin X 120 Refined SE ARGB 서린
-  'cooler-dual-air': '18037303', // Thermalright Peerless Assassin 120 SE 서린
-  
+  'cooler-dual-air': '16525058', // Thermalright Peerless Assassin 120 SE 서린
+
   // 케이스
   'case-darkflash-dk200': '13381634' // darkFlash DK200 RGB 강화유리
+};
+
+// 다나와 단품 pcode를 듀얼 채널(2개 구성)로 합산해야 하는 부품 수량 배수
+export const DANAWA_PCODE_MULTIPLIERS: Record<string, number> = {
+  'ram-ddr5-32gb': 2,
+  'ram-ddr5-teamgroup-32gb': 2,
+  'ram-ddr5-klevv-32gb': 2,
+  'ram-ddr4-16gb': 2,
 };
 
 /**
@@ -472,7 +480,7 @@ export function getDanawaSearchUrl(keyword: string, componentId?: string, itemSe
     return `https://prod.danawa.com/info/?pcode=${CUSTOM_DANAWA_PCODES[componentId]}`;
   }
   const cleanKeyword = itemSearchKeyword || (componentId && COMPONENT_SEARCH_KEYWORDS[componentId]) || keyword.trim() || '컴퓨터 부품';
-  return `https://search.danawa.com/dsearch.php?query=${encodeURIComponent(cleanKeyword)}`;
+  return `https://search.danawa.com/?query=${encodeURIComponent(cleanKeyword)}`;
 }
 
 

@@ -2,8 +2,8 @@ name: Daily PC Component Price Sync
 
 on:
   schedule:
-    # 매일 한국 시간(KST) 오전 6:00 (UTC 21:00) 실행
-    - cron: '0 21 * * *'
+    # 매일 한국 시간(KST) 06:00, 14:00, 22:00 (UTC 21:00, 05:00, 13:00) 하루 3회 자동 실행
+    - cron: '0 21,5,13 * * *'
   workflow_dispatch: # 관리자가 깃허브 Actions 탭에서 수동으로 즉시 실행 가능
 
 permissions:

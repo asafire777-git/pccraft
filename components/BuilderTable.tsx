@@ -10,7 +10,7 @@ import TakeoffAuditModal from './TakeoffAuditModal';
 import MatchingMonitors from './MatchingMonitors';
 import PriceFeedbackSection from './PriceFeedbackSection';
 import { GamePreset, GAME_PRESETS } from '@/data/presets';
-import { getCoupangProductUrl, getCoupangBulkCartUrl, getOpenMarketProductUrl, getPromoGatewayUrl, getDanawaSearchUrl, get11stSearchUrl } from '@/lib/affiliate';
+import { getCoupangProductUrl, getCoupangBulkCartUrl, getOpenMarketProductUrl, getPromoGatewayUrl, getDanawaSearchUrl, get11stSearchUrl, DANAWA_PCODE_MULTIPLIERS } from '@/lib/affiliate';
 import { encodeQuoteToShareUrl } from '@/lib/share';
 import { trackEvent } from '@/lib/gtag';
 import { getOptimizedCompatibilityPreset, CompatibilityPresetResult } from '@/lib/recommendation';
@@ -330,9 +330,12 @@ export default function BuilderTable({
               {/* 오른쪽: 가격 & 액션 버튼 (변경 / 제휴 링크) */}
               <div className="flex flex-col sm:flex-row sm:items-center justify-between sm:justify-end gap-3 shrink-0 pt-3 md:pt-0 border-t md:border-t-0 border-slate-100 dark:border-slate-800/60 w-full md:w-auto">
                 <div className="text-left md:text-right shrink-0">
-                  <div className="flex items-center justify-start md:justify-end gap-1.5 mb-0.5">
+                  <div
+                    className="flex items-center justify-start md:justify-end gap-1.5 mb-0.5"
+                    title={item.lastUpdated ? `다나와 오픈마켓 최저가 기준 (${item.lastUpdated} 동기화)` : '다나와 오픈마켓 최저가 기준'}
+                  >
                     <span className="text-[10px] text-slate-500 dark:text-slate-400 font-mono font-medium">
-                      다나와 최저가
+                      다나와 최저가{DANAWA_PCODE_MULTIPLIERS[item.id] > 1 ? ` (×${DANAWA_PCODE_MULTIPLIERS[item.id]} 합산)` : ''}
                     </span>
                   </div>
 
@@ -349,7 +352,7 @@ export default function BuilderTable({
                     </span>
                   ) : (
                     <span className="text-[10px] text-slate-400 dark:text-slate-500 font-mono block mt-0.5 whitespace-nowrap">
-                      실시간 최저가 검증
+                      {item.lastUpdated ? `${item.lastUpdated.slice(5, 16)} 기준` : '다나와 기준가'}
                     </span>
                   )}
                 </div>
