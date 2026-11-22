@@ -10,6 +10,7 @@ import TakeoffAuditModal from './TakeoffAuditModal';
 import MatchingMonitors from './MatchingMonitors';
 import PriceFeedbackSection from './PriceFeedbackSection';
 import { GamePreset, GAME_PRESETS } from '@/data/presets';
+import livePricesData from '@/data/live-prices.json';
 import { getCoupangProductUrl, getCoupangBulkCartUrl, getOpenMarketProductUrl, getPromoGatewayUrl, getDanawaSearchUrl, get11stSearchUrl, DANAWA_PCODE_MULTIPLIERS } from '@/lib/affiliate';
 import { encodeQuoteToShareUrl } from '@/lib/share';
 import { trackEvent } from '@/lib/gtag';
@@ -111,8 +112,8 @@ export default function BuilderTable({
             <span className="text-xs font-bold text-cyan-600 dark:text-cyan-400 uppercase tracking-wider block whitespace-nowrap">
               Custom PC Configurator
             </span>
-            <span className="text-[10px] px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 flex items-center gap-1 font-mono font-medium whitespace-nowrap">
-              💡 시장 표준 기준시세
+            <span className="text-[10px] px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 flex items-center gap-1 font-mono font-medium whitespace-nowrap">
+              🕒 다나와 시세 기준: {livePricesData?.lastSyncedAt || '최신 동기화'}
             </span>
           </div>
 
@@ -330,12 +331,12 @@ export default function BuilderTable({
               {/* 오른쪽: 가격 & 액션 버튼 (변경 / 제휴 링크) */}
               <div className="flex flex-col sm:flex-row sm:items-center justify-between sm:justify-end gap-3 shrink-0 pt-3 md:pt-0 border-t md:border-t-0 border-slate-100 dark:border-slate-800/60 w-full md:w-auto">
                 <div className="text-left md:text-right shrink-0">
-                  <div
-                    className="flex items-center justify-start md:justify-end gap-1.5 mb-0.5"
-                    title={item.lastUpdated ? `다나와 오픈마켓 최저가 기준 (${item.lastUpdated} 동기화)` : '다나와 오픈마켓 최저가 기준'}
-                  >
-                    <span className="text-[10px] text-slate-500 dark:text-slate-400 font-mono font-medium">
+                  <div className="relative group/price inline-flex items-center justify-start md:justify-end gap-1.5 mb-0.5 cursor-help">
+                    <span className="text-[10px] text-slate-500 dark:text-slate-400 font-mono font-medium border-b border-dotted border-slate-400/70 dark:border-slate-600">
                       다나와 최저가{DANAWA_PCODE_MULTIPLIERS[item.id] > 1 ? ` (×${DANAWA_PCODE_MULTIPLIERS[item.id]} 합산)` : ''}
+                    </span>
+                    <span className="pointer-events-none opacity-0 group-hover/price:opacity-100 transition-opacity duration-150 absolute right-full mr-2 top-1/2 -translate-y-1/2 z-30 px-2.5 py-1 rounded-lg bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 text-[10px] font-mono whitespace-nowrap shadow-lg">
+                      {item.lastUpdated ? `다나와 동기화: ${item.lastUpdated}` : '다나와 오픈마켓 최저가 기준'}
                     </span>
                   </div>
 
