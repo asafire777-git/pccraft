@@ -4,6 +4,7 @@ import './globals.css';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import AuthProvider from '@/components/AuthProvider';
 import GoogleAnalytics from '@/components/GoogleAnalytics';
+import ScrollToTop from '@/components/ScrollToTop';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://pccraft.kr'),
@@ -90,6 +91,7 @@ export default function RootLayout({
               <GoogleAnalytics />
             </Suspense>
             {children}
+            <ScrollToTop />
           </ThemeProvider>
         </AuthProvider>
       </body>
