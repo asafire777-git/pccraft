@@ -423,9 +423,8 @@ export const CUSTOM_DANAWA_PCODES: Record<string, string> = {
   'cpu-intel-14400f': '33796838', // 인텔 i5-14400F
   
   // GPU
-  'gpu-rtx-5060': '20740013', // MSI 지포스 RTX 4060/5060 벤투스 2X (다나와 실물 가격비교 직행)
-  'gpu-rtx-5060-gigabyte': '20740013', // MSI 지포스 RTX 5060/4060 벤투스 2X
-  'gpu-rtx-4060': '20740013', // MSI 지포스 RTX 4060 벤투스 2X
+  'gpu-rtx-5060': '122676813', // MSI 지포스 RTX 5060 벤투스 2X OC V1 D7 8GB
+  'gpu-rtx-5060-gigabyte': '122676813', // MSI 지포스 RTX 5060 벤투스 2X
   'gpu-rtx-5060-white': '122676814', // 갤럭시 GALAX 지포스 RTX 5060 WHITE OC V2 D7 8GB
   'gpu-rtx-5060ti-emtek': '89732453', // PALIT 지포스 RTX 5060 Ti DUAL D7 8GB 이엠텍
   'gpu-rtx-5060ti-zotac': '85410707', // ZOTAC GAMING 지포스 RTX 5060 Ti Twin Edge OC D7 8GB
@@ -473,7 +472,7 @@ export function getDanawaSearchUrl(keyword: string, componentId?: string, itemSe
     return `https://prod.danawa.com/info/?pcode=${CUSTOM_DANAWA_PCODES[componentId]}`;
   }
   const cleanKeyword = itemSearchKeyword || (componentId && COMPONENT_SEARCH_KEYWORDS[componentId]) || keyword.trim() || '컴퓨터 부품';
-  return `https://search.danawa.com/?query=${encodeURIComponent(cleanKeyword)}`;
+  return `https://search.danawa.com/dsearch.php?query=${encodeURIComponent(cleanKeyword)}`;
 }
 
 
