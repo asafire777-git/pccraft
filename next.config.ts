@@ -33,6 +33,22 @@ const nextConfig: NextConfig = {
   experimental: {
     agentUpgrade: 'security',
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**.aliexpress-media.com',
+      },
+      {
+        protocol: 'https',
+        hostname: '**.alicdn.com',
+      },
+      {
+        protocol: 'https',
+        hostname: '**.danawa.com',
+      },
+    ],
+  },
   cacheComponents: true,
   partialPrefetching: true,
   async headers() {
