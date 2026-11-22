@@ -27,13 +27,14 @@ import {
 } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import TechPickManager from '@/components/admin/TechPickManager';
 
 export default function AdminPage() {
   const { data: session, status } = useSession();
   const [stats, setStats] = useState<AnalyticsStats | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [lastRefreshed, setLastRefreshed] = useState<string>('');
-  const [activeTab, setActiveTab] = useState<'overview' | 'links' | 'users' | 'ga4'>('overview');
+  const [activeTab, setActiveTab] = useState<'overview' | 'links' | 'users' | 'ga4' | 'picks'>('overview');
   const [searchQuery, setSearchQuery] = useState('');
 
   const authorized = isAdmin(session?.user);
@@ -306,6 +307,17 @@ export default function AdminPage() {
           >
             ⚙️ GA4 이벤트 설정 가이드
           </button>
+          <button
+            onClick={() => setActiveTab('picks')}
+            className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
+              activeTab === 'picks'
+                ? 'bg-amber-500 text-slate-950 font-black shadow-xs'
+                : 'text-amber-700 dark:text-amber-400 hover:text-amber-800'
+            }`}
+          >
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>✨ 테크픽 AI 포스팅 (CMS)</span>
+          </button>
         </div>
 
         {/* 탭 1: 인기 부품 클릭 & 프리셋 랭킹 */}
@@ -570,6 +582,11 @@ export default function AdminPage() {
               </div>
             </div>
           </div>
+        )}
+
+        {/* 탭 4: 테크픽 AI 포스팅 CMS */}
+        {activeTab === 'picks' && (
+          <TechPickManager />
         )}
       </main>
 

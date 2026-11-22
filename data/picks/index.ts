@@ -1,9 +1,13 @@
 import { PickItem } from './types';
 import { dokoHairDryer } from './doko-hair-dryer';
+import customPicksData from './custom-picks.json';
 
 export * from './types';
 
+const customPicks: PickItem[] = (customPicksData as unknown as PickItem[]) || [];
+
 export const allPicks: PickItem[] = [
+  ...customPicks,
   dokoHairDryer,
 ];
 
