@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next';
 import { ALL_ARTICLES } from '@/data/articles';
 import { GAME_SEO_LIST } from '@/data/games';
+import { getAllPicks } from '@/data/picks';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://pccraft.kr';
@@ -14,6 +15,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${baseUrl}/lab`,
+      lastModified: new Date(),
+      changeFrequency: 'daily',
+      priority: 0.95,
+    },
+    {
+      url: `${baseUrl}/picks`,
       lastModified: new Date(),
       changeFrequency: 'daily',
       priority: 0.95,
@@ -72,5 +79,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.9,
   }));
 
-  return [...baseRoutes, ...articleRoutes, ...gameRoutes];
+  // 테크 & 라이프 픽 (애드픽 등 공식 제휴 큐레이션 리포트)
+  const pickRoutes: MetadataRoute.Sitemap = getAllPicks().map((pick) => ({
+    url: `${baseUrl}/picks/${pick.slug}`,
+    lastModified: new Date(`${pick.publishedAt}T09:00:00Z`),
+    changeFrequency: 'weekly',
+    priority: 0.9,
+  }));
+
+  return [...baseRoutes, ...articleRoutes, ...gameRoutes, ...pickRoutes];
 }

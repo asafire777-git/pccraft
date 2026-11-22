@@ -182,6 +182,18 @@ export default function Header({ onOpenQuoteStorage }: HeaderProps = {}) {
                 10대 리포트
               </span>
             </Link>
+            {/* 신규 테크 & 라이프 픽 메뉴 */}
+            <Link
+              href="/picks"
+              className={`px-2.5 py-1.5 rounded-xl hover:text-cyan-600 dark:hover:text-cyan-400 hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-colors cursor-pointer flex items-center gap-1.5 whitespace-nowrap shrink-0 ${
+                pathname?.startsWith('/picks') ? 'text-cyan-600 dark:text-cyan-400 font-bold bg-slate-100/80 dark:bg-slate-800/80' : ''
+              }`}
+            >
+              <span>✨ 테크 픽</span>
+              <span className="text-[9px] font-black px-1.5 py-0.2 rounded-full bg-amber-500/20 text-amber-600 dark:text-amber-400 border border-amber-500/30">
+                NEW
+              </span>
+            </Link>
             <Link
               href="/guide"
               className={`px-2.5 py-1.5 rounded-xl hover:text-cyan-600 dark:hover:text-cyan-400 hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-colors cursor-pointer whitespace-nowrap shrink-0 ${
@@ -367,6 +379,18 @@ export default function Header({ onOpenQuoteStorage }: HeaderProps = {}) {
               <span>📖 하드웨어 랩</span>
               <span className="text-[10px] font-black px-2 py-0.5 rounded-full bg-rose-500 text-white">
                 10대 리포트
+              </span>
+            </Link>
+            <Link
+              href="/picks"
+              onClick={() => setMobileMenuOpen(false)}
+              className={`flex items-center justify-between px-3 py-2 rounded-xl text-xs font-bold transition-colors ${
+                pathname?.startsWith('/picks') ? 'bg-cyan-50 dark:bg-cyan-950/50 text-cyan-600 dark:text-cyan-400' : 'text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800'
+              }`}
+            >
+              <span>✨ 테크 픽</span>
+              <span className="text-[10px] font-black px-2 py-0.5 rounded-full bg-amber-500 text-slate-950">
+                NEW
               </span>
             </Link>
             <Link
