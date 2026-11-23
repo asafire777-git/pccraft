@@ -1,5 +1,5 @@
 {
-  "lastSyncedAt": "2026-11-23 01:00",
+  "lastSyncedAt": "2026-11-23 10:14",
   "totalItems": 113,
   "prices": {
     "cpu-amd-5600": {
@@ -38,11 +38,11 @@
       "lastUpdated": "2026-11-22 10:02"
     },
     "cpu-amd-7800x3d": {
-      "price": 355670,
-      "prevPrice": 718000,
-      "priceChange": -362330,
+      "price": 354880,
+      "prevPrice": 355670,
+      "priceChange": -790,
       "inStock": true,
-      "lastUpdated": "2026-11-23 00:39"
+      "lastUpdated": "2026-11-23 10:14"
     },
     "cpu-amd-9800x3d": {
       "price": 729000,
@@ -66,11 +66,11 @@
       "lastUpdated": "2026-11-23 00:39"
     },
     "cpu-intel-14400f": {
-      "price": 202160,
-      "prevPrice": 256000,
-      "priceChange": -53840,
+      "price": 202130,
+      "prevPrice": 202160,
+      "priceChange": -30,
       "inStock": true,
-      "lastUpdated": "2026-11-23 00:39"
+      "lastUpdated": "2026-11-23 10:14"
     },
     "cpu-intel-14600kf": {
       "price": 316000,
@@ -150,11 +150,11 @@
       "lastUpdated": "2026-10-29 16:37"
     },
     "cooler-dual-air": {
-      "price": 35220,
-      "prevPrice": 35000,
-      "priceChange": 220,
+      "price": 34720,
+      "prevPrice": 35220,
+      "priceChange": -500,
       "inStock": true,
-      "lastUpdated": "2026-11-23 00:39"
+      "lastUpdated": "2026-11-23 10:14"
     },
     "cooler-pentawave-z06d": {
       "price": 54000,
@@ -276,11 +276,11 @@
       "lastUpdated": "2026-10-29 16:37"
     },
     "mb-b650m-k-giga": {
-      "price": 118930,
-      "prevPrice": 119000,
-      "priceChange": -70,
+      "price": 118920,
+      "prevPrice": 118930,
+      "priceChange": -10,
       "inStock": true,
-      "lastUpdated": "2026-11-23 00:39"
+      "lastUpdated": "2026-11-23 10:14"
     },
     "mb-b650m-mortar-amd": {
       "price": 215000,
@@ -325,11 +325,11 @@
       "lastUpdated": "2026-11-23 00:39"
     },
     "ram-ddr5-teamgroup-32gb": {
-      "price": 745800,
-      "prevPrice": 644000,
-      "priceChange": 101800,
+      "price": 750000,
+      "prevPrice": 745800,
+      "priceChange": 4200,
       "inStock": true,
-      "lastUpdated": "2026-11-23 00:39"
+      "lastUpdated": "2026-11-23 10:14"
     },
     "ram-ddr5-hynix-32gb": {
       "price": 740000,
@@ -339,11 +339,11 @@
       "lastUpdated": "2026-11-22 10:02"
     },
     "ram-ddr5-tcreate-6000": {
-      "price": 836000,
-      "prevPrice": 854000,
-      "priceChange": -18000,
+      "price": 834000,
+      "prevPrice": 836000,
+      "priceChange": -2000,
       "inStock": true,
-      "lastUpdated": "2026-11-23 00:39"
+      "lastUpdated": "2026-11-23 10:14"
     },
     "ram-ddr5-64gb": {
       "price": 1450000,
@@ -381,11 +381,11 @@
       "lastUpdated": "2026-11-23 00:39"
     },
     "gpu-rtx-3050-6gb": {
-      "price": 369850,
-      "prevPrice": 229000,
-      "priceChange": 140850,
+      "price": 378990,
+      "prevPrice": 369850,
+      "priceChange": 9140,
       "inStock": true,
-      "lastUpdated": "2026-11-23 00:39"
+      "lastUpdated": "2026-11-23 10:14"
     },
     "gpu-rx-6600": {
       "price": 284000,
@@ -577,32 +577,32 @@
       "lastUpdated": "2026-11-23 00:39"
     },
     "ssd-hynix-p41-1tb": {
-      "price": 441840,
-      "prevPrice": 419000,
-      "priceChange": 22840,
+      "price": 441810,
+      "prevPrice": 441840,
+      "priceChange": -30,
       "inStock": true,
-      "lastUpdated": "2026-11-23 00:39"
+      "lastUpdated": "2026-11-23 10:14"
     },
     "ssd-samsung-990pro-1tb": {
-      "price": 382730,
-      "prevPrice": 367000,
-      "priceChange": 15730,
+      "price": 382710,
+      "prevPrice": 382730,
+      "priceChange": -20,
       "inStock": true,
-      "lastUpdated": "2026-11-23 01:00"
+      "lastUpdated": "2026-11-23 10:14"
     },
     "ssd-wd-black-sn850x-1tb": {
-      "price": 356540,
-      "prevPrice": 139000,
-      "priceChange": 217540,
+      "price": 356490,
+      "prevPrice": 356540,
+      "priceChange": -50,
       "inStock": true,
-      "lastUpdated": "2026-11-23 01:00"
+      "lastUpdated": "2026-11-23 10:14"
     },
     "ssd-crucial-t500-1tb": {
-      "price": 401060,
-      "prevPrice": 129000,
-      "priceChange": 272060,
+      "price": 401030,
+      "prevPrice": 401060,
+      "priceChange": -30,
       "inStock": true,
-      "lastUpdated": "2026-11-23 01:00"
+      "lastUpdated": "2026-11-23 10:14"
     },
     "ssd-hynix-p41-2tb": {
       "price": 727400,
@@ -612,11 +612,11 @@
       "lastUpdated": "2026-11-23 01:00"
     },
     "ssd-samsung-990pro-2tb": {
-      "price": 778810,
-      "prevPrice": 265000,
-      "priceChange": 513810,
+      "price": 784270,
+      "prevPrice": 778810,
+      "priceChange": 5460,
       "inStock": true,
-      "lastUpdated": "2026-11-23 01:00"
+      "lastUpdated": "2026-11-23 10:14"
     },
     "ssd-samsung-980pro-1tb": {
       "price": 488000,
@@ -640,18 +640,18 @@
       "lastUpdated": "2026-10-29 16:37"
     },
     "power-500w-std": {
-      "price": 55000,
-      "prevPrice": 57000,
-      "priceChange": -2000,
+      "price": 57500,
+      "prevPrice": 55000,
+      "priceChange": 2500,
       "inStock": true,
-      "lastUpdated": "2026-11-22 10:02"
+      "lastUpdated": "2026-11-23 10:14"
     },
     "power-micronics-600w": {
-      "price": 62000,
-      "prevPrice": 64000,
-      "priceChange": -2000,
+      "price": 64400,
+      "prevPrice": 62000,
+      "priceChange": 2400,
       "inStock": true,
-      "lastUpdated": "2026-11-22 10:02"
+      "lastUpdated": "2026-11-23 10:14"
     },
     "power-coolermaster-600w": {
       "price": 59000,
@@ -661,11 +661,11 @@
       "lastUpdated": "2026-10-29 16:37"
     },
     "power-700w-bronze": {
-      "price": 88890,
-      "prevPrice": 82000,
-      "priceChange": 6890,
+      "price": 88900,
+      "prevPrice": 88890,
+      "priceChange": 10,
       "inStock": true,
-      "lastUpdated": "2026-11-23 00:39"
+      "lastUpdated": "2026-11-23 10:14"
     },
     "power-seasonic-a12-700w": {
       "price": 79000,
@@ -689,11 +689,11 @@
       "lastUpdated": "2026-10-29 16:37"
     },
     "power-850w-gold": {
-      "price": 216320,
-      "prevPrice": 195000,
-      "priceChange": 21320,
+      "price": 221630,
+      "prevPrice": 216320,
+      "priceChange": 5310,
       "inStock": true,
-      "lastUpdated": "2026-11-23 01:00"
+      "lastUpdated": "2026-11-23 10:14"
     },
     "power-fsp-1000w-gold": {
       "price": 235000,
