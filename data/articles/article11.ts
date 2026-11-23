@@ -13,6 +13,7 @@ export const article11: Article = {
   readTimeMinutes: 11,
   viewCount: 1280,
   featured: true,
+  coverImage: '/banners/articles/article-6-ddr5-ram.jpg',
   tags: ['DDR5', '메모리 구매 가이드', '16GB vs 32GB', 'DDR5-5600', '삼성 램', 'KLEVV', '듀얼 채널'],
   summary: '2026년 하반기 D램 가격 상승 흐름 속에서 게이밍 및 작업용 PC 조립 시 16GB 단일 구성과 32GB 듀얼 채널 구성의 실제 성능 차이, 브랜드별 비교표, 구매 전 주의사항, 핵심 FAQ를 정리한 심층 가이드입니다.',
   keyTakeaways: [

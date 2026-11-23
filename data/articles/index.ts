@@ -11,6 +11,20 @@ import { article9 } from './article9';
 import { article10 } from './article10';
 import { article11 } from './article11';
 import { article12 } from './article12';
+import { article13 } from './article13';
+import { article14 } from './article14';
+import { article15 } from './article15';
+import { article16 } from './article16';
+import { article17 } from './article17';
+import { article18 } from './article18';
+import { article19 } from './article19';
+import { article20 } from './article20';
+import { article21 } from './article21';
+import { article22 } from './article22';
+import { article23 } from './article23';
+import { article24 } from './article24';
+import { article25 } from './article25';
+import { article26 } from './article26';
 
 export * from './types';
 
@@ -21,6 +35,20 @@ function getTodayKST(): string {
 }
 
 const RAW_ARTICLES: Article[] = [
+  article26,
+  article25,
+  article24,
+  article23,
+  article22,
+  article21,
+  article20,
+  article19,
+  article18,
+  article17,
+  article16,
+  article15,
+  article14,
+  article13,
   article12,
   article11,
   article1,
@@ -35,7 +63,7 @@ const RAW_ARTICLES: Article[] = [
   article10,
 ];
 
-// 예약 발행 지원: publishedAt이 한국 시간(KST) 오늘 날짜 이하인 글만 자동 노출
+// 예약 발행 지원: publishedAt이 한국 시간(KST) 오늘 날짜 이하인 글만 자동 노출 (최신 발행순)
 export const ALL_ARTICLES: Article[] = RAW_ARTICLES.filter(
   (a) => a.publishedAt <= getTodayKST()
 );

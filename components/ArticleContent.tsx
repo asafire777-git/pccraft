@@ -104,6 +104,29 @@ export default function ArticleContent({ content }: ArticleContentProps) {
       continue;
     }
 
+    // Inline Markdown Image (![caption](url))
+    const imgMatch = line.trim().match(/^!\[([^\]]*)\]\(([^)]+)\)$/);
+    if (imgMatch) {
+      const [, altText, imgSrc] = imgMatch;
+      elements.push(
+        <figure key={`img-${i}`} className="my-6 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/60 shadow-sm">
+          <img
+            src={imgSrc}
+            alt={altText || '하드웨어 분석 이미지'}
+            loading="lazy"
+            className="w-full max-h-[360px] object-cover object-center"
+          />
+          {altText && (
+            <figcaption className="px-4 py-2.5 text-xs text-slate-500 dark:text-slate-400 text-center border-t border-slate-100 dark:border-slate-800">
+              {altText}
+            </figcaption>
+          )}
+        </figure>
+      );
+      i++;
+      continue;
+    }
+
     // Horizontal rule
     if (line.trim() === '---') {
       elements.push(<hr key={`hr-${i}`} className="my-8 border-slate-200 dark:border-slate-800" />);

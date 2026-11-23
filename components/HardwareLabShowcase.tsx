@@ -6,13 +6,8 @@ import { ALL_ARTICLES } from '@/data/articles';
 import { BookOpen, Clock, Eye, ArrowRight, ShieldCheck, Sparkles, CheckCircle2 } from 'lucide-react';
 
 export default function HardwareLabShowcase() {
-  // 메인에 노출할 대표 핵심 4대 리포트 선정 (GPU 계급도, CPU 9800X3D 실측, ATX 3.1 파워 계산, 조립 vs 완본체 비용분석)
-  const featuredArticles = [
-    ALL_ARTICLES.find((a) => a.slug === '2026-gpu-hierarchy-blackwell-rtx50-vs-rtx40'),
-    ALL_ARTICLES.find((a) => a.slug === '2026-cpu-gaming-hierarchy-zen5-vs-arrow-lake'),
-    ALL_ARTICLES.find((a) => a.slug === 'psu-atx31-pcie51-calculation-guide'),
-    ALL_ARTICLES.find((a) => a.slug === 'diy-pc-vs-prebuilt-cost-benefit-2026')
-  ].filter(Boolean);
+  // 최신 발행된 심층 리포트 상위 4편을 자동 선정 (예약 발행 시 메인에도 최신 글 자동 반영)
+  const featuredArticles = ALL_ARTICLES.slice(0, 4);
 
   return (
     <section aria-label="하드웨어 랩 심층 분석 리포트" className="my-14">
@@ -35,13 +30,13 @@ export default function HardwareLabShowcase() {
           href="/lab"
           className="mt-4 md:mt-0 inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200 font-bold text-xs sm:text-sm shadow-sm transition-all shrink-0 cursor-pointer"
         >
-          <span>리포트 10선 전체보기</span>
+          <span>리포트 전체보기</span>
           <ArrowRight className="w-4 h-4" />
         </Link>
       </div>
 
-      {/* 4대 핵심 칼럼 카드 그리드 */}
-      <div className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-4 gap-6">
+      {/* 4열 핵심 칼럼 카드 그리드 (1024px 이상에서 4열 꽉 차게 정렬) */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
         {featuredArticles.map((article, idx) => {
           if (!article) return null;
           return (

@@ -13,6 +13,7 @@ export const article12: Article = {
   readTimeMinutes: 12,
   viewCount: 1140,
   featured: true,
+  coverImage: '/banners/articles/article-7-nvme-ssd.jpg',
   tags: ['NVMe SSD', '삼성 990 EVO Plus', 'SK하이닉스 P41', 'WD SN850X', 'PCIe 4.0', 'DRAM', 'SSD 추천'],
   summary: '2026년 최신 NVMe SSD 시장에서 구형 PCIe 3.0 단종 모델의 리셀러 폭리가를 피하고, 삼성 990 EVO Plus·SK하이닉스 P41·WD SN850X·990 PRO 중 내 용도에 맞는 최적의 1TB/2TB SSD를 고르는 구매 기준, 비교표, 장단점, 주의사항, FAQ를 정리했습니다.',
   keyTakeaways: [

@@ -179,7 +179,7 @@ export default function Header({ onOpenQuoteStorage }: HeaderProps = {}) {
             >
               <span>📖 하드웨어 랩</span>
               <span className="hidden 2xl:inline-block text-[9px] font-black px-1.5 py-0.5 rounded-full bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20">
-                10대 리포트
+                심층 리포트
               </span>
             </Link>
             {/* 신규 테크 & 라이프 픽 메뉴 */}

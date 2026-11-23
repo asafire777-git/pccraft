@@ -24,21 +24,31 @@ jobs:
       - name: Run price synchronization
         run: node scripts/sync-prices.mjs
 
-      - name: Check for price changes
+      - name: Check for price changes or scheduled article publish
         id: git-check
         run: |
-          git status --porcelain
+          TODAY_KST=$(TZ=Asia/Seoul date +'%Y-%m-%d')
+          HAS_SCHEDULED=$(grep -rl "publishedAt: '${TODAY_KST}'" data/articles/ || true)
+          LAST_COMMIT_MSG=$(git log -1 --pretty=%B)
           if [ -n "$(git status --porcelain data/live-prices.json)" ]; then
             echo "changed=true" >> $GITHUB_OUTPUT
+            echo "reason=price" >> $GITHUB_OUTPUT
+          elif [ -n "$HAS_SCHEDULED" ] && [[ "$LAST_COMMIT_MSG" != *"${TODAY_KST}"* ]]; then
+            echo "changed=true" >> $GITHUB_OUTPUT
+            echo "reason=article" >> $GITHUB_OUTPUT
           else
             echo "changed=false" >> $GITHUB_OUTPUT
           fi
 
-      - name: Commit and push updated prices
+      - name: Commit and push updated prices or trigger scheduled publish
         if: steps.git-check.outputs.changed == 'true'
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/live-prices.json
-          git commit -m "chore: [자동화] 데일리 부품 실시간 시세 및 재고 동기화 (KST $(TZ=Asia/Seoul date +'%Y-%m-%d %H:%M'))"
+          if [ "${{ steps.git-check.outputs.reason }}" == "price" ]; then
+            git add data/live-prices.json
+            git commit -m "chore: [자동화] 다나와 pcode 시세 동기화 (KST $(TZ=Asia/Seoul date +'%Y-%m-%d %H:%M'))"
+          else
+            git commit --allow-empty -m "chore: [예약발행] 심층 리포트 자동 공개 (KST $(TZ=Asia/Seoul date +'%Y-%m-%d'))"
+          fi
           git push

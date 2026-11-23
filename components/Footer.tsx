@@ -50,7 +50,7 @@ export default function Footer() {
         {/* 필수 정책 네비게이션 */}
         <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs font-medium text-slate-600 dark:text-slate-400 pt-2">
           <Link href="/lab" className="hover:text-cyan-600 dark:hover:text-cyan-400 underline font-semibold">
-            하드웨어 랩 (10대 리포트)
+            하드웨어 랩 (심층 리포트)
           </Link>
           <Link href="/laptop" className="hover:text-cyan-600 dark:hover:text-cyan-400 underline">
             노트북&amp;완제관
