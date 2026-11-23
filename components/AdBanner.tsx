@@ -6,6 +6,7 @@ import {
   OFFICIAL_MONITOR_LINK
 } from '@/lib/affiliate';
 import { Sparkles, ExternalLink, Zap, ShieldCheck } from 'lucide-react';
+import { ADSENSE_REVIEW_MODE } from '@/lib/config';
 
 interface AdBannerProps {
   slotId?: string;
@@ -23,6 +24,11 @@ export default function AdBanner({
   className = '',
   useAdSense = false
 }: AdBannerProps) {
+  // 애드센스 심사 모드에서는 외부 제휴 대형 배너 노출을 일시 중지 (Thin Affiliate 판정 방지)
+  if (!useAdSense && ADSENSE_REVIEW_MODE) {
+    return null;
+  }
+
   // 애드센스 승인 전/대기 중에는 수익을 극대화하는 쿠팡 공식 기획전 배너 자동 노출
   if (!useAdSense) {
     const bannerConfig = {

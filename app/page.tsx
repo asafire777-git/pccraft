@@ -16,7 +16,9 @@ import PrebuiltComparison from '@/components/PrebuiltComparison';
 import MultiPlatformExhibitionGrid from '@/components/MultiPlatformExhibitionGrid';
 import AiAnalysisCard from '@/components/AiAnalysisCard';
 import HardwareLabShowcase from '@/components/HardwareLabShowcase';
+import HomeBuyingGuideFaq from '@/components/HomeBuyingGuideFaq';
 import QuoteUrlSync from '@/components/QuoteUrlSync';
+import { ADSENSE_REVIEW_MODE } from '@/lib/config';
 import { GAME_PRESETS, GamePreset } from '@/data/presets';
 import { COMPONENTS_DATA, ComponentItem } from '@/data/components';
 import { checkCompatibility } from '@/lib/compatibility';
@@ -194,8 +196,8 @@ export default function HomePage() {
       </Suspense>
 
       <main className="flex-1 max-w-7xl 2xl:max-w-[1360px] w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 pb-24 md:pb-8 space-y-8">
-        {/* 쿠팡 파트너스 기간 한정 프로모션 & 기획전 자동 이벤트 배너 */}
-        <EventBanner />
+        {/* 쿠팡 파트너스 기간 한정 프로모션 & 기획전 자동 이벤트 배너 (애드센스 심사 모드에서는 일시 숨김) */}
+        {!ADSENSE_REVIEW_MODE && <EventBanner />}
 
         <DisclaimerBanner />
 
@@ -297,13 +299,16 @@ export default function HomePage() {
           <HardwareLabShowcase />
         </div>
 
-        {/* 하단 오픈마켓·쿠팡 통합 실시간 프로모션 & 핫딜 허브 그리드 */}
-        <MultiPlatformExhibitionGrid />
+        {/* 하단 오픈마켓·쿠팡 통합 실시간 프로모션 & 핫딜 허브 그리드 (애드센스 심사 모드에서는 일시 숨김) */}
+        {!ADSENSE_REVIEW_MODE && <MultiPlatformExhibitionGrid />}
 
         {/* 7. AI 정밀 벤치마크 및 SEO 콘텐츠 카드 */}
         <div id="specs-analysis">
           <AiAnalysisCard currentPreset={currentPreset} />
         </div>
+
+        {/* 8. 2026 조립 PC 구매 4대 핵심 기준 & 자주 묻는 질문(FAQ) 정보성 섹션 */}
+        <HomeBuyingGuideFaq />
 
         {/* 견적 보관함 모달 */}
         <QuoteStorageModal

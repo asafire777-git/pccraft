@@ -2,6 +2,7 @@ import { MetadataRoute } from 'next';
 import { ALL_ARTICLES } from '@/data/articles';
 import { GAME_SEO_LIST } from '@/data/games';
 import { getAllPicks } from '@/data/picks';
+import { ADSENSE_REVIEW_MODE } from '@/lib/config';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://pccraft.kr';
@@ -25,18 +26,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'daily',
       priority: 0.95,
     },
-    {
-      url: `${baseUrl}/laptop`,
-      lastModified: new Date(),
-      changeFrequency: 'daily',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/deals`,
-      lastModified: new Date(),
-      changeFrequency: 'daily',
-      priority: 0.9,
-    },
+    ...(ADSENSE_REVIEW_MODE
+      ? []
+      : [
+          {
+            url: `${baseUrl}/laptop`,
+            lastModified: new Date(),
+            changeFrequency: 'daily' as const,
+            priority: 0.9,
+          },
+          {
+            url: `${baseUrl}/deals`,
+            lastModified: new Date(),
+            changeFrequency: 'daily' as const,
+            priority: 0.9,
+          },
+        ]),
     {
       url: `${baseUrl}/guide`,
       lastModified: new Date(),

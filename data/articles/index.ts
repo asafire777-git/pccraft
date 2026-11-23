@@ -9,10 +9,20 @@ import { article7 } from './article7';
 import { article8 } from './article8';
 import { article9 } from './article9';
 import { article10 } from './article10';
+import { article11 } from './article11';
+import { article12 } from './article12';
 
 export * from './types';
 
-export const ALL_ARTICLES: Article[] = [
+function getTodayKST(): string {
+  const now = new Date();
+  const kst = new Date(now.getTime() + 9 * 60 * 60 * 1000);
+  return kst.toISOString().slice(0, 10);
+}
+
+const RAW_ARTICLES: Article[] = [
+  article12,
+  article11,
   article1,
   article2,
   article3,
@@ -24,6 +34,11 @@ export const ALL_ARTICLES: Article[] = [
   article9,
   article10,
 ];
+
+// 예약 발행 지원: publishedAt이 한국 시간(KST) 오늘 날짜 이하인 글만 자동 노출
+export const ALL_ARTICLES: Article[] = RAW_ARTICLES.filter(
+  (a) => a.publishedAt <= getTodayKST()
+);
 
 export function getArticleBySlug(slug: string): Article | undefined {
   return ALL_ARTICLES.find((a) => a.slug === slug);
