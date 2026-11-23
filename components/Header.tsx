@@ -119,29 +119,29 @@ export default function Header({ onOpenQuoteStorage }: HeaderProps = {}) {
 
   return (
     <>
-      <header className="sticky top-0 z-40 bg-white/90 dark:bg-slate-950/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-colors">
-        <div className="max-w-7xl 2xl:max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-2 sm:gap-4">
+      <header className="sticky top-0 z-40 w-full bg-white/90 dark:bg-slate-950/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-colors">
+        <div className="max-w-[1440px] mx-auto px-3 sm:px-5 xl:px-6 h-16 flex items-center justify-between gap-2 xl:gap-3 min-w-0">
           {/* 로고 영역 */}
-          <Link href="/" className="flex items-center gap-2.5 sm:gap-3 group shrink-0">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-cyan-600 to-blue-600 flex items-center justify-center text-white shadow-md shadow-cyan-500/20 group-hover:scale-105 transition-transform shrink-0">
-              <Cpu className="w-5 h-5" />
+          <Link href="/" className="flex items-center gap-2 sm:gap-2.5 group shrink-0">
+            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-tr from-cyan-600 to-blue-600 flex items-center justify-center text-white shadow-md shadow-cyan-500/20 group-hover:scale-105 transition-transform shrink-0">
+              <Cpu className="w-4 h-4 sm:w-5 sm:h-5" />
             </div>
             <div className="shrink-0">
-              <span className="text-base font-black tracking-tight text-slate-900 dark:text-white flex items-center gap-1.5 whitespace-nowrap">
-                PC-Craft <span className="text-cyan-600 dark:text-cyan-400 font-mono text-xs font-semibold px-1.5 py-0.5 rounded bg-cyan-100 dark:bg-cyan-950/60 border border-cyan-200 dark:border-cyan-800/40">2026</span>
+              <span className="text-sm sm:text-base font-black tracking-tight text-slate-900 dark:text-white flex items-center gap-1 sm:gap-1.5 whitespace-nowrap">
+                PC-Craft <span className="hidden sm:inline-block text-cyan-600 dark:text-cyan-400 font-mono text-[11px] font-semibold px-1.5 py-0.5 rounded bg-cyan-100 dark:bg-cyan-950/60 border border-cyan-200 dark:border-cyan-800/40">2026</span>
               </span>
-              <span className="text-[10px] text-slate-500 dark:text-slate-400 block -mt-0.5 hidden xl:block whitespace-nowrap">
+              <span className="text-[10px] text-slate-500 dark:text-slate-400 -mt-0.5 hidden 2xl:block whitespace-nowrap">
                 스마트 컴퓨터 부품 &amp; 맞춤 견적 큐레이션
               </span>
             </div>
           </Link>
 
-          {/* 중앙 네비게이션: 일반 모니터에서도 줄바꿈 없는 깔끔한 1줄 정렬 */}
-          <nav className="hidden lg:flex items-center gap-1 xl:gap-2.5 2xl:gap-5 text-xs xl:text-[13px] font-semibold text-slate-600 dark:text-slate-300 whitespace-nowrap shrink-0">
+          {/* 중앙 네비게이션: 1280px(xl) 이상 노출, flex-1 min-w-0으로 우측 로그인 버튼 침범 원천 차단 */}
+          <nav className="hidden xl:flex flex-1 min-w-0 items-center justify-center gap-0.5 2xl:gap-1.5 text-[12px] 2xl:text-[13px] font-semibold text-slate-600 dark:text-slate-300 whitespace-nowrap overflow-x-auto no-scrollbar">
             <a
               href="/"
               onClick={handleNavigateTop}
-              className={`px-2.5 py-1.5 rounded-xl hover:text-cyan-600 dark:hover:text-cyan-400 hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-colors cursor-pointer whitespace-nowrap shrink-0 ${
+              className={`px-2 2xl:px-2.5 py-1.5 rounded-xl hover:text-cyan-600 dark:hover:text-cyan-400 hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-colors cursor-pointer whitespace-nowrap shrink-0 ${
                 pathname === '/' ? 'text-slate-900 dark:text-white font-bold bg-slate-100/80 dark:bg-slate-800/80' : ''
               }`}
             >
@@ -150,13 +150,13 @@ export default function Header({ onOpenQuoteStorage }: HeaderProps = {}) {
             <a
               href="/#price-battle-section"
               onClick={(e) => handleNavigateSection(e, 'price-battle-section')}
-              className="px-2.5 py-1.5 rounded-xl text-rose-600 dark:text-rose-400 font-bold hover:underline flex items-center gap-1 cursor-pointer whitespace-nowrap shrink-0 hover:bg-rose-50 dark:hover:bg-rose-950/40"
+              className="px-2 2xl:px-2.5 py-1.5 rounded-xl text-rose-600 dark:text-rose-400 font-bold hover:underline flex items-center gap-1 cursor-pointer whitespace-nowrap shrink-0 hover:bg-rose-50 dark:hover:bg-rose-950/40"
             >
               <span>⚔️ 최저가 빅매치</span>
             </a>
             <Link
               href="/laptop"
-              className={`px-2.5 py-1.5 rounded-xl hover:text-cyan-600 dark:hover:text-cyan-400 hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-colors cursor-pointer flex items-center gap-1 whitespace-nowrap shrink-0 ${
+              className={`px-2 2xl:px-2.5 py-1.5 rounded-xl hover:text-cyan-600 dark:hover:text-cyan-400 hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-colors cursor-pointer flex items-center gap-1 whitespace-nowrap shrink-0 ${
                 pathname === '/laptop' ? 'text-cyan-600 dark:text-cyan-400 font-bold bg-slate-100/80 dark:bg-slate-800/80' : ''
               }`}
             >
@@ -164,7 +164,7 @@ export default function Header({ onOpenQuoteStorage }: HeaderProps = {}) {
             </Link>
             <Link
               href="/deals"
-              className={`px-2.5 py-1.5 rounded-xl hover:text-cyan-600 dark:hover:text-cyan-400 hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-colors cursor-pointer flex items-center gap-1 whitespace-nowrap shrink-0 ${
+              className={`px-2 2xl:px-2.5 py-1.5 rounded-xl hover:text-cyan-600 dark:hover:text-cyan-400 hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-colors cursor-pointer flex items-center gap-1 whitespace-nowrap shrink-0 ${
                 pathname === '/deals' ? 'text-cyan-600 dark:text-cyan-400 font-bold bg-slate-100/80 dark:bg-slate-800/80' : ''
               }`}
             >
@@ -173,7 +173,7 @@ export default function Header({ onOpenQuoteStorage }: HeaderProps = {}) {
             {/* 단일 메뉴로 깔끔하게 통합된 하드웨어 랩 (와이드에서는 10대 리포트 뱃지 노출) */}
             <Link
               href="/lab"
-              className={`px-2.5 py-1.5 rounded-xl hover:text-cyan-600 dark:hover:text-cyan-400 hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-colors cursor-pointer flex items-center gap-1.5 whitespace-nowrap shrink-0 ${
+              className={`px-2 2xl:px-2.5 py-1.5 rounded-xl hover:text-cyan-600 dark:hover:text-cyan-400 hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-colors cursor-pointer flex items-center gap-1 whitespace-nowrap shrink-0 ${
                 pathname?.startsWith('/lab') ? 'text-cyan-600 dark:text-cyan-400 font-bold bg-slate-100/80 dark:bg-slate-800/80' : ''
               }`}
             >
@@ -185,7 +185,7 @@ export default function Header({ onOpenQuoteStorage }: HeaderProps = {}) {
             {/* 신규 테크 & 라이프 픽 메뉴 */}
             <Link
               href="/picks"
-              className={`px-2.5 py-1.5 rounded-xl hover:text-cyan-600 dark:hover:text-cyan-400 hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-colors cursor-pointer flex items-center gap-1.5 whitespace-nowrap shrink-0 ${
+              className={`px-2 2xl:px-2.5 py-1.5 rounded-xl hover:text-cyan-600 dark:hover:text-cyan-400 hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-colors cursor-pointer flex items-center gap-1 whitespace-nowrap shrink-0 ${
                 pathname?.startsWith('/picks') ? 'text-cyan-600 dark:text-cyan-400 font-bold bg-slate-100/80 dark:bg-slate-800/80' : ''
               }`}
             >
@@ -196,7 +196,7 @@ export default function Header({ onOpenQuoteStorage }: HeaderProps = {}) {
             </Link>
             <Link
               href="/guide"
-              className={`px-2.5 py-1.5 rounded-xl hover:text-cyan-600 dark:hover:text-cyan-400 hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-colors cursor-pointer whitespace-nowrap shrink-0 ${
+              className={`px-2 2xl:px-2.5 py-1.5 rounded-xl hover:text-cyan-600 dark:hover:text-cyan-400 hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-colors cursor-pointer whitespace-nowrap shrink-0 ${
                 pathname === '/guide' ? 'text-cyan-600 dark:text-cyan-400 font-bold bg-slate-100/80 dark:bg-slate-800/80' : ''
               }`}
             >
@@ -204,7 +204,7 @@ export default function Header({ onOpenQuoteStorage }: HeaderProps = {}) {
             </Link>
             <Link
               href="/about"
-              className={`px-2.5 py-1.5 rounded-xl hover:text-cyan-600 dark:hover:text-cyan-400 hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-colors cursor-pointer whitespace-nowrap shrink-0 ${
+              className={`px-2 2xl:px-2.5 py-1.5 rounded-xl hover:text-cyan-600 dark:hover:text-cyan-400 hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-colors cursor-pointer whitespace-nowrap shrink-0 ${
                 pathname === '/about' ? 'text-cyan-600 dark:text-cyan-400 font-bold bg-slate-100/80 dark:bg-slate-800/80' : ''
               }`}
             >
@@ -214,7 +214,7 @@ export default function Header({ onOpenQuoteStorage }: HeaderProps = {}) {
             {isAdmin(session?.user || cachedUser) && (
               <Link
                 href="/admin"
-                className={`px-2.5 py-1.5 rounded-xl transition-all cursor-pointer flex items-center gap-1.5 whitespace-nowrap shrink-0 font-bold ${
+                className={`px-2 2xl:px-2.5 py-1.5 rounded-xl transition-all cursor-pointer flex items-center gap-1 whitespace-nowrap shrink-0 font-bold ${
                   pathname === '/admin'
                     ? 'bg-amber-500 text-slate-950 shadow-sm'
                     : 'text-amber-700 dark:text-amber-300 bg-amber-50 dark:bg-amber-950/60 hover:bg-amber-100 dark:hover:bg-amber-900/60 border border-amber-200 dark:border-amber-800/60'
@@ -227,13 +227,13 @@ export default function Header({ onOpenQuoteStorage }: HeaderProps = {}) {
             )}
           </nav>
 
-          {/* 우측 유틸리티: 테마 토글러 & 로그인 버튼 & 모바일 햄버거 메뉴 */}
-          <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0 whitespace-nowrap">
+          {/* 우측 유틸리티: 어떤 해상도에서도 절대 잘리지 않도록 shrink-0 고정 */}
+          <div className="flex items-center gap-1.5 sm:gap-2 shrink-0 whitespace-nowrap">
             {/* 테마 토글 버튼 (낮/밤 스위치) */}
             <button
               onClick={toggleTheme}
               aria-label="테마 변경"
-              className="p-2 sm:p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 transition-all cursor-pointer active:scale-95 shadow-sm shrink-0"
+              className="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 transition-all cursor-pointer active:scale-95 shadow-sm shrink-0"
               title={theme === 'light' ? '다크 모드로 전환' : '라이트 모드로 전환'}
             >
               {theme === 'dark' ? (
@@ -243,7 +243,7 @@ export default function Header({ onOpenQuoteStorage }: HeaderProps = {}) {
               )}
             </button>
 
-            {/* 1. 내 견적 보관함 버튼: 줄바꿈 없이 안정적인 크기 유지 */}
+            {/* 1. 내 견적 보관함 버튼: 모바일(360px)에서는 아이콘만, sm 이상에서는 텍스트 함께 표시 */}
             <button
               onClick={() => {
                 if (onOpenQuoteStorage) {
@@ -254,10 +254,12 @@ export default function Header({ onOpenQuoteStorage }: HeaderProps = {}) {
                   router.push('/');
                 }
               }}
-              className="px-2.5 sm:px-3 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-bold text-xs flex items-center gap-1.5 hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-200/80 dark:border-slate-700/80 transition-colors shadow-sm cursor-pointer whitespace-nowrap shrink-0"
+              aria-label="내 견적 보관함"
+              title="내 견적 보관함"
+              className="p-2 sm:px-3 sm:py-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-bold text-xs flex items-center gap-1.5 hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-200/80 dark:border-slate-700/80 transition-colors shadow-sm cursor-pointer whitespace-nowrap shrink-0"
             >
               <Bookmark className="w-3.5 h-3.5 text-cyan-600 dark:text-cyan-400 shrink-0" />
-              <span className="whitespace-nowrap">내 견적</span>
+              <span className="hidden sm:inline whitespace-nowrap">내 견적</span>
             </button>
 
             {/* 2. 유저 프로필 영역: 캐시된 정보를 활용하여 새로고침 시에도 즉시 프로필 렌더링 (깜빡임 0%) */}
@@ -315,20 +317,20 @@ export default function Header({ onOpenQuoteStorage }: HeaderProps = {}) {
               })()}
             </div>
 
-            {/* 모바일 햄버거 토글 버튼 */}
+            {/* 모바일/태블릿/소형 PC 햄버거 토글 버튼 (1280px 미만 노출) */}
             <button
               onClick={() => setMobileMenuOpen((prev) => !prev)}
-              aria-label="모바일 메뉴 열기/닫기"
-              className="lg:hidden p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors shrink-0 cursor-pointer"
+              aria-label="메뉴 열기/닫기"
+              className="xl:hidden p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors shrink-0 cursor-pointer"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
         </div>
 
-        {/* 모바일 반응형 내비게이션 드로어 */}
+        {/* 반응형 내비게이션 드로어 (모바일 ~ 1279px) */}
         {mobileMenuOpen && (
-          <div className="lg:hidden border-t border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-950/95 backdrop-blur-md px-4 py-3 space-y-1 animate-in slide-in-from-top-2 duration-150">
+          <div className="xl:hidden border-t border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-950/95 backdrop-blur-md px-4 py-3 space-y-1 animate-in slide-in-from-top-2 duration-150">
             <a
               href="/"
               onClick={(e) => {
