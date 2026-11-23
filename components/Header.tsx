@@ -130,14 +130,14 @@ export default function Header({ onOpenQuoteStorage }: HeaderProps = {}) {
               <span className="text-sm sm:text-base font-black tracking-tight text-slate-900 dark:text-white flex items-center gap-1 sm:gap-1.5 whitespace-nowrap">
                 PC-Craft <span className="hidden sm:inline-block text-cyan-600 dark:text-cyan-400 font-mono text-[11px] font-semibold px-1.5 py-0.5 rounded bg-cyan-100 dark:bg-cyan-950/60 border border-cyan-200 dark:border-cyan-800/40">2026</span>
               </span>
-              <span className="text-[10px] text-slate-500 dark:text-slate-400 -mt-0.5 hidden 2xl:block whitespace-nowrap">
+              <span className="text-[10px] text-slate-500 dark:text-slate-400 -mt-0.5 hidden min-[1600px]:block whitespace-nowrap">
                 스마트 컴퓨터 부품 &amp; 맞춤 견적 큐레이션
               </span>
             </div>
           </Link>
 
-          {/* 중앙 네비게이션: 1280px(xl) 이상 노출, flex-1 min-w-0으로 우측 로그인 버튼 침범 원천 차단 */}
-          <nav className="hidden xl:flex flex-1 min-w-0 items-center justify-center gap-0.5 2xl:gap-1.5 text-[12px] 2xl:text-[13px] font-semibold text-slate-600 dark:text-slate-300 whitespace-nowrap overflow-x-auto no-scrollbar">
+          {/* 중앙 네비게이션: 8개 핵심 메뉴가 1280px(xl)에서도 여유롭게 1줄 정렬 */}
+          <nav className="hidden xl:flex flex-1 min-w-0 items-center justify-center gap-0.5 2xl:gap-1.5 text-[12px] 2xl:text-[13px] font-semibold text-slate-600 dark:text-slate-300 whitespace-nowrap">
             <a
               href="/"
               onClick={handleNavigateTop}
@@ -170,7 +170,6 @@ export default function Header({ onOpenQuoteStorage }: HeaderProps = {}) {
             >
               <span>🏷️ 할인 캘린더</span>
             </Link>
-            {/* 단일 메뉴로 깔끔하게 통합된 하드웨어 랩 (와이드에서는 10대 리포트 뱃지 노출) */}
             <Link
               href="/lab"
               className={`px-2 2xl:px-2.5 py-1.5 rounded-xl hover:text-cyan-600 dark:hover:text-cyan-400 hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-colors cursor-pointer flex items-center gap-1 whitespace-nowrap shrink-0 ${
@@ -178,11 +177,7 @@ export default function Header({ onOpenQuoteStorage }: HeaderProps = {}) {
               }`}
             >
               <span>📖 하드웨어 랩</span>
-              <span className="hidden 2xl:inline-block text-[9px] font-black px-1.5 py-0.5 rounded-full bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20">
-                심층 리포트
-              </span>
             </Link>
-            {/* 신규 테크 & 라이프 픽 메뉴 */}
             <Link
               href="/picks"
               className={`px-2 2xl:px-2.5 py-1.5 rounded-xl hover:text-cyan-600 dark:hover:text-cyan-400 hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-colors cursor-pointer flex items-center gap-1 whitespace-nowrap shrink-0 ${
@@ -210,25 +205,25 @@ export default function Header({ onOpenQuoteStorage }: HeaderProps = {}) {
             >
               플랫폼 소개
             </Link>
+          </nav>
 
+          {/* 우측 유틸리티: 관리자·테마·내 견적·프로필이 절대 잘리지 않도록 shrink-0 고정 */}
+          <div className="flex items-center gap-1.5 sm:gap-2 shrink-0 whitespace-nowrap">
+            {/* 관리자 전용 대시보드 버튼 (우측 유틸리티로 분리하여 절대 잘리지 않게 고정) */}
             {isAdmin(session?.user || cachedUser) && (
               <Link
                 href="/admin"
-                className={`px-2 2xl:px-2.5 py-1.5 rounded-xl transition-all cursor-pointer flex items-center gap-1 whitespace-nowrap shrink-0 font-bold ${
+                className={`p-2 sm:px-2.5 sm:py-2 rounded-xl transition-all cursor-pointer flex items-center gap-1 whitespace-nowrap shrink-0 text-xs font-bold shadow-sm ${
                   pathname === '/admin'
-                    ? 'bg-amber-500 text-slate-950 shadow-sm'
+                    ? 'bg-amber-500 text-slate-950'
                     : 'text-amber-700 dark:text-amber-300 bg-amber-50 dark:bg-amber-950/60 hover:bg-amber-100 dark:hover:bg-amber-900/60 border border-amber-200 dark:border-amber-800/60'
                 }`}
                 title="통합 관리자 대시보드"
               >
                 <Shield className="w-3.5 h-3.5 text-amber-500 shrink-0" />
-                <span>관리자</span>
+                <span className="hidden 2xl:inline">관리자</span>
               </Link>
             )}
-          </nav>
-
-          {/* 우측 유틸리티: 어떤 해상도에서도 절대 잘리지 않도록 shrink-0 고정 */}
-          <div className="flex items-center gap-1.5 sm:gap-2 shrink-0 whitespace-nowrap">
             {/* 테마 토글 버튼 (낮/밤 스위치) */}
             <button
               onClick={toggleTheme}
