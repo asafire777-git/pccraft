@@ -190,7 +190,7 @@ export default function AdminPage() {
           {/* 총 페이지뷰 */}
           <div className="p-4 sm:p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
             <div className="flex items-center justify-between text-slate-500 dark:text-slate-400 mb-2">
-              <span className="text-xs font-semibold">오늘 / 총 페이지뷰</span>
+              <span className="text-xs font-semibold">오늘 / 30일 페이지뷰</span>
               <div className="p-2 rounded-xl bg-cyan-50 dark:bg-cyan-950/60 text-cyan-600 dark:text-cyan-400">
                 <Eye className="w-4 h-4" />
               </div>
@@ -199,11 +199,14 @@ export default function AdminPage() {
               <div className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white font-mono">
                 {stats?.todayPageViews.toLocaleString() || 0}
                 <span className="text-xs font-normal text-slate-500 ml-1.5 font-sans">
-                  / 총 {(stats?.totalPageViews || 0).toLocaleString()} PV
+                  / 30일 {(stats?.totalPageViews || 0).toLocaleString()} PV
                 </span>
               </div>
               <span className="text-[11px] text-emerald-600 dark:text-emerald-400 font-medium mt-1 inline-flex items-center gap-1">
-                <TrendingUp className="w-3 h-3" /> 실시간 수집 정상 작동중
+                <TrendingUp className="w-3 h-3" />
+                {stats?.dataSource === 'ga4'
+                  ? `30일 방문자 ${(stats.totalUsers || 0).toLocaleString()}명 · 실시간 ${stats.activeUsers || 0}명`
+                  : 'GA4 데이터 로딩 중'}
               </span>
             </div>
           </div>
@@ -222,11 +225,9 @@ export default function AdminPage() {
                 <span className="text-xs font-normal text-slate-500 ml-1 font-sans">회</span>
               </div>
               <div className="text-[11px] text-slate-500 dark:text-slate-400 font-mono mt-1 flex items-center gap-1.5 flex-wrap">
-                <span className="text-rose-500">쿠팡 {stats?.clicksByPlatform.coupang || 0}</span>
+                <span className="text-rose-500">제휴몰 {stats?.clicksByPlatform.coupang || 0}</span>
                 <span>•</span>
-                <span className="text-red-500">11번가 {stats?.clicksByPlatform['11st'] || 0}</span>
-                <span>•</span>
-                <span className="text-orange-500">G마켓 {stats?.clicksByPlatform.gmarket || 0}</span>
+                <span className="text-cyan-600 dark:text-cyan-400">다나와 {stats?.clicksByPlatform.danawa || 0}</span>
               </div>
             </div>
           </div>

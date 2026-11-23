@@ -14,6 +14,9 @@ export interface AnalyticsEvent {
 export interface AnalyticsStats {
   totalPageViews: number;
   todayPageViews: number;
+  activeUsers?: number;
+  totalUsers?: number;
+  dataSource?: 'ga4' | 'local';
   totalAffiliateClicks: number;
   clicksByPlatform: Record<string, number>;
   topClickedProducts: Array<{
