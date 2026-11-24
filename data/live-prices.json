@@ -1,5 +1,5 @@
 {
-  "lastSyncedAt": "2026-11-24 00:30",
+  "lastSyncedAt": "2026-11-24 14:03",
   "totalItems": 113,
   "prices": {
     "cpu-amd-5600": {
@@ -304,11 +304,11 @@
       "lastUpdated": "2026-11-23 00:39"
     },
     "ram-ddr4-32gb": {
-      "price": 376000,
-      "prevPrice": 377000,
+      "price": 375000,
+      "prevPrice": 376000,
       "priceChange": -1000,
       "inStock": true,
-      "lastUpdated": "2026-11-22 10:02"
+      "lastUpdated": "2026-11-24 14:03"
     },
     "ram-ddr5-16gb": {
       "price": 357990,
@@ -339,11 +339,11 @@
       "lastUpdated": "2026-11-22 10:02"
     },
     "ram-ddr5-tcreate-6000": {
-      "price": 816000,
-      "prevPrice": 834000,
-      "priceChange": -18000,
+      "price": 874000,
+      "prevPrice": 816000,
+      "priceChange": 58000,
       "inStock": true,
-      "lastUpdated": "2026-11-24 00:30"
+      "lastUpdated": "2026-11-24 14:03"
     },
     "ram-ddr5-64gb": {
       "price": 1450000,
@@ -353,11 +353,11 @@
       "lastUpdated": "2026-10-29 19:00"
     },
     "ram-ddr5-klevv-16gb": {
-      "price": 332000,
-      "prevPrice": 331000,
-      "priceChange": 1000,
+      "price": 345000,
+      "prevPrice": 332000,
+      "priceChange": 13000,
       "inStock": true,
-      "lastUpdated": "2026-11-24 00:30"
+      "lastUpdated": "2026-11-24 14:03"
     },
     "ram-ddr5-klevv-32gb": {
       "price": 719920,
