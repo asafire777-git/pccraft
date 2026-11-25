@@ -1,5 +1,5 @@
 {
-  "lastSyncedAt": "2026-11-25 07:50",
+  "lastSyncedAt": "2026-11-26 00:07",
   "totalItems": 113,
   "prices": {
     "cpu-amd-5600": {
@@ -332,18 +332,18 @@
       "lastUpdated": "2026-11-24 00:30"
     },
     "ram-ddr5-hynix-32gb": {
-      "price": 739000,
-      "prevPrice": 740000,
-      "priceChange": -1000,
+      "price": 722000,
+      "prevPrice": 739000,
+      "priceChange": -17000,
       "inStock": true,
-      "lastUpdated": "2026-11-25 07:50"
+      "lastUpdated": "2026-11-26 00:07"
     },
     "ram-ddr5-tcreate-6000": {
-      "price": 864000,
-      "prevPrice": 874000,
-      "priceChange": -10000,
+      "price": 876000,
+      "prevPrice": 864000,
+      "priceChange": 12000,
       "inStock": true,
-      "lastUpdated": "2026-11-25 07:50"
+      "lastUpdated": "2026-11-26 00:07"
     },
     "ram-ddr5-64gb": {
       "price": 1450000,
