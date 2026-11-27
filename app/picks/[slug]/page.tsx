@@ -324,12 +324,16 @@ export default async function PickDetailPage({ params }: Props) {
               alt={item.title}
               className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
             />
-            <div className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-slate-900/80 backdrop-blur-md text-white text-[11px] font-black flex items-center gap-1">
-              <Flame className="w-3 h-3 text-amber-400 fill-amber-400" /> 실사 갤러리 포함
-            </div>
-            <div className="absolute bottom-3 right-3 px-2.5 py-1 rounded-md bg-cyan-600 text-white text-[11px] font-black shadow-md">
-              실측 390g 초경량
-            </div>
+            {item.galleryImages && item.galleryImages.length > 0 && (
+              <div className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-slate-900/80 backdrop-blur-md text-white text-[11px] font-black flex items-center gap-1">
+                <Flame className="w-3 h-3 text-amber-400 fill-amber-400" /> 실사 갤러리 포함
+              </div>
+            )}
+            {item.thumbnailKeywords?.[0] && (
+              <div className="absolute bottom-3 right-3 px-2.5 py-1 rounded-md bg-cyan-600 text-white text-[11px] font-black shadow-md">
+                {cleanText(item.thumbnailKeywords[0])}
+              </div>
+            )}
           </div>
 
           {/* 핵심 스펙 요약 & 구매 버튼 */}
@@ -349,40 +353,34 @@ export default async function PickDetailPage({ params }: Props) {
                 )}
               </div>
               <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-                알리익스프레스 초이스 / 무료 배송 지원 (쿠폰 적용 시 변동 가능)
+                {item.affiliatePlatform} 기준 참고가 (판매처 옵션·쿠폰·환율에 따라 변동 가능)
               </p>
             </div>
 
             {/* 4대 핵심 포인트 뱃지 */}
             <div className="grid grid-cols-2 gap-2 text-xs">
-              <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-800 flex items-center gap-2">
-                <Zap className="w-4 h-4 text-amber-500 shrink-0" />
-                <div>
-                  <span className="text-slate-400 block text-[10px]">모터 속도</span>
-                  <span className="font-bold text-slate-800 dark:text-slate-200">110,000 RPM</span>
-                </div>
-              </div>
-              <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-800 flex items-center gap-2">
-                <Weight className="w-4 h-4 text-cyan-500 shrink-0" />
-                <div>
-                  <span className="text-slate-400 block text-[10px]">본체 무게</span>
-                  <span className="font-bold text-slate-800 dark:text-slate-200">실측 390g</span>
-                </div>
-              </div>
-              <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-800 flex items-center gap-2">
-                <Plug className="w-4 h-4 text-emerald-500 shrink-0" />
-                <div>
-                  <span className="text-slate-400 block text-[10px]">전원 규격</span>
-                  <span className="font-bold text-slate-800 dark:text-slate-200">220V EU플러그</span>
-                </div>
-              </div>
-              <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-800 flex items-center gap-2">
-                <Volume2 className="w-4 h-4 text-violet-500 shrink-0" />
-                <div>
-                  <span className="text-slate-400 block text-[10px]">작동 소음</span>
-                  <span className="font-bold text-slate-800 dark:text-slate-200">약 59 dB</span>
-                </div>
-              </div>
+              {item.specs.slice(0, 4).map((sp, idx) => {
+                const icons = [
+                  <Zap key="zap" className="w-4 h-4 text-amber-500 shrink-0" />,
+                  <Weight key="weight" className="w-4 h-4 text-cyan-500 shrink-0" />,
+                  <Plug key="plug" className="w-4 h-4 text-emerald-500 shrink-0" />,
+                  <Volume2 key="vol" className="w-4 h-4 text-violet-500 shrink-0" />,
+                ];
+                return (
+                  <div
+                    key={idx}
+                    className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-800 flex items-center gap-2"
+                  >
+                    {icons[idx % icons.length]}
+                    <div className="min-w-0">
+                      <span className="text-slate-400 block text-[10px] truncate">{sp.label}</span>
+                      <span className="font-bold text-slate-800 dark:text-slate-200 block truncate">
+                        {cleanText(sp.value)}
+                      </span>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
 
             {/* 바로가기 버튼 */}
@@ -393,7 +391,7 @@ export default async function PickDetailPage({ params }: Props) {
               className="w-full py-4 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-slate-950 font-black text-base flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transition-all active:scale-95"
             >
               <ShoppingBag className="w-5 h-5" />
-              <span>알리익스프레스 공식 최저가 보러가기</span>
+              <span>공식 제휴 최저가 보러가기</span>
               <ExternalLink className="w-4 h-4" />
             </a>
           </div>
@@ -477,19 +475,21 @@ export default async function PickDetailPage({ params }: Props) {
           </section>
         )}
 
-        {/* 5. 플러그 옵션 주의 가이드 배너 */}
-        <section className="p-5 rounded-2xl bg-amber-50 dark:bg-amber-950/40 border-2 border-amber-500/50 flex items-start gap-4">
-          <AlertTriangle className="w-6 h-6 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
-          <div className="text-xs sm:text-sm text-amber-900 dark:text-amber-200 space-y-1">
-            <div className="font-black text-base text-amber-800 dark:text-amber-300">
-              구매 전 필수 확인: 반드시 [EU Plug (220V)] 옵션을 선택하세요!
+        {/* 5. 제품별 필수 확인 배너 (도코 드라이어 EU 플러그 전용) */}
+        {item.slug === 'doko-high-speed-hair-dryer' && (
+          <section className="p-5 rounded-2xl bg-amber-50 dark:bg-amber-950/40 border-2 border-amber-500/50 flex items-start gap-4">
+            <AlertTriangle className="w-6 h-6 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
+            <div className="text-xs sm:text-sm text-amber-900 dark:text-amber-200 space-y-1">
+              <div className="font-black text-base text-amber-800 dark:text-amber-300">
+                구매 전 필수 확인: 반드시 [EU Plug (220V)] 옵션을 선택하세요!
+              </div>
+              <p className="leading-relaxed font-normal">
+                도코 헤어드라이어의 <strong>EU 플러그 규격은 220V~240V (50/60Hz, 1600W)</strong>로 설계되어 있어, 별도의 돼지코 변환기 없이 한국 가정용 콘센트에 바로 꽂아 사용하실 수 있습니다. 
+                함께 판매되는 <strong>US Plug(110V 전용)</strong>를 선택하실 경우 국내에서 제 성능이 나오지 않으니 주문 시 옵션을 꼭 확인하시기 바랍니다.
+              </p>
             </div>
-            <p className="leading-relaxed font-normal">
-              도코 헤어드라이어의 <strong>EU 플러그 규격은 220V~240V (50/60Hz, 1600W)</strong>로 설계되어 있어, 별도의 돼지코 변환기 없이 한국 가정용 콘센트에 바로 꽂아 사용하실 수 있습니다. 
-              함께 판매되는 <strong>US Plug(110V 전용)</strong>를 선택하실 경우 국내에서 제 성능이 나오지 않으니 주문 시 옵션을 꼭 확인하시기 바랍니다.
-            </p>
-          </div>
-        </section>
+          </section>
+        )}
 
         {/* 6. 장점 & 구매 전 체크포인트 (Pros & Cons) */}
         <section className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -552,7 +552,7 @@ export default async function PickDetailPage({ params }: Props) {
             {cleanText(item.title)}
           </h3>
           <p className="text-xs sm:text-sm text-cyan-200 font-normal max-w-xl mx-auto">
-            110,000RPM 고속 BLDC 모터 · 실측 390g 초경량 · 220V EU플러그 완벽 호환! 지금 공식 제휴 링크에서 특가 혜택을 확인해 보세요.
+            {item.thumbnailKeywords.slice(0, 3).map((k) => cleanText(k)).join(' · ')}! 지금 공식 제휴 링크에서 최신 가격과 옵션을 확인해 보세요.
           </p>
 
           <div className="pt-2">
@@ -560,16 +560,16 @@ export default async function PickDetailPage({ params }: Props) {
               href={item.affiliateUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2.5 px-8 py-4 rounded-2xl bg-amber-500 hover:from-amber-400 hover:to-orange-400 text-slate-950 font-black text-base shadow-xl transition-all active:scale-95"
+              className="inline-flex items-center gap-2.5 px-8 py-4 rounded-2xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-base shadow-xl transition-all active:scale-95"
             >
               <ShoppingBag className="w-5 h-5" />
-              <span>알리익스프레스 공식 최저가 바로가기 ({item.price})</span>
+              <span>공식 제휴 최저가 바로가기 ({item.price})</span>
               <ExternalLink className="w-4 h-4" />
             </a>
           </div>
 
           <p className="text-[11px] text-slate-400 font-normal pt-3">
-            ※ 이 글에는 제휴 링크가 포함되어 있으며, 링크를 통한 구매 시 작성자에게 수수료가 지급될 수 있습니다.
+            ※ 본 게시글의 링크를 통해 구매 시 수수료를 제공받습니다.
           </p>
         </section>
 

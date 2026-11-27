@@ -104,9 +104,11 @@ export default function PicksIndexPage() {
                       <span className="text-[10px] text-slate-400 block">실시간 제휴 특가</span>
                       <span className="text-xl font-black text-amber-400">{featured.price}</span>
                     </div>
-                    <span className="text-[11px] text-cyan-300 font-bold px-2 py-1 rounded bg-white/10">
-                      본체 390g 초경량
-                    </span>
+                    {featured.thumbnailKeywords?.[0] && (
+                      <span className="text-[11px] text-cyan-300 font-bold px-2 py-1 rounded bg-white/10">
+                        {cleanText(featured.thumbnailKeywords[0])}
+                      </span>
+                    )}
                   </div>
                 </div>
 
@@ -167,7 +169,7 @@ export default function PicksIndexPage() {
                       className="px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-sm flex items-center gap-2 shadow-sm transition-all active:scale-95"
                     >
                       <ShoppingBag className="w-4 h-4" />
-                      <span>알리 공식 특가 바로가기</span>
+                      <span>공식 제휴 특가 바로가기</span>
                       <ExternalLink className="w-3.5 h-3.5" />
                     </a>
                   </div>
